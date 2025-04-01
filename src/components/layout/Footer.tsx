@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const Footer = () => {
@@ -21,26 +22,26 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
-              <li><a href="#studio" className="text-muted-foreground hover:text-primary transition-colors">Studio</a></li>
-              <li><a href="#automation" className="text-muted-foreground hover:text-primary transition-colors">Automation</a></li>
-              <li><a href="#academy" className="text-muted-foreground hover:text-primary transition-colors">Academy</a></li>
+              <li><Link to="/creative-studio" className="text-muted-foreground hover:text-primary transition-colors">Studio</Link></li>
+              <li><Link to="/automation-services" className="text-muted-foreground hover:text-primary transition-colors">Automation</Link></li>
+              <li><Link to="/academy" className="text-muted-foreground hover:text-primary transition-colors">Academy</Link></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-semibold mb-4">Kontakt</h4>
             <ul className="space-y-2">
-              <li className="text-muted-foreground">info@aiventures.de</li>
-              <li className="text-muted-foreground">+49 123 4567890</li>
+              <li className="text-muted-foreground">info@aiventures.ch</li>
+              <li className="text-muted-foreground">Biel/Bienne, Schweiz</li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-semibold mb-4">Rechtliches</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Impressum</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Datenschutz</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">AGB</a></li>
+              <li><Link to="/impressum" className="text-muted-foreground hover:text-primary transition-colors">Impressum</Link></li>
+              <li><Link to="/datenschutz" className="text-muted-foreground hover:text-primary transition-colors">Datenschutz</Link></li>
+              <li><Link to="/agb" className="text-muted-foreground hover:text-primary transition-colors">AGB</Link></li>
             </ul>
           </div>
         </div>
