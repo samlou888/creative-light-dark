@@ -17,30 +17,30 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-12 px-6 md:px-10">
+    <section id="contact" className="py-10 px-6 md:px-10">
       <div className="container mx-auto">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <div className={`rounded-2xl overflow-hidden ${
             isCreativeMode 
               ? 'dark-card neon-glow' 
               : 'light-card'
           }`}>
             <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="p-6 md:p-8">
-                <h2 className="text-2xl md:text-3xl font-bold mb-3">
+              <div className="p-5 md:p-6">
+                <h2 className="text-xl md:text-2xl font-bold mb-2">
                   {isCreativeMode 
                     ? "Starten Sie Ihr kreatives Projekt"
                     : "Kontaktieren Sie uns"
                   }
                 </h2>
-                <p className="text-muted-foreground mb-5">
+                <p className="text-muted-foreground text-sm mb-4">
                   {isCreativeMode 
                     ? "Bereit, Ihre Vision mit KI-Technologie zum Leben zu erwecken? Wir freuen uns darauf, von Ihnen zu hören."
                     : "Haben Sie Fragen oder möchten Sie eine Beratung buchen? Füllen Sie das Formular aus und wir melden uns bei Ihnen."
                   }
                 </p>
                 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-3">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
                     <input 
@@ -65,7 +65,7 @@ const ContactSection = () => {
                     <label htmlFor="message" className="block text-sm font-medium mb-1">Nachricht</label>
                     <textarea 
                       id="message" 
-                      className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary min-h-[100px]"
+                      className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary min-h-[80px]"
                       required 
                     />
                   </div>
@@ -83,15 +83,15 @@ const ContactSection = () => {
                 isCreativeMode 
                   ? 'bg-primary/20 backdrop-blur-md' 
                   : 'bg-primary/5'
-              } p-6 md:p-8 flex flex-col justify-center`}>
-                <h3 className="text-lg font-bold mb-4">
+              } p-5 md:p-6 flex flex-col justify-center`}>
+                <h3 className="text-base font-bold mb-3">
                   {isCreativeMode 
                     ? "Warum mit unserem Creative Studio arbeiten?"
                     : "Ihre Vorteile im Überblick"
                   }
                 </h3>
                 
-                <ul className="space-y-3">
+                <ul className="space-y-2">
                   {(isCreativeMode 
                     ? [
                         "KI-gestützte kreative Prozesse",
@@ -116,15 +116,15 @@ const ContactSection = () => {
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <span>{item}</span>
+                      <span className="text-sm">{item}</span>
                     </li>
                   ))}
                 </ul>
                 
-                <div className="mt-6 pt-6 border-t border-primary/20">
-                  <p className="font-medium mb-1">Schneller Kontakt:</p>
-                  <p className="text-muted-foreground">info@aiventures.de</p>
-                  <p className="text-muted-foreground">+49 123 4567890</p>
+                <div className="mt-4 pt-4 border-t border-primary/20">
+                  <p className="font-medium mb-1 text-sm">Schneller Kontakt:</p>
+                  <p className="text-muted-foreground text-sm">info@aiventures.de</p>
+                  <p className="text-muted-foreground text-sm">+49 123 4567890</p>
                 </div>
               </div>
             </div>

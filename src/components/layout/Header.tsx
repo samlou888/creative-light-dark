@@ -31,7 +31,7 @@ const Header = () => {
         
         // Apply specific offset for contact section
         if (targetId === 'contact') {
-          offsetAdjustment = 0; // Zero offset for contact section to ensure the entire form is visible
+          offsetAdjustment = 20; // Small offset for contact section to ensure the form is fully visible
         }
         
         // Calculate the element's position with offset
