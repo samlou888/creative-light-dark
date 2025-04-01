@@ -67,25 +67,11 @@ const Header = () => {
           
           <nav className="hidden md:flex items-center gap-10">
             <a 
-              href="#studio" 
+              href="#services" 
               className="font-medium hover:text-primary transition-colors duration-300"
-              onClick={(e) => handleInternalLinkClick(e, 'studio')}
+              onClick={(e) => handleInternalLinkClick(e, 'services')}
             >
-              Creative Studio
-            </a>
-            <a 
-              href="#automation" 
-              className="font-medium hover:text-primary transition-colors duration-300"
-              onClick={(e) => handleInternalLinkClick(e, 'automation')}
-            >
-              Automation
-            </a>
-            <a 
-              href="#academy" 
-              className="font-medium hover:text-primary transition-colors duration-300"
-              onClick={(e) => handleInternalLinkClick(e, 'academy')}
-            >
-              Academy
+              Services
             </a>
             <a 
               href="#showcase" 
