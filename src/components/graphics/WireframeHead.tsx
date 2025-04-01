@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { motion, useScroll, useTransform, useAnimation, useInView } from 'framer-motion';
+import { motion, useScroll, useTransform, useAnimation, useInView, useMotionValue } from 'framer-motion';
 
 interface WireframeHeadProps {
   className?: string;
@@ -10,9 +10,12 @@ interface WireframeHeadProps {
 const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   const { isCreativeMode } = useTheme();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
+  
+  // Motion values for parallax effect
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
   
   // Animation controls for breathing effect
   const controls = useAnimation();
@@ -33,7 +36,8 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
         const rect = containerRef.current.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        setMousePosition({ x, y });
+        mouseX.set(x * 10);
+        mouseY.set(y * 10);
       }
     };
 
@@ -41,7 +45,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [mouseX, mouseY]);
 
   // Breathing animation variant
   const breathingAnimation = {
@@ -65,24 +69,15 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
       transition: {
         duration: 6,
         repeat: Infinity,
-        repeatType: "reverse" as const,
+        repeatType: "reverse",
         ease: "easeInOut"
       }
     }
   };
 
   // Parallax effect values
-  const x = useTransform(
-    () => mousePosition.x * 10,
-    [-5, 5],
-    [5, -5]
-  );
-  
-  const y = useTransform(
-    () => mousePosition.y * 10,
-    [-5, 5],
-    [5, -5]
-  );
+  const x = useTransform(mouseX, [-5, 5], [5, -5]);
+  const y = useTransform(mouseY, [-5, 5], [5, -5]);
 
   return (
     <div className={`relative ${className}`} ref={containerRef}>
