@@ -1,45 +1,48 @@
 
 import * as React from "react"
-import { motion } from "framer-motion"
+import { motion, HTMLMotionProps } from "framer-motion"
 import { cn } from "@/lib/utils"
 
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & { hover?: boolean }
->(({ className, hover = false, ...props }, ref) => {
-  if (hover) {
+type CardProps = React.HTMLAttributes<HTMLDivElement> & { 
+  hover?: boolean 
+}
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, hover = false, ...props }, ref) => {
+    if (hover) {
+      return (
+        <motion.div
+          ref={ref}
+          className={cn(
+            "rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300",
+            className
+          )}
+          whileHover={{ 
+            y: -5, 
+            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04)",
+            backgroundColor: "rgba(255, 255, 255, 1)"
+          }}
+          transition={{ 
+            duration: 0.25, 
+            ease: "easeOut" 
+          }}
+          {...props as HTMLMotionProps<"div">}
+        />
+      )
+    }
+    
     return (
-      <motion.div
+      <div
         ref={ref}
         className={cn(
-          "rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-300",
+          "rounded-lg border bg-card text-card-foreground shadow-sm",
           className
         )}
-        whileHover={{ 
-          y: -5, 
-          boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04)",
-          backgroundColor: "rgba(255, 255, 255, 1)"
-        }}
-        transition={{ 
-          duration: 0.25, 
-          ease: "easeOut" 
-        }}
         {...props}
       />
     )
   }
-  
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "rounded-lg border bg-card text-card-foreground shadow-sm",
-        className
-      )}
-      {...props}
-    />
-  )
-})
+)
 Card.displayName = "Card"
 
 const CardHeader = React.forwardRef<
