@@ -8,9 +8,11 @@ import {
   CarouselPrevious, 
   CarouselNext 
 } from "@/components/ui/carousel";
+import { Slider } from "@/components/ui/slider";
 
 const ShowcaseSection = () => {
   const { isCreativeMode } = useTheme();
+  const [currentSlide, setCurrentSlide] = React.useState(0);
 
   // Mockup project data
   const projects = isCreativeMode 
@@ -46,8 +48,8 @@ const ShowcaseSection = () => {
           </p>
         </div>
         
-        {/* Desktop view: Grid */}
-        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+        {/* Desktop view: Grid with larger sizes */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {projects.map((project) => (
             <div 
               key={project.id} 
@@ -65,20 +67,29 @@ const ShowcaseSection = () => {
                 />
               </div>
               
-              <div className="p-3">
+              <div className="p-5"> {/* Increased padding */}
                 <span className="text-sm font-medium text-primary">{project.category}</span>
-                <h3 className="text-base font-bold mt-1">{project.title}</h3>
+                <h3 className="text-lg font-bold mt-2">{project.title}</h3> {/* Increased text size and margin */}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Mobile view: Carousel */}
+        {/* Mobile view: Enhanced Carousel */}
         <div className="md:hidden">
-          <Carousel className="w-full">
+          <Carousel 
+            className="w-full" 
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            onSelect={(api) => {
+              setCurrentSlide(api?.selectedScrollSnap() || 0);
+            }}
+          >
             <CarouselContent>
               {projects.map((project) => (
-                <CarouselItem key={project.id} className="pl-2 md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={project.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <div 
                     className={`group overflow-hidden transition-all ${
                       isCreativeMode 
@@ -94,20 +105,34 @@ const ShowcaseSection = () => {
                       />
                     </div>
                     
-                    <div className="p-3">
+                    <div className="p-5"> {/* Increased padding */}
                       <span className="text-sm font-medium text-primary">{project.category}</span>
-                      <h3 className="text-base font-bold mt-1">{project.title}</h3>
+                      <h3 className="text-lg font-bold mt-2">{project.title}</h3> {/* Increased text size and margin */}
                     </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex -left-4" />
-            <CarouselNext className="hidden sm:flex -right-4" />
+            <div className="flex items-center justify-center w-full mt-4">
+              <CarouselPrevious className="static transform-none mx-2" />
+              <div className="flex-1 max-w-xs">
+                <Slider
+                  value={[currentSlide]}
+                  max={projects.length - 1}
+                  step={1}
+                  onValueChange={(value) => {
+                    const carousel = document.querySelector('[role="region"][aria-roledescription="carousel"]');
+                    const api = (carousel as any)?.__embla__;
+                    if (api) api.scrollTo(value[0]);
+                  }}
+                />
+              </div>
+              <CarouselNext className="static transform-none mx-2" />
+            </div>
           </Carousel>
         </div>
         
-        <div className="text-center mt-6">
+        <div className="text-center mt-8"> {/* Increased margin */}
           <a 
             href="#contact" 
             className={`inline-block primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
