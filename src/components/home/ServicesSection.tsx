@@ -13,10 +13,9 @@ const ServicesSection = () => {
       id: 'studio',
       icon: <Brush size={isCreativeMode ? 36 : 32} className={isCreativeMode ? "text-primary" : ""} />,
       title: 'Studio',
-      description: 'Branding, Design, Video, Social Media, Content, Web & App Development',
-      claim: isCreativeMode 
-        ? 'Wir gestalten, was du im Kopf hast – visuell & funktional.'
-        : 'Wir gestalten, was du im Kopf hast – visuell & funktional.',
+      description: isCreativeMode 
+        ? 'Unser AI Creative Studio entwickelt einzigartige visuelle Identitäten, Videos und digitale Erlebnisse, die Ihr Publikum begeistern.'
+        : 'Wir entwickeln maßgeschneiderte Branding- und Design-Lösungen, die Ihre Marke einzigartig positionieren.',
       features: isCreativeMode 
         ? ['AI-generierte visuelle Inhalte', 'Video & Motion Design', 'Web & App Design', 'Immersive 3D Experiences'] 
         : ['Strategische Markenentwicklung', 'Corporate Design', 'Digitale Medien', 'Print & Packaging']
@@ -91,11 +90,7 @@ const ServicesSection = () => {
               </div>
               
               <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-              <p className="text-muted-foreground mb-1">{service.description}</p>
-              
-              {service.claim && (
-                <p className="text-sm italic text-muted-foreground mb-5">{service.claim}</p>
-              )}
+              <p className="text-muted-foreground mb-6">{service.description}</p>
               
               <ul className="space-y-2">
                 {service.features.map((feature, index) => (
