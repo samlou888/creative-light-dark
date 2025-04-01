@@ -17,36 +17,36 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 md:px-10">
+    <section id="contact" className="py-12 px-6 md:px-10">
       <div className="container mx-auto">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className={`rounded-2xl overflow-hidden ${
             isCreativeMode 
               ? 'dark-card neon-glow' 
               : 'light-card'
           }`}>
             <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="p-8 md:p-10">
-                <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              <div className="p-6 md:p-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3">
                   {isCreativeMode 
                     ? "Starten Sie Ihr kreatives Projekt"
                     : "Kontaktieren Sie uns"
                   }
                 </h2>
-                <p className="text-muted-foreground mb-8">
+                <p className="text-muted-foreground mb-5">
                   {isCreativeMode 
                     ? "Bereit, Ihre Vision mit KI-Technologie zum Leben zu erwecken? Wir freuen uns darauf, von Ihnen zu hören."
                     : "Haben Sie Fragen oder möchten Sie eine Beratung buchen? Füllen Sie das Formular aus und wir melden uns bei Ihnen."
                   }
                 </p>
                 
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
                     <input 
                       type="text" 
                       id="name" 
-                      className="w-full p-3 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
                       required 
                     />
                   </div>
@@ -56,7 +56,7 @@ const ContactSection = () => {
                     <input 
                       type="email" 
                       id="email" 
-                      className="w-full p-3 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
                       required 
                     />
                   </div>
@@ -65,7 +65,7 @@ const ContactSection = () => {
                     <label htmlFor="message" className="block text-sm font-medium mb-1">Nachricht</label>
                     <textarea 
                       id="message" 
-                      className="w-full p-3 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary min-h-[120px]"
+                      className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary min-h-[100px]"
                       required 
                     />
                   </div>
@@ -83,15 +83,15 @@ const ContactSection = () => {
                 isCreativeMode 
                   ? 'bg-primary/20 backdrop-blur-md' 
                   : 'bg-primary/5'
-              } p-8 md:p-10 flex flex-col justify-center`}>
-                <h3 className="text-xl font-bold mb-6">
+              } p-6 md:p-8 flex flex-col justify-center`}>
+                <h3 className="text-lg font-bold mb-4">
                   {isCreativeMode 
                     ? "Warum mit unserem Creative Studio arbeiten?"
                     : "Ihre Vorteile im Überblick"
                   }
                 </h3>
                 
-                <ul className="space-y-4">
+                <ul className="space-y-3">
                   {(isCreativeMode 
                     ? [
                         "KI-gestützte kreative Prozesse",
@@ -106,7 +106,7 @@ const ContactSection = () => {
                         "Langfristige Betreuung und Support"
                       ]
                   ).map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
+                    <li key={index} className="flex items-start gap-2">
                       <div className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5 ${
                         isCreativeMode 
                           ? 'bg-primary text-white' 
@@ -121,8 +121,8 @@ const ContactSection = () => {
                   ))}
                 </ul>
                 
-                <div className="mt-8 pt-8 border-t border-primary/20">
-                  <p className="font-medium mb-2">Schneller Kontakt:</p>
+                <div className="mt-6 pt-6 border-t border-primary/20">
+                  <p className="font-medium mb-1">Schneller Kontakt:</p>
                   <p className="text-muted-foreground">info@aiventures.de</p>
                   <p className="text-muted-foreground">+49 123 4567890</p>
                 </div>
