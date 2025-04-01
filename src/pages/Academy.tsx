@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Book, Calendar, CheckCircle } from 'lucide-react';
@@ -97,7 +96,19 @@ const Academy = () => {
                   variants={fadeIn}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card className="h-full border-primary/10 hover:border-primary/30 transition-all duration-300">
+                  <motion.div
+                    className="h-full border-primary/10 transition-all duration-300 bg-card rounded-xl border shadow-sm"
+                    whileHover={{ 
+                      y: -5, 
+                      boxShadow: "0 10px 25px -5px rgba(60, 214, 120, 0.15), 0 8px 10px -6px rgba(60, 214, 120, 0.1)",
+                      backgroundColor: "rgba(255, 255, 255, 1)",
+                      borderColor: "rgba(60, 214, 120, 0.3)"
+                    }}
+                    transition={{ 
+                      duration: 0.25, 
+                      ease: "easeOut" 
+                    }}
+                  >
                     <CardHeader>
                       <div className="mb-2">{course.icon}</div>
                       <CardTitle>{course.title}</CardTitle>
@@ -113,7 +124,7 @@ const Academy = () => {
                         ))}
                       </ul>
                     </CardContent>
-                  </Card>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>

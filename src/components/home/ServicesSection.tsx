@@ -2,6 +2,8 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Brush, Zap, GraduationCap } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Card, CardContent } from '@/components/ui/card';
 
 const ServicesSection = () => {
   const { isCreativeMode } = useTheme();
@@ -59,14 +61,25 @@ const ServicesSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service) => (
-            <div 
+            <motion.div 
               key={service.id} 
               id={service.id}
-              className={`rounded-xl p-8 transition-all ${
+              className={`rounded-xl p-8 transition-all duration-300 ${
                 isCreativeMode 
                   ? 'dark-card hover:border-primary/60' 
                   : 'light-card'
               }`}
+              whileHover={{ 
+                y: -5, 
+                backgroundColor: isCreativeMode ? "rgba(0, 0, 0, 0.5)" : "rgba(255, 255, 255, 1)",
+                boxShadow: isCreativeMode 
+                  ? "0 10px 25px -5px rgba(60, 214, 120, 0.2), 0 8px 10px -6px rgba(60, 214, 120, 0.1)" 
+                  : "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04)"
+              }}
+              transition={{ 
+                duration: 0.25, 
+                ease: "easeOut" 
+              }}
             >
               <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 ${
                 isCreativeMode 
@@ -87,7 +100,7 @@ const ServicesSection = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
