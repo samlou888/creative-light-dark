@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
@@ -28,9 +29,9 @@ const Header = () => {
           offsetAdjustment = 20; // Minimal offset for showcase to show everything including button
         }
         
-        // Apply specific offset for services section to ensure it's fully visible
+        // Apply specific offset for services section to match the uploaded image
         if (targetId === 'services') {
-          offsetAdjustment = 180; // Increased offset to show the section heading and all service boxes completely
+          offsetAdjustment = 90; // Adjusted offset to ensure the heading and all boxes are fully visible as shown in the image
         }
         
         // Apply specific offset for contact section
