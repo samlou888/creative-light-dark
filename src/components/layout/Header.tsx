@@ -29,6 +29,11 @@ const Header = () => {
           offsetAdjustment = 20; // Minimal offset for showcase to show everything including button
         }
         
+        // Apply specific offset for contact section
+        if (targetId === 'contact') {
+          offsetAdjustment = 20; // Minimal offset for contact section to show everything including form
+        }
+        
         // Calculate the element's position with offset
         const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offsetAdjustment;
         
