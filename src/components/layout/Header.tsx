@@ -31,7 +31,7 @@ const Header = () => {
         
         // Apply specific offset for services section to match the uploaded image
         if (targetId === 'services') {
-          offsetAdjustment = 20; // Much lower offset to match the uploaded image viewing position
+          offsetAdjustment = -100; // Negative offset to position the view much lower
         }
         
         // Apply specific offset for contact section
