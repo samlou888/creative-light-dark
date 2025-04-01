@@ -107,4 +107,13 @@
   .dark-card {
     @apply dark:bg-black/40 dark:backdrop-blur-md dark:border dark:border-primary/20 dark:rounded-xl dark:p-6 transition-all hover:dark:border-primary/40;
   }
+  
+  .neo-blur {
+    @apply backdrop-blur-xl bg-black/40 border border-white/10 rounded-xl;
+  }
+  
+  .text-gradient-to-r {
+    @apply bg-gradient-to-r bg-clip-text text-transparent;
+  }
 }
+
