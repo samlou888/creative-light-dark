@@ -1,6 +1,13 @@
 
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselPrevious, 
+  CarouselNext 
+} from "@/components/ui/carousel";
 
 const ShowcaseSection = () => {
   const { isCreativeMode } = useTheme();
@@ -21,9 +28,9 @@ const ShowcaseSection = () => {
       ];
 
   return (
-    <section id="showcase" className="py-20 px-6 md:px-10">
+    <section id="showcase" className="py-14 px-6 md:px-10">
       <div className="container mx-auto">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-10 max-w-3xl mx-auto">
           <h2 className="section-heading mb-4">
             {isCreativeMode ? (
               <>Kreative <span className="text-primary">Projekte</span></>
@@ -39,7 +46,8 @@ const ShowcaseSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Desktop view: Grid */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {projects.map((project) => (
             <div 
               key={project.id} 
@@ -49,7 +57,7 @@ const ShowcaseSection = () => {
                 : 'rounded-xl light-card'
               }`}
             >
-              <div className="aspect-square overflow-hidden">
+              <div className="aspect-video overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title} 
@@ -57,15 +65,49 @@ const ShowcaseSection = () => {
                 />
               </div>
               
-              <div className="p-4">
+              <div className="p-3">
                 <span className="text-sm font-medium text-primary">{project.category}</span>
-                <h3 className="text-lg font-bold mt-1">{project.title}</h3>
+                <h3 className="text-base font-bold mt-1">{project.title}</h3>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Mobile view: Carousel */}
+        <div className="md:hidden">
+          <Carousel className="w-full">
+            <CarouselContent>
+              {projects.map((project) => (
+                <CarouselItem key={project.id} className="pl-2 md:basis-1/2 lg:basis-1/3">
+                  <div 
+                    className={`group overflow-hidden transition-all ${
+                      isCreativeMode 
+                      ? 'rounded-xl dark-card hover:neon-glow' 
+                      : 'rounded-xl light-card'
+                    }`}
+                  >
+                    <div className="aspect-video overflow-hidden">
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    
+                    <div className="p-3">
+                      <span className="text-sm font-medium text-primary">{project.category}</span>
+                      <h3 className="text-base font-bold mt-1">{project.title}</h3>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden sm:flex -left-4" />
+            <CarouselNext className="hidden sm:flex -right-4" />
+          </Carousel>
+        </div>
         
-        <div className="text-center mt-12">
+        <div className="text-center mt-8">
           <a 
             href="#contact" 
             className={`inline-block primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
