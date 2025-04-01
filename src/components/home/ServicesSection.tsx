@@ -16,8 +16,8 @@ const ServicesSection = () => {
       description: 'Wir gestalten, was du im Kopf hast – visuell & funktional.',
       extendedDescription: 'Wenn Ästhetik auf Funktionalität trifft, entsteht mehr als Sichtbarkeit: Ihre Marke wird zum Gesprächsthema.',
       features: isCreativeMode 
-        ? ['Branding', 'Design', 'Video', 'Social Media', 'Content', 'Web & App Development'] 
-        : ['Branding', 'Design', 'Video', 'Social Media', 'Content', 'Web & App Development']
+        ? ['Branding', 'Design', 'Social Media & Content', 'Web & App Development'] 
+        : ['Branding', 'Design', 'Social Media & Content', 'Web & App Development']
     },
     {
       id: 'automation',
