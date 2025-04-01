@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { motion, useScroll, useTransform, useAnimation, useInView, useMotionValue } from 'framer-motion';
+import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
 
 interface WireframeHeadProps {
   className?: string;
@@ -69,7 +69,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
       transition: {
         duration: 6,
         repeat: Infinity,
-        repeatType: "reverse",
+        repeatType: "reverse" as const,
         ease: "easeInOut"
       }
     }
@@ -97,10 +97,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
         <motion.div
           initial="initial"
           animate={controls}
-          variants={{
-            ...breathingAnimation,
-            ...floatingAnimation
-          }}
+          variants={breathingAnimation}
         >
           <img 
             src="/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png"
