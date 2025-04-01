@@ -74,6 +74,20 @@ const Header = () => {
             >
               Academy
             </a>
+            <a 
+              href="#showcase" 
+              className="font-medium hover:text-primary transition-colors duration-300"
+              onClick={(e) => handleInternalLinkClick(e, 'showcase')}
+            >
+              Erfolgreiche Projekte
+            </a>
+            <a 
+              href="#contact" 
+              className="font-medium hover:text-primary transition-colors duration-300"
+              onClick={(e) => handleInternalLinkClick(e, 'contact')}
+            >
+              Kontakt
+            </a>
           </nav>
           
           <div className="flex items-center gap-4">
