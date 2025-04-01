@@ -19,7 +19,7 @@ const Header = () => {
             <Link to="#studio" className="font-medium hover:text-primary transition-colors">
               Studio
             </Link>
-            <Link to="#automation" className="font-medium hover:text-primary transition-colors">
+            <Link to="/automation-services" className="font-medium hover:text-primary transition-colors">
               Automation
             </Link>
             <Link to="#academy" className="font-medium hover:text-primary transition-colors">
