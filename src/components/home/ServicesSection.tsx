@@ -14,6 +14,7 @@ const ServicesSection = () => {
       icon: <Brush size={isCreativeMode ? 36 : 32} className={isCreativeMode ? "text-primary" : ""} />,
       title: 'Studio',
       description: 'Wir gestalten, was du im Kopf hast – visuell & funktional.',
+      extendedDescription: 'Wir entwickeln maßgeschneiderte Branding- Web/App und Design-Lösungen, die Ihre Marke einzigartig positionieren.',
       features: isCreativeMode 
         ? ['Branding', 'Design', 'Video', 'Social Media', 'Content', 'Web & App Development'] 
         : ['Branding', 'Design', 'Video', 'Social Media', 'Content', 'Web & App Development']
@@ -99,7 +100,8 @@ const ServicesSection = () => {
                       </li>
                     ))}
                   </ul>
-                  <p className="text-muted-foreground text-sm italic">{service.description}</p>
+                  <p className="text-muted-foreground text-sm italic mb-2">{service.description}</p>
+                  <p className="text-muted-foreground text-sm">{service.extendedDescription}</p>
                 </>
               ) : (
                 <>
