@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import BrainWireframe from '../graphics/BrainWireframe';
+import WireframeHead from '../graphics/WireframeHead';
 
 const HeroSection = () => {
   const { isCreativeMode } = useTheme();
@@ -36,9 +36,7 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <div className={`relative ${isCreativeMode ? 'accent-glow' : ''}`}>
-            <BrainWireframe isCreativeMode={isCreativeMode} />
-          </div>
+          <WireframeHead />
         </div>
       </div>
     </section>
