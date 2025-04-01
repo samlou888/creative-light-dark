@@ -92,6 +92,7 @@ const ServicesSection = () => {
               
               {service.id === 'studio' ? (
                 <>
+                  <p className="text-muted-foreground mb-6">{service.extendedDescription}</p>
                   <ul className="space-y-2 mb-4">
                     {service.features.map((feature, index) => (
                       <li key={index} className="flex items-center gap-2">
@@ -100,8 +101,7 @@ const ServicesSection = () => {
                       </li>
                     ))}
                   </ul>
-                  <p className="text-muted-foreground text-sm italic mb-2">{service.description}</p>
-                  <p className="text-muted-foreground text-sm">{service.extendedDescription}</p>
+                  <p className="text-muted-foreground text-sm italic">{service.description}</p>
                 </>
               ) : (
                 <>
