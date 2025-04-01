@@ -44,7 +44,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-28 px-6 md:px-10 mt-20"> {/* Increased top padding */}
+    <section id="services" className="py-36 px-6 md:px-10 mt-24"> {/* Increased top padding and margin */}
       <div className="container mx-auto">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="section-heading mb-4">
@@ -67,7 +67,7 @@ const ServicesSection = () => {
                 isCreativeMode 
                   ? 'dark-card hover:border-primary/60' 
                   : 'light-card'
-              } pt-10 mt-6 h-full`} // Reduced top padding and adjusted margin
+              } pt-10 h-full`} // Adjusted padding and removed margin-top
               whileHover={{ 
                 y: -5, 
                 backgroundColor: isCreativeMode ? "rgba(0, 0, 0, 0.5)" : "rgba(255, 255, 255, 1)",

@@ -21,8 +21,8 @@ const Header = () => {
         // Get header height for offset calculation
         const headerHeight = document.querySelector('header')?.offsetHeight || 80;
         
-        // Calculate the element's position with offset - increased offset from 40 to 80
-        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 80;
+        // Calculate the element's position with offset - adjusted for better visibility
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 120;
         
         // Scroll to the element with offset
         window.scrollTo({
