@@ -14,7 +14,7 @@ const ServicesSection = () => {
       icon: <Brush size={isCreativeMode ? 36 : 32} className={isCreativeMode ? "text-primary" : ""} />,
       title: 'Studio',
       description: 'Wir gestalten, was du im Kopf hast – visuell & funktional.',
-      extendedDescription: 'Wir entwickeln maßgeschneiderte Branding- Web/App und Design-Lösungen, die Ihre Marke einzigartig positionieren.',
+      extendedDescription: 'Wenn Ästhetik auf Funktionalität trifft, entsteht mehr als Sichtbarkeit: Ihre Marke wird zum Gesprächsthema.',
       features: isCreativeMode 
         ? ['Branding', 'Design', 'Video', 'Social Media', 'Content', 'Web & App Development'] 
         : ['Branding', 'Design', 'Video', 'Social Media', 'Content', 'Web & App Development']
