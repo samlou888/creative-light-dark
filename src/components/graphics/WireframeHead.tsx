@@ -61,20 +61,6 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
     }
   };
 
-  // Floating animation variant 
-  const floatingAnimation = {
-    initial: { y: 0 },
-    animate: {
-      y: [0, -10, 0],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        repeatType: "reverse" as const,
-        ease: "easeInOut"
-      }
-    }
-  };
-
   // Parallax effect values
   const x = useTransform(mouseX, [-5, 5], [5, -5]);
   const y = useTransform(mouseY, [-5, 5], [5, -5]);
