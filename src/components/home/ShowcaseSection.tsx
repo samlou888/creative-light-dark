@@ -21,10 +21,14 @@ const ShowcaseSection = () => {
       ];
 
   return (
-    <section id="showcase" className="py-20 px-6 md:px-10">
+    <section id="showcase" className={`py-20 px-6 md:px-10 ${
+      isCreativeMode ? 'bg-black' : 'bg-white'
+    }`}>
       <div className="container mx-auto">
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="section-heading mb-4">
+          <h2 className={`section-heading mb-4 ${
+            isCreativeMode ? 'text-white' : 'text-black'
+          }`}>
             {isCreativeMode ? (
               <>Kreative <span className="text-primary">Projekte</span></>
             ) : (
@@ -45,8 +49,8 @@ const ShowcaseSection = () => {
               key={project.id} 
               className={`group overflow-hidden transition-all ${
                 isCreativeMode 
-                ? 'rounded-xl dark-card hover:neon-glow' 
-                : 'rounded-xl light-card'
+                ? 'rounded-xl bg-black/40 border border-primary/20 hover:border-primary/40' 
+                : 'rounded-xl bg-white shadow-md hover:shadow-lg'
               }`}
             >
               <div className="aspect-square overflow-hidden">
@@ -59,7 +63,9 @@ const ShowcaseSection = () => {
               
               <div className="p-4">
                 <span className="text-sm font-medium text-primary">{project.category}</span>
-                <h3 className="text-lg font-bold mt-1">{project.title}</h3>
+                <h3 className={`text-lg font-bold mt-1 ${
+                  isCreativeMode ? 'text-white' : 'text-black'
+                }`}>{project.title}</h3>
               </div>
             </div>
           ))}
@@ -68,7 +74,11 @@ const ShowcaseSection = () => {
         <div className="text-center mt-12">
           <a 
             href="#contact" 
-            className={`inline-block primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
+            className={`inline-block py-3 px-6 rounded-full font-medium transition-all ${
+              isCreativeMode 
+                ? 'bg-blue-900 text-white hover:bg-blue-800' 
+                : 'bg-[#0a2641] text-white hover:bg-[#0a2641]/90'
+            }`}
           >
             {isCreativeMode ? "Ihr Projekt starten" : "Ähnliches Projekt starten"}
           </a>
