@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import Index from "./pages/Index";
 import AutomationServices from "./pages/AutomationServices";
 import CreativeStudio from "./pages/CreativeStudio";
+import Academy from "./pages/Academy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/automation-services" element={<AutomationServices />} />
             <Route path="/creative-studio" element={<CreativeStudio />} />
+            <Route path="/academy" element={<Academy />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
