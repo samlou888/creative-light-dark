@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
@@ -31,7 +30,7 @@ const Header = () => {
         
         // Apply specific offset for services section to ensure it's fully visible
         if (targetId === 'services') {
-          offsetAdjustment = 120; // Lower offset to show the section heading and service boxes
+          offsetAdjustment = 180; // Increased offset to show the section heading and all service boxes completely
         }
         
         // Apply specific offset for contact section

@@ -44,10 +44,10 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-36 px-6 md:px-10 mt-24"> {/* Increased top padding and margin */}
+    <section id="services" className="py-36 px-6 md:px-10 mt-24"> {/* Maintained padding and margin */}
       <div className="container mx-auto">
         <div className="text-center mb-12 max-w-3xl mx-auto">
-          <h2 className="section-heading mb-4">
+          <h2 className="section-heading mb-4" id="services-heading">
             Unsere <span className="text-primary">Services</span>
           </h2>
           <p className="text-lg text-muted-foreground">
