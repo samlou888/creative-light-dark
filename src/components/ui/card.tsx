@@ -1,4 +1,3 @@
-
 import * as React from "react"
 import { motion, HTMLMotionProps } from "framer-motion"
 import { cn } from "@/lib/utils"
@@ -26,7 +25,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
             duration: 0.25, 
             ease: "easeOut" 
           }}
-          {...props as HTMLMotionProps<"div">}
+          {...props as any}
         />
       )
     }
