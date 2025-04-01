@@ -78,7 +78,7 @@ const Header = () => {
               className="font-medium hover:text-primary transition-colors duration-300"
               onClick={(e) => handleInternalLinkClick(e, 'showcase')}
             >
-              Erfolgreiche Projekte
+              Projekte
             </a>
             <a 
               href="#contact" 

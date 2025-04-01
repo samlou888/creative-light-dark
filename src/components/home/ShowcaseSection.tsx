@@ -35,7 +35,7 @@ const ShowcaseSection = () => {
             {isCreativeMode ? (
               <>Kreative <span className="text-primary">Projekte</span></>
             ) : (
-              <>Erfolgreiche <span className="text-primary">Projekte</span></>
+              <><span className="text-primary">Projekte</span></>
             )}
           </h2>
           <p className="text-lg text-muted-foreground">
