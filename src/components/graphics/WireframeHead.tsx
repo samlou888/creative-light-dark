@@ -28,7 +28,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   return (
     <div className={`relative ${className}`}>
       <motion.div
-        className={`w-full h-full ${isCreativeMode ? 'accent-glow' : ''}`}
+        className="w-full h-full"
         initial="initial"
         animate="animate"
         variants={floatingAnimation}
