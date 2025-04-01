@@ -31,7 +31,7 @@ const Header = () => {
         
         // Apply specific offset for services section to match the uploaded image
         if (targetId === 'services') {
-          offsetAdjustment = 90; // Adjusted offset to ensure the heading and all boxes are fully visible as shown in the image
+          offsetAdjustment = 20; // Much lower offset to match the uploaded image viewing position
         }
         
         // Apply specific offset for contact section
