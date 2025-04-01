@@ -21,8 +21,16 @@ const Header = () => {
         // Get header height for offset calculation
         const headerHeight = document.querySelector('header')?.offsetHeight || 80;
         
-        // Calculate the element's position with offset - significantly increased for better title visibility
-        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 200;
+        // Calculate the element's position with different offsets based on section
+        let offsetAdjustment = 200; // Default offset
+        
+        // Apply specific offset for showcase section
+        if (targetId === 'showcase') {
+          offsetAdjustment = 160; // Less offset for showcase to make title visible
+        }
+        
+        // Calculate the element's position with offset
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offsetAdjustment;
         
         // Scroll to the element with offset
         window.scrollTo({
