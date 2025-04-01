@@ -22,7 +22,7 @@ const Header = () => {
         const headerHeight = document.querySelector('header')?.offsetHeight || 80;
         
         // Calculate the element's position with offset
-        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 40;
         
         // Scroll to the element with offset
         window.scrollTo({
@@ -45,7 +45,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-4 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50">
+    <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-2xl font-bold">

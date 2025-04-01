@@ -11,7 +11,7 @@ const ServicesSection = () => {
   const services = [
     {
       id: 'studio',
-      icon: <Brush size={isCreativeMode ? 36 : 32} className={isCreativeMode ? "text-primary" : ""} />,
+      icon: <Brush size={isCreativeMode ? 32 : 28} className={isCreativeMode ? "text-primary" : ""} />,
       title: 'Creative Studio',
       description: 'Wir gestalten, was du im Kopf hast – visuell & funktional.',
       extendedDescription: 'Wenn Ästhetik auf Funktionalität trifft, entsteht mehr als Sichtbarkeit: Ihre Marke wird zum Gesprächsthema.',
@@ -21,7 +21,7 @@ const ServicesSection = () => {
     },
     {
       id: 'automation',
-      icon: <Zap size={isCreativeMode ? 36 : 32} className={isCreativeMode ? "text-primary" : ""} />,
+      icon: <Zap size={isCreativeMode ? 32 : 28} className={isCreativeMode ? "text-primary" : ""} />,
       title: 'Automation',
       description: isCreativeMode 
         ? 'Revolutionieren Sie Ihre Arbeitsabläufe mit unseren fortschrittlichen AI-Automatisierungslösungen.'
@@ -32,7 +32,7 @@ const ServicesSection = () => {
     },
     {
       id: 'academy',
-      icon: <GraduationCap size={isCreativeMode ? 36 : 32} className={isCreativeMode ? "text-primary" : ""} />,
+      icon: <GraduationCap size={isCreativeMode ? 32 : 28} className={isCreativeMode ? "text-primary" : ""} />,
       title: 'Academy',
       description: isCreativeMode 
         ? 'Bringen Sie Ihre Teams auf die nächste Stufe mit unseren zukunftsorientierten AI-Schulungsprogrammen.'
@@ -46,7 +46,7 @@ const ServicesSection = () => {
   return (
     <section id="services" className="py-20 px-6 md:px-10">
       <div className="container mx-auto">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="section-heading mb-4">
             Unsere <span className="text-primary">Services</span>
           </h2>
@@ -58,16 +58,16 @@ const ServicesSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((service) => (
             <motion.div 
               key={service.id} 
               id={service.id}
-              className={`rounded-xl p-8 transition-all duration-300 ${
+              className={`rounded-xl p-6 transition-all duration-300 ${
                 isCreativeMode 
                   ? 'dark-card hover:border-primary/60' 
                   : 'light-card'
-              } pt-16 mt-[-2rem]`}
+              } pt-14 mt-[-1rem] h-full`}
               whileHover={{ 
                 y: -5, 
                 backgroundColor: isCreativeMode ? "rgba(0, 0, 0, 0.5)" : "rgba(255, 255, 255, 1)",
@@ -80,7 +80,7 @@ const ServicesSection = () => {
                 ease: "easeOut" 
               }}
             >
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 ${
+              <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 ${
                 isCreativeMode 
                   ? 'bg-primary/10 neon-glow' 
                   : 'bg-primary/10'
@@ -88,27 +88,27 @@ const ServicesSection = () => {
                 {service.icon}
               </div>
               
-              <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
+              <h3 className="text-xl font-bold mb-2">{service.title}</h3>
               
               {service.id === 'studio' ? (
                 <>
-                  <p className="text-muted-foreground mb-6">{service.extendedDescription}</p>
-                  <ul className="space-y-2 mb-4">
+                  <p className="text-muted-foreground mb-4 text-sm">{service.extendedDescription}</p>
+                  <ul className="space-y-1 mb-3">
                     {service.features.map((feature, index) => (
-                      <li key={index} className="flex items-center gap-2">
+                      <li key={index} className="flex items-center gap-2 text-sm">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  <p className="text-muted-foreground text-sm italic">{service.description}</p>
+                  <p className="text-muted-foreground text-xs italic">{service.description}</p>
                 </>
               ) : (
                 <>
-                  <p className="text-muted-foreground mb-6">{service.description}</p>
-                  <ul className="space-y-2">
+                  <p className="text-muted-foreground mb-4 text-sm">{service.description}</p>
+                  <ul className="space-y-1">
                     {service.features.map((feature, index) => (
-                      <li key={index} className="flex items-center gap-2">
+                      <li key={index} className="flex items-center gap-2 text-sm">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                         <span>{feature}</span>
                       </li>
