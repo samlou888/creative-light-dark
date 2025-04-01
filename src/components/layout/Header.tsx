@@ -26,7 +26,7 @@ const Header = () => {
         
         // Apply specific offset for showcase section
         if (targetId === 'showcase') {
-          offsetAdjustment = 100; // Much less offset for showcase to make everything visible
+          offsetAdjustment = 20; // Minimal offset for showcase to show everything including button
         }
         
         // Calculate the element's position with offset

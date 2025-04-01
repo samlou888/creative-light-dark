@@ -28,10 +28,10 @@ const ShowcaseSection = () => {
       ];
 
   return (
-    <section id="showcase" className="py-14 px-6 md:px-10">
+    <section id="showcase" className="py-10 px-6 md:px-10">
       <div className="container mx-auto">
-        <div className="text-center mb-10 max-w-3xl mx-auto">
-          <h2 className="section-heading mb-4">
+        <div className="text-center mb-6 max-w-3xl mx-auto">
+          <h2 className="section-heading mb-3">
             {isCreativeMode ? (
               <>Kreative <span className="text-primary">Projekte</span></>
             ) : (
@@ -47,7 +47,7 @@ const ShowcaseSection = () => {
         </div>
         
         {/* Desktop view: Grid */}
-        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
           {projects.map((project) => (
             <div 
               key={project.id} 
@@ -57,7 +57,7 @@ const ShowcaseSection = () => {
                 : 'rounded-xl light-card'
               }`}
             >
-              <div className="aspect-video overflow-hidden">
+              <div className="aspect-[16/9] overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title} 
@@ -107,7 +107,7 @@ const ShowcaseSection = () => {
           </Carousel>
         </div>
         
-        <div className="text-center mt-8">
+        <div className="text-center mt-6">
           <a 
             href="#contact" 
             className={`inline-block primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
