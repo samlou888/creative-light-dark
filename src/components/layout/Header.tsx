@@ -21,8 +21,8 @@ const Header = () => {
         // Get header height for offset calculation
         const headerHeight = document.querySelector('header')?.offsetHeight || 80;
         
-        // Calculate the element's position with offset
-        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 40;
+        // Calculate the element's position with offset - increased offset from 40 to 80
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 80;
         
         // Scroll to the element with offset
         window.scrollTo({
@@ -58,7 +58,7 @@ const Header = () => {
               className="font-medium hover:text-primary transition-colors duration-300"
               onClick={(e) => handleInternalLinkClick(e, 'studio')}
             >
-              Studio
+              Creative Studio
             </a>
             <a 
               href="#automation" 
