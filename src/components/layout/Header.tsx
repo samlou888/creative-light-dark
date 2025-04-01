@@ -16,13 +16,13 @@ const Header = () => {
           </Link>
           
           <nav className="hidden md:flex items-center gap-10">
-            <Link to="/creative-studio" className="font-medium hover:text-primary transition-colors">
+            <Link to="/creative-studio" className="font-medium hover:text-primary transition-colors duration-300">
               Studio
             </Link>
-            <Link to="/automation-services" className="font-medium hover:text-primary transition-colors">
+            <Link to="/automation-services" className="font-medium hover:text-primary transition-colors duration-300">
               Automation
             </Link>
-            <Link to="/academy" className="font-medium hover:text-primary transition-colors">
+            <Link to="/academy" className="font-medium hover:text-primary transition-colors duration-300">
               Academy
             </Link>
           </nav>
@@ -33,8 +33,8 @@ const Header = () => {
               href="#contact" 
               className={`hidden md:block ${
                 isCreativeMode 
-                ? 'bg-primary text-white neon-glow' 
-                : 'bg-primary text-white'
+                ? 'bg-primary text-white neon-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]' 
+                : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
               } px-5 py-2 rounded-full font-medium transition-all`}
             >
               {isCreativeMode ? 'Projekt starten' : 'Termin buchen'}
