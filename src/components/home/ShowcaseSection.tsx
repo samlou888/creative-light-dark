@@ -9,10 +9,26 @@ import {
   CarouselNext 
 } from "@/components/ui/carousel";
 import { Slider } from "@/components/ui/slider";
+import useEmblaCarousel from 'embla-carousel-react';
 
 const ShowcaseSection = () => {
   const { isCreativeMode } = useTheme();
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: true });
+
+  // Update current slide when carousel changes
+  React.useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setCurrentSlide(emblaApi.selectedScrollSnap());
+    };
+
+    emblaApi.on('select', onSelect);
+    return () => {
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi]);
 
   // Mockup project data
   const projects = isCreativeMode 
@@ -67,9 +83,9 @@ const ShowcaseSection = () => {
                 />
               </div>
               
-              <div className="p-5"> {/* Increased padding */}
+              <div className="p-5">
                 <span className="text-sm font-medium text-primary">{project.category}</span>
-                <h3 className="text-lg font-bold mt-2">{project.title}</h3> {/* Increased text size and margin */}
+                <h3 className="text-lg font-bold mt-2">{project.title}</h3>
               </div>
             </div>
           ))}
@@ -77,19 +93,10 @@ const ShowcaseSection = () => {
 
         {/* Mobile view: Enhanced Carousel */}
         <div className="md:hidden">
-          <Carousel 
-            className="w-full" 
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            onSelect={(api) => {
-              setCurrentSlide(api?.selectedScrollSnap() || 0);
-            }}
-          >
-            <CarouselContent>
+          <div className="w-full" ref={emblaRef}>
+            <div className="flex">
               {projects.map((project) => (
-                <CarouselItem key={project.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                <div key={project.id} className="flex-[0_0_100%] pl-4 md:basis-1/2 lg:basis-1/3">
                   <div 
                     className={`group overflow-hidden transition-all ${
                       isCreativeMode 
@@ -105,34 +112,44 @@ const ShowcaseSection = () => {
                       />
                     </div>
                     
-                    <div className="p-5"> {/* Increased padding */}
+                    <div className="p-5">
                       <span className="text-sm font-medium text-primary">{project.category}</span>
-                      <h3 className="text-lg font-bold mt-2">{project.title}</h3> {/* Increased text size and margin */}
+                      <h3 className="text-lg font-bold mt-2">{project.title}</h3>
                     </div>
                   </div>
-                </CarouselItem>
+                </div>
               ))}
-            </CarouselContent>
-            <div className="flex items-center justify-center w-full mt-4">
-              <CarouselPrevious className="static transform-none mx-2" />
-              <div className="flex-1 max-w-xs">
-                <Slider
-                  value={[currentSlide]}
-                  max={projects.length - 1}
-                  step={1}
-                  onValueChange={(value) => {
-                    const carousel = document.querySelector('[role="region"][aria-roledescription="carousel"]');
-                    const api = (carousel as any)?.__embla__;
-                    if (api) api.scrollTo(value[0]);
-                  }}
-                />
-              </div>
-              <CarouselNext className="static transform-none mx-2" />
             </div>
-          </Carousel>
+          </div>
+          <div className="flex items-center justify-center w-full mt-4">
+            <button 
+              className="h-8 w-8 rounded-full flex items-center justify-center bg-background text-foreground border border-input mr-2"
+              onClick={() => emblaApi?.scrollPrev()}
+            >
+              <span className="sr-only">Previous slide</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <div className="flex-1 max-w-xs">
+              <Slider
+                value={[currentSlide]}
+                max={projects.length - 1}
+                step={1}
+                onValueChange={(value) => {
+                  if (emblaApi) emblaApi.scrollTo(value[0]);
+                }}
+              />
+            </div>
+            <button 
+              className="h-8 w-8 rounded-full flex items-center justify-center bg-background text-foreground border border-input ml-2"
+              onClick={() => emblaApi?.scrollNext()}
+            >
+              <span className="sr-only">Next slide</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
         </div>
         
-        <div className="text-center mt-8"> {/* Increased margin */}
+        <div className="text-center mt-8">
           <a 
             href="#contact" 
             className={`inline-block primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
