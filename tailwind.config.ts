@@ -76,12 +76,17 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.7" },
         },
+        "slide-up-fade": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.5s ease-out forwards",
         "pulse-glow": "pulse-glow 3s infinite",
+        "slide-up-fade": "slide-up-fade 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards",
       },
     },
   },
