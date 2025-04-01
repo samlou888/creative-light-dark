@@ -1,0 +1,138 @@
+
+import React from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
+import { useToast } from '@/components/ui/use-toast';
+
+const ContactSection = () => {
+  const { isCreativeMode } = useTheme();
+  const { toast } = useToast();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast({
+      title: "Anfrage erhalten",
+      description: "Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.",
+      duration: 5000,
+    });
+  };
+
+  return (
+    <section id="contact" className="py-20 px-6 md:px-10">
+      <div className="container mx-auto">
+        <div className="max-w-4xl mx-auto">
+          <div className={`rounded-2xl overflow-hidden ${
+            isCreativeMode 
+              ? 'dark-card neon-glow' 
+              : 'light-card'
+          }`}>
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="p-8 md:p-10">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                  {isCreativeMode 
+                    ? "Starten Sie Ihr kreatives Projekt"
+                    : "Kontaktieren Sie uns"
+                  }
+                </h2>
+                <p className="text-muted-foreground mb-8">
+                  {isCreativeMode 
+                    ? "Bereit, Ihre Vision mit KI-Technologie zum Leben zu erwecken? Wir freuen uns darauf, von Ihnen zu hören."
+                    : "Haben Sie Fragen oder möchten Sie eine Beratung buchen? Füllen Sie das Formular aus und wir melden uns bei Ihnen."
+                  }
+                </p>
+                
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
+                    <input 
+                      type="text" 
+                      id="name" 
+                      className="w-full p-3 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
+                      required 
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium mb-1">E-Mail</label>
+                    <input 
+                      type="email" 
+                      id="email" 
+                      className="w-full p-3 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
+                      required 
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium mb-1">Nachricht</label>
+                    <textarea 
+                      id="message" 
+                      className="w-full p-3 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary min-h-[120px]"
+                      required 
+                    />
+                  </div>
+                  
+                  <button 
+                    type="submit" 
+                    className={`w-full primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
+                  >
+                    {isCreativeMode ? "Projekt starten" : "Nachricht senden"}
+                  </button>
+                </form>
+              </div>
+              
+              <div className={`${
+                isCreativeMode 
+                  ? 'bg-primary/20 backdrop-blur-md' 
+                  : 'bg-primary/5'
+              } p-8 md:p-10 flex flex-col justify-center`}>
+                <h3 className="text-xl font-bold mb-6">
+                  {isCreativeMode 
+                    ? "Warum mit unserem Creative Studio arbeiten?"
+                    : "Ihre Vorteile im Überblick"
+                  }
+                </h3>
+                
+                <ul className="space-y-4">
+                  {(isCreativeMode 
+                    ? [
+                        "KI-gestützte kreative Prozesse",
+                        "Einzigartige, disruptive Designs",
+                        "Schnellere Iteration und Entwicklung",
+                        "Zukunftsorientierte digitale Erlebnisse"
+                      ] 
+                    : [
+                        "Maßgeschneiderte AI-Lösungen",
+                        "Höhere Effizienz und Einsparungen",
+                        "Benutzerfreundliche Implementierung",
+                        "Langfristige Betreuung und Support"
+                      ]
+                  ).map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <div className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5 ${
+                        isCreativeMode 
+                          ? 'bg-primary text-white' 
+                          : 'bg-primary/20 text-primary'
+                      }`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <div className="mt-8 pt-8 border-t border-primary/20">
+                  <p className="font-medium mb-2">Schneller Kontakt:</p>
+                  <p className="text-muted-foreground">info@aiventures.de</p>
+                  <p className="text-muted-foreground">+49 123 4567890</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ContactSection;
