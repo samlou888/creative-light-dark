@@ -18,8 +18,10 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     if (isCreativeMode) {
       document.documentElement.classList.add('dark');
+      document.body.classList.add('creative-mode');
     } else {
       document.documentElement.classList.remove('dark');
+      document.body.classList.remove('creative-mode');
     }
   }, [isCreativeMode]);
 
