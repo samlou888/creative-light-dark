@@ -29,6 +29,11 @@ const Header = () => {
           offsetAdjustment = 20; // Minimal offset for showcase to show everything including button
         }
         
+        // Apply specific offset for services section to ensure it's fully visible
+        if (targetId === 'services') {
+          offsetAdjustment = 120; // Lower offset to show the section heading and service boxes
+        }
+        
         // Apply specific offset for contact section
         if (targetId === 'contact') {
           offsetAdjustment = 20; // Small offset for contact section to ensure the form is fully visible
