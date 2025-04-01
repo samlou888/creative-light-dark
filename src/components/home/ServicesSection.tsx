@@ -67,7 +67,7 @@ const ServicesSection = () => {
                 isCreativeMode 
                   ? 'dark-card hover:border-primary/60' 
                   : 'light-card'
-              }`}
+              } pt-16 mt-[-2rem]`}
               whileHover={{ 
                 y: -5, 
                 backgroundColor: isCreativeMode ? "rgba(0, 0, 0, 0.5)" : "rgba(255, 255, 255, 1)",

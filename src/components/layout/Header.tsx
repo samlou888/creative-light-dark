@@ -8,7 +8,7 @@ const Header = () => {
   const { isCreativeMode } = useTheme();
   const location = useLocation();
 
-  // Handle smooth scrolling for internal links
+  // Handle smooth scrolling for internal links with offset
   const handleInternalLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     const currentPath = location.pathname;
     
@@ -18,10 +18,16 @@ const Header = () => {
       const targetElement = document.getElementById(targetId);
       
       if (targetElement) {
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-          inline: 'nearest'
+        // Get header height for offset calculation
+        const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+        
+        // Calculate the element's position with offset
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+        
+        // Scroll to the element with offset
+        window.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth'
         });
       }
     }
