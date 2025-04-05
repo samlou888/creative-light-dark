@@ -64,6 +64,15 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
+  // Scroll to top function for logo click
+  const scrollToTop = (event: React.MouseEvent) => {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   // Handle smooth scrolling for internal links with offset
   const handleInternalLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     const currentPath = location.pathname;
@@ -202,9 +211,13 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo positioned at the far left */}
           <div className="flex-1">
-            <Link to="/" className="text-2xl font-bold">
+            <a 
+              href="/" 
+              onClick={scrollToTop} 
+              className="text-2xl font-bold cursor-pointer"
+            >
               <span className="text-primary">AI</span>ventures
-            </Link>
+            </a>
           </div>
           
           {/* Right side with Creative Studio toggle and burger menu */}
