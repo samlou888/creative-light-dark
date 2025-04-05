@@ -11,9 +11,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Globe, Menu, X } from 'lucide-react';
+import { 
+  Globe, 
+  Menu, 
+  X 
+} from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Language } from '@/translations';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const { isCreativeMode } = useTheme();
@@ -179,19 +189,25 @@ const Header = () => {
                 {t('header.contact')}
               </a>
               
-              {/* Language selector in menu */}
+              {/* Language selector with globe icon and dropdown */}
               <div className="py-2">
-                <p className="text-sm text-muted-foreground mb-2">{t('language.de') === 'Deutsch' ? 'Sprache' : 'Language'}:</p>
-                <Select defaultValue={language} onValueChange={handleLanguageChange}>
-                  <SelectTrigger className="w-full bg-background/50">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="de">{t('language.de')}</SelectItem>
-                    <SelectItem value="en">{t('language.en')}</SelectItem>
-                    <SelectItem value="fr">{t('language.fr')}</SelectItem>
-                  </SelectContent>
-                </Select>
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="flex items-center gap-2 font-medium hover:text-primary transition-colors duration-300 py-2">
+                    <Globe size={18} />
+                    <span className="text-sm">{t(`language.${language}`)}</span>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="bg-background/95 backdrop-blur-sm">
+                    <DropdownMenuItem onClick={() => handleLanguageChange('de')}>
+                      {t('language.de')}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => handleLanguageChange('en')}>
+                      {t('language.en')}
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => handleLanguageChange('fr')}>
+                      {t('language.fr')}
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
             </nav>
           </div>
