@@ -97,7 +97,8 @@ const ContactSection = () => {
                         "KI-gestützte kreative Prozesse",
                         "Einzigartige, disruptive Designs",
                         "Schnellere Iteration und Entwicklung",
-                        "Zukunftsorientierte digitale Erlebnisse"
+                        "Zukunftsorientierte digitale Erlebnisse",
+                        "Schnelle Umsetzung & persönliche Betreuung"
                       ] 
                     : [
                         "KI-gestützte Beratung & Umsetzung",
