@@ -180,19 +180,6 @@ const Header = () => {
             <div className={isMobile ? 'mx-2' : ''}>
               <ThemeToggle />
             </div>
-            
-            {/* CTA button - hidden on mobile */}
-            <a 
-              href="#contact" 
-              className={`hidden md:block ${
-                isCreativeMode 
-                ? 'bg-primary text-white neon-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]' 
-                : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
-              } px-5 py-2 rounded-full font-medium transition-all`}
-              onClick={(e) => handleInternalLinkClick(e, 'contact')}
-            >
-              {isCreativeMode ? t('header.creativeModeButton') : t('header.automationModeButton')}
-            </a>
           </div>
         </div>
         
@@ -269,14 +256,6 @@ const Header = () => {
                   </SelectContent>
                 </Select>
               </div>
-              
-              <a 
-                href="#contact" 
-                className="bg-primary text-white px-4 py-3 rounded-full font-medium text-center mt-2 hover:bg-primary/90"
-                onClick={(e) => handleInternalLinkClick(e, 'contact')}
-              >
-                {isCreativeMode ? t('header.creativeModeButton') : t('header.automationModeButton')}
-              </a>
             </nav>
           </div>
         )}
