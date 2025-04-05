@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
@@ -131,7 +130,6 @@ const Header = () => {
         </>
       );
     } else {
-      // Updated business mode menu items per requirements
       return (
         <>
           <a 
@@ -147,13 +145,6 @@ const Header = () => {
             onClick={(e) => handleInternalLinkClick(e, 'academy')}
           >
             {t('header.academy')}
-          </a>
-          <a 
-            href="#about" 
-            className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'about')}
-          >
-            {t('header.about')}
           </a>
           <a 
             href="#success" 
@@ -178,7 +169,6 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
-          {/* Logo positioned at the far left */}
           <div className="flex-1">
             <a 
               href="/" 
@@ -189,12 +179,8 @@ const Header = () => {
             </a>
           </div>
           
-          {/* Right side with Creative Studio toggle and burger menu */}
           <div className="flex items-center space-x-6">
-            {/* Creative Studio toggle - now on the right before burger */}
             <ThemeToggle />
-            
-            {/* Burger menu button - now at the far right */}
             <button 
               className="flex items-center justify-center w-8 h-8" 
               onClick={toggleMenu}
@@ -206,7 +192,6 @@ const Header = () => {
           </div>
         </div>
         
-        {/* Navigation Menu - right-aligned */}
         {isMenuOpen && (
           <div 
             ref={menuRef}
@@ -215,7 +200,6 @@ const Header = () => {
             <nav className="flex flex-col space-y-4">
               {renderMenuItems()}
               
-              {/* Language selector with globe icon and dropdown */}
               <div className="py-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger className="flex items-center gap-2 font-medium hover:text-primary transition-colors duration-300 py-2">

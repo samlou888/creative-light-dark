@@ -62,7 +62,7 @@ const Index = () => {
             <ProjectsSection />
           </>
         ) : (
-          // Business Mode Sections
+          // Business Mode Sections - AboutSection still included, just not in menu
           <>
             <ServicesSection />
             <AboutSection />
