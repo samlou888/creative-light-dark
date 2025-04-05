@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
@@ -104,11 +103,8 @@ const Header = () => {
           
           <div className="flex items-center gap-4">
             <Select defaultValue="de">
-              <SelectTrigger className="w-[80px] bg-transparent border-none focus:ring-0 px-2">
-                <div className="flex items-center gap-2">
-                  <Globe size={16} />
-                  <SelectValue />
-                </div>
+              <SelectTrigger className="w-auto bg-transparent border-none focus:ring-0 px-2">
+                <Globe size={18} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="de">Deutsch</SelectItem>
