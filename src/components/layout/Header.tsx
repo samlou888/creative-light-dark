@@ -82,37 +82,14 @@ const Header = () => {
       const targetElement = document.getElementById(targetId);
       
       if (targetElement) {
-        // Get header height for offset calculation
-        const headerHeight = document.querySelector('header')?.offsetHeight || 80;
-        
-        // Default offset to ensure the section is fully visible
-        const defaultOffset = 80;
-        
-        // Calculate the element's position with offset
-        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - defaultOffset;
-        
         // Close the mobile menu if it's open
         setIsMenuOpen(false);
         
-        // Scroll to the element with offset
-        window.scrollTo({
-          top: elementPosition,
-          behavior: 'smooth'
-        });
+        // Let the browser handle the scrolling using CSS scroll-behavior
+        targetElement.scrollIntoView();
       }
     }
   };
-
-  // Add smooth scrolling behavior to document
-  useEffect(() => {
-    // Add smooth scrolling to the entire document
-    document.documentElement.style.scrollBehavior = 'smooth';
-
-    return () => {
-      // Clean up when component unmounts
-      document.documentElement.style.scrollBehavior = '';
-    };
-  }, []);
 
   const handleLanguageChange = (value: string) => {
     setLanguage(value as Language);
@@ -144,9 +121,9 @@ const Header = () => {
             {t('header.creative.projects')}
           </a>
           <a 
-            href="#contact" 
+            href="#kontakt" 
             className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'contact')}
+            onClick={(e) => handleInternalLinkClick(e, 'kontakt')}
           >
             {t('header.contact')}
           </a>
@@ -156,6 +133,13 @@ const Header = () => {
       // Standard business mode menu
       return (
         <>
+          <a 
+            href="#start" 
+            className="font-medium hover:text-primary transition-colors duration-300 py-2"
+            onClick={(e) => handleInternalLinkClick(e, 'start')}
+          >
+            {t('header.home')}
+          </a>
           <a 
             href="#automation" 
             className="font-medium hover:text-primary transition-colors duration-300 py-2"
@@ -171,16 +155,16 @@ const Header = () => {
             {t('header.academy')}
           </a>
           <a 
-            href="#about" 
+            href="#projekte" 
             className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'about')}
+            onClick={(e) => handleInternalLinkClick(e, 'projekte')}
           >
-            {t('header.about')}
+            {t('header.projects')}
           </a>
           <a 
-            href="#contact" 
+            href="#kontakt" 
             className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'contact')}
+            onClick={(e) => handleInternalLinkClick(e, 'kontakt')}
           >
             {t('header.contact')}
           </a>

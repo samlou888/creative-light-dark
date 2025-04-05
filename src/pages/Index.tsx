@@ -22,12 +22,25 @@ const Index = () => {
       if (section.id === '') {
         // Set default ids based on content if missing
         const headingText = section.querySelector('h2')?.textContent?.toLowerCase() || '';
-        if (headingText.includes('kontakt')) section.id = 'contact';
+        if (headingText.includes('kontakt')) section.id = 'kontakt';
         else if (headingText.includes('automation')) section.id = 'automation';
         else if (headingText.includes('academy')) section.id = 'academy';
         else if (headingText.includes('creative')) section.id = 'creative-studio';
+        else if (headingText.includes('projekt')) section.id = 'projekte';
       }
     });
+    
+    // Add ID to the first section (hero) if not already set
+    const heroSection = document.querySelector('main > section:first-child');
+    if (heroSection && !heroSection.id) {
+      heroSection.id = 'start';
+    }
+    
+    // Add ID to the footer if not already set
+    const footerElement = document.querySelector('footer');
+    if (footerElement && !footerElement.id) {
+      footerElement.id = 'footer';
+    }
   }, []);
 
   return (
