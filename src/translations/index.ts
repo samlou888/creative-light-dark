@@ -389,7 +389,7 @@ export const translations = {
       benefitsList: [
         'Efficacité accrue grâce à des solutions personnalisées',
         'Économies de coûts grâce à des processus automatisés',
-        'Prise de décision plus rapide grâce à l'analyse des données',
+        "Prise de décision plus rapide grâce à l'analyse des données",
         'Réduction des erreurs manuelles'
       ],
       cta: "Réserver une analyse d'automatisation gratuite"
@@ -406,8 +406,8 @@ export const translations = {
       ],
       benefits: 'Les avantages',
       benefitsList: [
-        'Augmentation durable des compétences de l'équipe',
-        'Exercices pratiques et cas d'utilisation',
+        "Augmentation durable des compétences de l'équipe",
+        "Exercices pratiques et cas d'utilisation",
         'Adaptation individuelle à votre industrie',
         'Augmentation mesurable de la productivité'
       ],
@@ -419,7 +419,7 @@ export const translations = {
       mission: 'Notre mission',
       missionText: 'Nous visons à transformer les entreprises grâce à des solutions IA innovantes et à les accompagner dans leur voyage vers le futur numérique.',
       approach: 'Notre approche',
-      approachText: 'En tant qu'équipe spécialisée de technologues et d'experts de l'industrie, nous développons des solutions personnalisées adaptées aux besoins spécifiques de nos clients.'
+      approachText: "En tant qu'équipe spécialisée de technologues et d'experts de l'industrie, nous développons des solutions personnalisées adaptées aux besoins spécifiques de nos clients."
     },
     contact: {
       creative: {

@@ -21,8 +21,8 @@ const ContactSection = () => {
 
   // Get the benefits based on mode
   const benefitsArray = isCreativeMode 
-    ? t('contact.creative.benefits')
-    : t('contact.automation.benefits');
+    ? t('contact.creative.benefits') as string[]
+    : t('contact.automation.benefits') as string[];
 
   return (
     <section id="contact" className="py-10 px-6 md:px-10">
@@ -117,8 +117,7 @@ const ContactSection = () => {
                 </h3>
                 
                 <ul className="space-y-2">
-                  {/* Make sure we're displaying an array with proper type assertion */}
-                  {(Array.isArray(benefitsArray) ? benefitsArray : []).map((item: string, index: number) => (
+                  {benefitsArray.map((item, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <div className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5 ${
                         isCreativeMode 
