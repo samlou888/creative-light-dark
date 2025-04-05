@@ -11,7 +11,7 @@ import ProjectsSection from '@/components/home/ProjectsSection';
 import ServicesSection from '@/components/home/ServicesSection';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
 import SuccessSection from '@/components/home/SuccessSection';
-// AboutSection import removed
+import AboutSection from '@/components/home/AboutSection';
 
 const Index = () => {
   const { isCreativeMode } = useTheme();
@@ -65,7 +65,7 @@ const Index = () => {
           // Business Mode Sections
           <>
             <ServicesSection />
-            {/* AboutSection removed */}
+            <AboutSection />
             <SuccessSection />
           </>
         )}
