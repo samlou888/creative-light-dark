@@ -4,9 +4,12 @@ export type Language = 'de' | 'en' | 'fr';
 export const translations = {
   de: {
     header: {
+      automation: 'Automation',
+      academy: 'Academy',
+      about: 'Über uns',
+      contact: 'Kontakt',
       services: 'Services',
       projects: 'Projekte',
-      contact: 'Kontakt',
       creativeModeButton: 'Projekt starten',
       automationModeButton: 'Strategiegespräch vereinbaren'
     },
@@ -19,7 +22,7 @@ export const translations = {
       },
       automation: {
         heading: 'Automate. Optimize. Scale.',
-        description: 'Transformieren Sie Ihr Unternehmen mit maßgeschneiderten AI-Lösungen. Wir helfen Ihnen, effizienter zu arbeiten und besser zu skalieren.',
+        description: 'Individuelle KI-Lösungen für Effizienz, Wachstum und digitale Transformation.',
         primaryButton: 'Strategiegespräch vereinbaren',
         secondaryButton: 'Use Case entdecken'
       }
@@ -34,7 +37,8 @@ export const translations = {
         title: 'Creative Studio',
         description: 'Wir gestalten, was du im Kopf hast – visuell & funktional.',
         extendedDescription: 'Wenn Ästhetik auf Funktionalität trifft, entsteht mehr als Sichtbarkeit: Ihre Marke wird zum Gesprächsthema.',
-        features: ['Branding', 'Design', 'Social Media & Content', 'Web & App Development']
+        features: ['Branding', 'Design', 'Social Media & Content', 'Web & App Development'],
+        cta: 'Kreativprojekt starten'
       },
       automation: {
         title: 'Automation',
@@ -43,7 +47,8 @@ export const translations = {
         features: {
           creative: ['Robotische Prozessautomatisierung', 'Intelligente Chatbots', 'Prädiktive Analysen', 'Datengetriebene Entscheidungen'],
           automation: ['Workflow-Optimierung', 'CRM-Integration', 'Dokumentenmanagement', 'Reporting & Analytics']
-        }
+        },
+        cta: 'Automatisierung planen'
       },
       academy: {
         title: 'Academy',
@@ -52,8 +57,55 @@ export const translations = {
         features: {
           creative: ['KI-Prompt-Engineering', 'Zukunftsorientierte Tech-Skills', 'Immersive VR-Trainings', 'Personalisierte Lernpfade'],
           automation: ['Digitale Transformation', 'Datenanalyse', 'Technisches Know-how', 'Change Management']
-        }
+        },
+        cta: 'Workshop buchen'
       }
+    },
+    automation: {
+      title: 'Automatisierung neu gedacht',
+      description: 'Wir analysieren, optimieren und automatisieren Ihre Geschäftsprozesse mit KI – von der CRM-Automation bis zur Dokumentenverwaltung.',
+      services: 'Unsere Leistungen',
+      features: [
+        'CRM & Sales-Automation',
+        'Dokumenten- und E-Mail-Verarbeitung',
+        'Interne Prozess-Workflows',
+        'Reporting & Business Intelligence'
+      ],
+      benefits: 'Ihre Vorteile',
+      benefitsList: [
+        'Höhere Effizienz durch maßgeschneiderte Lösungen',
+        'Kostenersparnis durch automatisierte Prozesse',
+        'Schnellere Entscheidungsfindung dank Datenanalyse',
+        'Reduzierung manueller Fehler'
+      ],
+      cta: 'Kostenlose Automatisierungsanalyse buchen'
+    },
+    academy: {
+      title: 'KI-Kompetenz im Unternehmen aufbauen',
+      description: 'Wir schulen Ihre Teams, damit sie moderne Technologien souverän einsetzen können – strategisch und praxisnah.',
+      services: 'Unsere Leistungen',
+      features: [
+        'Individuelle KI-Workshops',
+        'Prompt Engineering Trainings',
+        'Branchenbezogene Schulungspfade',
+        'Mitarbeiterschulungen (remote & vor Ort)'
+      ],
+      benefits: 'Die Vorteile',
+      benefitsList: [
+        'Nachhaltige Kompetenzsteigerung im Team',
+        'Praxisorientierte Übungen und Anwendungsfälle',
+        'Individuelle Abstimmung auf Ihre Branche',
+        'Messbare Produktivitätssteigerung'
+      ],
+      cta: 'Jetzt Schulung planen'
+    },
+    about: {
+      title: 'Über uns',
+      description: 'Erfahren Sie mehr über unser Unternehmen und unsere Werte.',
+      mission: 'Unsere Mission',
+      missionText: 'Wir haben uns zum Ziel gesetzt, Unternehmen durch innovative KI-Lösungen zu transformieren und sie auf ihrem Weg in die digitale Zukunft zu begleiten.',
+      approach: 'Unser Ansatz',
+      approachText: 'Als spezialisiertes Team aus Technologen und Branchenexperten entwickeln wir maßgeschneiderte Lösungen, die auf die spezifischen Bedürfnisse unserer Kunden zugeschnitten sind.'
     },
     contact: {
       creative: {
@@ -73,6 +125,8 @@ export const translations = {
         title: 'Kontaktieren Sie uns',
         description: 'Haben Sie Fragen oder möchten Sie eine Beratung buchen? Füllen Sie das Formular aus und wir melden uns bei Ihnen.',
         submitButton: 'Nachricht senden',
+        calendlyButton: 'Jetzt Termin vereinbaren',
+        whatsappHint: 'Oder schreiben Sie uns direkt per WhatsApp',
         benefitsTitle: 'Ihre Vorteile im Überblick',
         benefits: [
           'KI-gestützte Beratung & Umsetzung',
@@ -107,9 +161,12 @@ export const translations = {
   },
   en: {
     header: {
+      automation: 'Automation',
+      academy: 'Academy',
+      about: 'About us',
+      contact: 'Contact',
       services: 'Services',
       projects: 'Projects',
-      contact: 'Contact',
       creativeModeButton: 'Request project',
       automationModeButton: 'Book a strategy call'
     },
@@ -122,7 +179,7 @@ export const translations = {
       },
       automation: {
         heading: 'Automate. Optimize. Scale.',
-        description: 'Transform your company with tailor-made AI solutions. We help you work more efficiently and scale smarter.',
+        description: 'Custom AI solutions for efficiency, growth and digital transformation.',
         primaryButton: 'Book a strategy call',
         secondaryButton: 'Explore use cases'
       }
@@ -137,7 +194,8 @@ export const translations = {
         title: 'Creative Studio',
         description: 'We design what you have in mind - visually & functionally.',
         extendedDescription: 'When aesthetics meet functionality, more than visibility emerges: your brand becomes a conversation topic.',
-        features: ['Branding', 'Design', 'Social Media & Content', 'Web & App Dev']
+        features: ['Branding', 'Design', 'Social Media & Content', 'Web & App Dev'],
+        cta: 'Start creative project'
       },
       automation: {
         title: 'Automation',
@@ -146,7 +204,8 @@ export const translations = {
         features: {
           creative: ['Robotic Process Automation', 'Intelligent Chatbots', 'Predictive Analytics', 'Data-driven Decisions'],
           automation: ['Workflow Optimization', 'CRM Integration', 'Document Management', 'Reporting & Analytics']
-        }
+        },
+        cta: 'Plan automation'
       },
       academy: {
         title: 'Academy',
@@ -155,8 +214,55 @@ export const translations = {
         features: {
           creative: ['AI Prompt Engineering', 'Tech-skills', 'VR Training', 'Custom Learning Paths'],
           automation: ['Digital Transformation', 'Data Analysis', 'Technical Know-how', 'Change Management']
-        }
+        },
+        cta: 'Book workshop'
       }
+    },
+    automation: {
+      title: 'Automation Reimagined',
+      description: 'We analyze, optimize and automate your business processes with AI - from CRM automation to document management.',
+      services: 'Our Services',
+      features: [
+        'CRM & Sales Automation',
+        'Document & Email Processing',
+        'Internal Process Workflows',
+        'Reporting & Business Intelligence'
+      ],
+      benefits: 'Your Benefits',
+      benefitsList: [
+        'Higher efficiency through customized solutions',
+        'Cost savings through automated processes',
+        'Faster decision making thanks to data analysis',
+        'Reduction of manual errors'
+      ],
+      cta: 'Book free automation analysis'
+    },
+    academy: {
+      title: 'Building AI Competence in Your Company',
+      description: 'We train your teams to confidently use modern technologies - strategically and practically.',
+      services: 'Our Services',
+      features: [
+        'Custom AI Workshops',
+        'Prompt Engineering Training',
+        'Industry-specific Learning Paths',
+        'Employee Training (remote & on-site)'
+      ],
+      benefits: 'The Benefits',
+      benefitsList: [
+        'Sustainable increase in team competence',
+        'Practice-oriented exercises and use cases',
+        'Individual adaptation to your industry',
+        'Measurable productivity increase'
+      ],
+      cta: 'Plan training now'
+    },
+    about: {
+      title: 'About Us',
+      description: 'Learn more about our company and our values.',
+      mission: 'Our Mission',
+      missionText: 'We aim to transform companies through innovative AI solutions and accompany them on their journey into the digital future.',
+      approach: 'Our Approach',
+      approachText: 'As a specialized team of technologists and industry experts, we develop customized solutions tailored to the specific needs of our customers.'
     },
     contact: {
       creative: {
@@ -176,6 +282,8 @@ export const translations = {
         title: 'Contact Us',
         description: "Got a question or want to book a call? Drop us a message – we'll get back to you.",
         submitButton: 'Send Message',
+        calendlyButton: 'Book appointment now',
+        whatsappHint: 'Or message us directly via WhatsApp',
         benefitsTitle: 'Your Benefits at a Glance',
         benefits: [
           'AI-powered consulting & implementation',
@@ -210,9 +318,12 @@ export const translations = {
   },
   fr: {
     header: {
+      automation: 'Automatisation',
+      academy: 'Académie',
+      about: 'À propos',
+      contact: 'Contact',
       services: 'Services',
       projects: 'Projets',
-      contact: 'Contact',
       creativeModeButton: 'Demander un projet',
       automationModeButton: 'Réserver un appel stratégique'
     },
@@ -225,7 +336,7 @@ export const translations = {
       },
       automation: {
         heading: 'Automatiser. Optimiser. Développer.',
-        description: 'Transformez votre entreprise avec des solutions IA sur mesure. Nous vous aidons à travailler plus efficacement et à mieux évoluer.',
+        description: 'Solutions IA personnalisées pour l'efficacité, la croissance et la transformation digitale.',
         primaryButton: 'Réserver un appel stratégique',
         secondaryButton: "Découvrir des cas d'usage"
       }
@@ -240,7 +351,8 @@ export const translations = {
         title: 'Creative Studio',
         description: 'Nous concevons ce que vous avez en tête - visuellement et fonctionnellement.',
         extendedDescription: "Quand l'esthétique rencontre la fonctionnalité, plus que de la visibilité émerge : votre marque devient un sujet de conversation.",
-        features: ['Branding', 'Design', 'Médias sociaux & contenu', 'Dév. web & app']
+        features: ['Branding', 'Design', 'Médias sociaux & contenu', 'Dév. web & app'],
+        cta: 'Démarrer un projet créatif'
       },
       automation: {
         title: 'Automation',
@@ -249,7 +361,8 @@ export const translations = {
         features: {
           creative: ['Automatisation robotique des processus', 'Chatbots intelligents', 'Analyses prédictives', 'Décisions basées sur les données'],
           automation: ['Optimisation des flux de travail', 'Intégration CRM', 'Gestion des documents', 'Reporting et analytique']
-        }
+        },
+        cta: "Planifier l'automatisation"
       },
       academy: {
         title: 'Academy',
@@ -258,8 +371,55 @@ export const translations = {
         features: {
           creative: ['Prompt IA', 'Compétences tech', 'Formations VR', 'Parcours personnalisés'],
           automation: ['Transformation digitale', 'Analyse de données', 'Savoir-faire technique', 'Gestion du changement']
-        }
+        },
+        cta: 'Réserver un atelier'
       }
+    },
+    automation: {
+      title: "L'automatisation repensée",
+      description: "Nous analysons, optimisons et automatisons vos processus d'entreprise avec l'IA - de l'automatisation CRM à la gestion de documents.",
+      services: 'Nos Services',
+      features: [
+        'Automatisation CRM & Ventes',
+        'Traitement des documents et e-mails',
+        'Flux de travail des processus internes',
+        "Reporting et business intelligence"
+      ],
+      benefits: 'Vos avantages',
+      benefitsList: [
+        'Efficacité accrue grâce à des solutions personnalisées',
+        'Économies de coûts grâce à des processus automatisés',
+        'Prise de décision plus rapide grâce à l'analyse des données',
+        'Réduction des erreurs manuelles'
+      ],
+      cta: "Réserver une analyse d'automatisation gratuite"
+    },
+    academy: {
+      title: "Développer la compétence IA dans votre entreprise",
+      description: "Nous formons vos équipes à utiliser les technologies modernes avec confiance - de manière stratégique et pratique.",
+      services: 'Nos Services',
+      features: [
+        'Ateliers IA personnalisés',
+        'Formation au Prompt Engineering',
+        "Parcours d'apprentissage spécifiques à l'industrie",
+        'Formation des employés (à distance et sur site)'
+      ],
+      benefits: 'Les avantages',
+      benefitsList: [
+        'Augmentation durable des compétences de l'équipe',
+        'Exercices pratiques et cas d'utilisation',
+        'Adaptation individuelle à votre industrie',
+        'Augmentation mesurable de la productivité'
+      ],
+      cta: 'Planifier une formation maintenant'
+    },
+    about: {
+      title: 'À propos de nous',
+      description: 'En savoir plus sur notre entreprise et nos valeurs.',
+      mission: 'Notre mission',
+      missionText: 'Nous visons à transformer les entreprises grâce à des solutions IA innovantes et à les accompagner dans leur voyage vers le futur numérique.',
+      approach: 'Notre approche',
+      approachText: 'En tant qu'équipe spécialisée de technologues et d'experts de l'industrie, nous développons des solutions personnalisées adaptées aux besoins spécifiques de nos clients.'
     },
     contact: {
       creative: {
@@ -279,6 +439,8 @@ export const translations = {
         title: 'Contactez-nous',
         description: "Une question ou envie d'un rendez-vous ? Écrivez-nous, on vous répond rapidement.",
         submitButton: 'Envoyer le message',
+        calendlyButton: 'Prendre rendez-vous maintenant',
+        whatsappHint: 'Ou écrivez-nous directement via WhatsApp',
         benefitsTitle: "Vos avantages en un coup d'œil",
         benefits: [
           "Consultation et mise en œuvre basées sur l'IA",

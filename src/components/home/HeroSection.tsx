@@ -29,10 +29,10 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-wrap gap-4 opacity-0 animate-slide-up-fade" style={{ animationDelay: "0.4s" }}>
-              <a href="#contact" className="primary-btn neon-glow">
+              <a href="#contact" className={`primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}>
                 {isCreativeMode ? t('hero.creative.primaryButton') : t('hero.automation.primaryButton')}
               </a>
-              <a href="#showcase" className="secondary-btn">
+              <a href="#automation" className="secondary-btn">
                 {isCreativeMode ? t('hero.creative.secondaryButton') : t('hero.automation.secondaryButton')}
               </a>
             </div>

@@ -3,6 +3,7 @@ import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useToast } from '@/components/ui/use-toast';
+import { Button } from '@/components/ui/button';
 
 const ContactSection = () => {
   const { isCreativeMode } = useTheme();
@@ -18,8 +19,8 @@ const ContactSection = () => {
     });
   };
 
-  // Ensure we're working with the correct benefits data structure
-  const benefits = isCreativeMode 
+  // Get the benefits based on mode
+  const benefitsArray = isCreativeMode 
     ? t('contact.creative.benefits')
     : t('contact.automation.benefits');
 
@@ -47,43 +48,60 @@ const ContactSection = () => {
                   }
                 </p>
                 
-                <form onSubmit={handleSubmit} className="space-y-3">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-1">{t('contact.formLabels.name')}</label>
-                    <input 
-                      type="text" 
-                      id="name" 
-                      className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
-                      required 
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-1">{t('contact.formLabels.email')}</label>
-                    <input 
-                      type="email" 
-                      id="email" 
-                      className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
-                      required 
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-1">{t('contact.formLabels.message')}</label>
-                    <textarea 
-                      id="message" 
-                      className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary min-h-[80px]"
-                      required 
-                    />
-                  </div>
-                  
-                  <button 
-                    type="submit" 
-                    className={`w-full primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
-                  >
-                    {isCreativeMode ? t('contact.creative.submitButton') : t('contact.automation.submitButton')}
-                  </button>
-                </form>
+                {/* Business mode with Calendly button */}
+                {!isCreativeMode && (
+                  <>
+                    <div className="mb-6">
+                      <Button className="w-full rounded-full py-6 text-base" size="lg">
+                        {t('contact.automation.calendlyButton')}
+                      </Button>
+                      <p className="text-center text-sm text-muted-foreground mt-3">
+                        {t('contact.automation.whatsappHint')}
+                      </p>
+                    </div>
+                  </>
+                )}
+                
+                {/* Creative mode with form */}
+                {isCreativeMode && (
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-1">{t('contact.formLabels.name')}</label>
+                      <input 
+                        type="text" 
+                        id="name" 
+                        className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
+                        required 
+                      />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-1">{t('contact.formLabels.email')}</label>
+                      <input 
+                        type="email" 
+                        id="email" 
+                        className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
+                        required 
+                      />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium mb-1">{t('contact.formLabels.message')}</label>
+                      <textarea 
+                        id="message" 
+                        className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary min-h-[80px]"
+                        required 
+                      />
+                    </div>
+                    
+                    <button 
+                      type="submit" 
+                      className={`w-full primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
+                    >
+                      {isCreativeMode ? t('contact.creative.submitButton') : t('contact.automation.submitButton')}
+                    </button>
+                  </form>
+                )}
               </div>
               
               <div className={`${
@@ -99,8 +117,8 @@ const ContactSection = () => {
                 </h3>
                 
                 <ul className="space-y-2">
-                  {/* Make sure we're iterating over an array by using type assertion */}
-                  {(benefits as string[]).map((item: string, index: number) => (
+                  {/* Make sure we're displaying an array with proper type assertion */}
+                  {(Array.isArray(benefitsArray) ? benefitsArray : []).map((item: string, index: number) => (
                     <li key={index} className="flex items-start gap-2">
                       <div className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5 ${
                         isCreativeMode 

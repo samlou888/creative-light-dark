@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Globe } from 'lucide-react';
+import { Globe, Menu, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Language } from '@/translations';
 
@@ -20,6 +20,17 @@ const Header = () => {
   const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
   const isMobile = useIsMobile();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Toggle mobile menu
+  const toggleMenu = () => {
+    setIsMenuOpen(prev => !prev);
+  };
+
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
 
   // Handle smooth scrolling for internal links with offset
   const handleInternalLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -54,6 +65,9 @@ const Header = () => {
         
         // Calculate the element's position with offset
         const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offsetAdjustment;
+        
+        // Close the mobile menu if it's open
+        setIsMenuOpen(false);
         
         // Scroll to the element with offset
         window.scrollTo({
@@ -90,21 +104,28 @@ const Header = () => {
             </Link>
           </div>
           
-          {/* Navigation in the middle-left - hidden on mobile */}
+          {/* Desktop Navigation - hidden on mobile */}
           <nav className="hidden md:flex items-center gap-10 ml-10">
             <a 
-              href="#services" 
+              href="#automation" 
               className="font-medium hover:text-primary transition-colors duration-300"
-              onClick={(e) => handleInternalLinkClick(e, 'services')}
+              onClick={(e) => handleInternalLinkClick(e, 'automation')}
             >
-              {t('header.services')}
+              {t('header.automation')}
             </a>
             <a 
-              href="#showcase" 
+              href="#academy" 
               className="font-medium hover:text-primary transition-colors duration-300"
-              onClick={(e) => handleInternalLinkClick(e, 'showcase')}
+              onClick={(e) => handleInternalLinkClick(e, 'academy')}
             >
-              {t('header.projects')}
+              {t('header.academy')}
+            </a>
+            <a 
+              href="#about" 
+              className="font-medium hover:text-primary transition-colors duration-300"
+              onClick={(e) => handleInternalLinkClick(e, 'about')}
+            >
+              {t('header.about')}
             </a>
             <a 
               href="#contact" 
@@ -114,6 +135,15 @@ const Header = () => {
               {t('header.contact')}
             </a>
           </nav>
+          
+          {/* Mobile Burger Menu Button - only visible on mobile */}
+          <button 
+            className="md:hidden flex items-center justify-center w-8 h-8 mr-2" 
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
           
           {/* Right side controls with better spacing for mobile */}
           <div className={`flex items-center ${isMobile ? 'gap-4' : 'gap-8'}`}>
@@ -150,6 +180,50 @@ const Header = () => {
             </a>
           </div>
         </div>
+        
+        {/* Mobile Navigation Menu - slide down when menu is open */}
+        {isMobile && isMenuOpen && (
+          <div className="md:hidden absolute left-0 right-0 top-full bg-white/95 dark:bg-black/95 shadow-md animate-fade-in py-4 px-6 backdrop-blur-md">
+            <nav className="flex flex-col space-y-4">
+              <a 
+                href="#automation" 
+                className="font-medium hover:text-primary transition-colors duration-300 py-2"
+                onClick={(e) => handleInternalLinkClick(e, 'automation')}
+              >
+                {t('header.automation')}
+              </a>
+              <a 
+                href="#academy" 
+                className="font-medium hover:text-primary transition-colors duration-300 py-2"
+                onClick={(e) => handleInternalLinkClick(e, 'academy')}
+              >
+                {t('header.academy')}
+              </a>
+              <a 
+                href="#about" 
+                className="font-medium hover:text-primary transition-colors duration-300 py-2"
+                onClick={(e) => handleInternalLinkClick(e, 'about')}
+              >
+                {t('header.about')}
+              </a>
+              <a 
+                href="#contact" 
+                className="font-medium hover:text-primary transition-colors duration-300 py-2"
+                onClick={(e) => handleInternalLinkClick(e, 'contact')}
+              >
+                {t('header.contact')}
+              </a>
+              
+              <a 
+                href="#contact" 
+                className="bg-primary text-white px-4 py-3 rounded-full font-medium text-center mt-2 hover:bg-primary/90"
+                onClick={(e) => handleInternalLinkClick(e, 'contact')}
+              >
+                {isCreativeMode ? t('header.creativeModeButton') : t('header.automationModeButton')}
+              </a>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
