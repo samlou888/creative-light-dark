@@ -104,9 +104,9 @@ const Header = () => {
             </Link>
           </div>
           
-          {/* Desktop Navigation - hidden on mobile */}
+          {/* Desktop Navigation - hidden on mobile, moved more to the left with ml-6 instead of ml-10 */}
           {!isCreativeMode && (
-            <nav className="hidden md:flex items-center gap-10 ml-10">
+            <nav className="hidden md:flex items-center gap-12 ml-6">
               <a 
                 href="#automation" 
                 className="font-medium hover:text-primary transition-colors duration-300"
@@ -138,9 +138,9 @@ const Header = () => {
             </nav>
           )}
           
-          {/* Creative Mode Navigation - hidden on mobile */}
+          {/* Creative Mode Navigation - hidden on mobile, moved more to the left with ml-6 instead of ml-10 */}
           {isCreativeMode && (
-            <nav className="hidden md:flex items-center gap-10 ml-10">
+            <nav className="hidden md:flex items-center gap-12 ml-6">
               <a 
                 href="#services" 
                 className="font-medium hover:text-primary transition-colors duration-300"
@@ -174,8 +174,8 @@ const Header = () => {
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
           
-          {/* Right side controls with better spacing for mobile */}
-          <div className={`flex items-center ${isMobile ? 'gap-4' : 'gap-8'}`}>
+          {/* Right side controls with better spacing for mobile and more space between items on desktop */}
+          <div className={`flex items-center ${isMobile ? 'gap-4' : 'gap-12'}`}>
             {/* Creative Studio toggle */}
             <div className={isMobile ? 'mx-2' : ''}>
               <ThemeToggle />
