@@ -130,9 +130,9 @@ const Header = () => {
           </div>
         </div>
         
-        {/* Navigation Menu - slide down when menu is open, for both mobile and desktop */}
+        {/* Navigation Menu - modified to be right-aligned and not full width */}
         {isMenuOpen && (
-          <div className="absolute left-0 right-0 top-full bg-white/95 dark:bg-black/95 shadow-md animate-fade-in py-4 px-6 backdrop-blur-md">
+          <div className="absolute right-0 top-full bg-white/95 dark:bg-black/95 shadow-md animate-fade-in py-4 px-6 backdrop-blur-md w-64 md:w-72 rounded-bl-lg">
             <nav className="flex flex-col space-y-4">
               {/* Business Mode Navigation */}
               {!isCreativeMode && (
