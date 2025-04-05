@@ -27,7 +27,7 @@ const ServicesSection = () => {
           icon: <Zap size={32} className="text-primary" />,
           title: t('services.automation.title'),
           description: t('services.automation.creativeDescription'),
-          features: t('services.automation.features.creative') as string[],
+          features: (t('services.automation.features.creative') as string[]),
           cta: t('services.automation.cta'),
         },
         {
@@ -35,7 +35,7 @@ const ServicesSection = () => {
           icon: <GraduationCap size={32} className="text-primary" />,
           title: t('services.academy.title'),
           description: t('services.academy.creativeDescription'),
-          features: t('services.academy.features.creative') as string[],
+          features: (t('services.academy.features.creative') as string[]),
           cta: t('services.academy.cta'),
         }
       ]

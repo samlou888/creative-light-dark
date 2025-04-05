@@ -19,10 +19,11 @@ const ContactSection = () => {
     });
   };
 
-  // Get the benefits based on mode
-  const benefitsArray = isCreativeMode 
-    ? t('contact.creative.benefits') as string[]
-    : t('contact.automation.benefits') as string[];
+  // Ensure we're getting an array for benefits
+  // Cast to string[] to fix TypeScript errors
+  const benefitsArray = (isCreativeMode 
+    ? t('contact.creative.benefits') 
+    : t('contact.automation.benefits')) as string[];
 
   return (
     <section id="contact" className="py-10 px-6 md:px-10">
