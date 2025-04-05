@@ -18,6 +18,11 @@ const ContactSection = () => {
     });
   };
 
+  // Ensure we're working with the correct benefits data structure
+  const benefits = isCreativeMode 
+    ? t('contact.creative.benefits')
+    : t('contact.automation.benefits');
+
   return (
     <section id="contact" className="py-10 px-6 md:px-10">
       <div className="container mx-auto">
@@ -94,10 +99,8 @@ const ContactSection = () => {
                 </h3>
                 
                 <ul className="space-y-2">
-                  {(isCreativeMode 
-                    ? t('contact.creative.benefits')
-                    : t('contact.automation.benefits')
-                  ).map((item: string, index: number) => (
+                  {/* Make sure we're iterating over an array by using type assertion */}
+                  {(benefits as string[]).map((item: string, index: number) => (
                     <li key={index} className="flex items-start gap-2">
                       <div className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5 ${
                         isCreativeMode 
