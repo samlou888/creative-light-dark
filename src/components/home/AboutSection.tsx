@@ -9,15 +9,6 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-24 px-6 md:px-10 bg-secondary/50">
       <div className="container mx-auto">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <h2 className="section-heading mb-4">
-            Über <span className="text-primary">uns</span>
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Erfahren Sie mehr über unser Unternehmen und unsere Werte.
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Vision */}
           <div className="light-card flex flex-col items-center text-center p-8">
