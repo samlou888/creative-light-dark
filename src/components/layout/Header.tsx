@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
@@ -73,7 +72,7 @@ const Header = () => {
     });
   };
 
-  // Handle smooth scrolling for internal links with offset
+  // Handle smooth scrolling for internal links with improved offset calculation
   const handleInternalLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     const currentPath = location.pathname;
     
@@ -86,26 +85,11 @@ const Header = () => {
         // Get header height for offset calculation
         const headerHeight = document.querySelector('header')?.offsetHeight || 80;
         
-        // Calculate the element's position with different offsets based on section
-        let offsetAdjustment = 200; // Default offset
-        
-        // Apply specific offset for showcase section
-        if (targetId === 'showreel') {
-          offsetAdjustment = 20; // Minimal offset for showreel
-        }
-        
-        // Apply specific offset for projects section
-        if (targetId === 'projects') {
-          offsetAdjustment = 20; // Small offset for projects section
-        }
-        
-        // Apply specific offset for contact section
-        if (targetId === 'contact') {
-          offsetAdjustment = 20; // Small offset for contact section
-        }
+        // Default offset to ensure the section is fully visible
+        const defaultOffset = 80;
         
         // Calculate the element's position with offset
-        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offsetAdjustment;
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - defaultOffset;
         
         // Close the mobile menu if it's open
         setIsMenuOpen(false);
