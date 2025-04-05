@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import {
   Select,
   SelectContent,
@@ -12,9 +13,11 @@ import {
 } from "@/components/ui/select";
 import { Globe } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Language } from '@/translations';
 
 const Header = () => {
   const { isCreativeMode } = useTheme();
+  const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
   const isMobile = useIsMobile();
 
@@ -72,6 +75,10 @@ const Header = () => {
     };
   }, []);
 
+  const handleLanguageChange = (value: string) => {
+    setLanguage(value as Language);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
       <div className="container mx-auto">
@@ -90,21 +97,21 @@ const Header = () => {
               className="font-medium hover:text-primary transition-colors duration-300"
               onClick={(e) => handleInternalLinkClick(e, 'services')}
             >
-              Services
+              {t('header.services')}
             </a>
             <a 
               href="#showcase" 
               className="font-medium hover:text-primary transition-colors duration-300"
               onClick={(e) => handleInternalLinkClick(e, 'showcase')}
             >
-              Projekte
+              {t('header.projects')}
             </a>
             <a 
               href="#contact" 
               className="font-medium hover:text-primary transition-colors duration-300"
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
             >
-              Kontakt
+              {t('header.contact')}
             </a>
           </nav>
           
@@ -117,14 +124,14 @@ const Header = () => {
             
             {/* Language selector on the far right */}
             <div className={isMobile ? 'ml-2' : ''}>
-              <Select defaultValue="de">
+              <Select defaultValue={language} onValueChange={handleLanguageChange}>
                 <SelectTrigger className="w-auto bg-transparent border-none focus:ring-0 px-2">
                   <Globe size={18} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="de">Deutsch</SelectItem>
-                  <SelectItem value="en">English</SelectItem>
-                  <SelectItem value="fr">Français</SelectItem>
+                  <SelectItem value="de">{t('language.de')}</SelectItem>
+                  <SelectItem value="en">{t('language.en')}</SelectItem>
+                  <SelectItem value="fr">{t('language.fr')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -139,7 +146,7 @@ const Header = () => {
               } px-5 py-2 rounded-full font-medium transition-all`}
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
             >
-              {isCreativeMode ? 'Projekt starten' : 'Strategiegespräch vereinbaren'}
+              {isCreativeMode ? t('header.creativeModeButton') : t('header.automationModeButton')}
             </a>
           </div>
         </div>

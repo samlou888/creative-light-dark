@@ -1,10 +1,12 @@
 
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { useToast } from '@/components/ui/use-toast';
 
 const ContactSection = () => {
   const { isCreativeMode } = useTheme();
+  const { t } = useLanguage();
   const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -29,20 +31,20 @@ const ContactSection = () => {
               <div className="p-5 md:p-6">
                 <h2 className="text-xl md:text-2xl font-bold mb-2">
                   {isCreativeMode 
-                    ? "Starten Sie Ihr kreatives Projekt"
-                    : "Kontaktieren Sie uns"
+                    ? t('contact.creative.title')
+                    : t('contact.automation.title')
                   }
                 </h2>
                 <p className="text-muted-foreground text-sm mb-4">
                   {isCreativeMode 
-                    ? "Bereit, Ihre Vision mit KI-Technologie zum Leben zu erwecken? Wir freuen uns darauf, von Ihnen zu hören."
-                    : "Haben Sie Fragen oder möchten Sie eine Beratung buchen? Füllen Sie das Formular aus und wir melden uns bei Ihnen."
+                    ? t('contact.creative.description')
+                    : t('contact.automation.description')
                   }
                 </p>
                 
                 <form onSubmit={handleSubmit} className="space-y-3">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
+                    <label htmlFor="name" className="block text-sm font-medium mb-1">{t('contact.formLabels.name')}</label>
                     <input 
                       type="text" 
                       id="name" 
@@ -52,7 +54,7 @@ const ContactSection = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-1">E-Mail</label>
+                    <label htmlFor="email" className="block text-sm font-medium mb-1">{t('contact.formLabels.email')}</label>
                     <input 
                       type="email" 
                       id="email" 
@@ -62,7 +64,7 @@ const ContactSection = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-1">Nachricht</label>
+                    <label htmlFor="message" className="block text-sm font-medium mb-1">{t('contact.formLabels.message')}</label>
                     <textarea 
                       id="message" 
                       className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary min-h-[80px]"
@@ -74,7 +76,7 @@ const ContactSection = () => {
                     type="submit" 
                     className={`w-full primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
                   >
-                    {isCreativeMode ? "Projekt starten" : "Nachricht senden"}
+                    {isCreativeMode ? t('contact.creative.submitButton') : t('contact.automation.submitButton')}
                   </button>
                 </form>
               </div>
@@ -86,27 +88,16 @@ const ContactSection = () => {
               } p-5 md:p-6 flex flex-col justify-center`}>
                 <h3 className="text-base font-bold mb-3">
                   {isCreativeMode 
-                    ? "Warum mit unserem Creative Studio arbeiten?"
-                    : "Ihre Vorteile im Überblick"
+                    ? t('contact.creative.benefitsTitle')
+                    : t('contact.automation.benefitsTitle')
                   }
                 </h3>
                 
                 <ul className="space-y-2">
                   {(isCreativeMode 
-                    ? [
-                        "KI-gestützte kreative Prozesse",
-                        "Einzigartige, disruptive Designs",
-                        "Schnellere Iteration und Entwicklung",
-                        "Zukunftsorientierte digitale Erlebnisse",
-                        "Schnelle Umsetzung & persönliche Betreuung"
-                      ] 
-                    : [
-                        "KI-gestützte Beratung & Umsetzung",
-                        "Höhere Effizienz und Einsparungen",
-                        "Benutzerfreundliche Implementierung",
-                        "Langfristige Betreuung und Support"
-                      ]
-                  ).map((item, index) => (
+                    ? t('contact.creative.benefits')
+                    : t('contact.automation.benefits')
+                  ).map((item: string, index: number) => (
                     <li key={index} className="flex items-start gap-2">
                       <div className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5 ${
                         isCreativeMode 
@@ -123,9 +114,9 @@ const ContactSection = () => {
                 </ul>
                 
                 <div className="mt-4 pt-4 border-t border-primary/20">
-                  <p className="font-medium mb-1 text-sm">Schneller Kontakt:</p>
-                  <p className="text-muted-foreground text-sm">info@aiventures.de</p>
-                  <p className="text-muted-foreground text-sm">+49 123 4567890</p>
+                  <p className="font-medium mb-1 text-sm">{t('contact.quickContact.title')}</p>
+                  <p className="text-muted-foreground text-sm">{t('contact.quickContact.email')}</p>
+                  <p className="text-muted-foreground text-sm">{t('contact.quickContact.phone')}</p>
                 </div>
               </div>
             </div>

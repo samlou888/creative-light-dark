@@ -1,45 +1,44 @@
 
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Brush, Zap, GraduationCap } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
 
 const ServicesSection = () => {
   const { isCreativeMode } = useTheme();
+  const { t } = useLanguage();
   
   const services = [
     {
       id: 'studio',
       icon: <Brush size={isCreativeMode ? 32 : 28} className={isCreativeMode ? "text-primary" : ""} />,
-      title: 'Creative Studio',
-      description: 'Wir gestalten, was du im Kopf hast – visuell & funktional.',
-      extendedDescription: 'Wenn Ästhetik auf Funktionalität trifft, entsteht mehr als Sichtbarkeit: Ihre Marke wird zum Gesprächsthema.',
-      features: isCreativeMode 
-        ? ['Branding', 'Design', 'Social Media & Content', 'Web & App Development'] 
-        : ['Branding', 'Design', 'Social Media & Content', 'Web & App Development']
+      title: t('services.studio.title'),
+      description: t('services.studio.description'),
+      extendedDescription: t('services.studio.extendedDescription'),
+      features: t('services.studio.features')
     },
     {
       id: 'automation',
       icon: <Zap size={isCreativeMode ? 32 : 28} className={isCreativeMode ? "text-primary" : ""} />,
-      title: 'Automation',
+      title: t('services.automation.title'),
       description: isCreativeMode 
-        ? 'Revolutionieren Sie Ihre Arbeitsabläufe mit unseren fortschrittlichen AI-Automatisierungslösungen.'
-        : 'Wir automatisieren Geschäftsprozesse und steigern Ihre Effizienz durch intelligente technologische Lösungen.',
+        ? t('services.automation.creativeDescription')
+        : t('services.automation.description'),
       features: isCreativeMode 
-        ? ['Robotische Prozessautomatisierung', 'Intelligente Chatbots', 'Prädiktive Analysen', 'Datengetriebene Entscheidungen'] 
-        : ['Workflow-Optimierung', 'CRM-Integration', 'Dokumentenmanagement', 'Reporting & Analytics']
+        ? t('services.automation.features.creative')
+        : t('services.automation.features.automation')
     },
     {
       id: 'academy',
       icon: <GraduationCap size={isCreativeMode ? 32 : 28} className={isCreativeMode ? "text-primary" : ""} />,
-      title: 'Academy',
+      title: t('services.academy.title'),
       description: isCreativeMode 
-        ? 'Bringen Sie Ihre Teams auf die nächste Stufe mit unseren zukunftsorientierten AI-Schulungsprogrammen.'
-        : 'Wir bilden Ihre Mitarbeiter weiter und befähigen sie, das volle Potenzial moderner Technologien zu nutzen.',
+        ? t('services.academy.creativeDescription')
+        : t('services.academy.description'),
       features: isCreativeMode 
-        ? ['KI-Prompt-Engineering', 'Zukunftsorientierte Tech-Skills', 'Immersive VR-Trainings', 'Personalisierte Lernpfade'] 
-        : ['Digitale Transformation', 'Datenanalyse', 'Technisches Know-how', 'Change Management']
+        ? t('services.academy.features.creative')
+        : t('services.academy.features.automation')
     }
   ];
 
@@ -48,12 +47,12 @@ const ServicesSection = () => {
       <div className="container mx-auto">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="section-heading mb-4" id="services-heading">
-            Unsere <span className="text-primary">Services</span>
+            {t('services.title')} <span className="text-primary">Services</span>
           </h2>
           <p className="text-lg text-muted-foreground">
             {isCreativeMode 
-              ? "Wir kombinieren kreative Expertise mit fortschrittlicher Technologie, um einzigartige und zukunftsweisende Lösungen zu schaffen."
-              : "Wir bieten umfassende AI-Lösungen für Unternehmen, die ihre Prozesse optimieren und ihr volles Potenzial ausschöpfen möchten."
+              ? t('services.description.creative')
+              : t('services.description.automation')
             }
           </p>
         </div>
@@ -94,7 +93,7 @@ const ServicesSection = () => {
                 <>
                   <p className="text-muted-foreground mb-4 text-sm">{service.extendedDescription}</p>
                   <ul className="space-y-1 mb-3">
-                    {service.features.map((feature, index) => (
+                    {Array.isArray(service.features) && service.features.map((feature, index) => (
                       <li key={index} className="flex items-center gap-2 text-sm">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                         <span>{feature}</span>
@@ -107,7 +106,7 @@ const ServicesSection = () => {
                 <>
                   <p className="text-muted-foreground mb-4 text-sm">{service.description}</p>
                   <ul className="space-y-1">
-                    {service.features.map((feature, index) => (
+                    {Array.isArray(service.features) && service.features.map((feature, index) => (
                       <li key={index} className="flex items-center gap-2 text-sm">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                         <span>{feature}</span>
