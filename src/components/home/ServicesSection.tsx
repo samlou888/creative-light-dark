@@ -19,7 +19,7 @@ const ServicesSection = () => {
           title: t('services.studio.title'),
           description: t('services.studio.description'),
           extendedDescription: t('services.studio.extendedDescription'),
-          features: t('services.studio.features') as string[],
+          features: (t('services.studio.features') as unknown) as string[],
           cta: t('services.studio.cta'),
         },
         {
@@ -27,7 +27,7 @@ const ServicesSection = () => {
           icon: <Zap size={32} className="text-primary" />,
           title: t('services.automation.title'),
           description: t('services.automation.creativeDescription'),
-          features: (t('services.automation.features.creative') as string[]),
+          features: (t('services.automation.features.creative') as unknown) as string[],
           cta: t('services.automation.cta'),
         },
         {
@@ -35,7 +35,7 @@ const ServicesSection = () => {
           icon: <GraduationCap size={32} className="text-primary" />,
           title: t('services.academy.title'),
           description: t('services.academy.creativeDescription'),
-          features: (t('services.academy.features.creative') as string[]),
+          features: (t('services.academy.features.creative') as unknown) as string[],
           cta: t('services.academy.cta'),
         }
       ]
@@ -134,7 +134,7 @@ const ServicesSection = () => {
                   <div className="light-card p-8 rounded-xl h-full">
                     <h3 className="text-xl font-bold mb-4">{t('automation.services')}</h3>
                     <ul className="space-y-3">
-                      {(t('automation.features') as string[]).map((feature, index) => (
+                      {((t('automation.features') as unknown) as string[]).map((feature, index) => (
                         <li key={index} className="flex items-start gap-3">
                           <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
@@ -150,7 +150,7 @@ const ServicesSection = () => {
                   <div className="bg-primary/5 p-8 rounded-xl flex flex-col justify-center">
                     <h3 className="text-xl font-bold mb-4">{t('automation.benefits')}</h3>
                     <ul className="space-y-3">
-                      {(t('automation.benefitsList') as string[]).map((benefit, index) => (
+                      {((t('automation.benefitsList') as unknown) as string[]).map((benefit, index) => (
                         <li key={index} className="flex items-start gap-3">
                           <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
@@ -190,7 +190,7 @@ const ServicesSection = () => {
                   <div className="light-card p-8 rounded-xl h-full">
                     <h3 className="text-xl font-bold mb-4">{t('academy.services')}</h3>
                     <ul className="space-y-3">
-                      {(t('academy.features') as string[]).map((feature, index) => (
+                      {((t('academy.features') as unknown) as string[]).map((feature, index) => (
                         <li key={index} className="flex items-start gap-3">
                           <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
@@ -206,7 +206,7 @@ const ServicesSection = () => {
                   <div className="bg-white p-8 rounded-xl flex flex-col justify-center">
                     <h3 className="text-xl font-bold mb-4">{t('academy.benefits')}</h3>
                     <ul className="space-y-3">
-                      {(t('academy.benefitsList') as string[]).map((benefit, index) => (
+                      {((t('academy.benefitsList') as unknown) as string[]).map((benefit, index) => (
                         <li key={index} className="flex items-start gap-3">
                           <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">

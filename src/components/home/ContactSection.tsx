@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -19,11 +18,10 @@ const ContactSection = () => {
     });
   };
 
-  // Ensure we're getting an array for benefits
-  // Cast to string[] to fix TypeScript errors
-  const benefitsArray = (isCreativeMode 
-    ? t('contact.creative.benefits') 
-    : t('contact.automation.benefits')) as string[];
+  // Ensure we're getting an array for benefits by using an explicit type assertion
+  const benefitsArray = (t(isCreativeMode 
+    ? 'contact.creative.benefits' 
+    : 'contact.automation.benefits') as unknown) as string[];
 
   return (
     <section id="contact" className="py-10 px-6 md:px-10">
