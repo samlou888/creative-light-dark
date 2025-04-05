@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
@@ -73,10 +74,12 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold">
+          {/* Logo moved further left with flex-1 to push other elements */}
+          <Link to="/" className="text-2xl font-bold flex-1">
             <span className="text-primary">AI</span>ventures
           </Link>
           
+          {/* Hidden on mobile, visible on md screens and up */}
           <nav className="hidden md:flex items-center gap-10">
             <a 
               href="#services" 
@@ -101,22 +104,31 @@ const Header = () => {
             </a>
           </nav>
           
-          <div className="flex items-center gap-4">
-            <Select defaultValue="de">
-              <SelectTrigger className="w-auto bg-transparent border-none focus:ring-0 px-2">
-                <Globe size={18} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="de">Deutsch</SelectItem>
-                <SelectItem value="en">English</SelectItem>
-                <SelectItem value="fr">Français</SelectItem>
-              </SelectContent>
-            </Select>
+          {/* Controls container with improved spacing */}
+          <div className="flex items-center justify-end flex-1">
+            {/* Creative Studio toggle in the middle */}
+            <div className="mx-auto">
+              <ThemeToggle />
+            </div>
             
-            <ThemeToggle />
+            {/* Language selector on far right */}
+            <div className="ml-auto">
+              <Select defaultValue="de">
+                <SelectTrigger className="w-auto bg-transparent border-none focus:ring-0 px-2">
+                  <Globe size={18} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="de">Deutsch</SelectItem>
+                  <SelectItem value="en">English</SelectItem>
+                  <SelectItem value="fr">Français</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            {/* CTA button */}
             <a 
               href="#contact" 
-              className={`hidden md:block ${
+              className={`hidden md:block ml-6 ${
                 isCreativeMode 
                 ? 'bg-primary text-white neon-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]' 
                 : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
