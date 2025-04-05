@@ -2,7 +2,6 @@ import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
-import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const WHATSAPP_URL = 'https://wa.me/41782143613';
@@ -143,7 +142,13 @@ const ContactSection = () => {
                   : 'bg-[#25D366] text-white hover:bg-[#22c05d]'
                 }`}
               >
-                <MessageCircle className="w-5 h-5" />
+                <div className="w-5 h-5 flex items-center justify-center">
+                  <img 
+                    src="/lovable-uploads/d9001fca-d3cf-4ad8-bcf9-ed75bbd528e5.png" 
+                    alt="WhatsApp" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
                 <span>👉 Jetzt auf WhatsApp schreiben</span>
               </a>
             </div>
