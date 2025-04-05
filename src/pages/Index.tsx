@@ -65,7 +65,6 @@ const Index = () => {
           // Business Mode Sections
           <>
             <ServicesSection />
-            <AboutSection />
             <SuccessSection />
           </>
         )}
