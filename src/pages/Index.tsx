@@ -10,6 +10,8 @@ import ShowreelSection from '@/components/home/ShowreelSection';
 import ProjectsSection from '@/components/home/ProjectsSection';
 import ServicesSection from '@/components/home/ServicesSection';
 import WhatsAppButton from '@/components/shared/WhatsAppButton';
+import SuccessSection from '@/components/home/SuccessSection';
+import AboutSection from '@/components/home/AboutSection';
 
 const Index = () => {
   const { isCreativeMode } = useTheme();
@@ -28,6 +30,8 @@ const Index = () => {
         else if (headingText.includes('creative')) section.id = 'studio';
         else if (headingText.includes('projekt')) section.id = 'projekte';
         else if (headingText.includes('showreel')) section.id = 'showreel';
+        else if (headingText.includes('über uns')) section.id = 'about';
+        else if (headingText.includes('erfolge')) section.id = 'success';
       }
     });
     
@@ -59,7 +63,11 @@ const Index = () => {
           </>
         ) : (
           // Business Mode Sections
-          <ServicesSection />
+          <>
+            <ServicesSection />
+            <AboutSection />
+            <SuccessSection />
+          </>
         )}
         
         <ContactSection />

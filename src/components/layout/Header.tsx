@@ -131,16 +131,9 @@ const Header = () => {
         </>
       );
     } else {
-      // Standard business mode menu
+      // Updated business mode menu items per requirements
       return (
         <>
-          <a 
-            href="#start" 
-            className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'start')}
-          >
-            {t('header.home')}
-          </a>
           <a 
             href="#automation" 
             className="font-medium hover:text-primary transition-colors duration-300 py-2"
@@ -156,11 +149,18 @@ const Header = () => {
             {t('header.academy')}
           </a>
           <a 
-            href="#projekte" 
+            href="#about" 
             className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'projekte')}
+            onClick={(e) => handleInternalLinkClick(e, 'about')}
           >
-            {t('header.projects')}
+            {t('header.about')}
+          </a>
+          <a 
+            href="#success" 
+            className="font-medium hover:text-primary transition-colors duration-300 py-2"
+            onClick={(e) => handleInternalLinkClick(e, 'success')}
+          >
+            {t('header.success')}
           </a>
           <a 
             href="#kontakt" 
