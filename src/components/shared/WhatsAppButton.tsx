@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { WhatsApp } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { motion } from 'framer-motion';
@@ -25,7 +25,7 @@ const WhatsAppButton: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <WhatsApp className={`${isMobile ? 'w-7 h-7' : 'w-5 h-5 mr-2'}`} />
+              <MessageCircle className={`${isMobile ? 'w-7 h-7' : 'w-5 h-5 mr-2'}`} />
               {!isMobile && <span className="font-medium">WhatsApp</span>}
             </motion.a>
           </TooltipTrigger>

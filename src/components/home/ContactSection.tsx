@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
-import { WhatsApp } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const WHATSAPP_URL = 'https://wa.me/41782143613';
@@ -128,7 +127,6 @@ const ContactSection = () => {
             </div>
           </form>
           
-          {/* WhatsApp Text Block */}
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
             <div className="text-center">
               <h3 className="text-xl font-semibold mb-3">Du möchtest lieber direkt schreiben?</h3>
@@ -145,7 +143,7 @@ const ContactSection = () => {
                   : 'bg-[#25D366] text-white hover:bg-[#22c05d]'
                 }`}
               >
-                <WhatsApp className="w-5 h-5" />
+                <MessageCircle className="w-5 h-5" />
                 <span>👉 Jetzt auf WhatsApp schreiben</span>
               </a>
             </div>
