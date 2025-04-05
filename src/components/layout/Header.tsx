@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
@@ -10,10 +11,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Globe } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Header = () => {
   const { isCreativeMode } = useTheme();
   const location = useLocation();
+  const isMobile = useIsMobile();
 
   // Handle smooth scrolling for internal links with offset
   const handleInternalLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -70,17 +73,17 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           {/* Logo positioned at the far left */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 mr-auto">
             <Link to="/" className="text-2xl font-bold">
               <span className="text-primary">AI</span>ventures
             </Link>
           </div>
           
-          {/* Navigation in the middle-left */}
+          {/* Navigation in the middle-left - hidden on mobile */}
           <nav className="hidden md:flex items-center gap-10 ml-10">
             <a 
               href="#services" 
@@ -105,24 +108,28 @@ const Header = () => {
             </a>
           </nav>
           
-          {/* Right side with theme toggle and language selector with proper spacing */}
-          <div className="flex items-center gap-8">
-            {/* Creative Studio toggle in the center */}
-            <ThemeToggle />
+          {/* Right side controls with better spacing for mobile */}
+          <div className={`flex items-center ${isMobile ? 'gap-4' : 'gap-8'}`}>
+            {/* Creative Studio toggle */}
+            <div className={isMobile ? 'mx-2' : ''}>
+              <ThemeToggle />
+            </div>
             
             {/* Language selector on the far right */}
-            <Select defaultValue="de">
-              <SelectTrigger className="w-auto bg-transparent border-none focus:ring-0 px-2">
-                <Globe size={18} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="de">Deutsch</SelectItem>
-                <SelectItem value="en">English</SelectItem>
-                <SelectItem value="fr">Français</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className={isMobile ? 'ml-2' : ''}>
+              <Select defaultValue="de">
+                <SelectTrigger className="w-auto bg-transparent border-none focus:ring-0 px-2">
+                  <Globe size={18} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="de">Deutsch</SelectItem>
+                  <SelectItem value="en">English</SelectItem>
+                  <SelectItem value="fr">Français</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
             
-            {/* CTA button */}
+            {/* CTA button - hidden on mobile */}
             <a 
               href="#contact" 
               className={`hidden md:block ${
