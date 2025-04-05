@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -31,6 +31,8 @@ const Header = () => {
   const location = useLocation();
   const isMobile = useIsMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   // Toggle mobile menu
   const toggleMenu = () => {
@@ -41,6 +43,26 @@ const Header = () => {
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMenuOpen && 
+        menuRef.current && 
+        !menuRef.current.contains(event.target as Node) &&
+        menuButtonRef.current && 
+        !menuButtonRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   // Handle smooth scrolling for internal links with offset
   const handleInternalLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -124,6 +146,7 @@ const Header = () => {
               className="flex items-center justify-center w-8 h-8" 
               onClick={toggleMenu}
               aria-label="Toggle menu"
+              ref={menuButtonRef}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -132,7 +155,10 @@ const Header = () => {
         
         {/* Navigation Menu - modified to be right-aligned and not full width */}
         {isMenuOpen && (
-          <div className="absolute right-0 top-full bg-white/95 dark:bg-black/95 shadow-md animate-fade-in py-4 px-6 backdrop-blur-md w-64 md:w-72 rounded-bl-lg">
+          <div 
+            ref={menuRef}
+            className="absolute right-0 top-full bg-white/95 dark:bg-black/95 shadow-md animate-fade-in py-4 px-6 backdrop-blur-md w-64 md:w-72 rounded-bl-lg"
+          >
             <nav className="flex flex-col space-y-4">
               {/* Business Mode Navigation */}
               {!isCreativeMode && (
