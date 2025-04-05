@@ -98,24 +98,25 @@ const Header = () => {
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           {/* Logo positioned at the far left */}
-          <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold mr-6">
+          <div className="flex-1">
+            <Link to="/" className="text-2xl font-bold">
               <span className="text-primary">AI</span>ventures
             </Link>
+          </div>
+          
+          {/* Right side with Creative Studio toggle and burger menu */}
+          <div className="flex items-center space-x-6">
+            {/* Creative Studio toggle - now on the right before burger */}
+            <ThemeToggle />
             
-            {/* Burger menu button - now always visible */}
+            {/* Burger menu button - now at the far right */}
             <button 
-              className="flex items-center justify-center w-8 h-8 mr-6" 
+              className="flex items-center justify-center w-8 h-8" 
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
-            
-            {/* Creative Studio toggle - always visible, positioned after burger */}
-            <div className="ml-4">
-              <ThemeToggle />
-            </div>
           </div>
         </div>
         
