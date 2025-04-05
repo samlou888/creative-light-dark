@@ -81,18 +81,18 @@ const Header = () => {
         let offsetAdjustment = 200; // Default offset
         
         // Apply specific offset for showcase section
-        if (targetId === 'showcase') {
-          offsetAdjustment = 20; // Minimal offset for showcase to show everything including button
+        if (targetId === 'showreel') {
+          offsetAdjustment = 20; // Minimal offset for showreel
         }
         
-        // Apply specific offset for services section to match the uploaded image
-        if (targetId === 'services') {
-          offsetAdjustment = -100; // Negative offset to position the view much lower
+        // Apply specific offset for projects section
+        if (targetId === 'projects') {
+          offsetAdjustment = 20; // Small offset for projects section
         }
         
         // Apply specific offset for contact section
         if (targetId === 'contact') {
-          offsetAdjustment = 20; // Small offset for contact section to ensure the form is fully visible
+          offsetAdjustment = 20; // Small offset for contact section
         }
         
         // Calculate the element's position with offset
@@ -125,6 +125,77 @@ const Header = () => {
     setLanguage(value as Language);
   };
 
+  const renderMenuItems = () => {
+    if (isCreativeMode) {
+      return (
+        <>
+          <a 
+            href="#creative-studio" 
+            className="font-medium hover:text-primary transition-colors duration-300 py-2"
+            onClick={(e) => handleInternalLinkClick(e, 'creative-studio')}
+          >
+            {t('header.creative.studio')}
+          </a>
+          <a 
+            href="#showreel" 
+            className="font-medium hover:text-primary transition-colors duration-300 py-2"
+            onClick={(e) => handleInternalLinkClick(e, 'showreel')}
+          >
+            {t('header.creative.showreel')}
+          </a>
+          <a 
+            href="#projects" 
+            className="font-medium hover:text-primary transition-colors duration-300 py-2"
+            onClick={(e) => handleInternalLinkClick(e, 'projects')}
+          >
+            {t('header.creative.projects')}
+          </a>
+          <a 
+            href="#contact" 
+            className="font-medium hover:text-primary transition-colors duration-300 py-2"
+            onClick={(e) => handleInternalLinkClick(e, 'contact')}
+          >
+            {t('header.contact')}
+          </a>
+        </>
+      );
+    } else {
+      // Standard business mode menu
+      return (
+        <>
+          <a 
+            href="#automation" 
+            className="font-medium hover:text-primary transition-colors duration-300 py-2"
+            onClick={(e) => handleInternalLinkClick(e, 'automation')}
+          >
+            {t('header.automation')}
+          </a>
+          <a 
+            href="#academy" 
+            className="font-medium hover:text-primary transition-colors duration-300 py-2"
+            onClick={(e) => handleInternalLinkClick(e, 'academy')}
+          >
+            {t('header.academy')}
+          </a>
+          <a 
+            href="#about" 
+            className="font-medium hover:text-primary transition-colors duration-300 py-2"
+            onClick={(e) => handleInternalLinkClick(e, 'about')}
+          >
+            {t('header.about')}
+          </a>
+          <a 
+            href="#contact" 
+            className="font-medium hover:text-primary transition-colors duration-300 py-2"
+            onClick={(e) => handleInternalLinkClick(e, 'contact')}
+          >
+            {t('header.contact')}
+          </a>
+        </>
+      );
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
       <div className="container mx-auto">
@@ -153,67 +224,14 @@ const Header = () => {
           </div>
         </div>
         
-        {/* Navigation Menu - modified to be right-aligned and not full width */}
+        {/* Navigation Menu - right-aligned */}
         {isMenuOpen && (
           <div 
             ref={menuRef}
             className="absolute right-0 top-full bg-white/95 dark:bg-black/95 shadow-md animate-fade-in py-4 px-6 backdrop-blur-md w-64 md:w-72 rounded-bl-lg"
           >
             <nav className="flex flex-col space-y-4">
-              {/* Business Mode Navigation */}
-              {!isCreativeMode && (
-                <>
-                  <a 
-                    href="#automation" 
-                    className="font-medium hover:text-primary transition-colors duration-300 py-2"
-                    onClick={(e) => handleInternalLinkClick(e, 'automation')}
-                  >
-                    {t('header.automation')}
-                  </a>
-                  <a 
-                    href="#academy" 
-                    className="font-medium hover:text-primary transition-colors duration-300 py-2"
-                    onClick={(e) => handleInternalLinkClick(e, 'academy')}
-                  >
-                    {t('header.academy')}
-                  </a>
-                  <a 
-                    href="#about" 
-                    className="font-medium hover:text-primary transition-colors duration-300 py-2"
-                    onClick={(e) => handleInternalLinkClick(e, 'about')}
-                  >
-                    {t('header.about')}
-                  </a>
-                </>
-              )}
-              
-              {/* Creative Mode Navigation */}
-              {isCreativeMode && (
-                <>
-                  <a 
-                    href="#services" 
-                    className="font-medium hover:text-primary transition-colors duration-300 py-2"
-                    onClick={(e) => handleInternalLinkClick(e, 'services')}
-                  >
-                    {t('header.services')}
-                  </a>
-                  <a 
-                    href="#showcase" 
-                    className="font-medium hover:text-primary transition-colors duration-300 py-2"
-                    onClick={(e) => handleInternalLinkClick(e, 'showcase')}
-                  >
-                    {t('header.projects')}
-                  </a>
-                </>
-              )}
-              
-              <a 
-                href="#contact" 
-                className="font-medium hover:text-primary transition-colors duration-300 py-2"
-                onClick={(e) => handleInternalLinkClick(e, 'contact')}
-              >
-                {t('header.contact')}
-              </a>
+              {renderMenuItems()}
               
               {/* Language selector with globe icon and dropdown */}
               <div className="py-2">

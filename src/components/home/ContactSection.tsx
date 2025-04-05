@@ -2,150 +2,128 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useToast } from '@/components/ui/use-toast';
-import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 
 const ContactSection = () => {
   const { isCreativeMode } = useTheme();
   const { t } = useLanguage();
-  const { toast } = useToast();
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    toast({
-      title: isCreativeMode 
-        ? "Anfrage erhalten"
-        : "Anfrage erhalten",
-      description: isCreativeMode 
-        ? "Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden."
-        : "Vielen Dank für Ihr Interesse. Wir werden uns umgehend mit Ihnen in Verbindung setzen.",
-      duration: 5000,
-    });
-  };
-
-  // Ensure we're getting an array for benefits by using an explicit type assertion
-  const benefitsArray = (t(isCreativeMode 
-    ? 'contact.creative.benefits' 
-    : 'contact.automation.benefits') as unknown) as string[];
 
   return (
-    <section id="contact" className="py-10 px-6 md:px-10">
-      <div className="container mx-auto">
-        <div className="max-w-2xl mx-auto">
-          <div className={`rounded-2xl overflow-hidden ${
+    <section id="contact" className="py-36 px-6 md:px-10">
+      <div className="container mx-auto max-w-4xl">
+        <div className="text-center mb-12">
+          <h2 className="section-heading mb-4">
+            {isCreativeMode ? (
+              "Bereit, dein nächstes Projekt zum Erlebnis zu machen?"
+            ) : (
+              t('contact.title')
+            )}
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            {isCreativeMode ? (
+              "Lass uns gemeinsam ein Projekt starten, das wirklich beeindruckt und deine Ziele erreicht."
+            ) : (
+              t('contact.description')
+            )}
+          </p>
+        </div>
+        
+        <motion.div
+          className={`rounded-xl p-8 md:p-10 ${
             isCreativeMode 
-              ? 'dark-card neon-glow' 
-              : 'light-card'
-          }`}>
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="p-5 md:p-6">
-                <h2 className="text-xl md:text-2xl font-bold mb-2">
-                  {isCreativeMode 
-                    ? t('contact.creative.title')
-                    : t('contact.automation.title')
-                  }
-                </h2>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {isCreativeMode 
-                    ? t('contact.creative.description')
-                    : t('contact.automation.description')
-                  }
-                </p>
-                
-                {/* Business mode with Calendly button */}
-                {!isCreativeMode && (
-                  <>
-                    <div className="mb-6">
-                      <Button className="w-full rounded-full py-6 text-base" size="lg">
-                        {t('contact.automation.calendlyButton')}
-                      </Button>
-                      <p className="text-center text-sm text-muted-foreground mt-3">
-                        {t('contact.automation.whatsappHint')}
-                      </p>
-                    </div>
-                  </>
-                )}
-                
-                {/* Creative mode with form */}
-                {isCreativeMode && (
-                  <form onSubmit={handleSubmit} className="space-y-3">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-1">{t('contact.formLabels.name')}</label>
-                      <input 
-                        type="text" 
-                        id="name" 
-                        className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
-                        required 
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-1">{t('contact.formLabels.email')}</label>
-                      <input 
-                        type="email" 
-                        id="email" 
-                        className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary"
-                        required 
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium mb-1">{t('contact.formLabels.message')}</label>
-                      <textarea 
-                        id="message" 
-                        className="w-full p-2 rounded-lg border bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary min-h-[80px]"
-                        required 
-                      />
-                    </div>
-                    
-                    <button 
-                      type="submit" 
-                      className={`w-full primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
-                    >
-                      {isCreativeMode ? t('contact.creative.submitButton') : t('contact.automation.submitButton')}
-                    </button>
-                  </form>
-                )}
+            ? 'neo-blur border border-primary/20 neon-glow' 
+            : 'bg-card'
+          }`}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <form className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label htmlFor="name" className="block text-sm font-medium">
+                  {t('contact.form.name')}
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className={`w-full px-4 py-2 rounded-md ${
+                    isCreativeMode 
+                    ? 'bg-black/30 border border-white/10 text-white' 
+                    : 'bg-input'
+                  }`}
+                  placeholder={t('contact.form.namePlaceholder')}
+                />
               </div>
               
-              <div className={`${
-                isCreativeMode 
-                  ? 'bg-primary/20 backdrop-blur-md' 
-                  : 'bg-primary/5'
-              } p-5 md:p-6 flex flex-col justify-center`}>
-                <h3 className="text-base font-bold mb-3">
-                  {isCreativeMode 
-                    ? t('contact.creative.benefitsTitle')
-                    : t('contact.automation.benefitsTitle')
-                  }
-                </h3>
-                
-                <ul className="space-y-2">
-                  {benefitsArray.map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <div className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5 ${
-                        isCreativeMode 
-                          ? 'bg-primary text-white' 
-                          : 'bg-primary/20 text-primary'
-                      }`}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                          <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                      </div>
-                      <span className="text-sm">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <div className="mt-4 pt-4 border-t border-primary/20">
-                  <p className="font-medium mb-1 text-sm">{t('contact.quickContact.title')}</p>
-                  <p className="text-muted-foreground text-sm">{t('contact.quickContact.email')}</p>
-                  <p className="text-muted-foreground text-sm">{t('contact.quickContact.phone')}</p>
-                </div>
+              <div className="space-y-2">
+                <label htmlFor="email" className="block text-sm font-medium">
+                  {t('contact.form.email')}
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  className={`w-full px-4 py-2 rounded-md ${
+                    isCreativeMode 
+                    ? 'bg-black/30 border border-white/10 text-white' 
+                    : 'bg-input'
+                  }`}
+                  placeholder={t('contact.form.emailPlaceholder')}
+                />
               </div>
             </div>
-          </div>
-        </div>
+            
+            <div className="space-y-2">
+              <label htmlFor="subject" className="block text-sm font-medium">
+                {t('contact.form.subject')}
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                className={`w-full px-4 py-2 rounded-md ${
+                  isCreativeMode 
+                  ? 'bg-black/30 border border-white/10 text-white' 
+                  : 'bg-input'
+                }`}
+                placeholder={t('contact.form.subjectPlaceholder')}
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <label htmlFor="message" className="block text-sm font-medium">
+                {t('contact.form.message')}
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={5}
+                className={`w-full px-4 py-2 rounded-md ${
+                  isCreativeMode 
+                  ? 'bg-black/30 border border-white/10 text-white' 
+                  : 'bg-input'
+                }`}
+                placeholder={t('contact.form.messagePlaceholder')}
+              ></textarea>
+            </div>
+            
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className={`px-8 py-3 rounded-full font-medium transition-all duration-300 ${
+                  isCreativeMode 
+                  ? 'bg-gradient-to-r from-purple-600 to-blue-500 text-white hover:shadow-[0_0_15px_rgba(139,92,246,0.5)]' 
+                  : 'bg-primary text-primary-foreground hover:bg-primary/90'
+                }`}
+              >
+                {isCreativeMode ? "Projektanfrage starten" : t('contact.form.submit')}
+              </button>
+            </div>
+          </form>
+        </motion.div>
       </div>
     </section>
   );
