@@ -336,7 +336,7 @@ export const translations = {
       },
       automation: {
         heading: 'Automatiser. Optimiser. Développer.',
-        description: 'Solutions IA personnalisées pour l'efficacité, la croissance et la transformation digitale.',
+        description: "Solutions IA personnalisées pour l'efficacité, la croissance et la transformation digitale.",
         primaryButton: 'Réserver un appel stratégique',
         secondaryButton: "Découvrir des cas d'usage"
       }
