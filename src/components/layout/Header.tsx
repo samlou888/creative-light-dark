@@ -105,36 +105,65 @@ const Header = () => {
           </div>
           
           {/* Desktop Navigation - hidden on mobile */}
-          <nav className="hidden md:flex items-center gap-10 ml-10">
-            <a 
-              href="#automation" 
-              className="font-medium hover:text-primary transition-colors duration-300"
-              onClick={(e) => handleInternalLinkClick(e, 'automation')}
-            >
-              {t('header.automation')}
-            </a>
-            <a 
-              href="#academy" 
-              className="font-medium hover:text-primary transition-colors duration-300"
-              onClick={(e) => handleInternalLinkClick(e, 'academy')}
-            >
-              {t('header.academy')}
-            </a>
-            <a 
-              href="#about" 
-              className="font-medium hover:text-primary transition-colors duration-300"
-              onClick={(e) => handleInternalLinkClick(e, 'about')}
-            >
-              {t('header.about')}
-            </a>
-            <a 
-              href="#contact" 
-              className="font-medium hover:text-primary transition-colors duration-300"
-              onClick={(e) => handleInternalLinkClick(e, 'contact')}
-            >
-              {t('header.contact')}
-            </a>
-          </nav>
+          {!isCreativeMode && (
+            <nav className="hidden md:flex items-center gap-10 ml-10">
+              <a 
+                href="#automation" 
+                className="font-medium hover:text-primary transition-colors duration-300"
+                onClick={(e) => handleInternalLinkClick(e, 'automation')}
+              >
+                {t('header.automation')}
+              </a>
+              <a 
+                href="#academy" 
+                className="font-medium hover:text-primary transition-colors duration-300"
+                onClick={(e) => handleInternalLinkClick(e, 'academy')}
+              >
+                {t('header.academy')}
+              </a>
+              <a 
+                href="#about" 
+                className="font-medium hover:text-primary transition-colors duration-300"
+                onClick={(e) => handleInternalLinkClick(e, 'about')}
+              >
+                {t('header.about')}
+              </a>
+              <a 
+                href="#contact" 
+                className="font-medium hover:text-primary transition-colors duration-300"
+                onClick={(e) => handleInternalLinkClick(e, 'contact')}
+              >
+                {t('header.contact')}
+              </a>
+            </nav>
+          )}
+          
+          {/* Creative Mode Navigation - hidden on mobile */}
+          {isCreativeMode && (
+            <nav className="hidden md:flex items-center gap-10 ml-10">
+              <a 
+                href="#services" 
+                className="font-medium hover:text-primary transition-colors duration-300"
+                onClick={(e) => handleInternalLinkClick(e, 'services')}
+              >
+                {t('header.services')}
+              </a>
+              <a 
+                href="#showcase" 
+                className="font-medium hover:text-primary transition-colors duration-300"
+                onClick={(e) => handleInternalLinkClick(e, 'showcase')}
+              >
+                {t('header.projects')}
+              </a>
+              <a 
+                href="#contact" 
+                className="font-medium hover:text-primary transition-colors duration-300"
+                onClick={(e) => handleInternalLinkClick(e, 'contact')}
+              >
+                {t('header.contact')}
+              </a>
+            </nav>
+          )}
           
           {/* Mobile Burger Menu Button - only visible on mobile */}
           <button 
@@ -150,20 +179,6 @@ const Header = () => {
             {/* Creative Studio toggle */}
             <div className={isMobile ? 'mx-2' : ''}>
               <ThemeToggle />
-            </div>
-            
-            {/* Language selector on the far right */}
-            <div className={isMobile ? 'ml-2' : ''}>
-              <Select defaultValue={language} onValueChange={handleLanguageChange}>
-                <SelectTrigger className="w-auto bg-transparent border-none focus:ring-0 px-2">
-                  <Globe size={18} />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="de">{t('language.de')}</SelectItem>
-                  <SelectItem value="en">{t('language.en')}</SelectItem>
-                  <SelectItem value="fr">{t('language.fr')}</SelectItem>
-                </SelectContent>
-              </Select>
             </div>
             
             {/* CTA button - hidden on mobile */}
@@ -185,27 +200,53 @@ const Header = () => {
         {isMobile && isMenuOpen && (
           <div className="md:hidden absolute left-0 right-0 top-full bg-white/95 dark:bg-black/95 shadow-md animate-fade-in py-4 px-6 backdrop-blur-md">
             <nav className="flex flex-col space-y-4">
-              <a 
-                href="#automation" 
-                className="font-medium hover:text-primary transition-colors duration-300 py-2"
-                onClick={(e) => handleInternalLinkClick(e, 'automation')}
-              >
-                {t('header.automation')}
-              </a>
-              <a 
-                href="#academy" 
-                className="font-medium hover:text-primary transition-colors duration-300 py-2"
-                onClick={(e) => handleInternalLinkClick(e, 'academy')}
-              >
-                {t('header.academy')}
-              </a>
-              <a 
-                href="#about" 
-                className="font-medium hover:text-primary transition-colors duration-300 py-2"
-                onClick={(e) => handleInternalLinkClick(e, 'about')}
-              >
-                {t('header.about')}
-              </a>
+              {/* Business Mode Navigation */}
+              {!isCreativeMode && (
+                <>
+                  <a 
+                    href="#automation" 
+                    className="font-medium hover:text-primary transition-colors duration-300 py-2"
+                    onClick={(e) => handleInternalLinkClick(e, 'automation')}
+                  >
+                    {t('header.automation')}
+                  </a>
+                  <a 
+                    href="#academy" 
+                    className="font-medium hover:text-primary transition-colors duration-300 py-2"
+                    onClick={(e) => handleInternalLinkClick(e, 'academy')}
+                  >
+                    {t('header.academy')}
+                  </a>
+                  <a 
+                    href="#about" 
+                    className="font-medium hover:text-primary transition-colors duration-300 py-2"
+                    onClick={(e) => handleInternalLinkClick(e, 'about')}
+                  >
+                    {t('header.about')}
+                  </a>
+                </>
+              )}
+              
+              {/* Creative Mode Navigation */}
+              {isCreativeMode && (
+                <>
+                  <a 
+                    href="#services" 
+                    className="font-medium hover:text-primary transition-colors duration-300 py-2"
+                    onClick={(e) => handleInternalLinkClick(e, 'services')}
+                  >
+                    {t('header.services')}
+                  </a>
+                  <a 
+                    href="#showcase" 
+                    className="font-medium hover:text-primary transition-colors duration-300 py-2"
+                    onClick={(e) => handleInternalLinkClick(e, 'showcase')}
+                  >
+                    {t('header.projects')}
+                  </a>
+                </>
+              )}
+              
               <a 
                 href="#contact" 
                 className="font-medium hover:text-primary transition-colors duration-300 py-2"
@@ -213,6 +254,21 @@ const Header = () => {
               >
                 {t('header.contact')}
               </a>
+              
+              {/* Language selector in mobile menu */}
+              <div className="py-2">
+                <p className="text-sm text-muted-foreground mb-2">{t('language.de') === 'Deutsch' ? 'Sprache' : 'Language'}:</p>
+                <Select defaultValue={language} onValueChange={handleLanguageChange}>
+                  <SelectTrigger className="w-full bg-background/50">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="de">{t('language.de')}</SelectItem>
+                    <SelectItem value="en">{t('language.en')}</SelectItem>
+                    <SelectItem value="fr">{t('language.fr')}</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
               
               <a 
                 href="#contact" 

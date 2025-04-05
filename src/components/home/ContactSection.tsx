@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -12,8 +13,12 @@ const ContactSection = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     toast({
-      title: "Anfrage erhalten",
-      description: "Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.",
+      title: isCreativeMode 
+        ? "Anfrage erhalten"
+        : "Anfrage erhalten",
+      description: isCreativeMode 
+        ? "Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden."
+        : "Vielen Dank für Ihr Interesse. Wir werden uns umgehend mit Ihnen in Verbindung setzen.",
       duration: 5000,
     });
   };
