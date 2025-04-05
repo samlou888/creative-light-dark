@@ -100,7 +100,7 @@ const ContactSection = () => {
                         "Zukunftsorientierte digitale Erlebnisse"
                       ] 
                     : [
-                        "Maßgeschneiderte AI-Lösungen",
+                        "KI-gestützte Beratung & Umsetzung",
                         "Höhere Effizienz und Einsparungen",
                         "Benutzerfreundliche Implementierung",
                         "Langfristige Betreuung und Support"

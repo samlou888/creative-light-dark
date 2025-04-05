@@ -3,6 +3,14 @@ import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from '@/contexts/ThemeContext';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Globe } from 'lucide-react';
 
 const Header = () => {
   const { isCreativeMode } = useTheme();
@@ -95,6 +103,20 @@ const Header = () => {
           </nav>
           
           <div className="flex items-center gap-4">
+            <Select defaultValue="de">
+              <SelectTrigger className="w-[80px] bg-transparent border-none focus:ring-0 px-2">
+                <div className="flex items-center gap-2">
+                  <Globe size={16} />
+                  <SelectValue />
+                </div>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="de">Deutsch</SelectItem>
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="fr">Français</SelectItem>
+              </SelectContent>
+            </Select>
+            
             <ThemeToggle />
             <a 
               href="#contact" 
@@ -105,7 +127,7 @@ const Header = () => {
               } px-5 py-2 rounded-full font-medium transition-all`}
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
             >
-              {isCreativeMode ? 'Projekt starten' : 'Termin buchen'}
+              {isCreativeMode ? 'Projekt starten' : 'Strategiegespräch vereinbaren'}
             </a>
           </div>
         </div>

@@ -28,10 +28,10 @@ const HeroSection = () => {
             
             <div className="flex flex-wrap gap-4 opacity-0 animate-slide-up-fade" style={{ animationDelay: "0.4s" }}>
               <a href="#contact" className="primary-btn neon-glow">
-                {isCreativeMode ? "Projekt starten" : "Jetzt Termin buchen"}
+                {isCreativeMode ? "Projekt starten" : "Strategiegespräch vereinbaren"}
               </a>
               <a href="#showcase" className="secondary-btn">
-                {isCreativeMode ? "Showreel ansehen" : "Demo anfordern"}
+                {isCreativeMode ? "Showreel ansehen" : "Use Case entdecken"}
               </a>
             </div>
           </div>
