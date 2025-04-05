@@ -19,26 +19,23 @@ const WhatsAppButton: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={`flex items-center justify-center rounded-full bg-[#25D366] text-white transition-transform duration-300 shadow-lg ${
-                isMobile ? 'w-16 h-16' : 'w-auto h-14 px-5'
+                isMobile ? 'w-16 h-16' : 'w-14 h-14'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className={`${isMobile ? 'w-9 h-9' : 'w-7 h-7 mr-2'} flex items-center justify-center`}>
+              <div className="w-9 h-9 flex items-center justify-center">
                 <img 
                   src="/lovable-uploads/2e548e9c-b027-4f5d-b3cc-db66ee567225.png" 
                   alt="WhatsApp" 
                   className="w-full h-full object-contain"
                 />
               </div>
-              {!isMobile && <span className="font-medium">WhatsApp</span>}
             </motion.a>
           </TooltipTrigger>
-          {isMobile && (
-            <TooltipContent side="top">
-              <p>Schreib uns via WhatsApp</p>
-            </TooltipContent>
-          )}
+          <TooltipContent side="top">
+            <p>Schreib uns via WhatsApp</p>
+          </TooltipContent>
         </Tooltip>
       </TooltipProvider>
     </div>
