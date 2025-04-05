@@ -9,6 +9,7 @@ import CreativeStudioSection from '@/components/home/CreativeStudioSection';
 import ShowreelSection from '@/components/home/ShowreelSection';
 import ProjectsSection from '@/components/home/ProjectsSection';
 import ServicesSection from '@/components/home/ServicesSection';
+import WhatsAppButton from '@/components/shared/WhatsAppButton';
 
 const Index = () => {
   const { isCreativeMode } = useTheme();
@@ -34,6 +35,7 @@ const Index = () => {
         <ContactSection />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

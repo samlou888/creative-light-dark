@@ -3,6 +3,10 @@ import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
+import { WhatsApp } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+const WHATSAPP_URL = 'https://wa.me/41782143613';
 
 const ContactSection = () => {
   const { isCreativeMode } = useTheme();
@@ -123,6 +127,29 @@ const ContactSection = () => {
               </button>
             </div>
           </form>
+          
+          {/* WhatsApp Text Block */}
+          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+            <div className="text-center">
+              <h3 className="text-xl font-semibold mb-3">Du möchtest lieber direkt schreiben?</h3>
+              <p className="text-muted-foreground mb-6">
+                Kontaktiere uns unkompliziert über WhatsApp – wir antworten so schnell wie möglich.
+              </p>
+              <a 
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  isCreativeMode
+                  ? 'bg-[#25D366] text-white hover:bg-[#22c05d] hover:shadow-[0_0_15px_rgba(37,211,102,0.5)]'
+                  : 'bg-[#25D366] text-white hover:bg-[#22c05d]'
+                }`}
+              >
+                <WhatsApp className="w-5 h-5" />
+                <span>👉 Jetzt auf WhatsApp schreiben</span>
+              </a>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
