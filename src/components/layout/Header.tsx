@@ -98,94 +98,30 @@ const Header = () => {
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           {/* Logo positioned at the far left */}
-          <div className="flex-shrink-0 mr-auto">
-            <Link to="/" className="text-2xl font-bold">
+          <div className="flex items-center">
+            <Link to="/" className="text-2xl font-bold mr-6">
               <span className="text-primary">AI</span>ventures
             </Link>
-          </div>
-          
-          {/* Desktop Navigation - hidden on mobile, moved more to the left with ml-6 instead of ml-10 */}
-          {!isCreativeMode && (
-            <nav className="hidden md:flex items-center gap-12 ml-6">
-              <a 
-                href="#automation" 
-                className="font-medium hover:text-primary transition-colors duration-300"
-                onClick={(e) => handleInternalLinkClick(e, 'automation')}
-              >
-                {t('header.automation')}
-              </a>
-              <a 
-                href="#academy" 
-                className="font-medium hover:text-primary transition-colors duration-300"
-                onClick={(e) => handleInternalLinkClick(e, 'academy')}
-              >
-                {t('header.academy')}
-              </a>
-              <a 
-                href="#about" 
-                className="font-medium hover:text-primary transition-colors duration-300"
-                onClick={(e) => handleInternalLinkClick(e, 'about')}
-              >
-                {t('header.about')}
-              </a>
-              <a 
-                href="#contact" 
-                className="font-medium hover:text-primary transition-colors duration-300"
-                onClick={(e) => handleInternalLinkClick(e, 'contact')}
-              >
-                {t('header.contact')}
-              </a>
-            </nav>
-          )}
-          
-          {/* Creative Mode Navigation - hidden on mobile, moved more to the left with ml-6 instead of ml-10 */}
-          {isCreativeMode && (
-            <nav className="hidden md:flex items-center gap-12 ml-6">
-              <a 
-                href="#services" 
-                className="font-medium hover:text-primary transition-colors duration-300"
-                onClick={(e) => handleInternalLinkClick(e, 'services')}
-              >
-                {t('header.services')}
-              </a>
-              <a 
-                href="#showcase" 
-                className="font-medium hover:text-primary transition-colors duration-300"
-                onClick={(e) => handleInternalLinkClick(e, 'showcase')}
-              >
-                {t('header.projects')}
-              </a>
-              <a 
-                href="#contact" 
-                className="font-medium hover:text-primary transition-colors duration-300"
-                onClick={(e) => handleInternalLinkClick(e, 'contact')}
-              >
-                {t('header.contact')}
-              </a>
-            </nav>
-          )}
-          
-          {/* Mobile Burger Menu Button - only visible on mobile */}
-          <button 
-            className="md:hidden flex items-center justify-center w-8 h-8 mr-2" 
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-          
-          {/* Right side controls with better spacing for mobile and more space between items on desktop */}
-          <div className={`flex items-center ${isMobile ? 'gap-4' : 'gap-12'}`}>
-            {/* Creative Studio toggle */}
-            <div className={isMobile ? 'mx-2' : ''}>
+            
+            {/* Burger menu button - now always visible */}
+            <button 
+              className="flex items-center justify-center w-8 h-8 mr-6" 
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+            
+            {/* Creative Studio toggle - always visible, positioned after burger */}
+            <div className="ml-4">
               <ThemeToggle />
             </div>
           </div>
         </div>
         
-        {/* Mobile Navigation Menu - slide down when menu is open */}
-        {isMobile && isMenuOpen && (
-          <div className="md:hidden absolute left-0 right-0 top-full bg-white/95 dark:bg-black/95 shadow-md animate-fade-in py-4 px-6 backdrop-blur-md">
+        {/* Navigation Menu - slide down when menu is open, for both mobile and desktop */}
+        {isMenuOpen && (
+          <div className="absolute left-0 right-0 top-full bg-white/95 dark:bg-black/95 shadow-md animate-fade-in py-4 px-6 backdrop-blur-md">
             <nav className="flex flex-col space-y-4">
               {/* Business Mode Navigation */}
               {!isCreativeMode && (
@@ -242,7 +178,7 @@ const Header = () => {
                 {t('header.contact')}
               </a>
               
-              {/* Language selector in mobile menu */}
+              {/* Language selector in menu */}
               <div className="py-2">
                 <p className="text-sm text-muted-foreground mb-2">{t('language.de') === 'Deutsch' ? 'Sprache' : 'Language'}:</p>
                 <Select defaultValue={language} onValueChange={handleLanguageChange}>
