@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
@@ -87,7 +86,7 @@ const ProjectsSection = () => {
   return (
     <>
       {/* Projects Grid/Carousel Section */}
-      <section id="projects" className="py-36 px-6 md:px-10">
+      <section id="projekte" className="py-36 px-6 md:px-10">
         <div className="container mx-auto">
           <div className="text-center mb-12 max-w-3xl mx-auto">
             <h2 className="section-heading mb-4">

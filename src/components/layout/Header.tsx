@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
@@ -100,9 +101,9 @@ const Header = () => {
       return (
         <>
           <a 
-            href="#creative-studio" 
+            href="#studio" 
             className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'creative-studio')}
+            onClick={(e) => handleInternalLinkClick(e, 'studio')}
           >
             {t('header.creative.studio')}
           </a>
@@ -114,9 +115,9 @@ const Header = () => {
             {t('header.creative.showreel')}
           </a>
           <a 
-            href="#projects" 
+            href="#projekte" 
             className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'projects')}
+            onClick={(e) => handleInternalLinkClick(e, 'projekte')}
           >
             {t('header.creative.projects')}
           </a>

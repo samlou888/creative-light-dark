@@ -36,7 +36,7 @@ const CreativeStudioSection = () => {
   ];
 
   return (
-    <section id="creative-studio" className="py-36 px-6 md:px-10 mt-24">
+    <section id="studio" className="py-36 px-6 md:px-10 mt-24">
       <div className="container mx-auto">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="section-heading mb-4">

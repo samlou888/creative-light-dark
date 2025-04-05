@@ -25,8 +25,9 @@ const Index = () => {
         if (headingText.includes('kontakt')) section.id = 'kontakt';
         else if (headingText.includes('automation')) section.id = 'automation';
         else if (headingText.includes('academy')) section.id = 'academy';
-        else if (headingText.includes('creative')) section.id = 'creative-studio';
+        else if (headingText.includes('creative')) section.id = 'studio';
         else if (headingText.includes('projekt')) section.id = 'projekte';
+        else if (headingText.includes('showreel')) section.id = 'showreel';
       }
     });
     
@@ -41,7 +42,7 @@ const Index = () => {
     if (footerElement && !footerElement.id) {
       footerElement.id = 'footer';
     }
-  }, []);
+  }, [isCreativeMode]); // Add isCreativeMode as dependency so IDs update when mode changes
 
   return (
     <div className="min-h-screen flex flex-col">
