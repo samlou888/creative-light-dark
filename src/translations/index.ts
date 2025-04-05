@@ -161,7 +161,7 @@ export const translations = {
     contact: {
       creative: {
         title: 'Start Your Creative Project',
-        description: 'Got a question or want to book a call? Drop us a message – we'll get back to you.',
+        description: "Got a question or want to book a call? Drop us a message – we'll get back to you.",
         submitButton: 'Request Project',
         benefitsTitle: 'Why work with our Creative Studio?',
         benefits: [
@@ -174,7 +174,7 @@ export const translations = {
       },
       automation: {
         title: 'Contact Us',
-        description: 'Got a question or want to book a call? Drop us a message – we'll get back to you.',
+        description: "Got a question or want to book a call? Drop us a message – we'll get back to you.",
         submitButton: 'Send Message',
         benefitsTitle: 'Your Benefits at a Glance',
         benefits: [
@@ -219,7 +219,7 @@ export const translations = {
     hero: {
       creative: {
         heading: 'Designer. Créer. Bousculer.',
-        description: 'Libérez la puissance de l\'IA dans votre processus créatif. Nous créons des expériences digitales qui captivent.',
+        description: "Libérez la puissance de l'IA dans votre processus créatif. Nous créons des expériences digitales qui captivent.",
         primaryButton: 'Demander un projet',
         secondaryButton: 'Voir notre travail créatif'
       },
@@ -227,7 +227,7 @@ export const translations = {
         heading: 'Automatiser. Optimiser. Développer.',
         description: 'Transformez votre entreprise avec des solutions IA sur mesure. Nous vous aidons à travailler plus efficacement et à mieux évoluer.',
         primaryButton: 'Réserver un appel stratégique',
-        secondaryButton: 'Découvrir des cas d\'usage'
+        secondaryButton: "Découvrir des cas d'usage"
       }
     },
     services: {
@@ -239,13 +239,13 @@ export const translations = {
       studio: {
         title: 'Creative Studio',
         description: 'Nous concevons ce que vous avez en tête - visuellement et fonctionnellement.',
-        extendedDescription: 'Quand l\'esthétique rencontre la fonctionnalité, plus que de la visibilité émerge : votre marque devient un sujet de conversation.',
+        extendedDescription: "Quand l'esthétique rencontre la fonctionnalité, plus que de la visibilité émerge : votre marque devient un sujet de conversation.",
         features: ['Branding', 'Design', 'Médias sociaux & contenu', 'Dév. web & app']
       },
       automation: {
         title: 'Automation',
         description: 'Automatisation, CRM, Gestion de documents, Analytics',
-        creativeDescription: 'Révolutionnez vos flux de travail avec nos solutions d\'automatisation IA avancées.',
+        creativeDescription: "Révolutionnez vos flux de travail avec nos solutions d'automatisation IA avancées.",
         features: {
           creative: ['Automatisation robotique des processus', 'Chatbots intelligents', 'Analyses prédictives', 'Décisions basées sur les données'],
           automation: ['Optimisation des flux de travail', 'Intégration CRM', 'Gestion des documents', 'Reporting et analytique']
@@ -253,8 +253,8 @@ export const translations = {
       },
       academy: {
         title: 'Academy',
-        description: 'Nous formons vos employés et leur permettons d\'exploiter pleinement le potentiel des technologies modernes.',
-        creativeDescription: 'Amenez vos équipes au niveau supérieur avec nos programmes de formation IA orientés vers l\'avenir.',
+        description: "Nous formons vos employés et leur permettons d'exploiter pleinement le potentiel des technologies modernes.",
+        creativeDescription: "Amenez vos équipes au niveau supérieur avec nos programmes de formation IA orientés vers l'avenir.",
         features: {
           creative: ['Prompt IA', 'Compétences tech', 'Formations VR', 'Parcours personnalisés'],
           automation: ['Transformation digitale', 'Analyse de données', 'Savoir-faire technique', 'Gestion du changement']
@@ -264,11 +264,11 @@ export const translations = {
     contact: {
       creative: {
         title: 'Démarrer Votre Projet Créatif',
-        description: 'Une question ou envie d\'un rendez-vous ? Écrivez-nous, on vous répond rapidement.',
+        description: "Une question ou envie d'un rendez-vous ? Écrivez-nous, on vous répond rapidement.",
         submitButton: 'Demander un projet',
         benefitsTitle: 'Pourquoi travailler avec notre Creative Studio ?',
         benefits: [
-          'Processus créatifs alimentés par l\'IA',
+          "Processus créatifs alimentés par l'IA",
           'Designs uniques et disruptifs',
           'Itération et développement plus rapides',
           'Expériences numériques avant-gardistes',
@@ -277,11 +277,11 @@ export const translations = {
       },
       automation: {
         title: 'Contactez-nous',
-        description: 'Une question ou envie d\'un rendez-vous ? Écrivez-nous, on vous répond rapidement.',
+        description: "Une question ou envie d'un rendez-vous ? Écrivez-nous, on vous répond rapidement.",
         submitButton: 'Envoyer le message',
-        benefitsTitle: 'Vos avantages en un coup d\'œil',
+        benefitsTitle: "Vos avantages en un coup d'œil",
         benefits: [
-          'Consultation et mise en œuvre basées sur l\'IA',
+          "Consultation et mise en œuvre basées sur l'IA",
           'Efficacité accrue et économies',
           'Implémentation conviviale',
           'Support et maintenance à long terme'
