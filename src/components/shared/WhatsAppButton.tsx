@@ -19,14 +19,14 @@ const WhatsAppButton: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={`flex items-center justify-center rounded-full bg-[#25D366] text-white transition-transform duration-300 shadow-lg ${
-                isMobile ? 'w-14 h-14' : 'w-auto h-12 px-4'
+                isMobile ? 'w-16 h-16' : 'w-auto h-14 px-5'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className={`${isMobile ? 'w-7 h-7' : 'w-5 h-5 mr-2'} flex items-center justify-center`}>
+              <div className={`${isMobile ? 'w-9 h-9' : 'w-7 h-7 mr-2'} flex items-center justify-center`}>
                 <img 
-                  src="/lovable-uploads/d9001fca-d3cf-4ad8-bcf9-ed75bbd528e5.png" 
+                  src="/lovable-uploads/2e548e9c-b027-4f5d-b3cc-db66ee567225.png" 
                   alt="WhatsApp" 
                   className="w-full h-full object-contain"
                 />

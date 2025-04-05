@@ -136,15 +136,15 @@ const ContactSection = () => {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`inline-flex items-center gap-3 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   isCreativeMode
                   ? 'bg-[#25D366] text-white hover:bg-[#22c05d] hover:shadow-[0_0_15px_rgba(37,211,102,0.5)]'
                   : 'bg-[#25D366] text-white hover:bg-[#22c05d]'
                 }`}
               >
-                <div className="w-5 h-5 flex items-center justify-center">
+                <div className="w-7 h-7 flex items-center justify-center">
                   <img 
-                    src="/lovable-uploads/d9001fca-d3cf-4ad8-bcf9-ed75bbd528e5.png" 
+                    src="/lovable-uploads/2e548e9c-b027-4f5d-b3cc-db66ee567225.png" 
                     alt="WhatsApp" 
                     className="w-full h-full object-contain"
                   />
