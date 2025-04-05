@@ -1,20 +1,20 @@
 
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselPrevious, 
+  CarouselNext 
+} from "@/components/ui/carousel";
 import { Slider } from "@/components/ui/slider";
 import useEmblaCarousel from 'embla-carousel-react';
 
 const ShowcaseSection = () => {
   const { isCreativeMode } = useTheme();
-  const { t } = useLanguage();
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: true });
-
-  // Function to render HTML from string with translations
-  const renderHTML = (htmlString: string) => {
-    return { __html: htmlString };
-  };
 
   // Update current slide when carousel changes
   React.useEffect(() => {
@@ -33,74 +33,33 @@ const ShowcaseSection = () => {
   // Mockup project data
   const projects = isCreativeMode 
     ? [
-        { 
-          id: 1, 
-          title: 'Neurale Branding Identität', 
-          category: t('showcase.categories.branding'), 
-          image: '/placeholder.svg' 
-        },
-        { 
-          id: 2, 
-          title: 'KI-generierte Produktvisualisierung', 
-          category: t('showcase.categories.design'), 
-          image: '/placeholder.svg' 
-        },
-        { 
-          id: 3, 
-          title: 'Immersive Web Experience', 
-          category: t('showcase.categories.web'), 
-          image: '/placeholder.svg' 
-        },
-        { 
-          id: 4, 
-          title: 'Futuristische UI Konzepte', 
-          category: t('showcase.categories.app'), 
-          image: '/placeholder.svg' 
-        },
+        { id: 1, title: 'Neurale Branding Identität', category: 'Branding', image: '/placeholder.svg' },
+        { id: 2, title: 'KI-generierte Produktvisualisierung', category: 'Design', image: '/placeholder.svg' },
+        { id: 3, title: 'Immersive Web Experience', category: 'Web', image: '/placeholder.svg' },
+        { id: 4, title: 'Futuristische UI Konzepte', category: 'App Design', image: '/placeholder.svg' },
       ]
     : [
-        { 
-          id: 1, 
-          title: 'Workflow Automatisierung', 
-          category: t('showcase.categories.process'), 
-          image: '/placeholder.svg' 
-        },
-        { 
-          id: 2, 
-          title: 'Datenanalyse Dashboard', 
-          category: t('showcase.categories.analytics'),
-          image: '/placeholder.svg' 
-        },
-        { 
-          id: 3, 
-          title: 'Digitale Transformation', 
-          category: t('showcase.categories.strategy'),
-          image: '/placeholder.svg' 
-        },
-        { 
-          id: 4, 
-          title: 'Unternehmensbranding', 
-          category: t('showcase.categories.design'), 
-          image: '/placeholder.svg' 
-        },
+        { id: 1, title: 'Workflow Automatisierung', category: 'Prozess', image: '/placeholder.svg' },
+        { id: 2, title: 'Datenanalyse Dashboard', category: 'Analytics', image: '/placeholder.svg' },
+        { id: 3, title: 'Digitale Transformation', category: 'Strategie', image: '/placeholder.svg' },
+        { id: 4, title: 'Unternehmensbranding', category: 'Design', image: '/placeholder.svg' },
       ];
 
   return (
     <section id="showcase" className="py-10 px-6 md:px-10">
       <div className="container mx-auto">
         <div className="text-center mb-6 max-w-3xl mx-auto">
-          <h2 
-            className="section-heading mb-3"
-            dangerouslySetInnerHTML={renderHTML(
-              isCreativeMode 
-                ? t('showcase.heading.creative')
-                : t('showcase.heading.standard')
+          <h2 className="section-heading mb-3">
+            {isCreativeMode ? (
+              <>Kreative <span className="text-primary">Projekte</span></>
+            ) : (
+              <><span className="text-primary">Projekte</span></>
             )}
-          />
+          </h2>
           <p className="text-lg text-muted-foreground">
             {isCreativeMode 
-              ? t('showcase.description.creative')
-              : t('showcase.description.standard')
+              ? "Entdecken Sie einige unserer innovativsten und disruptivsten Arbeiten aus unserem Creative Studio."
+              : "Sehen Sie, wie wir Unternehmen dabei helfen, ihre Ziele durch maßgeschneiderte AI-Lösungen zu erreichen."
             }
           </p>
         </div>
@@ -195,10 +154,7 @@ const ShowcaseSection = () => {
             href="#contact" 
             className={`inline-block primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
           >
-            {isCreativeMode 
-              ? t('showcase.cta.creative') 
-              : t('showcase.cta.standard')
-            }
+            {isCreativeMode ? "Ihr Projekt starten" : "Projekt starten"}
           </a>
         </div>
       </div>

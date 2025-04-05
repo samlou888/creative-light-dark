@@ -1,45 +1,37 @@
 
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { useLanguage } from '@/contexts/LanguageContext';
 import WireframeHead from '../graphics/WireframeHead';
 
 const HeroSection = () => {
   const { isCreativeMode } = useTheme();
-  const { t } = useLanguage();
-
-  // Function to render HTML from string with translations
-  const renderHTML = (htmlString: string) => {
-    return { __html: htmlString };
-  };
 
   return (
     <section className="pt-32 pb-20 px-6 md:px-10 min-h-screen flex items-center">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
-            <h1 
-              className="hero-heading opacity-0 animate-slide-up-fade"
-              dangerouslySetInnerHTML={renderHTML(
-                isCreativeMode 
-                  ? t('hero.creative.heading')
-                  : t('hero.standard.heading')
+            <h1 className="hero-heading opacity-0 animate-slide-up-fade">
+              {isCreativeMode ? (
+                <>Design. Create. <span className="text-primary">Disrupt.</span></>
+              ) : (
+                <>Automate. Optimize. <span className="text-primary">Scale.</span></>
               )}
-            />
+            </h1>
             
             <p className="text-xl text-muted-foreground max-w-lg opacity-0 animate-slide-up-fade" style={{ animationDelay: "0.3s" }}>
               {isCreativeMode 
-                ? t('hero.creative.description')
-                : t('hero.standard.description')
+                ? "Entfesseln Sie die Kraft künstlicher Intelligenz in Ihrem kreativen Prozess. Wir erschaffen digitale Experiences, die begeistern."
+                : "Transformieren Sie Ihr Unternehmen mit maßgeschneiderten AI-Lösungen. Wir helfen Ihnen, effizienter zu arbeiten und besser zu skalieren."
               }
             </p>
             
             <div className="flex flex-wrap gap-4 opacity-0 animate-slide-up-fade" style={{ animationDelay: "0.4s" }}>
               <a href="#contact" className="primary-btn neon-glow">
-                {isCreativeMode ? t('hero.creative.primaryButton') : t('hero.standard.primaryButton')}
+                {isCreativeMode ? "Projekt starten" : "Strategiegespräch vereinbaren"}
               </a>
               <a href="#showcase" className="secondary-btn">
-                {isCreativeMode ? t('hero.creative.secondaryButton') : t('hero.standard.secondaryButton')}
+                {isCreativeMode ? "Showreel ansehen" : "Use Case entdecken"}
               </a>
             </div>
           </div>
