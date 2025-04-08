@@ -154,7 +154,7 @@ const ShowcaseSection = () => {
             href="#contact" 
             className={`inline-block primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
           >
-            {isCreativeMode ? "Ihr Projekt starten" : "Projekt starten"}
+            {isCreativeMode ? "Ihr Projekt starten" : "Ähnliches Projekt starten"}
           </a>
         </div>
       </div>

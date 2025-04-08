@@ -2,11 +2,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
   const { isCreativeMode } = useTheme();
-  const { t } = useLanguage();
 
   return (
     <footer className={`py-10 ${isCreativeMode ? 'dark-card mt-16' : 'border-t mt-20'}`}>
@@ -17,12 +15,12 @@ const Footer = () => {
               <span className="text-primary">AI</span>ventures
             </h3>
             <p className="text-muted-foreground">
-              {t('footer.description')}
+              Wir revolutionieren Unternehmen durch AI-Lösungen, die wirklich funktionieren.
             </p>
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">{t('footer.services')}</h4>
+            <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               <li><Link to="/creative-studio" className="text-muted-foreground hover:text-primary transition-colors">Studio</Link></li>
               <li><Link to="/automation-services" className="text-muted-foreground hover:text-primary transition-colors">Automation</Link></li>
@@ -31,15 +29,15 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">{t('footer.contact')}</h4>
+            <h4 className="font-semibold mb-4">Kontakt</h4>
             <ul className="space-y-2">
-              <li className="text-muted-foreground">{t('contact.quickContact.email')}</li>
+              <li className="text-muted-foreground">info@aiventures.ch</li>
               <li className="text-muted-foreground">Biel/Bienne, Schweiz</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">{t('footer.legal')}</h4>
+            <h4 className="font-semibold mb-4">Rechtliches</h4>
             <ul className="space-y-2">
               <li><Link to="/impressum" className="text-muted-foreground hover:text-primary transition-colors">Impressum</Link></li>
               <li><Link to="/datenschutz" className="text-muted-foreground hover:text-primary transition-colors">Datenschutz</Link></li>
@@ -50,7 +48,7 @@ const Footer = () => {
         
         <div className="mt-10 pt-6 border-t border-gray-200 dark:border-gray-800">
           <p className="text-center text-muted-foreground text-sm">
-            {t('footer.copyright')}
+            © {new Date().getFullYear()} AIventures. Alle Rechte vorbehalten.
           </p>
         </div>
       </div>

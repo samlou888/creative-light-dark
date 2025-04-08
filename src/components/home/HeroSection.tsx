@@ -1,12 +1,10 @@
 
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { useLanguage } from '@/contexts/LanguageContext';
 import WireframeHead from '../graphics/WireframeHead';
 
 const HeroSection = () => {
   const { isCreativeMode } = useTheme();
-  const { t } = useLanguage();
 
   return (
     <section className="pt-32 pb-20 px-6 md:px-10 min-h-screen flex items-center">
@@ -15,25 +13,25 @@ const HeroSection = () => {
           <div className="space-y-8">
             <h1 className="hero-heading opacity-0 animate-slide-up-fade">
               {isCreativeMode ? (
-                t('hero.creative.heading')
+                <>Design. Create. <span className="text-primary">Disrupt.</span></>
               ) : (
-                t('hero.automation.heading')
+                <>Automate. Optimize. <span className="text-primary">Scale.</span></>
               )}
             </h1>
             
             <p className="text-xl text-muted-foreground max-w-lg opacity-0 animate-slide-up-fade" style={{ animationDelay: "0.3s" }}>
               {isCreativeMode 
-                ? t('hero.creative.description')
-                : t('hero.automation.description')
+                ? "Entfesseln Sie die Kraft künstlicher Intelligenz in Ihrem kreativen Prozess. Wir erschaffen digitale Experiences, die begeistern."
+                : "Transformieren Sie Ihr Unternehmen mit maßgeschneiderten AI-Lösungen. Wir helfen Ihnen, effizienter zu arbeiten und besser zu skalieren."
               }
             </p>
             
             <div className="flex flex-wrap gap-4 opacity-0 animate-slide-up-fade" style={{ animationDelay: "0.4s" }}>
-              <a href="#contact" className={`primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}>
-                {isCreativeMode ? t('hero.creative.primaryButton') : t('hero.automation.primaryButton')}
+              <a href="#contact" className="primary-btn neon-glow">
+                {isCreativeMode ? "Projekt starten" : "Jetzt Termin buchen"}
               </a>
-              <a href="#automation" className="secondary-btn">
-                {isCreativeMode ? t('hero.creative.secondaryButton') : t('hero.automation.secondaryButton')}
+              <a href="#showcase" className="secondary-btn">
+                {isCreativeMode ? "Showreel ansehen" : "Demo anfordern"}
               </a>
             </div>
           </div>

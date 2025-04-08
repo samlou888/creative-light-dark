@@ -1,78 +1,14 @@
-import React, { useEffect, useState, useRef } from 'react';
+
+import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from '@/contexts/ThemeContext';
-import { useLanguage } from '@/contexts/LanguageContext';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { 
-  Globe, 
-  Menu, 
-  X 
-} from 'lucide-react';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { Language } from '@/translations';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const { isCreativeMode } = useTheme();
-  const { language, setLanguage, t } = useLanguage();
   const location = useLocation();
-  const isMobile = useIsMobile();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Toggle mobile menu
-  const toggleMenu = () => {
-    setIsMenuOpen(prev => !prev);
-  };
-
-  // Close menu when route changes
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location]);
-
-  // Close menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        isMenuOpen && 
-        menuRef.current && 
-        !menuRef.current.contains(event.target as Node) &&
-        menuButtonRef.current && 
-        !menuButtonRef.current.contains(event.target as Node)
-      ) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isMenuOpen]);
-
-  // Scroll to top function for logo click
-  const scrollToTop = (event: React.MouseEvent) => {
-    event.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
-  // Handle smooth scrolling for internal links with improved offset calculation
+  // Handle smooth scrolling for internal links with offset
   const handleInternalLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     const currentPath = location.pathname;
     
@@ -82,146 +18,97 @@ const Header = () => {
       const targetElement = document.getElementById(targetId);
       
       if (targetElement) {
-        // Close the mobile menu if it's open
-        setIsMenuOpen(false);
+        // Get header height for offset calculation
+        const headerHeight = document.querySelector('header')?.offsetHeight || 80;
         
-        // Let the browser handle the scrolling using CSS scroll-behavior
-        targetElement.scrollIntoView();
+        // Calculate the element's position with different offsets based on section
+        let offsetAdjustment = 200; // Default offset
+        
+        // Apply specific offset for showcase section
+        if (targetId === 'showcase') {
+          offsetAdjustment = 20; // Minimal offset for showcase to show everything including button
+        }
+        
+        // Apply specific offset for services section to match the uploaded image
+        if (targetId === 'services') {
+          offsetAdjustment = -100; // Negative offset to position the view much lower
+        }
+        
+        // Apply specific offset for contact section
+        if (targetId === 'contact') {
+          offsetAdjustment = 20; // Small offset for contact section to ensure the form is fully visible
+        }
+        
+        // Calculate the element's position with offset
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offsetAdjustment;
+        
+        // Scroll to the element with offset
+        window.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth'
+        });
       }
     }
   };
 
-  const handleLanguageChange = (value: string) => {
-    setLanguage(value as Language);
-  };
+  // Add smooth scrolling behavior to document
+  useEffect(() => {
+    // Add smooth scrolling to the entire document
+    document.documentElement.style.scrollBehavior = 'smooth';
 
-  const renderMenuItems = () => {
-    if (isCreativeMode) {
-      return (
-        <>
-          <a 
-            href="#studio" 
-            className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'studio')}
-          >
-            {t('header.creative.studio')}
-          </a>
-          <a 
-            href="#showreel" 
-            className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'showreel')}
-          >
-            {t('header.creative.showreel')}
-          </a>
-          <a 
-            href="#projekte" 
-            className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'projekte')}
-          >
-            {t('header.creative.projects')}
-          </a>
-          <a 
-            href="#kontakt" 
-            className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'kontakt')}
-          >
-            {t('header.contact')}
-          </a>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <a 
-            href="#automation" 
-            className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'automation')}
-          >
-            {t('header.automation')}
-          </a>
-          <a 
-            href="#academy" 
-            className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'academy')}
-          >
-            {t('header.academy')}
-          </a>
-          <a 
-            href="#success" 
-            className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'success')}
-          >
-            {t('header.success')}
-          </a>
-          <a 
-            href="#kontakt" 
-            className="font-medium hover:text-primary transition-colors duration-300 py-2"
-            onClick={(e) => handleInternalLinkClick(e, 'kontakt')}
-          >
-            {t('header.contact')}
-          </a>
-        </>
-      );
-    }
-  };
+    return () => {
+      // Clean up when component unmounts
+      document.documentElement.style.scrollBehavior = '';
+    };
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
-          <div className="flex-1">
+          <Link to="/" className="text-2xl font-bold">
+            <span className="text-primary">AI</span>ventures
+          </Link>
+          
+          <nav className="hidden md:flex items-center gap-10">
             <a 
-              href="/" 
-              onClick={scrollToTop} 
-              className="text-2xl font-bold cursor-pointer"
+              href="#services" 
+              className="font-medium hover:text-primary transition-colors duration-300"
+              onClick={(e) => handleInternalLinkClick(e, 'services')}
             >
-              <span className="text-primary">AI</span>ventures
+              Services
+            </a>
+            <a 
+              href="#showcase" 
+              className="font-medium hover:text-primary transition-colors duration-300"
+              onClick={(e) => handleInternalLinkClick(e, 'showcase')}
+            >
+              Projekte
+            </a>
+            <a 
+              href="#contact" 
+              className="font-medium hover:text-primary transition-colors duration-300"
+              onClick={(e) => handleInternalLinkClick(e, 'contact')}
+            >
+              Kontakt
+            </a>
+          </nav>
+          
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <a 
+              href="#contact" 
+              className={`hidden md:block ${
+                isCreativeMode 
+                ? 'bg-primary text-white neon-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]' 
+                : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
+              } px-5 py-2 rounded-full font-medium transition-all`}
+              onClick={(e) => handleInternalLinkClick(e, 'contact')}
+            >
+              {isCreativeMode ? 'Projekt starten' : 'Termin buchen'}
             </a>
           </div>
-          
-          <div className="flex items-center space-x-6">
-            <ThemeToggle />
-            <button 
-              className="flex items-center justify-center w-8 h-8" 
-              onClick={toggleMenu}
-              aria-label="Toggle menu"
-              ref={menuButtonRef}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
         </div>
-        
-        {isMenuOpen && (
-          <div 
-            ref={menuRef}
-            className="absolute right-0 top-full bg-white/95 dark:bg-black/95 shadow-md animate-fade-in py-4 px-6 backdrop-blur-md w-64 md:w-72 rounded-bl-lg"
-          >
-            <nav className="flex flex-col space-y-4">
-              {renderMenuItems()}
-              
-              <div className="py-2">
-                <DropdownMenu>
-                  <DropdownMenuTrigger className="flex items-center gap-2 font-medium hover:text-primary transition-colors duration-300 py-2">
-                    <Globe size={18} />
-                    <span className="text-sm">{t(`language.${language}`)}</span>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="bg-background/95 backdrop-blur-sm">
-                    <DropdownMenuItem onClick={() => handleLanguageChange('de')}>
-                      {t('language.de')}
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => handleLanguageChange('en')}>
-                      {t('language.en')}
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => handleLanguageChange('fr')}>
-                      {t('language.fr')}
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-            </nav>
-          </div>
-        )}
       </div>
     </header>
   );
