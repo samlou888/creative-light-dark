@@ -76,8 +76,12 @@
   }
 
   .mode-academy {
-    --primary: 217 91% 60%;
+    --primary: 196 100% 50%;
     --primary-foreground: 210 40% 98%;
+    --accent: 276 100% 83%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --background: 0 0% 98%;
+    --muted: 276 100% 95%;
   }
 
   * {
