@@ -1,46 +1,93 @@
-
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { Palette, Globe, Video } from 'lucide-react';
+import { GraduationCap, MessageSquareText, BookText, Palette, Globe, Video } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const ServicesSection = () => {
-  const { isCreativeMode } = useTheme();
+  const { mode } = useTheme();
   
-  const services = [
+  const academyServices = [
+    {
+      id: 'workshops',
+      icon: <GraduationCap size={32} className="text-[#00CFFF]" />,
+      title: 'Workshops & Schulungen für Unternehmen',
+      description: 'Live und On-Demand Trainings zu AI-Tools, Prozessautomatisierung und effizientem Arbeiten mit künstlicher Intelligenz. Klar, praxisnah, umsetzbar.'
+    },
+    {
+      id: 'coaching',
+      icon: <MessageSquareText size={32} className="text-[#D2A8FF]" />,
+      title: 'Prompt-Coaching & Templates',
+      description: '1:1 Prompt-Coaching plus sofort einsetzbare AI-Vorlagen für Sales, Marketing, Support & HR. Für Teams, die schneller ans Ziel wollen.'
+    },
+    {
+      id: 'kurse',
+      icon: <BookText size={32} className="text-[#00CFFF]" />,
+      title: 'Digitale Weiterbildung & Online-Kurse',
+      description: 'Interaktive Lernpfade mit Videoinhalten, Übungen und optionalen Zertifikaten. Für Unternehmen, die intern Wissen aufbauen und skalieren wollen.'
+    }
+  ];
+
+  const creativeServices = [
     {
       id: 'branding',
-      icon: <Palette size={isCreativeMode ? 32 : 28} className={isCreativeMode ? "text-[#00FF66]" : ""} />,
+      icon: <Palette size={28} className="text-[#00FF66]" />,
       title: 'Grafik & Branding',
       description: 'Logos, Farben, Schrift, Visitenkarten, Präsentationen. Alles, was deinen Auftritt professionell und wiedererkennbar macht.'
     },
     {
       id: 'web',
-      icon: <Globe size={isCreativeMode ? 32 : 28} className={isCreativeMode ? "text-[#9b87f5]" : ""} />,
+      icon: <Globe size={28} className="text-[#9b87f5]" />,
       title: 'Webseiten & Apps',
       description: 'UI/UX-Design und Umsetzung – von kreativen Webauftritten bis zu komplexen Apps. Schön, schnell, sauber gebaut.'
     },
     {
       id: 'social',
-      icon: <Video size={isCreativeMode ? 32 : 28} className={isCreativeMode ? "text-[#00FF66]" : ""} />,
+      icon: <Video size={28} className="text-[#00FF66]" />,
       title: 'Social Media & Content',
       description: 'Posts, Reels, Videos, Texte – ready zum Hochladen auf Social Media. Schnell produziert, kreativ gedacht, KI-optimiert.'
     }
   ];
+
+  const automationServices = [
+    {
+      id: 'branding',
+      icon: <Palette size={28} />,
+      title: 'Grafik & Branding',
+      description: 'Logos, Farben, Schrift, Visitenkarten, Präsentationen. Alles, was deinen Auftritt professionell und wiedererkennbar macht.'
+    },
+    {
+      id: 'web',
+      icon: <Globe size={28} />,
+      title: 'Webseiten & Apps',
+      description: 'UI/UX-Design und Umsetzung – von kreativen Webauftritten bis zu komplexen Apps. Schön, schnell, sauber gebaut.'
+    },
+    {
+      id: 'social',
+      icon: <Video size={28} />,
+      title: 'Social Media & Content',
+      description: 'Posts, Reels, Videos, Texte – ready zum Hochladen auf Social Media. Schnell produziert, kreativ gedacht, KI-optimiert.'
+    }
+  ];
+
+  const services = mode === 'academy' ? academyServices : mode === 'creative' ? creativeServices : automationServices;
 
   return (
     <section id="services" className="py-36 px-6 md:px-10 mt-24">
       <div className="container mx-auto">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="section-heading mb-4" id="services-heading">
-            {isCreativeMode ? (
+            {mode === 'academy' ? (
+              "Unsere Angebote"
+            ) : mode === 'creative' ? (
               "Unsere Leistungen"
             ) : (
               <>Unsere <span className="text-primary">Services</span></>
             )}
           </h2>
           <p className="text-lg text-muted-foreground">
-            {isCreativeMode 
+            {mode === 'academy' 
+              ? "Wir bieten maßgeschneiderte Lösungen für Ihr Unternehmen - von Schulungen bis hin zu individueller Beratung."
+              : mode === 'creative'
               ? "Wir kombinieren kreative Expertise mit fortschrittlicher Technologie, um einzigartige und zukunftsweisende Lösungen zu schaffen."
               : "Wir bieten umfassende AI-Lösungen für Unternehmen, die ihre Prozesse optimieren und ihr volles Potenzial ausschöpfen möchten."
             }
@@ -52,16 +99,19 @@ const ServicesSection = () => {
             <motion.div 
               key={service.id}
               className={`rounded-xl p-6 transition-all duration-300 ${
-                isCreativeMode 
+                mode === 'academy'
+                  ? 'bg-white shadow-lg hover:shadow-[0_10px_25px_-5px_rgba(0,207,255,0.2),0_8px_10px_-6px_rgba(0,207,255,0.1)]'
+                  : mode === 'creative'
                   ? 'dark-card hover:border-primary/60' 
                   : 'light-card'
               } pt-10 h-full`}
               whileHover={{ 
                 y: -5,
-                backgroundColor: isCreativeMode ? "rgba(0, 0, 0, 0.5)" : "rgba(255, 255, 255, 1)",
-                boxShadow: isCreativeMode 
-                  ? "0 10px 25px -5px rgba(60, 214, 120, 0.2), 0 8px 10px -6px rgba(60, 214, 120, 0.1)" 
-                  : "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04)"
+                backgroundColor: mode === 'academy' 
+                  ? "rgba(255, 255, 255, 1)"
+                  : mode === 'creative'
+                  ? "rgba(0, 0, 0, 0.5)"
+                  : "rgba(255, 255, 255, 1)",
               }}
               transition={{ 
                 duration: 0.25, 
@@ -69,8 +119,10 @@ const ServicesSection = () => {
               }}
             >
               <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 ${
-                isCreativeMode 
-                  ? 'bg-primary/10 neon-glow' 
+                mode === 'academy'
+                  ? 'bg-[#00CFFF]/10'
+                  : mode === 'creative'
+                  ? 'bg-primary/10 neon-glow'
                   : 'bg-primary/10'
               }`}>
                 {service.icon}
