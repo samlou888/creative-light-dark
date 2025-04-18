@@ -1,11 +1,12 @@
 
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import ThemeToggle from './ThemeToggle';
 import { useTheme } from '@/contexts/ThemeContext';
+import { motion } from 'framer-motion';
+import { Zap, Palette, GraduationCap } from 'lucide-react';
 
 const Header = () => {
-  const { isCreativeMode } = useTheme();
+  const { mode, setMode } = useTheme();
   const location = useLocation();
 
   // Handle smooth scrolling for internal links with offset
@@ -51,7 +52,7 @@ const Header = () => {
     }
   };
 
-  // Add smooth scrolling behavior to document
+  // Add smooth scrolling effect
   useEffect(() => {
     // Add smooth scrolling to the entire document
     document.documentElement.style.scrollBehavior = 'smooth';
@@ -95,17 +96,57 @@ const Header = () => {
           </nav>
           
           <div className="flex items-center gap-4">
-            <ThemeToggle />
+            <div className="flex items-center gap-2">
+              <motion.button
+                onClick={() => setMode('automation')}
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  mode === 'automation' 
+                    ? 'bg-primary/10 text-primary' 
+                    : 'hover:bg-primary/5'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Zap className="w-5 h-5" />
+              </motion.button>
+              
+              <motion.button
+                onClick={() => setMode('creative')}
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  mode === 'creative' 
+                    ? 'bg-primary/10 text-primary dark:text-[#00FF66]' 
+                    : 'hover:bg-primary/5'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Palette className="w-5 h-5" />
+              </motion.button>
+              
+              <motion.button
+                onClick={() => setMode('academy')}
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  mode === 'academy' 
+                    ? 'bg-primary/10 text-primary' 
+                    : 'hover:bg-primary/5'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <GraduationCap className="w-5 h-5" />
+              </motion.button>
+            </div>
+            
             <a 
               href="#contact" 
               className={`hidden md:block ${
-                isCreativeMode 
-                ? 'bg-primary text-white neon-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]' 
-                : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
+                mode === 'creative' 
+                  ? 'bg-primary text-white neon-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]' 
+                  : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
               } px-5 py-2 rounded-full font-medium transition-all`}
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
             >
-              {isCreativeMode ? 'Projekt starten' : 'Termin buchen'}
+              {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
           </div>
         </div>
