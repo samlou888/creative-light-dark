@@ -14,7 +14,7 @@ const HeroSection = () => {
             <h1 className="hero-heading opacity-0 animate-slide-up-fade">
               {isCreativeMode ? (
                 <>
-                  Grafik, Web & <span className="text-[#00FF66]">Content</span>.
+                  Grafiker, Webdesigner & <span className="text-[#00FF66]">Content Creator</span>.
                 </>
               ) : (
                 <>Automate. Optimize. <span className="text-primary">Scale.</span></>
@@ -46,4 +46,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
