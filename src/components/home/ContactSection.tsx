@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useToast } from '@/components/ui/use-toast';
@@ -10,7 +9,6 @@ const ContactSection = () => {
   const { isCreativeMode } = useTheme();
   const { toast } = useToast();
 
-  // Only show form submission toast in business mode
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     toast({
@@ -30,7 +28,7 @@ const ContactSection = () => {
                 <div>
                   <div className="mb-8">
                     <h2 className="hero-heading text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-white/90 to-white/70">
-                      10min. Kennenlerngespräch? - Online locker, konkret.
+                      Kennenlerngespräch? - Online locker, konkret.
                     </h2>
                     <p className="text-lg text-gray-300">
                       Buche dir direkt einen kostenlosen Videocall. Wir hören zu, stellen Fragen und zeigen dir, was möglich ist.
