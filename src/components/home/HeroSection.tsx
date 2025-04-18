@@ -13,7 +13,10 @@ const HeroSection = () => {
           <div className="space-y-8">
             <h1 className="hero-heading opacity-0 animate-slide-up-fade">
               {isCreativeMode ? (
-                <>Design. Create. <span className="text-primary">Disrupt.</span></>
+                <>
+                  Grafik, Web & <span className="text-[#00FF66]">Content</span>.<br />
+                  Schneller. Besser. <span className="text-[#00FF66]">AI Ventures</span>.
+                </>
               ) : (
                 <>Automate. Optimize. <span className="text-primary">Scale.</span></>
               )}
@@ -21,7 +24,7 @@ const HeroSection = () => {
             
             <p className="text-xl text-muted-foreground max-w-lg opacity-0 animate-slide-up-fade" style={{ animationDelay: "0.3s" }}>
               {isCreativeMode 
-                ? "Entfesseln Sie die Kraft künstlicher Intelligenz in Ihrem kreativen Prozess. Wir erschaffen digitale Experiences, die begeistern."
+                ? "Kreativität mit künstlicher Intelligenz – für Marken, die auffallen, performen und wachsen wollen."
                 : "Transformieren Sie Ihr Unternehmen mit maßgeschneiderten AI-Lösungen. Wir helfen Ihnen, effizienter zu arbeiten und besser zu skalieren."
               }
             </p>
@@ -31,7 +34,7 @@ const HeroSection = () => {
                 {isCreativeMode ? "Projekt starten" : "Jetzt Termin buchen"}
               </a>
               <a href="#showcase" className="secondary-btn">
-                {isCreativeMode ? "Showreel ansehen" : "Demo anfordern"}
+                {isCreativeMode ? "Projekte entdecken" : "Demo anfordern"}
               </a>
             </div>
           </div>
