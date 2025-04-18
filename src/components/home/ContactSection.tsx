@@ -28,7 +28,7 @@ const ContactSection = () => {
                 <div>
                   <div className="mb-8">
                     <h2 className="hero-heading text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-white/90 to-white/70">
-                      Kennenlernen? - Online locker, konkret.
+                      Meeting? - Online locker, konkret.
                     </h2>
                     <p className="text-lg text-gray-300">
                       Buche dir direkt einen kostenlosen Videocall. Wir hören zu, stellen Fragen und zeigen dir, was möglich ist.
