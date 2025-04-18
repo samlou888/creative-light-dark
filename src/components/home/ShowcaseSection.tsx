@@ -9,58 +9,93 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Building2, Target, Users } from 'lucide-react';
 
 const ShowcaseSection = () => {
-  const { isCreativeMode } = useTheme();
+  const { mode } = useTheme();
   const isMobile = useIsMobile();
 
-  const projects = isCreativeMode 
-    ? [
-        {
-          id: 1,
-          title: 'Bento Build',
-          category: 'Webseiten & Apps',
-          description: 'Webdesign & App-Konzept für ein digitales Architektur-Studio. Minimalistisches Design, mobile Optimierung und AI-gestütztes Formular.',
-          image: '/photo-1488590528505-98d2b5aba04b.jpeg'
-        },
-        {
-          id: 2,
-          title: 'Raw Energy',
-          category: 'Grafik & Branding',
-          description: 'Logo, Farben, Schrift und Verpackung für ein Fitness-Start-up. Kraftvoll, clean, markant.',
-          image: '/photo-1581091226825-a6a2a5aee158.jpeg'
-        },
-        {
-          id: 3,
-          title: 'Studio Verde',
-          category: 'Social Media & Content',
-          description: 'Instagram-Kampagne & Video-Editing für ein nachhaltiges Mode-Label. Reels, Stories, Paid Ads – alles KI-beschleunigt produziert.',
-          image: '/photo-1486312338219-ce68d2c6f44d.jpeg'
-        },
-      ]
-    : [
-        { id: 1, title: 'Workflow Automatisierung', category: 'Prozess', image: '/placeholder.svg' },
-        { id: 2, title: 'Datenanalyse Dashboard', category: 'Analytics', image: '/placeholder.svg' },
-        { id: 3, title: 'Digitale Transformation', category: 'Strategie', image: '/placeholder.svg' },
-        { id: 4, title: 'Unternehmensbranding', category: 'Design', image: '/placeholder.svg' },
-      ];
+  const academyCaseStudies = [
+    {
+      id: 1,
+      icon: <Building2 size={32} className="text-[#00CFFF]" />,
+      title: 'Sales-Team automatisiert mit AI',
+      company: 'Tech-Start-up (15 Mitarbeitende)',
+      project: 'Live-Workshop + Template-Set zur Automatisierung von Angeboten & E-Mails.',
+      result: '40 % weniger Admin-Aufwand, schnellere Deals.'
+    },
+    {
+      id: 2,
+      icon: <Target size={32} className="text-[#D2A8FF]" />,
+      title: 'Marketing-Team boosted Content mit KI',
+      company: 'Werbeagentur (25 Mitarbeitende)',
+      project: 'Prompt-Coachings + Vorlagen für Kampagnen, Headlines & Creatives.',
+      result: '3x mehr Output, weniger Reibung im kreativen Prozess.'
+    },
+    {
+      id: 3,
+      icon: <Users size={32} className="text-[#00CFFF]" />,
+      title: 'HR & Support lernen mit Lernpfad',
+      company: 'E-Commerce Brand (50+ Mitarbeitende)',
+      project: 'Onboarding-Kurse & AI-Trainings für neue Mitarbeitende via Online-Plattform.',
+      result: 'Schnellere Einarbeitung & bessere interne Kommunikation.'
+    }
+  ];
+
+  const creativeProjects = [
+    {
+      id: 1,
+      title: 'Bento Build',
+      category: 'Webseiten & Apps',
+      description: 'Webdesign & App-Konzept für ein digitales Architektur-Studio. Minimalistisches Design, mobile Optimierung und AI-gestütztes Formular.',
+      image: '/photo-1488590528505-98d2b5aba04b.jpeg'
+    },
+    {
+      id: 2,
+      title: 'Raw Energy',
+      category: 'Grafik & Branding',
+      description: 'Logo, Farben, Schrift und Verpackung für ein Fitness-Start-up. Kraftvoll, clean, markant.',
+      image: '/photo-1581091226825-a6a2a5aee158.jpeg'
+    },
+    {
+      id: 3,
+      title: 'Studio Verde',
+      category: 'Social Media & Content',
+      description: 'Instagram-Kampagne & Video-Editing für ein nachhaltiges Mode-Label. Reels, Stories, Paid Ads – alles KI-beschleunigt produziert.',
+      image: '/photo-1486312338219-ce68d2c6f44d.jpeg'
+    },
+  ];
+
+  const projects = mode === 'academy' ? academyCaseStudies : mode === 'creative' ? creativeProjects : [
+    { id: 1, title: 'Workflow Automatisierung', category: 'Prozess', image: '/placeholder.svg' },
+    { id: 2, title: 'Datenanalyse Dashboard', category: 'Analytics', image: '/placeholder.svg' },
+    { id: 3, title: 'Digitale Transformation', category: 'Strategie', image: '/placeholder.svg' },
+    { id: 4, title: 'Unternehmensbranding', category: 'Design', image: '/placeholder.svg' },
+  ];
 
   return (
     <section id="showcase" className="py-10 px-6 md:px-10">
       <div className="container mx-auto">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="section-heading mb-3">
-            {isCreativeMode ? "Unsere Projekte" : <><span className="text-primary">Projekte</span></>}
+            {mode === 'academy' 
+              ? "Was unsere Kunden erreicht haben"
+              : mode === 'creative' 
+              ? "Unsere Projekte" 
+              : <><span className="text-primary">Projekte</span></>
+            }
           </h2>
           <p className="text-lg text-muted-foreground">
-            {isCreativeMode 
+            {mode === 'academy'
+              ? "Erfahren Sie, wie andere Unternehmen von unseren AI-Trainings profitiert haben."
+              : mode === 'creative'
               ? "Entdecken Sie einige unserer innovativsten und kreativsten Arbeiten aus unserem Creative Studio."
               : "Sehen Sie, wie wir Unternehmen dabei helfen, ihre Ziele durch maßgeschneiderte AI-Lösungen zu erreichen."
             }
           </p>
         </div>
 
-        {isCreativeMode ? (
+        {mode === 'academy' ? (
           <div className="relative max-w-4xl mx-auto">
             <Carousel
               opts={{
@@ -70,28 +105,33 @@ const ShowcaseSection = () => {
               className="w-full"
             >
               <CarouselContent>
-                {projects.map((project) => (
-                  <CarouselItem key={project.id}>
-                    <div className={`
-                      overflow-hidden rounded-xl transition-all duration-500
-                      ${isCreativeMode ? 'dark-card hover:border-primary/60' : 'light-card'}
-                    `}>
-                      <div className="aspect-video overflow-hidden">
-                        <img 
-                          src={project.image} 
-                          alt={project.title}
-                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                        />
+                {projects.map((study) => (
+                  <CarouselItem key={study.id}>
+                    <div className="p-6 md:p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                      <div className="w-16 h-16 rounded-2xl bg-[#00CFFF]/10 flex items-center justify-center mb-6">
+                        {study.icon}
                       </div>
-                      <div className="p-6 md:p-8">
-                        <div className="text-sm font-medium text-primary mb-2">{project.category}</div>
-                        <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-                        <p className="text-muted-foreground mb-6">{project.description}</p>
+                      <h3 className="text-2xl font-bold mb-4">{study.title}</h3>
+                      <div className="space-y-4">
+                        <div>
+                          <p className="font-medium text-[#00CFFF]">Unternehmen</p>
+                          <p className="text-muted-foreground">{study.company}</p>
+                        </div>
+                        <div>
+                          <p className="font-medium text-[#D2A8FF]">Projekt</p>
+                          <p className="text-muted-foreground">{study.project}</p>
+                        </div>
+                        <div>
+                          <p className="font-medium text-[#00CFFF]">Ergebnis</p>
+                          <p className="text-muted-foreground">{study.result}</p>
+                        </div>
+                      </div>
+                      <div className="mt-6">
                         <Button 
                           variant="outline"
-                          className="w-full md:w-auto hover:bg-primary hover:text-primary-foreground"
+                          className="w-full hover:bg-[#00CFFF] hover:text-white transition-all duration-300"
                         >
-                          Projekt ansehen
+                          Ähnliches Projekt starten
                         </Button>
                       </div>
                     </div>
@@ -102,11 +142,11 @@ const ShowcaseSection = () => {
               <div className={`${isMobile ? 'mt-6' : ''}`}>
                 <CarouselPrevious className={`
                   ${isMobile ? 'relative !-left-0 translate-y-0 mr-2' : ''}
-                  ${isCreativeMode ? 'hover:border-primary hover:text-primary' : ''}
+                  hover:bg-[#00CFFF] hover:text-white
                 `} />
                 <CarouselNext className={`
                   ${isMobile ? 'relative !-right-0 translate-y-0 ml-2' : ''}
-                  ${isCreativeMode ? 'hover:border-primary hover:text-primary' : ''}
+                  hover:bg-[#00CFFF] hover:text-white
                 `} />
               </div>
             </Carousel>
@@ -117,7 +157,7 @@ const ShowcaseSection = () => {
               <div 
                 key={project.id} 
                 className={`group overflow-hidden transition-all ${
-                  isCreativeMode 
+                  mode === 'creative' 
                   ? 'rounded-xl dark-card hover:neon-glow' 
                   : 'rounded-xl light-card'
                 }`}
@@ -142,9 +182,14 @@ const ShowcaseSection = () => {
         <div className="text-center mt-12">
           <a 
             href="#contact" 
-            className={`inline-block primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
+            className={`inline-block primary-btn ${mode === 'creative' ? 'neon-glow' : ''}`}
           >
-            {isCreativeMode ? "Dein Projekt starten" : "Ähnliches Projekt starten"}
+            {mode === 'academy' 
+              ? "Jetzt Beratung vereinbaren" 
+              : mode === 'creative' 
+              ? "Dein Projekt starten" 
+              : "Ähnliches Projekt starten"
+            }
           </a>
         </div>
       </div>
