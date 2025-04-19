@@ -44,16 +44,11 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   }, [mouseX, mouseY]);
 
   useEffect(() => {
+    const academyBlueImage = '/lovable-uploads/bc99c059-23c5-42a3-9b79-1237e0e813cf.png';
     const defaultImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
     
-    if (mode === 'academy') {
-      // Aktualisiere den Pfad zum neuen blauen Kopf-Bild
-      setImageSrc('/lovable-uploads/bc99c059-23c5-42a3-9b79-1237e0e813cf.png');
-      console.log('Academy mode detected, using blue academy wireframe image');
-    } else {
-      setImageSrc(defaultImage);
-      console.log('Using default wireframe image');
-    }
+    setImageSrc(mode === 'academy' ? academyBlueImage : defaultImage);
+    console.log(`Setting image for ${mode} mode: ${mode === 'academy' ? academyBlueImage : defaultImage}`);
   }, [mode]);
 
   const breathingAnimation = {
