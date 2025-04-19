@@ -109,7 +109,7 @@ const ContactSection = () => {
 
                 <div className="h-[600px] w-full">
                   <iframe
-                    src="https://calendly.com/dein-nutzername/ai-beratung"
+                    src="https://calendly.com/samlou888/30min"
                     width="100%"
                     height="100%"
                     frameBorder="0"
