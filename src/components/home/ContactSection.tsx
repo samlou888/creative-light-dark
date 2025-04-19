@@ -3,7 +3,7 @@ import { useTheme } from '@/contexts/ThemeContext';
 import { useToast } from '@/hooks/use-toast';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Check, Calendar } from 'lucide-react';
+import { Check, Calendar, Video } from 'lucide-react';
 
 const ContactSection = () => {
   const { mode } = useTheme();
