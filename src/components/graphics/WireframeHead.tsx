@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -14,14 +13,11 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
   
-  // Motion values for parallax effect
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   
-  // Animation controls for breathing effect
   const controls = useAnimation();
   
-  // Start breathing animation when component is in view
   useEffect(() => {
     if (isInView) {
       controls.start("animate");
@@ -30,7 +26,6 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
     }
   }, [isInView, controls]);
   
-  // Handle mouse move for parallax effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
@@ -48,23 +43,18 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
     };
   }, [mouseX, mouseY]);
 
-  // Set image source based on mode
   useEffect(() => {
-    // Bildpfad für beide Modi
     const defaultImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
     
-    // Wir verwenden für Academy das Bild, das der Benutzer hochgeladen hat
     if (mode === 'academy') {
-      // Benutze direkt das hochgeladene Bild aus dem Upload vom Benutzer
-      setImageSrc('/lovable-uploads/13e23013-a27c-4d80-992a-da4c0426956e.png');
-      console.log('Academy mode detected, using blue wireframe image');
+      setImageSrc('/lovable-uploads/7127fe8b-9a59-46da-b341-2a7dda95b59e.png');
+      console.log('Academy mode detected, using blue academy wireframe image');
     } else {
       setImageSrc(defaultImage);
       console.log('Using default wireframe image');
     }
   }, [mode]);
 
-  // Breathing animation variant
   const breathingAnimation = {
     initial: { scale: 1 },
     animate: {
@@ -78,14 +68,13 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
     }
   };
 
-  // Parallax effect values
   const x = useTransform(mouseX, [-5, 5], [5, -5]);
   const y = useTransform(mouseY, [-5, 5], [5, -5]);
 
   console.log('Current mode:', mode);
   console.log('Image URL being used:', imageSrc);
 
-  if (mode === 'academy') {
+  if (!imageSrc) {
     return null;
   }
 
@@ -122,7 +111,6 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
               }}
               onError={(e) => {
                 console.error('Image failed to load:', imageSrc);
-                // Fallback zum Standard-Bild bei Ladefehler
                 setImageSrc('/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png');
               }}
             />
