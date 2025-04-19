@@ -66,8 +66,8 @@
   }
 
   .mode-automation {
-    --primary: 142 70% 45%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 0% 20%;
+    --primary-foreground: 0 0% 100%;
   }
 
   .mode-creative {
@@ -106,6 +106,14 @@
 
   .secondary-btn {
     @apply bg-transparent border border-primary text-primary hover:bg-primary/10 dark:border-primary dark:text-primary-foreground px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.4)];
+  }
+
+  .automation-btn-primary {
+    @apply bg-neutral-900 text-white hover:bg-neutral-800 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02];
+  }
+
+  .automation-btn-secondary {
+    @apply bg-transparent border border-neutral-900 text-neutral-900 hover:bg-neutral-50 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02];
   }
 
   .neon-glow {
