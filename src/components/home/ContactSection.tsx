@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useToast } from '@/hooks/use-toast';
@@ -14,16 +13,6 @@ import {
 const ContactSection = () => {
   const { mode } = useTheme();
   const { toast } = useToast();
-  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    toast({
-      title: "Anfrage erhalten",
-      description: "Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.",
-      duration: 5000,
-    });
-  };
 
   const CalendlyEmbed = () => (
     <iframe
@@ -33,8 +22,165 @@ const ContactSection = () => {
       frameBorder="0"
       title="Calendly Terminbuchung"
       className="rounded-lg shadow-lg bg-background"
+      style={{ minHeight: '400px', maxHeight: '500px' }}
     />
   );
+
+  if (mode === 'automation') {
+    return (
+      <section id="contact" className="py-12 px-6 md:px-10">
+        <div className="container mx-auto">
+          <div className="max-w-5xl mx-auto">
+            <Card className="overflow-hidden rounded-2xl border-primary/20">
+              <div className="grid md:grid-cols-2 gap-8 p-6 md:p-8 items-start">
+                <div>
+                  <div className="mb-6">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+                      Lass uns deinen Workflow automatisieren
+                    </h2>
+                    <p className="text-lg text-muted-foreground">
+                      Ob kleines Team oder skalierendes Unternehmen – wir finden gemeinsam heraus, 
+                      wo Automatisierung für dich den größten Hebel bringt.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <ul className="space-y-3">
+                      {[
+                        'Beratung & Umsetzung aus einer Hand',
+                        'Individuelle Automationen für dein Business',
+                        'Transparente Prozesse & schnelle Ergebnisse'
+                      ].map((item, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <div className="mt-1">
+                            <Check className="h-5 w-5 text-primary" />
+                          </div>
+                          <span className="text-muted-foreground">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="h-[400px]">
+                  <CalendlyEmbed />
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (mode === 'academy') {
+    return (
+      <section id="contact" className="py-12 px-6 md:px-10">
+        <div className="container mx-auto">
+          <div className="max-w-5xl mx-auto">
+            <Card className="overflow-hidden rounded-2xl border-[#00CFFF]/20 bg-gradient-to-br from-white to-[#D2A8FF]/10">
+              <div className="grid md:grid-cols-2 gap-8 p-6 md:p-8 items-start">
+                <div>
+                  <div className="mb-6">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#00CFFF] to-[#D2A8FF] bg-clip-text text-transparent">
+                      Let's talk AI & Wachstum
+                    </h2>
+                    <p className="text-lg text-gray-600">
+                      Buche dir ein kostenloses Online-Gespräch. Wir zeigen dir, wie du mit künstlicher Intelligenz dein Business effizienter und profitabler machst.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <ul className="space-y-3">
+                      {[
+                        'Praxisnahe Schulungen & Coachings für dein Team',
+                        'Skalierbares Wissen, sofort umsetzbar',
+                        'Remote, flexibel & 100 % AI-driven'
+                      ].map((item, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <div className="mt-1">
+                            <Check className="h-5 w-5 text-[#00CFFF]" />
+                          </div>
+                          <span className="text-gray-700">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="h-[400px]">
+                  <CalendlyEmbed />
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (mode === 'creative') {
+    return (
+      <section id="contact" className="py-12 px-6 md:px-10">
+        <div className="container mx-auto">
+          <div className="max-w-5xl mx-auto">
+            <Card className="neo-blur overflow-hidden rounded-2xl border-purple-500/20">
+              <div className="grid md:grid-cols-2 gap-8 p-6 md:p-8 items-start">
+                <div>
+                  <div className="mb-6">
+                    <h2 className="hero-heading text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-white/90 to-white/70">
+                      Meeting? - Online locker, konkret.
+                    </h2>
+                    <p className="text-lg text-gray-300">
+                      Buche dir direkt einen kostenlosen Videocall. Wir hören zu, stellen Fragen und zeigen dir, was möglich ist.
+                    </p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <ul className="space-y-3">
+                      {[
+                        'Alles aus einer Hand: Design, Web & Content',
+                        'Schneller & günstiger dank KI',
+                        'Persönlich, direkt & ohne Agentur-Gelaber'
+                      ].map((item, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <div className="mt-1">
+                            <Check className="h-5 w-5 text-[#00FF66]" />
+                          </div>
+                          <span className="text-gray-200">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Button 
+                      size="lg"
+                      className="w-full md:w-auto bg-[#00FF66] hover:bg-[#00FF66]/90 text-black font-medium gap-2 mt-4"
+                    >
+                      <Video className="w-5 h-5" />
+                      Videocall buchen
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="h-[400px]">
+                  <CalendlyEmbed />
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast({
+      title: "Anfrage erhalten",
+      description: "Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.",
+      duration: 5000,
+    });
+  };
 
   const BookingButton = ({ className = "" }) => (
     <Dialog>
@@ -52,153 +198,6 @@ const ContactSection = () => {
       </DialogContent>
     </Dialog>
   );
-
-  if (mode === 'automation') {
-    return (
-      <section id="contact" className="py-20 px-6 md:px-10">
-        <div className="container mx-auto">
-          <div className="max-w-5xl mx-auto">
-            <Card className="overflow-hidden rounded-2xl border-primary/20">
-              <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
-                <div>
-                  <div className="mb-8">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-                      Lass uns deinen Workflow automatisieren
-                    </h2>
-                    <p className="text-lg text-muted-foreground">
-                      Ob kleines Team oder skalierendes Unternehmen – wir finden gemeinsam heraus, 
-                      wo Automatisierung für dich den größten Hebel bringt.
-                    </p>
-                  </div>
-
-                  <div className="space-y-6">
-                    <ul className="space-y-4">
-                      {[
-                        'Beratung & Umsetzung aus einer Hand',
-                        'Individuelle Automationen für dein Business',
-                        'Transparente Prozesse & schnelle Ergebnisse'
-                      ].map((item, index) => (
-                        <li key={index} className="flex items-start gap-3">
-                          <div className="mt-1">
-                            <Check className="h-5 w-5 text-primary" />
-                          </div>
-                          <span className="text-muted-foreground">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-center justify-center">
-                  <CalendlyEmbed />
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (mode === 'academy') {
-    return (
-      <section id="contact" className="py-20 px-6 md:px-10">
-        <div className="container mx-auto">
-          <div className="max-w-5xl mx-auto">
-            <Card className="overflow-hidden rounded-2xl border-[#00CFFF]/20 bg-gradient-to-br from-white to-[#D2A8FF]/10">
-              <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
-                <div>
-                  <div className="mb-8">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#00CFFF] to-[#D2A8FF] bg-clip-text text-transparent">
-                      Let's talk AI & Wachstum
-                    </h2>
-                    <p className="text-lg text-gray-600">
-                      Buche dir ein kostenloses Online-Gespräch. Wir zeigen dir, wie du mit künstlicher Intelligenz dein Business effizienter und profitabler machst.
-                    </p>
-                  </div>
-
-                  <div className="space-y-6">
-                    <ul className="space-y-4">
-                      {[
-                        'Praxisnahe Schulungen & Coachings für dein Team',
-                        'Skalierbares Wissen, sofort umsetzbar',
-                        'Remote, flexibel & 100 % AI-driven'
-                      ].map((item, index) => (
-                        <li key={index} className="flex items-start gap-3">
-                          <div className="mt-1">
-                            <Check className="h-5 w-5 text-[#00CFFF]" />
-                          </div>
-                          <span className="text-gray-700">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-center justify-center">
-                  <CalendlyEmbed />
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (mode === 'creative') {
-    return (
-      <section id="contact" className="py-20 px-6 md:px-10">
-        <div className="container mx-auto">
-          <div className="max-w-5xl mx-auto">
-            <Card className="neo-blur overflow-hidden rounded-2xl border-purple-500/20">
-              <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
-                <div>
-                  <div className="mb-8">
-                    <h2 className="hero-heading text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-white/90 to-white/70">
-                      Meeting? - Online locker, konkret.
-                    </h2>
-                    <p className="text-lg text-gray-300">
-                      Buche dir direkt einen kostenlosen Videocall. Wir hören zu, stellen Fragen und zeigen dir, was möglich ist.
-                    </p>
-                  </div>
-
-                  <div className="space-y-6">
-                    <ul className="space-y-4">
-                      {[
-                        'Alles aus einer Hand: Design, Web & Content',
-                        'Schneller & günstiger dank KI',
-                        'Persönlich, direkt & ohne Agentur-Gelaber'
-                      ].map((item, index) => (
-                        <li key={index} className="flex items-start gap-3">
-                          <div className="mt-1">
-                            <Check className="h-5 w-5 text-[#00FF66]" />
-                          </div>
-                          <span className="text-gray-200">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Button 
-                      size="lg"
-                      className="w-full md:w-auto bg-[#00FF66] hover:bg-[#00FF66]/90 text-black font-medium gap-2 mt-6"
-                    >
-                      <Video className="w-5 h-5" />
-                      Videocall buchen
-                    </Button>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-center justify-center">
-                  <CalendlyEmbed />
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="contact" className="py-10 px-6 md:px-10">
