@@ -170,12 +170,12 @@ const ContactSection = () => {
 
                 <div className="h-[600px] w-full">
                   <iframe
-                    src="https://calendly.com/dein-nutzername/online-videocall"
+                    src="https://calendly.com/samlou888/30min"
                     width="100%"
                     height="100%"
                     frameBorder="0"
                     title="Calendly Terminbuchung"
-                    className="rounded-lg bg-black/30"
+                    className="rounded-lg shadow-lg"
                   />
                 </div>
               </div>
