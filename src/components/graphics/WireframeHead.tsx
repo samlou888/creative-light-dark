@@ -11,8 +11,8 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   const { mode } = useTheme();
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   
-  // Use the newly uploaded image for academy mode
-  const blueHeadImage = '/lovable-uploads/114d06ae-c6a0-49cf-b36c-e2c71672b501.png';
+  // Use the newly uploaded blue head image for academy mode
+  const blueHeadImage = '/lovable-uploads/064810f6-b99a-43a7-bdec-d8be5bd8df15.png';
   const defaultHeadImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
   
   // Select the appropriate image based on the current mode
@@ -51,8 +51,8 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
           }}
           onError={(e) => {
             console.error("Failed to load image:", imageSrc);
-            console.log("Trying to fallback to static image");
-            // Try to set a static fallback image from the uploaded one
+            console.log("Setting static image directly");
+            // Set the image source directly
             if (mode === 'academy') {
               (e.target as HTMLImageElement).src = blueHeadImage;
             } else {
