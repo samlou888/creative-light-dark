@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -9,8 +8,6 @@ interface WireframeHeadProps {
 
 const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   const { mode, isCreativeMode } = useTheme();
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [imageSrc, setImageSrc] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
   
@@ -84,6 +81,10 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
 
   console.log('Current mode:', mode);
   console.log('Image URL being used:', imageSrc);
+
+  if (mode === 'academy') {
+    return null;
+  }
 
   return (
     <div className={`relative ${className}`} ref={containerRef}>
