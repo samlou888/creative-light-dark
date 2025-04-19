@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -45,10 +46,10 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
 
   useEffect(() => {
     const defaultImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
-    const academyImage = '/lovable-uploads/981db267-7a89-4863-be60-68f94e204584.png';
+    const blueHeadImage = '/lovable-uploads/981db267-7a89-4863-be60-68f94e204584.png';
     
     if (mode === 'academy') {
-      setImageSrc(academyImage);
+      setImageSrc(blueHeadImage);
     } else {
       setImageSrc(defaultImage);
     }
