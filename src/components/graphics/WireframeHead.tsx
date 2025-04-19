@@ -16,9 +16,9 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
         className="relative w-full h-full"
       >
         <img 
-          src="/lovable-uploads/c73818c0-3800-4004-8494-bb090c2a26eb.png"
-          alt="Historical illustration" 
-          className="w-full h-auto object-contain rounded-lg shadow-lg"
+          src="/lovable-uploads/895ef6ac-4dc2-4b90-9c89-71dca2ee5161.png"
+          alt="Wireframe head illustration" 
+          className="w-full h-auto object-contain"
         />
       </motion.div>
     </div>
