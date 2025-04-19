@@ -1,7 +1,7 @@
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface WireframeHeadProps {
   className?: string;
@@ -9,15 +9,20 @@ interface WireframeHeadProps {
 
 const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   const { mode } = useTheme();
-  const [imageSrc, setImageSrc] = useState<string>('');
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
-
-  useEffect(() => {
-    const blueHeadImage = '/lovable-uploads/981db267-7a89-4863-be60-68f94e204584.png';
-    const defaultImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
-    
-    setImageSrc(mode === 'academy' ? blueHeadImage : defaultImage);
-  }, [mode]);
+  
+  // Define images for different modes
+  const blueHeadImage = '/lovable-uploads/fd0b61b1-3eeb-4d28-849c-6df9ba65884c.png';
+  const defaultHeadImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+  
+  // Select the appropriate image based on the current mode
+  const imageSrc = mode === 'academy' ? blueHeadImage : defaultHeadImage;
+  
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.5 } }
+  };
 
   if (!imageSrc) {
     return null;
@@ -25,14 +30,23 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
 
   return (
     <div className={`relative ${className}`}>
-      <img 
-        src={imageSrc}
-        alt="AI Head" 
-        className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain 
-          ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-        onLoad={() => setIsLoaded(true)}
-        onError={() => setImageSrc('/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png')}
-      />
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={fadeIn}
+      >
+        <img 
+          src={imageSrc}
+          alt="AI Head" 
+          className={`w-full h-auto max-w-lg mx-auto object-contain ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setIsLoaded(true)}
+          onError={(e) => {
+            console.error("Failed to load image:", e);
+            // Fallback to default image if the primary one fails
+            (e.target as HTMLImageElement).src = defaultHeadImage;
+          }}
+        />
+      </motion.div>
     </div>
   );
 };
