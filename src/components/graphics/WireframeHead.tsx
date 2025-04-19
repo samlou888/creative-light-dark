@@ -8,7 +8,7 @@ interface WireframeHeadProps {
 }
 
 const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
-  const { isCreativeMode } = useTheme();
+  const { mode, isCreativeMode } = useTheme();
   const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
@@ -65,6 +65,10 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   const x = useTransform(mouseX, [-5, 5], [5, -5]);
   const y = useTransform(mouseY, [-5, 5], [5, -5]);
 
+  const imageUrl = mode === 'academy' 
+    ? '/lovable-uploads/eebdcb21-3af8-4e7d-b337-217b632d35fb.png' 
+    : '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+
   return (
     <div className={`relative ${className}`} ref={containerRef}>
       <motion.div
@@ -86,7 +90,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
           variants={breathingAnimation}
         >
           <img 
-            src="/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png"
+            src={imageUrl}
             alt="AI Wireframe Head" 
             className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
               ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
@@ -100,3 +104,4 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
 };
 
 export default WireframeHead;
+
