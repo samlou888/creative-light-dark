@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -8,6 +9,8 @@ interface WireframeHeadProps {
 
 const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   const { mode, isCreativeMode } = useTheme();
+  const [imageSrc, setImageSrc] = useState<string>('');
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
   
