@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -49,11 +50,14 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
 
   // Set image source based on mode
   useEffect(() => {
+    // Bildpfad für beide Modi
     const defaultImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
     
+    // Wir verwenden für Academy das Bild, das der Benutzer hochgeladen hat
     if (mode === 'academy') {
-      setImageSrc('/lovable-uploads/4c779416-61ec-4559-9b8e-4c99ac0cbe29.png');
-      console.log('Academy mode detected, using blue academy wireframe image');
+      // Benutze direkt das hochgeladene Bild aus dem Upload vom Benutzer
+      setImageSrc('/lovable-uploads/13e23013-a27c-4d80-992a-da4c0426956e.png');
+      console.log('Academy mode detected, using blue wireframe image');
     } else {
       setImageSrc(defaultImage);
       console.log('Using default wireframe image');
@@ -78,7 +82,10 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   const x = useTransform(mouseX, [-5, 5], [5, -5]);
   const y = useTransform(mouseY, [-5, 5], [5, -5]);
 
-  if (!imageSrc) {
+  console.log('Current mode:', mode);
+  console.log('Image URL being used:', imageSrc);
+
+  if (mode === 'academy') {
     return null;
   }
 
@@ -102,21 +109,24 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
           animate={controls}
           variants={breathingAnimation}
         >
-          <img 
-            src={imageSrc}
-            alt="AI Wireframe Head" 
-            className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
-              ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
-              ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-            onLoad={() => {
-              console.log('Image loaded successfully:', imageSrc);
-              setIsLoaded(true);
-            }}
-            onError={(e) => {
-              console.error('Image failed to load:', imageSrc);
-              setImageSrc('/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png');
-            }}
-          />
+          {imageSrc && (
+            <img 
+              src={imageSrc}
+              alt="AI Wireframe Head" 
+              className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
+                ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
+                ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+              onLoad={() => {
+                console.log('Image loaded successfully:', imageSrc);
+                setIsLoaded(true);
+              }}
+              onError={(e) => {
+                console.error('Image failed to load:', imageSrc);
+                // Fallback zum Standard-Bild bei Ladefehler
+                setImageSrc('/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png');
+              }}
+            />
+          )}
         </motion.div>
       </motion.div>
     </div>
