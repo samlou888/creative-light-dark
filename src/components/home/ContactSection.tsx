@@ -1,12 +1,12 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Check, Video } from 'lucide-react';
+import { Check, Calendar } from 'lucide-react';
 
 const ContactSection = () => {
-  const { mode, isCreativeMode } = useTheme();
+  const { mode } = useTheme();
   const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -17,6 +17,60 @@ const ContactSection = () => {
       duration: 5000,
     });
   };
+
+  if (mode === 'automation') {
+    return (
+      <section id="contact" className="py-20 px-6 md:px-10">
+        <div className="container mx-auto">
+          <div className="max-w-5xl mx-auto">
+            <Card className="overflow-hidden rounded-2xl border-primary/20">
+              <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
+                <div>
+                  <div className="mb-8">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+                      Lass uns deinen Workflow automatisieren
+                    </h2>
+                    <p className="text-lg text-muted-foreground">
+                      Ob kleines Team oder skalierendes Unternehmen – wir finden gemeinsam heraus, 
+                      wo Automatisierung für dich den größten Hebel bringt.
+                    </p>
+                  </div>
+
+                  <div className="space-y-6">
+                    <ul className="space-y-4">
+                      {[
+                        'Beratung & Umsetzung aus einer Hand',
+                        'Individuelle Automationen für dein Business',
+                        'Transparente Prozesse & schnelle Ergebnisse'
+                      ].map((item, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <div className="mt-1">
+                            <Check className="h-5 w-5 text-primary" />
+                          </div>
+                          <span className="text-muted-foreground">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="h-[600px] w-full">
+                  <iframe
+                    src="https://calendly.com/samlou888/30min"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    title="Calendly Terminbuchung"
+                    className="rounded-lg shadow-lg"
+                  />
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   if (mode === 'academy') {
     return (
@@ -71,7 +125,7 @@ const ContactSection = () => {
     );
   }
 
-  if (isCreativeMode) {
+  if (mode === 'creative') {
     return (
       <section id="contact" className="py-20 px-6 md:px-10">
         <div className="container mx-auto">
@@ -137,20 +191,20 @@ const ContactSection = () => {
       <div className="container mx-auto">
         <div className="max-w-2xl mx-auto">
           <div className={`rounded-2xl overflow-hidden ${
-            isCreativeMode 
+            mode === 'creative' 
               ? 'dark-card neon-glow' 
               : 'light-card'
           }`}>
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="p-5 md:p-6">
                 <h2 className="text-xl md:text-2xl font-bold mb-2">
-                  {isCreativeMode 
+                  {mode === 'creative' 
                     ? "Starten Sie Ihr kreatives Projekt"
                     : "Kontaktieren Sie uns"
                   }
                 </h2>
                 <p className="text-muted-foreground text-sm mb-4">
-                  {isCreativeMode 
+                  {mode === 'creative' 
                     ? "Bereit, Ihre Vision mit KI-Technologie zum Leben zu erwecken? Wir freuen uns darauf, von Ihnen zu hören."
                     : "Haben Sie Fragen oder möchten Sie eine Beratung buchen? Füllen Sie das Formular aus und wir melden uns bei Ihnen."
                   }
@@ -188,27 +242,27 @@ const ContactSection = () => {
                   
                   <button 
                     type="submit" 
-                    className={`w-full primary-btn ${isCreativeMode ? 'neon-glow' : ''}`}
+                    className={`w-full primary-btn ${mode === 'creative' ? 'neon-glow' : ''}`}
                   >
-                    {isCreativeMode ? "Projekt starten" : "Nachricht senden"}
+                    {mode === 'creative' ? "Projekt starten" : "Nachricht senden"}
                   </button>
                 </form>
               </div>
               
               <div className={`${
-                isCreativeMode 
+                mode === 'creative' 
                   ? 'bg-primary/20 backdrop-blur-md' 
                   : 'bg-primary/5'
               } p-5 md:p-6 flex flex-col justify-center`}>
                 <h3 className="text-base font-bold mb-3">
-                  {isCreativeMode 
+                  {mode === 'creative' 
                     ? "Warum mit unserem Creative Studio arbeiten?"
                     : "Ihre Vorteile im Überblick"
                   }
                 </h3>
                 
                 <ul className="space-y-2">
-                  {(isCreativeMode 
+                  {(mode === 'creative' 
                     ? [
                         "KI-gestützte kreative Prozesse",
                         "Einzigartige, disruptive Designs",
@@ -224,7 +278,7 @@ const ContactSection = () => {
                   ).map((item, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <div className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5 ${
-                        isCreativeMode 
+                        mode === 'creative' 
                           ? 'bg-primary text-white' 
                           : 'bg-primary/20 text-primary'
                       }`}>
