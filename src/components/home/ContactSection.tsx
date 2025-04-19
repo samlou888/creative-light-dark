@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useToast } from '@/hooks/use-toast';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Check, Calendar, Video } from 'lucide-react';
+import { Check, Calendar } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const ContactSection = () => {
   const { mode } = useTheme();
   const { toast } = useToast();
+  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,6 +23,34 @@ const ContactSection = () => {
       duration: 5000,
     });
   };
+
+  const CalendlyEmbed = () => (
+    <iframe
+      src="https://calendly.com/samlou888/30min"
+      width="100%"
+      height="400px"
+      frameBorder="0"
+      title="Calendly Terminbuchung"
+      className="rounded-lg shadow-lg bg-background"
+    />
+  );
+
+  const BookingButton = ({ className = "" }) => (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button 
+          size="lg"
+          className={`gap-2 ${className}`}
+        >
+          <Calendar className="w-5 h-5" />
+          Termin buchen
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[600px]">
+        <CalendlyEmbed />
+      </DialogContent>
+    </Dialog>
+  );
 
   if (mode === 'automation') {
     return (
@@ -54,15 +88,8 @@ const ContactSection = () => {
                   </div>
                 </div>
 
-                <div className="h-[600px] w-full">
-                  <iframe
-                    src="https://calendly.com/samlou888/30min"
-                    width="100%"
-                    height="100%"
-                    frameBorder="0"
-                    title="Calendly Terminbuchung"
-                    className="rounded-lg shadow-lg"
-                  />
+                <div className="flex flex-col items-center justify-center">
+                  <CalendlyEmbed />
                 </div>
               </div>
             </Card>
@@ -107,15 +134,8 @@ const ContactSection = () => {
                   </div>
                 </div>
 
-                <div className="h-[600px] w-full">
-                  <iframe
-                    src="https://calendly.com/samlou888/30min"
-                    width="100%"
-                    height="100%"
-                    frameBorder="0"
-                    title="Calendly Terminbuchung"
-                    className="rounded-lg shadow-lg"
-                  />
+                <div className="flex flex-col items-center justify-center">
+                  <CalendlyEmbed />
                 </div>
               </div>
             </Card>
@@ -168,15 +188,8 @@ const ContactSection = () => {
                   </div>
                 </div>
 
-                <div className="h-[600px] w-full">
-                  <iframe
-                    src="https://calendly.com/samlou888/30min"
-                    width="100%"
-                    height="100%"
-                    frameBorder="0"
-                    title="Calendly Terminbuchung"
-                    className="rounded-lg shadow-lg"
-                  />
+                <div className="flex flex-col items-center justify-center">
+                  <CalendlyEmbed />
                 </div>
               </div>
             </Card>
