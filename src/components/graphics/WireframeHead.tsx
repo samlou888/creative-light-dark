@@ -65,14 +65,14 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   const x = useTransform(mouseX, [-5, 5], [5, -5]);
   const y = useTransform(mouseY, [-5, 5], [5, -5]);
 
-  // Korrekter Bildpfad für beide Modi
+  // Bildpfad für beide Modi
   const defaultImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
-  const academyImage = '/assets/wireframe-head-blue.png'; // Neuer lokaler Pfad
+  const academyImage = '/lovable-uploads/9849a95e-d9ac-4ca8-941e-754d3926aaa6.png'; // Neuer hochgeladener Pfad
 
   // Bildauswahl basierend auf dem Modus
   const imageUrl = mode === 'academy' ? academyImage : defaultImage;
 
-  // Füge console.log für Debugging hinzu
+  // Console Logs für Debugging
   console.log('Current mode:', mode);
   console.log('Image URL being used:', imageUrl);
 
