@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
 
@@ -24,10 +24,6 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
     visible: { opacity: 1, transition: { duration: 0.5 } }
   };
 
-  if (!imageSrc) {
-    return null;
-  }
-
   return (
     <div className={`relative ${className}`}>
       <motion.div
@@ -38,12 +34,14 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
         <img 
           src={imageSrc}
           alt="AI Head" 
-          className={`w-full h-auto max-w-lg mx-auto object-contain ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-auto max-w-lg mx-auto object-contain ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
           onLoad={() => setIsLoaded(true)}
           onError={(e) => {
             console.error("Failed to load image:", e);
-            // Fallback to default image if the primary one fails
-            (e.target as HTMLImageElement).src = defaultHeadImage;
+            if (mode === 'academy') {
+              console.log("Falling back to default image for academy mode");
+              (e.target as HTMLImageElement).src = defaultHeadImage;
+            }
           }}
         />
       </motion.div>
