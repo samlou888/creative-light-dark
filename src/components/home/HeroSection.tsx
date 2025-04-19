@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import WireframeHead from '../graphics/WireframeHead';
-import { Clock, Calendar } from 'lucide-react';
+import { Clock, Calendar, BookOpen } from 'lucide-react';
 
 const HeroSection = () => {
   const { mode } = useTheme();
