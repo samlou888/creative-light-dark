@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Building2, Target, Users } from 'lucide-react';
+import { Users, FileText, Mail } from 'lucide-react';
 
 const ShowcaseSection = () => {
   const { mode } = useTheme();
@@ -66,12 +66,34 @@ const ShowcaseSection = () => {
     },
   ];
 
-  const projects = mode === 'academy' ? academyCaseStudies : mode === 'creative' ? creativeProjects : [
-    { id: 1, title: 'Workflow Automatisierung', category: 'Prozess', image: '/placeholder.svg' },
-    { id: 2, title: 'Datenanalyse Dashboard', category: 'Analytics', image: '/placeholder.svg' },
-    { id: 3, title: 'Digitale Transformation', category: 'Strategie', image: '/placeholder.svg' },
-    { id: 4, title: 'Unternehmensbranding', category: 'Design', image: '/placeholder.svg' },
+  const automationCases = [
+    {
+      id: 1,
+      icon: <Users size={32} className="text-primary" />,
+      title: 'Onboarding-Prozess automatisiert',
+      industry: 'IT-Dienstleister',
+      project: 'Automatisiertes Mitarbeiter-Onboarding mit E-Mail-Flows, Formularen & Tool-Setup.',
+      result: '80 % weniger manuelle Arbeit bei Neueinstellungen.'
+    },
+    {
+      id: 2,
+      icon: <Mail size={32} className="text-primary" />,
+      title: 'Lead-Nurturing automatisiert',
+      industry: 'B2B-Softwareunternehmen',
+      project: 'E-Mail-Funnels, Lead-Scoring & Follow-ups via Make & ActiveCampaign.',
+      result: '30 % mehr qualifizierte Leads bei gleichem Aufwand.'
+    },
+    {
+      id: 3,
+      icon: <FileText size={32} className="text-primary" />,
+      title: 'Rechnungsprozesse automatisiert',
+      industry: 'E-Commerce',
+      project: 'Integration von Shop, Buchhaltung & E-Mail-Benachrichtigungen.',
+      result: 'Rechnungsversand & Zahlungserinnerungen laufen automatisch – fehlerfrei.'
+    }
   ];
+
+  const projects = mode === 'academy' ? academyCaseStudies : mode === 'creative' ? creativeProjects : automationCases;
 
   return (
     <section id="showcase" className="py-10 px-6 md:px-10">
@@ -82,7 +104,7 @@ const ShowcaseSection = () => {
               ? "Was unsere Kunden erreicht haben"
               : mode === 'creative' 
               ? "Unsere Projekte" 
-              : <><span className="text-primary">Projekte</span></>
+              : "Was wir automatisiert haben"
             }
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -90,12 +112,12 @@ const ShowcaseSection = () => {
               ? "Erfahren Sie, wie andere Unternehmen von unseren AI-Trainings profitiert haben."
               : mode === 'creative'
               ? "Entdecken Sie einige unserer innovativsten und kreativsten Arbeiten aus unserem Creative Studio."
-              : "Sehen Sie, wie wir Unternehmen dabei helfen, ihre Ziele durch maßgeschneiderte AI-Lösungen zu erreichen."
+              : "Erfahren Sie, wie wir Unternehmen durch maßgeschneiderte Automatisierungslösungen unterstützen."
             }
           </p>
         </div>
 
-        {mode === 'academy' ? (
+        {mode === 'academy' || mode === 'default' ? (
           <div className="relative max-w-4xl mx-auto">
             <Carousel
               opts={{
@@ -108,28 +130,32 @@ const ShowcaseSection = () => {
                 {projects.map((study) => (
                   <CarouselItem key={study.id}>
                     <div className="p-6 md:p-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                      <div className="w-16 h-16 rounded-2xl bg-[#00CFFF]/10 flex items-center justify-center mb-6">
+                      <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
                         {study.icon}
                       </div>
                       <h3 className="text-2xl font-bold mb-4">{study.title}</h3>
                       <div className="space-y-4">
                         <div>
-                          <p className="font-medium text-[#00CFFF]">Unternehmen</p>
-                          <p className="text-muted-foreground">{study.company}</p>
+                          <p className="font-medium text-primary">
+                            {mode === 'academy' ? 'Unternehmen' : 'Branche'}
+                          </p>
+                          <p className="text-muted-foreground">
+                            {mode === 'academy' ? study.company : study.industry}
+                          </p>
                         </div>
                         <div>
-                          <p className="font-medium text-[#D2A8FF]">Projekt</p>
+                          <p className="font-medium text-primary">Projekt</p>
                           <p className="text-muted-foreground">{study.project}</p>
                         </div>
                         <div>
-                          <p className="font-medium text-[#00CFFF]">Ergebnis</p>
+                          <p className="font-medium text-primary">Ergebnis</p>
                           <p className="text-muted-foreground">{study.result}</p>
                         </div>
                       </div>
                       <div className="mt-6">
                         <Button 
                           variant="outline"
-                          className="w-full hover:bg-[#00CFFF] hover:text-white transition-all duration-300"
+                          className="w-full hover:bg-primary hover:text-white transition-all duration-300"
                         >
                           Ähnliches Projekt starten
                         </Button>
@@ -142,11 +168,11 @@ const ShowcaseSection = () => {
               <div className={`${isMobile ? 'mt-6' : ''}`}>
                 <CarouselPrevious className={`
                   ${isMobile ? 'relative !-left-0 translate-y-0 mr-2' : ''}
-                  hover:bg-[#00CFFF] hover:text-white
+                  hover:bg-primary hover:text-white
                 `} />
                 <CarouselNext className={`
                   ${isMobile ? 'relative !-right-0 translate-y-0 ml-2' : ''}
-                  hover:bg-[#00CFFF] hover:text-white
+                  hover:bg-primary hover:text-white
                 `} />
               </div>
             </Carousel>
