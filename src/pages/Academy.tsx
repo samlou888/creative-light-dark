@@ -2,11 +2,17 @@
 import React from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import HeroSection from '@/components/academy/HeroSection';
+import SectionHero from '@/components/ui/section-hero';
 import CoursesSection from '@/components/academy/CoursesSection';
-import FormatsSection from '@/components/academy/FormatsSection';
+import SectionGrid from '@/components/ui/section-grid';
 import BenefitsSection from '@/components/academy/BenefitsSection';
-import CTASection from '@/components/academy/CTASection';
+import SectionCTA from '@/components/ui/section-cta';
+
+const formats = [
+  { title: "Live", description: "Vor-Ort Workshops mit praktischen Übungen" },
+  { title: "Digital", description: "Online-Kurse im eigenen Tempo" },
+  { title: "Hybrid", description: "Flexible Kombination aus Live und Digital" }
+];
 
 const Academy = () => {
   return (
@@ -14,11 +20,24 @@ const Academy = () => {
       <Header />
       
       <main className="flex-grow pt-24">
-        <HeroSection />
+        <SectionHero
+          badgeText="AI Academy"
+          title="Lerne, wie du AI zu deinem Vorteil nutzt."
+          description="Unsere Academy bietet Workshops, Kurse und 1:1 Coachings – speziell für den praktischen Einsatz in Alltag & Business."
+          buttonText="Jetzt Kursübersicht anfordern"
+        />
         <CoursesSection />
-        <FormatsSection />
+        <SectionGrid
+          title="Flexible Formate"
+          subtitle="Wähle das Format, das am besten zu dir und deinen Lernpräferenzen passt."
+          items={formats}
+        />
         <BenefitsSection />
-        <CTASection />
+        <SectionCTA
+          title="Starte deine KI-Reise noch heute"
+          description="Von Anfänger bis Fortgeschrittene - wir begleiten dich auf jedem Schritt deines Weges."
+          buttonText="Jetzt Kursübersicht anfordern"
+        />
       </main>
       
       <Footer />
