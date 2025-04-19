@@ -65,9 +65,16 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   const x = useTransform(mouseX, [-5, 5], [5, -5]);
   const y = useTransform(mouseY, [-5, 5], [5, -5]);
 
-  const imageUrl = mode === 'academy' 
-    ? '/lovable-uploads/eebdcb21-3af8-4e7d-b337-217b632d35fb.png' 
-    : '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+  // Korrekter Bildpfad für beide Modi
+  const defaultImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+  const academyImage = '/assets/wireframe-head-blue.png'; // Neuer lokaler Pfad
+
+  // Bildauswahl basierend auf dem Modus
+  const imageUrl = mode === 'academy' ? academyImage : defaultImage;
+
+  // Füge console.log für Debugging hinzu
+  console.log('Current mode:', mode);
+  console.log('Image URL being used:', imageUrl);
 
   return (
     <div className={`relative ${className}`} ref={containerRef}>
@@ -96,6 +103,13 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
               ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
               ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
             onLoad={() => setIsLoaded(true)}
+            onError={(e) => {
+              console.error('Image failed to load:', imageUrl);
+              // Fallback zum Standard-Bild bei Ladefehler
+              if (mode === 'academy' && imageUrl !== defaultImage) {
+                (e.target as HTMLImageElement).src = defaultImage;
+              }
+            }}
           />
         </motion.div>
       </motion.div>
@@ -104,4 +118,3 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
 };
 
 export default WireframeHead;
-
