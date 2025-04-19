@@ -66,7 +66,7 @@
   }
 
   .mode-automation {
-    --primary: 195 100% 50%;  /* #00BFFF */
+    --primary: 142 70% 45%;
     --primary-foreground: 210 40% 98%;
   }
 
@@ -101,11 +101,11 @@
   }
 
   .primary-btn {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(0,191,255,0.5)];
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.5)];
   }
 
   .secondary-btn {
-    @apply bg-transparent border border-primary text-primary hover:bg-primary/10 dark:border-primary dark:text-primary-foreground px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(0,191,255,0.4)];
+    @apply bg-transparent border border-primary text-primary hover:bg-primary/10 dark:border-primary dark:text-primary-foreground px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.4)];
   }
 
   .neon-glow {
