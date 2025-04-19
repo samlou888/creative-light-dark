@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -48,6 +47,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
     const defaultImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
     
     if (mode === 'academy') {
+      // Aktualisiere den Pfad zum neuen blauen Kopf-Bild
       setImageSrc('/lovable-uploads/bc99c059-23c5-42a3-9b79-1237e0e813cf.png');
       console.log('Academy mode detected, using blue academy wireframe image');
     } else {
