@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { GraduationCap, MessageSquareText, BookText, Palette, Globe, Video } from 'lucide-react';
+import { GraduationCap, MessageSquareText, BookText, Palette, Globe, Video, Workflow, Mail, Brain } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const ServicesSection = () => {
@@ -50,22 +50,22 @@ const ServicesSection = () => {
 
   const automationServices = [
     {
-      id: 'branding',
-      icon: <Palette size={28} />,
-      title: 'Grafik & Branding',
-      description: 'Logos, Farben, Schrift, Visitenkarten, Präsentationen. Alles, was deinen Auftritt professionell und wiedererkennbar macht.'
+      id: 'internal',
+      icon: <Workflow size={28} />,
+      title: 'Interne Prozesse automatisieren',
+      description: 'Von HR bis Buchhaltung: Wir digitalisieren und automatisieren interne Abläufe, damit dein Team sich auf das Wesentliche konzentrieren kann.'
     },
     {
-      id: 'web',
-      icon: <Globe size={28} />,
-      title: 'Webseiten & Apps',
-      description: 'UI/UX-Design und Umsetzung – von kreativen Webauftritten bis zu komplexen Apps. Schön, schnell, sauber gebaut.'
+      id: 'marketing',
+      icon: <Mail size={28} />,
+      title: 'Sales & Marketing Flows auf Autopilot',
+      description: 'E-Mail-Sequenzen, Lead-Scoring, Follow-ups & mehr – wir machen deine Kundengewinnung effizient und skalierbar.'
     },
     {
-      id: 'social',
-      icon: <Video size={28} />,
-      title: 'Social Media & Content',
-      description: 'Posts, Reels, Videos, Texte – ready zum Hochladen auf Social Media. Schnell produziert, kreativ gedacht, KI-optimiert.'
+      id: 'custom',
+      icon: <Brain size={28} />,
+      title: 'Individuelle Automationen mit AI',
+      description: 'Wir analysieren dein Business und bauen maßgeschneiderte Automationen mit No-Code-Tools & künstlicher Intelligenz.'
     }
   ];
 
@@ -78,10 +78,8 @@ const ServicesSection = () => {
           <h2 className="section-heading mb-4" id="services-heading">
             {mode === 'academy' ? (
               "Unsere Angebote"
-            ) : mode === 'creative' ? (
-              "Unsere Leistungen"
             ) : (
-              <>Unsere <span className="text-primary">Services</span></>
+              "Unsere Leistungen"
             )}
           </h2>
           <p className="text-lg text-muted-foreground">
