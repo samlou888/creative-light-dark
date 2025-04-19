@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -103,7 +104,6 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
               alt="AI Wireframe Head" 
               className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
                 ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
-                ${mode === 'academy' ? 'filter brightness-200 hue-rotate-15' : ''}
                 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
               onLoad={() => setIsLoaded(true)}
               onError={() => setImageSrc('/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png')}
