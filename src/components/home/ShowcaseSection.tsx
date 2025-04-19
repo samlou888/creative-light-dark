@@ -9,10 +9,21 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Layout, FileText, Workflow, PenTool, Video, Smartphone } from 'lucide-react';
+import { 
+  Layout, 
+  FileText, 
+  Workflow, 
+  PenTool, 
+  Video, 
+  Smartphone, 
+  Building2,
+  Target,
+  Users 
+} from 'lucide-react';
 
 const ShowcaseSection = () => {
   const { mode } = useTheme();
+  const isMobile = useIsMobile();
   
   const automationCases = [
     {
