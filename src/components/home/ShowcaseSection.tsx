@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Users, FileText, Mail } from 'lucide-react';
+import { Users, FileText, Mail, Building2, Target } from 'lucide-react';
 
 const ShowcaseSection = () => {
   const { mode } = useTheme();
@@ -117,7 +117,7 @@ const ShowcaseSection = () => {
           </p>
         </div>
 
-        {mode === 'academy' || mode === 'default' ? (
+        {mode === 'academy' || mode === 'automation' ? (
           <div className="relative max-w-4xl mx-auto">
             <Carousel
               opts={{
