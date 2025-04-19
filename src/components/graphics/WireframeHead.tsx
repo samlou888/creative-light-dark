@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -46,10 +45,8 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
 
   useEffect(() => {
     const defaultImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
-    const academyImage = '/lovable-uploads/3b8f65b0-fb1d-47e4-b35f-5bf9d220637d.png';
-    
     if (mode === 'academy') {
-      setImageSrc(academyImage);
+      setImageSrc(''); // No image in academy mode for now
     } else {
       setImageSrc(defaultImage);
     }
@@ -74,43 +71,45 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   console.log('Current mode:', mode);
   console.log('Image URL being used:', imageSrc);
 
-  if (!imageSrc) {
+  if (!imageSrc && mode !== 'academy') {
     return null;
   }
 
   return (
     <div className={`relative ${className}`} ref={containerRef}>
-      <motion.div
-        className="w-full h-full"
-        initial="initial"
-        animate={controls}
-        variants={{
-          initial: {},
-          animate: {}
-        }}
-        style={{ 
-          x: isInView ? x : 0,
-          y: isInView ? y : 0
-        }}
-      >
+      {mode !== 'academy' && (
         <motion.div
+          className="w-full h-full"
           initial="initial"
           animate={controls}
-          variants={breathingAnimation}
+          variants={{
+            initial: {},
+            animate: {}
+          }}
+          style={{ 
+            x: isInView ? x : 0,
+            y: isInView ? y : 0
+          }}
         >
-          {imageSrc && (
-            <img 
-              src={imageSrc}
-              alt="AI Wireframe Head" 
-              className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
-                ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
-                ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-              onLoad={() => setIsLoaded(true)}
-              onError={() => setImageSrc('/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png')}
-            />
-          )}
+          <motion.div
+            initial="initial"
+            animate={controls}
+            variants={breathingAnimation}
+          >
+            {imageSrc && (
+              <img 
+                src={imageSrc}
+                alt="AI Wireframe Head" 
+                className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
+                  ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
+                  ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+                onLoad={() => setIsLoaded(true)}
+                onError={() => setImageSrc('/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png')}
+              />
+            )}
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
     </div>
   );
 };
