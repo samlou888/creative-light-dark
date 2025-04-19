@@ -2,7 +2,7 @@
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import WireframeHead from '../graphics/WireframeHead';
-import { Calendar, BookOpen } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
 
 const HeroSection = () => {
   const { mode } = useTheme();
@@ -22,7 +22,9 @@ const HeroSection = () => {
                   Grafiker, Webdesigner & <span className="text-[#00FF66]">Content Creator</span>.
                 </>
               ) : (
-                <>Automate. Optimize. <span className="text-primary">Scale.</span></>
+                <>
+                  Automatisiere. Optimiere. <span className="text-neutral-900">Skaliere.</span>
+                </>
               )}
             </h1>
             
@@ -31,7 +33,7 @@ const HeroSection = () => {
                 ? "Online-Workshops, Schulungen & Coaching – für Unternehmen, die mit künstlicher Intelligenz effizienter werden, Kosten senken und neue Umsatzquellen erschließen wollen."
                 : mode === 'creative'
                 ? "Kreativität mit künstlicher Intelligenz – für Marken, die auffallen, performen und wachsen wollen."
-                : "Transformieren Sie Ihr Unternehmen mit maßgeschneiderten AI-Lösungen. Wir helfen Ihnen, effizienter zu arbeiten und besser zu skalieren."
+                : "Wir bauen smarte Automationen, die deinen Alltag vereinfachen, dein Team entlasten und dein Business skalieren. Von E-Mail-Flows bis hin zu vollautomatisierten Workflows – alles aus einer Hand."
               }
             </p>
             
@@ -54,8 +56,14 @@ const HeroSection = () => {
                 </>
               ) : (
                 <>
-                  <a href="#contact" className="primary-btn">Jetzt Termin buchen</a>
-                  <a href="#showcase" className="secondary-btn">Demo anfordern</a>
+                  <a href="#contact" className="automation-btn-primary flex items-center gap-2">
+                    <Clock className="w-4 h-4" />
+                    Analyse starten
+                  </a>
+                  <a href="#contact" className="automation-btn-secondary flex items-center gap-2">
+                    <Calendar className="w-4 h-4" />
+                    Online Termin buchen
+                  </a>
                 </>
               )}
             </div>
