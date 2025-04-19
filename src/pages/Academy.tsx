@@ -55,7 +55,7 @@ const Academy = () => {
         <section className="py-16 md:py-24">
           <div className="container px-4 md:px-6">
             <motion.div 
-              className="max-w-3xl mx-auto text-center"
+              className="max-w-4xl mx-auto text-center"
               initial="hidden"
               animate="visible"
               variants={fadeIn}
