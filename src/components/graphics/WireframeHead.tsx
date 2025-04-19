@@ -11,11 +11,11 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   const { mode } = useTheme();
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   
-  // Define images for different modes with absolute URLs
-  const blueHeadImage = '/lovable-uploads/fd0b61b1-3eeb-4d28-849c-6df9ba65884c.png';
+  // Use the newly uploaded image for academy mode
+  const blueHeadImage = '/lovable-uploads/114d06ae-c6a0-49cf-b36c-e2c71672b501.png';
   const defaultHeadImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
   
-  // Directly use the image path without any conditions
+  // Select the appropriate image based on the current mode
   const imageSrc = mode === 'academy' ? blueHeadImage : defaultHeadImage;
   
   useEffect(() => {
@@ -26,7 +26,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
     console.log("Current mode:", mode);
     console.log("Using image:", imageSrc);
   }, [mode, imageSrc]);
-  
+
   // Animation variants
   const fadeIn = {
     hidden: { opacity: 0 },
@@ -51,8 +51,14 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
           }}
           onError={(e) => {
             console.error("Failed to load image:", imageSrc);
-            // Do not set fallback image as it might be causing infinite loops
-            setIsLoaded(true); // Show whatever we have even if it failed
+            console.log("Trying to fallback to static image");
+            // Try to set a static fallback image from the uploaded one
+            if (mode === 'academy') {
+              (e.target as HTMLImageElement).src = blueHeadImage;
+            } else {
+              (e.target as HTMLImageElement).src = defaultHeadImage;
+            }
+            setIsLoaded(true);
           }}
         />
       </motion.div>
