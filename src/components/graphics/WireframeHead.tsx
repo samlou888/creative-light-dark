@@ -10,6 +10,7 @@ interface WireframeHeadProps {
 const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   const { mode, isCreativeMode } = useTheme();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [imageSrc, setImageSrc] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
   
@@ -47,6 +48,22 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
     };
   }, [mouseX, mouseY]);
 
+  // Set image source based on mode
+  useEffect(() => {
+    // Bildpfad für beide Modi
+    const defaultImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+    
+    // Wir verwenden für Academy das Bild, das der Benutzer hochgeladen hat
+    if (mode === 'academy') {
+      // Benutze direkt das hochgeladene Bild aus dem Upload vom Benutzer
+      setImageSrc('/lovable-uploads/13e23013-a27c-4d80-992a-da4c0426956e.png');
+      console.log('Academy mode detected, using blue wireframe image');
+    } else {
+      setImageSrc(defaultImage);
+      console.log('Using default wireframe image');
+    }
+  }, [mode]);
+
   // Breathing animation variant
   const breathingAnimation = {
     initial: { scale: 1 },
@@ -65,16 +82,8 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
   const x = useTransform(mouseX, [-5, 5], [5, -5]);
   const y = useTransform(mouseY, [-5, 5], [5, -5]);
 
-  // Bildpfad für beide Modi
-  const defaultImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
-  const academyImage = '/lovable-uploads/9849a95e-d9ac-4ca8-941e-754d3926aaa6.png'; // Neuer hochgeladener Pfad
-
-  // Bildauswahl basierend auf dem Modus
-  const imageUrl = mode === 'academy' ? academyImage : defaultImage;
-
-  // Console Logs für Debugging
   console.log('Current mode:', mode);
-  console.log('Image URL being used:', imageUrl);
+  console.log('Image URL being used:', imageSrc);
 
   return (
     <div className={`relative ${className}`} ref={containerRef}>
@@ -96,21 +105,24 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
           animate={controls}
           variants={breathingAnimation}
         >
-          <img 
-            src={imageUrl}
-            alt="AI Wireframe Head" 
-            className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
-              ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
-              ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-            onLoad={() => setIsLoaded(true)}
-            onError={(e) => {
-              console.error('Image failed to load:', imageUrl);
-              // Fallback zum Standard-Bild bei Ladefehler
-              if (mode === 'academy' && imageUrl !== defaultImage) {
-                (e.target as HTMLImageElement).src = defaultImage;
-              }
-            }}
-          />
+          {imageSrc && (
+            <img 
+              src={imageSrc}
+              alt="AI Wireframe Head" 
+              className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
+                ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
+                ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+              onLoad={() => {
+                console.log('Image loaded successfully:', imageSrc);
+                setIsLoaded(true);
+              }}
+              onError={(e) => {
+                console.error('Image failed to load:', imageSrc);
+                // Fallback zum Standard-Bild bei Ladefehler
+                setImageSrc('/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png');
+              }}
+            />
+          )}
         </motion.div>
       </motion.div>
     </div>
