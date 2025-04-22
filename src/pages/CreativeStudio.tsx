@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import Header from '@/components/layout/Header';
@@ -25,7 +26,11 @@ const CreativeStudio = () => {
   useEffect(() => {
     if (mode !== 'creative') {
       setMode('creative');
+      console.log('CreativeStudio: Switched to creative mode');
     }
+    
+    // Store the current mode for this specific page
+    localStorage.setItem('creative_page_mode', 'creative');
   }, [mode, setMode]);
   
   // Animation variants

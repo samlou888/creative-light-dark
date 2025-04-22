@@ -30,7 +30,20 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     } else {
       document.documentElement.classList.remove('dark');
     }
+    
+    // Store the current mode in localStorage to persist between page refreshes
+    localStorage.setItem('themeMode', mode);
+    
+    console.log(`Theme mode changed to: ${mode}`);
   }, [mode]);
+
+  // Check localStorage for saved mode on initial load
+  useEffect(() => {
+    const savedMode = localStorage.getItem('themeMode') as ThemeMode | null;
+    if (savedMode && ['automation', 'creative', 'academy'].includes(savedMode)) {
+      setMode(savedMode);
+    }
+  }, []);
 
   // Provide isCreativeMode for backward compatibility
   const isCreativeMode = mode === 'creative';

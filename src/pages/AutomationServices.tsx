@@ -28,11 +28,16 @@ const staggerContainer = {
 const AutomationServices = () => {
   const { mode, setMode } = useTheme();
 
-  // Ensure automation mode is active when viewing this page
+  // Ensure automation mode is active when viewing this page and save the previous mode
   useEffect(() => {
+    // Force automation mode when on this page
     if (mode !== 'automation') {
       setMode('automation');
+      console.log('AutomationServices: Switched to automation mode');
     }
+    
+    // Store the current mode for this specific page
+    localStorage.setItem('automation_page_mode', 'automation');
   }, [mode, setMode]);
 
   return (

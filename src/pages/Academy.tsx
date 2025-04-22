@@ -20,9 +20,14 @@ const Academy = () => {
 
   // Ensure academy mode is active when viewing this page
   useEffect(() => {
+    // Force academy mode when on this page
     if (mode !== 'academy') {
       setMode('academy');
+      console.log('Academy: Switched to academy mode');
     }
+    
+    // Store the current mode for this specific page
+    localStorage.setItem('academy_page_mode', 'academy');
   }, [mode, setMode]);
 
   return (
