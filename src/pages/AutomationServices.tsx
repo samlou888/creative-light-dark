@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
-import { useTheme } from '@/contexts/ThemeContext';
+
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, BarChart, Workflow, Zap, Mail, Calendar, FileText, Users } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import SectionHero from '@/components/ui/section-hero';
-import SectionCTA from '@/components/ui/section-cta';
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
 
 // Animation variants
 const fadeIn = {
@@ -26,31 +25,45 @@ const staggerContainer = {
 };
 
 const AutomationServices = () => {
-  const { mode, setMode } = useTheme();
-
-  // Ensure automation mode is active when viewing this page and save the previous mode
-  useEffect(() => {
-    // Force automation mode when on this page
-    if (mode !== 'automation') {
-      setMode('automation');
-      console.log('AutomationServices: Switched to automation mode');
-    }
-    
-    // Store the current mode for this specific page
-    localStorage.setItem('automation_page_mode', 'automation');
-  }, [mode, setMode]);
-
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
       {/* Hero Section */}
-      <SectionHero
-        title="Automatisiere. Optimiere. Skaliere."
-        description="Reduziere manuelle Arbeit, spare Zeit und fokussiere dich aufs Wesentliche – mit intelligenten Automationen, die sich perfekt in deine Prozesse integrieren."
-        buttonText="Jetzt Prozess-Check buchen"
-        className="pt-32 pb-20"
-      />
+      <section className="pt-32 pb-20 px-6 md:px-10">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.h1 
+              className="section-heading mb-6"
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+            >
+              Automatisiere. Optimiere. Skaliere.
+            </motion.h1>
+            
+            <motion.p 
+              className="text-lg md:text-xl text-muted-foreground mb-10"
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+            >
+              Reduziere manuelle Arbeit, spare Zeit und fokussiere dich aufs Wesentliche – mit intelligenten Automationen, 
+              die sich perfekt in deine Prozesse integrieren.
+            </motion.p>
+            
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+            >
+              <Button size="lg" className="primary-btn">
+                Jetzt Prozess-Check buchen <ArrowRight className="ml-2" />
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
       
       {/* What We Automate Section */}
       <section className="py-20 bg-slate-50 dark:bg-slate-900/30 px-6 md:px-10">
@@ -185,12 +198,42 @@ const AutomationServices = () => {
       </section>
       
       {/* CTA Section */}
-      <SectionCTA
-        title="Bereit für den nächsten Schritt?"
-        description="Buche einen kostenlosen Prozess-Check und entdecke, wie Automatisierung dein Unternehmen transformieren kann."
-        buttonText="Jetzt Prozess-Check buchen"
-        className=""
-      />
+      <section className="py-20 px-6 md:px-10 bg-primary/10">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.h2 
+              className="section-heading mb-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+            >
+              Bereit für den nächsten Schritt?
+            </motion.h2>
+            
+            <motion.p 
+              className="text-lg md:text-xl text-muted-foreground mb-10"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+            >
+              Buche einen kostenlosen Prozess-Check und entdecke, wie Automatisierung dein Unternehmen transformieren kann.
+            </motion.p>
+            
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+            >
+              <Button size="lg" className="primary-btn">
+                Jetzt Prozess-Check buchen <ArrowRight className="ml-2" />
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
       
       <Footer />
     </div>

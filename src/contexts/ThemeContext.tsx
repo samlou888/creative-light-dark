@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export type ThemeMode = 'automation' | 'creative' | 'academy';
+type ThemeMode = 'automation' | 'creative' | 'academy';
 
 type ThemeContextType = {
   mode: ThemeMode;
@@ -30,44 +30,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     } else {
       document.documentElement.classList.remove('dark');
     }
-    
-    // Store the current mode in localStorage to persist between page refreshes
-    localStorage.setItem('themeMode', mode);
-    
-    console.log(`Theme mode changed to: ${mode}`);
   }, [mode]);
-
-  // Check localStorage for saved mode on initial load
-  useEffect(() => {
-    const savedMode = localStorage.getItem('themeMode') as ThemeMode | null;
-    
-    // Check for route-specific saved modes
-    const pathname = window.location.pathname;
-    if (pathname.includes('automation')) {
-      const automationMode = localStorage.getItem('automation_page_mode') as ThemeMode | null;
-      if (automationMode) {
-        setMode(automationMode);
-        return;
-      }
-    } else if (pathname.includes('creative')) {
-      const creativeMode = localStorage.getItem('creative_page_mode') as ThemeMode | null;
-      if (creativeMode) {
-        setMode(creativeMode);
-        return;
-      }
-    } else if (pathname.includes('academy')) {
-      const academyMode = localStorage.getItem('academy_page_mode') as ThemeMode | null;
-      if (academyMode) {
-        setMode(academyMode);
-        return;
-      }
-    }
-    
-    // Fall back to the globally saved mode
-    if (savedMode && ['automation', 'creative', 'academy'].includes(savedMode)) {
-      setMode(savedMode);
-    }
-  }, []);
 
   // Provide isCreativeMode for backward compatibility
   const isCreativeMode = mode === 'creative';
