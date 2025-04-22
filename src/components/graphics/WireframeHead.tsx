@@ -86,7 +86,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
           variants={breathingAnimation}
         >
           <img 
-            src="/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png"
+            src="/lovable-uploads/d403c458-c12d-461a-9dc9-05e0eff7711f.png"
             alt="AI Wireframe Head" 
             className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
               ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
