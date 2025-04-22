@@ -74,6 +74,14 @@
     --accent-foreground: 210 40% 98%;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
+    
+    /* Animation variables for Automation */
+    --animation-duration-slow: 0.6s;
+    --animation-duration-normal: 0.4s;
+    --animation-duration-fast: 0.2s;
+    --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+    --hover-scale: 1.02;
+    --hover-transition: all 0.3s ease;
   }
 
   /* Creative mode-specific styles */
@@ -84,6 +92,14 @@
     --accent-foreground: 0 0% 100%;
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
+    
+    /* Animation variables for Creative */
+    --animation-duration-slow: 0.8s;
+    --animation-duration-normal: 0.5s;
+    --animation-duration-fast: 0.3s;
+    --transition-easing: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --hover-scale: 1.05;
+    --hover-transition: all 0.4s ease;
   }
 
   /* Academy mode-specific styles */
@@ -95,6 +111,14 @@
     --background: 0 0% 98%;
     --foreground: 222.2 84% 4.9%;
     --muted: 276 100% 95%;
+    
+    /* Animation variables for Academy */
+    --animation-duration-slow: 0.7s;
+    --animation-duration-normal: 0.45s;
+    --animation-duration-fast: 0.25s;
+    --transition-easing: cubic-bezier(0.16, 1, 0.3, 1);
+    --hover-scale: 1.03;
+    --hover-transition: all 0.35s ease;
   }
 
   * {
@@ -113,69 +137,190 @@
     @apply text-3xl md:text-4xl font-bold;
   }
 
-  /* Button styles - mode specific */
+  /* Button styles - mode specific with isolated animations */
   .mode-automation .primary-btn {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.5)];
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full font-medium;
+    transition: var(--hover-transition);
+  }
+  .mode-automation .primary-btn:hover {
+    transform: scale(var(--hover-scale));
+    box-shadow: 0 0 15px rgba(60,214,120,0.5);
   }
 
   .mode-creative .primary-btn {
-    @apply bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(149,76,233,0.7)];
+    @apply bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-3 rounded-full font-medium;
+    transition: var(--hover-transition);
+  }
+  .mode-creative .primary-btn:hover {
+    transform: scale(var(--hover-scale));
+    background: linear-gradient(to right, #8a33e1, #4460fb);
+    box-shadow: 0 0 15px rgba(149,76,233,0.7);
   }
 
   .mode-academy .primary-btn {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(56,182,255,0.5)];
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium;
+    transition: var(--hover-transition);
+  }
+  .mode-academy .primary-btn:hover {
+    transform: scale(var(--hover-scale));
+    background-color: hsl(196 100% 45%);
+    box-shadow: 0 0 15px rgba(56,182,255,0.5);
   }
 
-  /* Secondary button styles */
+  /* Secondary button styles with isolated animations */
   .mode-automation .secondary-btn {
-    @apply bg-transparent border border-primary text-primary hover:bg-primary/10 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02];
+    @apply bg-transparent border border-primary text-primary px-6 py-3 rounded-full font-medium;
+    transition: var(--hover-transition);
+  }
+  .mode-automation .secondary-btn:hover {
+    transform: scale(var(--hover-scale));
+    background-color: rgba(60,214,120,0.1);
   }
 
   .mode-creative .secondary-btn {
-    @apply bg-transparent border border-purple-500 text-purple-400 hover:bg-purple-500/10 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02];
+    @apply bg-transparent border border-purple-500 text-purple-400 px-6 py-3 rounded-full font-medium;
+    transition: var(--hover-transition);
+  }
+  .mode-creative .secondary-btn:hover {
+    transform: scale(var(--hover-scale));
+    background-color: rgba(149,76,233,0.1);
+    box-shadow: 0 0 10px rgba(149,76,233,0.3);
   }
 
   .mode-academy .secondary-btn {
-    @apply bg-transparent border border-primary text-primary hover:bg-primary/10 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02];
+    @apply bg-transparent border border-primary text-primary px-6 py-3 rounded-full font-medium;
+    transition: var(--hover-transition);
+  }
+  .mode-academy .secondary-btn:hover {
+    transform: scale(var(--hover-scale));
+    background-color: rgba(56,182,255,0.1);
   }
 
-  /* Glow effects */
-  .neon-glow {
-    @apply dark:shadow-[0_0_10px_rgba(149,76,233,0.7),0_0_20px_rgba(149,76,233,0.5)];
+  /* Glow effects - section specific */
+  .mode-automation .feature-glow {
+    @apply shadow-[0_0_10px_rgba(60,214,120,0.5),0_0_20px_rgba(60,214,120,0.3)];
+  }
+  
+  .mode-creative .neon-glow {
+    @apply shadow-[0_0_10px_rgba(149,76,233,0.7),0_0_20px_rgba(149,76,233,0.5)];
+  }
+  
+  .mode-academy .accent-glow {
+    @apply shadow-[0_0_10px_rgba(56,182,255,0.7),0_0_20px_rgba(56,182,255,0.5)];
   }
 
-  .accent-glow {
-    @apply dark:shadow-[0_0_10px_rgba(56,182,255,0.7),0_0_20px_rgba(56,182,255,0.5)];
-  }
-
-  /* Card styles */
+  /* Card styles - section specific */
   .mode-automation .light-card {
-    @apply bg-white rounded-xl shadow-md p-6 transition-all hover:shadow-lg;
+    @apply bg-white rounded-xl shadow-md p-6;
+    transition: var(--hover-transition);
+  }
+  .mode-automation .light-card:hover {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   }
 
   .mode-creative .light-card {
-    @apply bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-6 transition-all hover:border-white/30;
+    @apply bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-6;
+    transition: var(--hover-transition);
+  }
+  .mode-creative .light-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(149, 76, 233, 0.2);
   }
 
   .mode-academy .light-card {
-    @apply bg-white rounded-xl shadow-md p-6 transition-all hover:shadow-[0_4px_20px_rgba(56,182,255,0.15)];
+    @apply bg-white rounded-xl shadow-md p-6;
+    transition: var(--hover-transition);
+  }
+  .mode-academy .light-card:hover {
+    box-shadow: 0 4px 20px rgba(56,182,255,0.15);
+    transform: translateY(-3px);
   }
 
-  .dark-card {
-    @apply dark:bg-black/40 dark:backdrop-blur-md dark:border dark:border-primary/20 dark:rounded-xl dark:p-6 transition-all hover:dark:border-primary/40;
+  /* Dark card variants - section specific */
+  .mode-automation .dark-card {
+    @apply dark:bg-slate-900/80 dark:backdrop-blur-md dark:border dark:border-primary/20 dark:rounded-xl dark:p-6;
+    transition: var(--hover-transition);
+  }
+  .mode-automation .dark-card:hover {
+    border-color: rgba(60,214,120,0.4);
   }
   
-  .neo-blur {
+  .mode-creative .dark-card {
+    @apply dark:bg-black/60 dark:backdrop-blur-md dark:border dark:border-purple-500/20 dark:rounded-xl dark:p-6;
+    transition: var(--hover-transition);
+  }
+  .mode-creative .dark-card:hover {
+    border-color: rgba(149,76,233,0.4);
+    box-shadow: 0 0 20px rgba(149, 76, 233, 0.2);
+  }
+  
+  .mode-academy .dark-card {
+    @apply dark:bg-slate-900/80 dark:backdrop-blur-md dark:border dark:border-primary/20 dark:rounded-xl dark:p-6;
+    transition: var(--hover-transition);
+  }
+  .mode-academy .dark-card:hover {
+    border-color: rgba(56,182,255,0.4);
+    box-shadow: 0 0 20px rgba(56, 182, 255, 0.2);
+  }
+  
+  /* Special effects - section specific */
+  .mode-creative .neo-blur {
     @apply backdrop-blur-xl bg-black/40 border border-white/10 rounded-xl;
+    transition: var(--hover-transition);
+  }
+  .mode-creative .neo-blur:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(149, 76, 233, 0.2);
   }
   
   .text-gradient-to-r {
     @apply bg-gradient-to-r bg-clip-text text-transparent;
+  }
+  
+  /* Section-specific animations */
+  .mode-automation .fade-in {
+    animation: automationFadeIn var(--animation-duration-normal) ease-out forwards;
+  }
+  
+  .mode-creative .fade-in {
+    animation: creativeFadeIn var(--animation-duration-normal) ease-out forwards;
+  }
+  
+  .mode-academy .fade-in {
+    animation: academyFadeIn var(--animation-duration-normal) ease-out forwards;
+  }
+  
+  @keyframes automationFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes creativeFadeIn {
+    from { opacity: 0; transform: translateY(15px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  
+  @keyframes academyFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
 
 @layer utilities {
   .mode-transition {
     @apply transition-all duration-300;
+  }
+  
+  /* Responsive utilities per section */
+  .mode-automation .responsive-container {
+    @apply px-4 sm:px-6 md:px-8 lg:px-10 mx-auto;
+  }
+  
+  .mode-creative .responsive-container {
+    @apply px-5 sm:px-8 md:px-10 lg:px-12 mx-auto;
+  }
+  
+  .mode-academy .responsive-container {
+    @apply px-4 sm:px-5 md:px-6 lg:px-8 mx-auto;
   }
 }
