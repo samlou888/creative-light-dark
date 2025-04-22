@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -65,22 +66,34 @@
     --ring: 142 70% 45%;
   }
 
+  /* Automation mode-specific styles */
   .mode-automation {
     --primary: 142 70% 45%;
     --primary-foreground: 210 40% 98%;
+    --accent: 190 80% 50%;
+    --accent-foreground: 210 40% 98%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
   }
 
+  /* Creative mode-specific styles */
   .mode-creative {
     --primary: 142 100% 50%;
     --primary-foreground: 0 0% 100%;
+    --accent: 270 100% 70%;
+    --accent-foreground: 0 0% 100%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
   }
 
+  /* Academy mode-specific styles */
   .mode-academy {
     --primary: 196 100% 50%;
     --primary-foreground: 210 40% 98%;
     --accent: 276 100% 83%;
     --accent-foreground: 222.2 47.4% 11.2%;
     --background: 0 0% 98%;
+    --foreground: 222.2 84% 4.9%;
     --muted: 276 100% 95%;
   }
 
@@ -100,14 +113,33 @@
     @apply text-3xl md:text-4xl font-bold;
   }
 
-  .primary-btn {
+  /* Button styles - mode specific */
+  .mode-automation .primary-btn {
     @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.5)];
   }
 
-  .secondary-btn {
-    @apply bg-transparent border border-primary text-primary hover:bg-primary/10 dark:border-primary dark:text-primary-foreground px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.4)];
+  .mode-creative .primary-btn {
+    @apply bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(149,76,233,0.7)];
   }
 
+  .mode-academy .primary-btn {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(56,182,255,0.5)];
+  }
+
+  /* Secondary button styles */
+  .mode-automation .secondary-btn {
+    @apply bg-transparent border border-primary text-primary hover:bg-primary/10 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02];
+  }
+
+  .mode-creative .secondary-btn {
+    @apply bg-transparent border border-purple-500 text-purple-400 hover:bg-purple-500/10 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02];
+  }
+
+  .mode-academy .secondary-btn {
+    @apply bg-transparent border border-primary text-primary hover:bg-primary/10 px-6 py-3 rounded-full font-medium transition-all duration-300 ease-in-out hover:scale-[1.02];
+  }
+
+  /* Glow effects */
   .neon-glow {
     @apply dark:shadow-[0_0_10px_rgba(149,76,233,0.7),0_0_20px_rgba(149,76,233,0.5)];
   }
@@ -116,8 +148,17 @@
     @apply dark:shadow-[0_0_10px_rgba(56,182,255,0.7),0_0_20px_rgba(56,182,255,0.5)];
   }
 
-  .light-card {
+  /* Card styles */
+  .mode-automation .light-card {
     @apply bg-white rounded-xl shadow-md p-6 transition-all hover:shadow-lg;
+  }
+
+  .mode-creative .light-card {
+    @apply bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-6 transition-all hover:border-white/30;
+  }
+
+  .mode-academy .light-card {
+    @apply bg-white rounded-xl shadow-md p-6 transition-all hover:shadow-[0_4px_20px_rgba(56,182,255,0.15)];
   }
 
   .dark-card {

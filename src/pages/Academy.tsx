@@ -1,5 +1,6 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import SectionHero from '@/components/ui/section-hero';
@@ -15,6 +16,15 @@ const formats = [
 ];
 
 const Academy = () => {
+  const { mode, setMode } = useTheme();
+
+  // Ensure academy mode is active when viewing this page
+  useEffect(() => {
+    if (mode !== 'academy') {
+      setMode('academy');
+    }
+  }, [mode, setMode]);
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />

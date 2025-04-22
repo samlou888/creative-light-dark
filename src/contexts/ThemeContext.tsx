@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type ThemeMode = 'automation' | 'creative' | 'academy';
+export type ThemeMode = 'automation' | 'creative' | 'academy';
 
 type ThemeContextType = {
   mode: ThemeMode;
