@@ -84,6 +84,19 @@
     --muted: 276 100% 95%;
   }
 
+  .mode-blue {
+    --primary: 196 100% 50%;
+    --primary-foreground: 210 40% 98%;
+    --accent: 196 100% 83%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --background: 210 40% 10%;
+    --foreground: 0 0% 98%;
+    --card: 210 40% 15%;
+    --card-foreground: 0 0% 98%;
+    --muted: 196 100% 30%;
+    --muted-foreground: 0 0% 80%;
+  }
+
   * {
     @apply border-border;
   }

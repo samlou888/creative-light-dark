@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type ThemeMode = 'automation' | 'creative' | 'academy';
+type ThemeMode = 'automation' | 'creative' | 'academy' | 'blue';
 
 type ThemeContextType = {
   mode: ThemeMode;
@@ -17,16 +17,19 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   // This effect handles the document classes
   useEffect(() => {
     // Remove all mode classes first
-    document.documentElement.classList.remove('mode-automation', 'mode-creative', 'mode-academy');
-    document.body.classList.remove('creative-mode');
+    document.documentElement.classList.remove('mode-automation', 'mode-creative', 'mode-academy', 'mode-blue');
+    document.body.classList.remove('creative-mode', 'blue-mode');
     
     // Add new mode class
     document.documentElement.classList.add(`mode-${mode}`);
     
-    // Handle dark mode for creative mode
+    // Handle special modes
     if (mode === 'creative') {
       document.documentElement.classList.add('dark');
       document.body.classList.add('creative-mode');
+    } else if (mode === 'blue') {
+      document.documentElement.classList.add('dark');
+      document.body.classList.add('blue-mode');
     } else {
       document.documentElement.classList.remove('dark');
     }
@@ -49,3 +52,4 @@ export const useTheme = () => {
   }
   return context;
 };
+
