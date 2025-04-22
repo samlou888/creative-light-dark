@@ -1,8 +1,10 @@
+
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
 import { Zap, Palette, GraduationCap } from 'lucide-react';
+import MainNavigation from './MainNavigation';
 
 const Header = () => {
   const { mode, setMode } = useTheme();
@@ -50,6 +52,18 @@ const Header = () => {
     };
   }, []);
 
+  // Define page-specific CTA text based on current mode
+  const getCtaText = () => {
+    switch(mode) {
+      case 'creative':
+        return 'Projekt starten';
+      case 'academy':
+        return 'Kurs buchen';
+      default:
+        return 'Termin buchen';
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
       <div className="container mx-auto">
@@ -58,8 +72,8 @@ const Header = () => {
             <span className="text-primary">AI</span>ventures
           </Link>
           
-          <nav className="hidden md:flex items-center gap-10">
-          </nav>
+          {/* Main Navigation Menu */}
+          <MainNavigation />
           
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
@@ -111,7 +125,7 @@ const Header = () => {
                   : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
               } px-5 py-2 rounded-full font-medium transition-all`}
             >
-              {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
+              {getCtaText()}
             </a>
           </div>
         </div>
