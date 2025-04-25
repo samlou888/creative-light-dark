@@ -39,7 +39,7 @@ const HeroSection = () => {
               {mode === 'academy' ? (
                 <>
                   <a href="#contact" className="primary-btn flex items-center gap-2">
-                    <BookOpen className="w-4 h-4" />
+                    <Calendar className="w-4 h-4" />
                     Schulung buchen
                   </a>
                   <a href="#contact" className="secondary-btn flex items-center gap-2">
