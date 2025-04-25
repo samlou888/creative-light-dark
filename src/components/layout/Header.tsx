@@ -119,7 +119,7 @@ const Header = memo(() => {
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
               className={`hidden md:block bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)] px-5 py-2 rounded-full font-medium ${
                 mode === 'academy' 
-                  ? 'primary-btn' 
+                  ? 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)] px-5 py-2 rounded-full' 
                   : mode === 'creative'
                   ? 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]' 
                   : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
