@@ -1,12 +1,11 @@
-
 import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
-import NavButtons from './navigation/NavButtons';
-import CTAButton from './navigation/CTAButton';
+import { motion } from 'framer-motion';
+import { Zap, Palette, GraduationCap } from 'lucide-react';
 
 const Header = memo(() => {
-  const { mode } = useTheme();
+  const { mode, setMode } = useTheme();
   const location = useLocation();
 
   const handleInternalLinkClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -18,11 +17,20 @@ const Header = memo(() => {
       
       if (targetElement) {
         const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+        
         let offsetAdjustment = 200;
         
-        if (targetId === 'showcase') offsetAdjustment = 20;
-        if (targetId === 'services') offsetAdjustment = -100;
-        if (targetId === 'contact') offsetAdjustment = 20;
+        if (targetId === 'showcase') {
+          offsetAdjustment = 20;
+        }
+        
+        if (targetId === 'services') {
+          offsetAdjustment = -100;
+        }
+        
+        if (targetId === 'contact') {
+          offsetAdjustment = 20;
+        }
         
         const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - offsetAdjustment;
         
@@ -33,6 +41,16 @@ const Header = memo(() => {
       }
     }
   }, [location.pathname]);
+
+  const handleModeChange = useCallback((newMode: 'automation' | 'creative' | 'academy') => {
+    setMode(newMode);
+    
+    // Smooth scroll to top
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, [setMode]);
 
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -47,7 +65,7 @@ const Header = memo(() => {
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           <Link 
-            to="/" 
+            to={location.pathname} 
             onClick={handleLogoClick} 
             className="text-2xl font-bold"
           >
@@ -55,11 +73,58 @@ const Header = memo(() => {
           </Link>
           
           <div className="flex items-center gap-4">
-            <NavButtons />
-            <CTAButton 
+            <div className="flex items-center gap-2">
+              <motion.button
+                onClick={() => handleModeChange('automation')}
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  mode === 'automation' 
+                    ? 'bg-primary/10 text-primary' 
+                    : 'hover:bg-primary/5'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Zap className="w-5 h-5" />
+              </motion.button>
+              
+              <motion.button
+                onClick={() => handleModeChange('creative')}
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  mode === 'creative' 
+                    ? 'bg-primary/10 text-primary dark:text-[#00FF66]' 
+                    : 'hover:bg-primary/5'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Palette className="w-5 h-5" />
+              </motion.button>
+              
+              <motion.button
+                onClick={() => handleModeChange('academy')}
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  mode === 'academy' 
+                    ? 'bg-primary/10 text-primary' 
+                    : 'hover:bg-primary/5'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <GraduationCap className="w-5 h-5" />
+              </motion.button>
+            </div>
+            
+            <a 
+              href="#contact" 
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
-              mode={mode}
-            />
+              className={`hidden md:block ${
+                mode === 'creative'
+                  ? 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]' 
+                  : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
+              } px-5 py-2 rounded-full font-medium transition-all`}
+            >
+              {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
+            </a>
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
 
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
 
 type ThemeMode = 'automation' | 'creative' | 'academy';
 
@@ -13,25 +12,14 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [mode, setMode] = useState<ThemeMode>('automation');
-  const location = useLocation();
+  const [mode, setMode] = useState<ThemeMode>(() => {
+    const savedMode = localStorage.getItem('themeMode');
+    return (savedMode as ThemeMode) || 'automation';
+  });
 
-  // Update mode based on current route
   useEffect(() => {
-    const path = location.pathname;
-    console.log('ThemeProvider - Current path:', path);
-    
-    if (path === '/creative-studio') {
-      setMode('creative');
-      console.log('Setting creative mode');
-    } else if (path === '/academy') {
-      setMode('academy');
-      console.log('Setting academy mode');
-    } else {
-      setMode('automation');
-      console.log('Setting automation mode');
-    }
-  }, [location.pathname]);
+    localStorage.setItem('themeMode', mode);
+  }, [mode]);
 
   useEffect(() => {
     document.documentElement.classList.remove('mode-automation', 'mode-creative', 'mode-academy');
@@ -39,15 +27,12 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     
     document.documentElement.classList.add(`mode-${mode}`);
     
-    // Dark mode nur für den Creative-Modus anwenden
     if (mode === 'creative') {
       document.documentElement.classList.add('dark');
       document.body.classList.add('creative-mode');
     } else {
       document.documentElement.classList.remove('dark');
     }
-    
-    console.log('Theme mode applied:', mode);
   }, [mode]);
 
   const isCreativeMode = mode === 'creative';

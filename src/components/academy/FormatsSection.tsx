@@ -3,9 +3,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const formats = [
-  { title: "Live", description: "Vor-Ort Workshops mit praktischen Übungen" },
-  { title: "Digital", description: "Online-Kurse im eigenen Tempo" },
-  { title: "Hybrid", description: "Flexible Kombination aus Live und Digital" }
+  { name: "Live", description: "Vor-Ort Workshops mit praktischen Übungen" },
+  { name: "Digital", description: "Online-Kurse im eigenen Tempo" },
+  { name: "Hybrid", description: "Flexible Kombination aus Live und Digital" }
 ];
 
 const FormatsSection = () => {
@@ -15,7 +15,7 @@ const FormatsSection = () => {
   };
 
   return (
-    <section className="py-16 bg-muted/30">
+    <section className="py-16">
       <div className="container px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Flexible Formate</h2>
@@ -34,7 +34,7 @@ const FormatsSection = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-muted/20 rounded-lg p-6 text-center hover:bg-muted/40 transition-colors"
             >
-              <h3 className="text-xl font-medium mb-2">{format.title}</h3>
+              <h3 className="text-xl font-medium mb-2">{format.name}</h3>
               <p className="text-muted-foreground">{format.description}</p>
             </motion.div>
           ))}
