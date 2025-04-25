@@ -1,44 +1,10 @@
-
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = memo(() => {
   const { mode } = useTheme();
-  const { language, t } = useLanguage();
   const isCreative = mode === 'creative';
-  
-  // Get the current year for copyright
-  const currentYear = new Date().getFullYear();
-  
-  // Determine the correct paths based on language
-  const getPath = (page: string) => {
-    switch (language) {
-      case 'en':
-        switch (page) {
-          case 'impressum': return '/en/imprint';
-          case 'datenschutz': return '/en/privacy-policy';
-          case 'agb': return '/en/terms';
-          case 'studio': return '/en/creative-studio';
-          case 'automation': return '/en/automation-services';
-          case 'academy': return '/en/academy';
-          default: return `/en/${page}`;
-        }
-      case 'fr':
-        switch (page) {
-          case 'impressum': return '/fr/mentions-legales';
-          case 'datenschutz': return '/fr/confidentialite';
-          case 'agb': return '/fr/conditions';
-          case 'studio': return '/fr/creative-studio';
-          case 'automation': return '/fr/automation-services';
-          case 'academy': return '/fr/academy';
-          default: return `/fr/${page}`;
-        }
-      default: // German
-        return `/de/${page}`;
-    }
-  };
 
   return (
     <footer className={`py-10 ${isCreative ? 'dark-card mt-16' : 'border-t mt-20'}`}>
@@ -49,42 +15,21 @@ const Footer = memo(() => {
               <span className="text-primary">AI</span>ventures
             </h3>
             <p className="text-muted-foreground">
-              {t('footer.tagline')}
+              Wir revolutionieren Unternehmen durch AI-Lösungen, die wirklich funktionieren.
             </p>
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">{t('footer.services')}</h4>
+            <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
-              <li>
-                <Link 
-                  to={getPath('creative-studio')} 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {t('footer.studio')}
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to={getPath('automation-services')} 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {t('footer.automation')}
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to={getPath('academy')} 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {t('footer.academy')}
-                </Link>
-              </li>
+              <li><Link to="/creative-studio" className="text-muted-foreground hover:text-primary transition-colors">Studio</Link></li>
+              <li><Link to="/automation-services" className="text-muted-foreground hover:text-primary transition-colors">Automation</Link></li>
+              <li><Link to="/academy" className="text-muted-foreground hover:text-primary transition-colors">Academy</Link></li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">{t('footer.contact')}</h4>
+            <h4 className="font-semibold mb-4">Kontakt</h4>
             <ul className="space-y-2">
               <li className="text-muted-foreground">info@aiventures.ch</li>
               <li className="text-muted-foreground">Biel/Bienne, Schweiz</li>
@@ -92,39 +37,18 @@ const Footer = memo(() => {
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">{t('footer.legal')}</h4>
+            <h4 className="font-semibold mb-4">Rechtliches</h4>
             <ul className="space-y-2">
-              <li>
-                <Link 
-                  to={getPath('impressum')} 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {t('footer.imprint')}
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to={getPath('datenschutz')} 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {t('footer.privacy')}
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to={getPath('agb')} 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {t('footer.terms')}
-                </Link>
-              </li>
+              <li><Link to="/impressum" className="text-muted-foreground hover:text-primary transition-colors">Impressum</Link></li>
+              <li><Link to="/datenschutz" className="text-muted-foreground hover:text-primary transition-colors">Datenschutz</Link></li>
+              <li><Link to="/agb" className="text-muted-foreground hover:text-primary transition-colors">AGB</Link></li>
             </ul>
           </div>
         </div>
         
         <div className="mt-10 pt-6 border-t border-gray-200 dark:border-gray-800">
           <p className="text-center text-muted-foreground text-sm">
-            {t('footer.copyright').replace('{year}', currentYear.toString())}
+            © {new Date().getFullYear()} AIventures. Alle Rechte vorbehalten.
           </p>
         </div>
       </div>

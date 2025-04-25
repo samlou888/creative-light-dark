@@ -2,20 +2,17 @@
 import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
-import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
 import { Zap, Palette, GraduationCap } from 'lucide-react';
-import LanguageSelector from './LanguageSelector';
 
 const Header = memo(() => {
   const { mode, setMode } = useTheme();
-  const { language, t } = useLanguage();
   const location = useLocation();
 
   const handleInternalLinkClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     const currentPath = location.pathname;
     
-    if ((currentPath === '/' || currentPath === '/de' || currentPath === '/en' || currentPath === '/fr') && document.getElementById(targetId)) {
+    if (currentPath === '/' && document.getElementById(targetId)) {
       event.preventDefault();
       const targetElement = document.getElementById(targetId);
       
@@ -64,17 +61,12 @@ const Header = memo(() => {
     });
   };
 
-  // Determine the base path based on the current language
-  const getBasePath = () => {
-    return `/${language}`;
-  };
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           <Link 
-            to={getBasePath()} 
+            to={location.pathname} 
             onClick={handleLogoClick} 
             className="text-2xl font-bold"
           >
@@ -123,8 +115,6 @@ const Header = memo(() => {
               </motion.button>
             </div>
             
-            <LanguageSelector />
-            
             <a 
               href="#contact" 
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
@@ -136,11 +126,7 @@ const Header = memo(() => {
                   : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
               }`}
             >
-              {mode === 'creative' 
-                ? t('nav.startProject') 
-                : mode === 'academy' 
-                ? t('nav.bookCourse') 
-                : t('nav.bookAppointment')}
+              {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
           </div>
         </div>

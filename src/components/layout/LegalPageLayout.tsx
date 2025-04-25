@@ -3,7 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   Breadcrumb,
   BreadcrumbList,
@@ -19,24 +18,6 @@ interface LegalPageLayoutProps {
 }
 
 const LegalPageLayout: React.FC<LegalPageLayoutProps> = ({ title, children }) => {
-  const { language, t } = useLanguage();
-  
-  // Determine the correct home path based on language
-  const getHomePath = () => {
-    switch (language) {
-      case 'en': return '/en';
-      case 'fr': return '/fr';
-      default: return '/de';
-    }
-  };
-  
-  // Translate the "Home" text
-  const homeText = {
-    de: 'Home',
-    en: 'Home',
-    fr: 'Accueil'
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -46,7 +27,7 @@ const LegalPageLayout: React.FC<LegalPageLayoutProps> = ({ title, children }) =>
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link to={getHomePath()}>{homeText[language]}</Link>
+                  <Link to="/">Home</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
