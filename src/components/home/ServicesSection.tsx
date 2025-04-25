@@ -1,7 +1,72 @@
+
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { GraduationCap, MessageSquareText, BookText, Palette, Globe, Video, Workflow, Mail, Brain } from 'lucide-react';
 import { motion } from 'framer-motion';
+
+// Define service data for each mode
+const academyServices = [
+  {
+    id: 'academy-1',
+    icon: <GraduationCap className="w-6 h-6 text-[#00CFFF]" />,
+    title: 'AI Schulungen',
+    description: 'Maßgeschneiderte Workshops und Schulungen, um Ihr Team für KI-Anwendungen zu qualifizieren.'
+  },
+  {
+    id: 'academy-2',
+    icon: <BookText className="w-6 h-6 text-[#00CFFF]" />,
+    title: 'Lernmaterialien',
+    description: 'Umfassende Dokumentationen und praxisnahe Lernmaterialien für effektives Selbststudium.'
+  },
+  {
+    id: 'academy-3',
+    icon: <MessageSquareText className="w-6 h-6 text-[#00CFFF]" />,
+    title: 'Beratung',
+    description: 'Individuelle Beratung zur Integration von KI in bestehende Prozesse und Strategien.'
+  }
+];
+
+const creativeServices = [
+  {
+    id: 'creative-1',
+    icon: <Palette className="w-6 h-6 text-primary" />,
+    title: 'Design & Konzeption',
+    description: 'Kreative Konzepte und Designs für Ihre digitale Präsenz mit KI-unterstützten Tools.'
+  },
+  {
+    id: 'creative-2',
+    icon: <Globe className="w-6 h-6 text-primary" />,
+    title: 'Web & App Entwicklung',
+    description: 'Moderne Webseiten und Apps mit Integration fortschrittlicher KI-Funktionalitäten.'
+  },
+  {
+    id: 'creative-3',
+    icon: <Video className="w-6 h-6 text-primary" />,
+    title: 'Content Creation',
+    description: 'KI-gestützte Erstellung von Texten, Videos und anderen Inhalten für Ihre Online-Präsenz.'
+  }
+];
+
+const automationServices = [
+  {
+    id: 'automation-1',
+    icon: <Workflow className="w-6 h-6 text-primary" />,
+    title: 'Prozessautomatisierung',
+    description: 'Optimierung und Automatisierung Ihrer Geschäftsprozesse durch maßgeschneiderte KI-Lösungen.'
+  },
+  {
+    id: 'automation-2',
+    icon: <Brain className="w-6 h-6 text-primary" />,
+    title: 'AI Development',
+    description: 'Entwicklung spezialisierter KI-Anwendungen für Ihre individuellen Unternehmensbedürfnisse.'
+  },
+  {
+    id: 'automation-3',
+    icon: <Mail className="w-6 h-6 text-primary" />,
+    title: 'Datenanalyse',
+    description: 'Umfassende Analyse Ihrer Unternehmensdaten zur Gewinnung wertvoller Insights.'
+  }
+];
 
 const ServicesSection = () => {
   const { mode } = useTheme();
