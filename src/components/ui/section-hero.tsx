@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 
 interface SectionHeroProps {
   badgeText?: string;
-  title: string;
+  title: string | React.ReactNode;
   description: string;
   buttonText?: string;
   onButtonClick?: () => void;
