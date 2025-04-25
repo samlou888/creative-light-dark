@@ -8,7 +8,7 @@ const Footer = memo(() => {
   const navigate = useNavigate();
   const isCreative = mode === 'creative';
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectedTab, setSelectedTab] = useState("impressum");
+  const [selectedTab, setSelectedTab] = useState<"impressum" | "datenschutz" | "agb">("impressum");
 
   const handleModeChange = (newMode: 'automation' | 'creative' | 'academy') => {
     setMode(newMode);

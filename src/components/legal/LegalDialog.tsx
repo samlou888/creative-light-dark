@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Dialog,
   DialogContent,
@@ -11,16 +10,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 interface LegalDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  defaultTab?: string;
+  defaultTab: "impressum" | "datenschutz" | "agb";
 }
 
 const LegalDialog: React.FC<LegalDialogProps> = ({
   open,
   onOpenChange,
-  defaultTab = 'impressum',
+  defaultTab,
 }) => {
-  const [activeTab, setActiveTab] = useState(defaultTab);
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
@@ -30,7 +27,7 @@ const LegalDialog: React.FC<LegalDialogProps> = ({
           </DialogTitle>
         </DialogHeader>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs defaultValue={defaultTab} className="w-full">
           <TabsList className="grid grid-cols-3 mb-4">
             <TabsTrigger value="impressum">Impressum</TabsTrigger>
             <TabsTrigger value="datenschutz">Datenschutz</TabsTrigger>
