@@ -43,18 +43,18 @@ const Footer = memo(() => {
               <ul className="space-y-2">
                 <li>
                   <button 
-                    onClick={() => handleModeChange('creative')} 
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Studio
-                  </button>
-                </li>
-                <li>
-                  <button 
                     onClick={() => handleModeChange('automation')} 
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     Automation
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => handleModeChange('creative')} 
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    Studio
                   </button>
                 </li>
                 <li>
