@@ -1,3 +1,4 @@
+
 import React, { memo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -34,7 +35,9 @@ const Footer = memo(() => {
                 <span className="text-primary">AI</span>ventures
               </h3>
               <p className="text-muted-foreground">
-                Wir revolutionieren Unternehmen durch AI-Lösungen, die wirklich funktionieren.
+                Wir revolutionieren<br />
+                Unternehmen durch<br />
+                AI-Lösungen, die wirklich funktionieren.
               </p>
             </div>
             
