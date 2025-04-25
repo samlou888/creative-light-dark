@@ -14,19 +14,52 @@ const StarryBackground = () => {
         <div className="stars-pulse-1" />
         <div className="stars-pulse-2" />
         
-        {/* Add more individual animated stars with specific positions */}
-        <div className="star" style={{ top: '10%', left: '20%' }}></div>
-        <div className="star" style={{ top: '30%', left: '70%' }}></div>
-        <div className="star" style={{ top: '60%', left: '40%' }}></div>
-        <div className="star" style={{ top: '80%', left: '90%' }}></div>
-        <div className="star" style={{ top: '25%', left: '50%' }}></div>
-        <div className="star" style={{ top: '15%', left: '85%' }}></div>
-        <div className="star" style={{ top: '45%', left: '15%' }}></div>
-        <div className="star" style={{ top: '75%', left: '65%' }}></div>
-        <div className="star" style={{ top: '5%', left: '60%' }}></div>
-        <div className="star" style={{ top: '55%', left: '5%' }}></div>
-        <div className="star" style={{ top: '90%', left: '30%' }}></div>
-        <div className="star" style={{ top: '40%', left: '95%' }}></div>
+        {/* Large visible individual stars */}
+        {Array.from({ length: 30 }).map((_, i) => {
+          // Generate random positions
+          const top = Math.random() * 100;
+          const left = Math.random() * 100;
+          // Random size between 2-5px
+          const size = 2 + Math.random() * 3;
+          // Random delay for animation
+          const delay = Math.random() * 5;
+          
+          return (
+            <div 
+              key={i} 
+              className="star-large" 
+              style={{ 
+                top: `${top}%`, 
+                left: `${left}%`, 
+                width: `${size}px`, 
+                height: `${size}px`,
+                animationDelay: `${delay}s`
+              }}
+            ></div>
+          );
+        })}
+        
+        {/* Few larger bright stars */}
+        {Array.from({ length: 10 }).map((_, i) => {
+          const top = Math.random() * 100;
+          const left = Math.random() * 100;
+          const size = 4 + Math.random() * 4;
+          const delay = Math.random() * 5;
+          
+          return (
+            <div 
+              key={`bright-${i}`} 
+              className="star-bright" 
+              style={{ 
+                top: `${top}%`, 
+                left: `${left}%`, 
+                width: `${size}px`, 
+                height: `${size}px`,
+                animationDelay: `${delay}s`
+              }}
+            ></div>
+          );
+        })}
       </div>
     </div>
   );
