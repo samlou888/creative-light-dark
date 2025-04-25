@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const Footer = memo(() => {
@@ -14,6 +14,28 @@ const Footer = memo(() => {
       top: 0,
       behavior: 'smooth'
     });
+  };
+
+  const handleLegalClick = (e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
+    e.preventDefault();
+    const element = document.getElementById('legal');
+    if (element) {
+      const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+      
+      // Set the correct tab after scrolling
+      setTimeout(() => {
+        const tabTrigger = document.querySelector(`[data-state="inactive"][value="${section}"]`) as HTMLButtonElement;
+        if (tabTrigger) {
+          tabTrigger.click();
+        }
+      }, 500);
+    }
   };
 
   return (
@@ -70,9 +92,33 @@ const Footer = memo(() => {
           <div>
             <h4 className="font-semibold mb-4">Rechtliches</h4>
             <ul className="space-y-2">
-              <li><Link to="/impressum" className="text-muted-foreground hover:text-primary transition-colors">Impressum</Link></li>
-              <li><Link to="/datenschutz" className="text-muted-foreground hover:text-primary transition-colors">Datenschutz</Link></li>
-              <li><Link to="/agb" className="text-muted-foreground hover:text-primary transition-colors">AGB</Link></li>
+              <li>
+                <a 
+                  href="#legal" 
+                  onClick={(e) => handleLegalClick(e, 'impressum')} 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Impressum
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#legal" 
+                  onClick={(e) => handleLegalClick(e, 'datenschutz')} 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Datenschutz
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#legal" 
+                  onClick={(e) => handleLegalClick(e, 'agb')} 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  AGB
+                </a>
+              </li>
             </ul>
           </div>
         </div>
