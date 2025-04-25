@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, BarChart, Workflow, Zap, Mail, Calendar, FileText, Users } from 'lucide-react';
@@ -7,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
+import CalendlyEmbed from '@/components/calendly/CalendlyEmbed';
 
 // Animation variants
 const fadeIn = {
@@ -194,6 +194,34 @@ const AutomationServices = () => {
               description="Nach erfolgreicher Umsetzung führen wir dein Team durch Schulungen an die neuen Prozesse heran."
             />
           </div>
+        </div>
+      </section>
+      
+      {/* Calendly Booking Section */}
+      <section className="py-20 px-6 md:px-10">
+        <div className="container mx-auto">
+          <motion.div 
+            className="text-center mb-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <h2 className="section-heading mb-4">Buche deinen Prozess-Check</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Wähle einen passenden Termin für ein 30-minütiges Gespräch, in dem wir deine aktuellen Prozesse analysieren.
+            </p>
+          </motion.div>
+          
+          <motion.div 
+            className="max-w-4xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <CalendlyEmbed className="rounded-xl overflow-hidden" />
+          </motion.div>
         </div>
       </section>
       
