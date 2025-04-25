@@ -1,3 +1,4 @@
+
 import React, { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -7,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { PageThemeProvider } from "@/contexts/PageThemeContext";
 import { Skeleton } from "@/components/ui/skeleton";
+import AppLayout from "./layouts/AppLayout";
 
 // Lazy load all pages for better code splitting
 const Index = lazy(() => import("./pages/Index"));
@@ -50,13 +52,15 @@ const App = () => (
           <BrowserRouter>
             <Suspense fallback={<PageLoader />}>
               <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/automation-services" element={<AutomationServices />} />
-                <Route path="/creative-studio" element={<CreativeStudio />} />
-                <Route path="/academy" element={<Academy />} />
-                <Route path="/impressum" element={<Impressum />} />
-                <Route path="/datenschutz" element={<Datenschutz />} />
-                <Route path="/agb" element={<AGB />} />
+                <Route element={<AppLayout />}>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/automation-services" element={<AutomationServices />} />
+                  <Route path="/creative-studio" element={<CreativeStudio />} />
+                  <Route path="/academy" element={<Academy />} />
+                  <Route path="/impressum" element={<Impressum />} />
+                  <Route path="/datenschutz" element={<Datenschutz />} />
+                  <Route path="/agb" element={<AGB />} />
+                </Route>
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

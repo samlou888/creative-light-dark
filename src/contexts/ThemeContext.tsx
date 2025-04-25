@@ -19,9 +19,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     localStorage.setItem('themeMode', mode);
-  }, [mode]);
-
-  useEffect(() => {
+    
+    // Update document classes based on mode
     document.documentElement.classList.remove('mode-automation', 'mode-creative', 'mode-academy');
     document.body.classList.remove('creative-mode');
     

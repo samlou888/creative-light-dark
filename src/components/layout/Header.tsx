@@ -1,5 +1,6 @@
+
 import React, { useCallback, memo } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
 import { Zap, Palette, GraduationCap } from 'lucide-react';
@@ -7,6 +8,7 @@ import { Zap, Palette, GraduationCap } from 'lucide-react';
 const Header = memo(() => {
   const { mode, setMode } = useTheme();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleInternalLinkClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     const currentPath = location.pathname;
@@ -45,15 +47,25 @@ const Header = memo(() => {
   const handleModeChange = useCallback((newMode: 'automation' | 'creative' | 'academy') => {
     setMode(newMode);
     
+    // Navigate to corresponding page based on mode
+    if (newMode === 'creative' && location.pathname !== '/creative-studio') {
+      navigate('/creative-studio');
+    } else if (newMode === 'academy' && location.pathname !== '/academy') {
+      navigate('/academy');
+    } else if (newMode === 'automation' && location.pathname !== '/automation-services' && location.pathname !== '/') {
+      navigate('/automation-services');
+    }
+    
     // Smooth scroll to top
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  }, [setMode]);
+  }, [setMode, navigate, location.pathname]);
 
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    navigate('/');
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
@@ -65,7 +77,7 @@ const Header = memo(() => {
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           <Link 
-            to={location.pathname} 
+            to="/" 
             onClick={handleLogoClick} 
             className="text-2xl font-bold"
           >

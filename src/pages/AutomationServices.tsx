@@ -1,9 +1,6 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, BarChart, Workflow, Zap, Mail, Calendar, FileText, Users } from 'lucide-react';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
@@ -26,9 +23,7 @@ const staggerContainer = {
 
 const AutomationServices = () => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
+    <>
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 md:px-10">
         <div className="container mx-auto">
@@ -234,9 +229,7 @@ const AutomationServices = () => {
           </div>
         </div>
       </section>
-      
-      <Footer />
-    </div>
+    </>
   );
 };
 

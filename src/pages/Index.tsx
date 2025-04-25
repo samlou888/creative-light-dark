@@ -1,6 +1,5 @@
+
 import React, { Suspense } from 'react';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useTheme } from '@/contexts/ThemeContext';
 import { usePageTheme } from '@/contexts/PageThemeContext';
@@ -23,24 +22,20 @@ const Index = () => {
   const { pageTheme } = usePageTheme();
   
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow">
-        <Suspense fallback={<SectionLoader />}>
-          <HeroSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <ServicesSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <ShowcaseSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <ContactSection />
-        </Suspense>
-      </main>
-      <Footer />
-    </div>
+    <>
+      <Suspense fallback={<SectionLoader />}>
+        <HeroSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ServicesSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ShowcaseSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ContactSection />
+      </Suspense>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 type PageTheme = 'default' | 'dark' | 'light';
 
@@ -11,7 +11,14 @@ type PageThemeContextType = {
 const PageThemeContext = createContext<PageThemeContextType | undefined>(undefined);
 
 export const PageThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [pageTheme, setPageTheme] = useState<PageTheme>('default');
+  const [pageTheme, setPageTheme] = useState<PageTheme>(() => {
+    const savedTheme = localStorage.getItem('pageTheme');
+    return (savedTheme as PageTheme) || 'default';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('pageTheme', pageTheme);
+  }, [pageTheme]);
 
   return (
     <PageThemeContext.Provider value={{ pageTheme, setPageTheme }}>
