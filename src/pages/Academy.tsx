@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -8,6 +8,7 @@ import CoursesSection from '@/components/academy/CoursesSection';
 import SectionGrid from '@/components/ui/section-grid';
 import BenefitsSection from '@/components/academy/BenefitsSection';
 import SectionCTA from '@/components/ui/section-cta';
+import { useLocation } from 'react-router-dom';
 
 const formats = [
   { title: "Live", description: "Vor-Ort Workshops mit praktischen Übungen" },
@@ -17,6 +18,12 @@ const formats = [
 
 const Academy = () => {
   const { mode } = useTheme();
+  const location = useLocation();
+  
+  // Log the current path to verify we're on the Academy page
+  useEffect(() => {
+    console.log("Academy component mounted, current path:", location.pathname);
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">

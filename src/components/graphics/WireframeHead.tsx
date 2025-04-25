@@ -27,6 +27,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
     
     // Expliziter Vergleich und Logging
     if (location.pathname === '/academy') {
+      // Using the blue head image for Academy page
       const academyImage = '/lovable-uploads/eb52459a-567a-4a86-9c38-cd28caabc328.png';
       console.log("Using academy image:", academyImage);
       return academyImage;
