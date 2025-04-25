@@ -1,13 +1,14 @@
 
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 
-const Footer = () => {
-  const { isCreativeMode } = useTheme();
+const Footer = memo(() => {
+  const { mode } = useTheme();
+  const isCreativeOrBlue = mode === 'creative' || mode === 'blue';
 
   return (
-    <footer className={`py-10 ${isCreativeMode ? 'dark-card mt-16' : 'border-t mt-20'}`}>
+    <footer className={`py-10 ${isCreativeOrBlue ? 'dark-card mt-16' : 'border-t mt-20'}`}>
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -54,6 +55,8 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = 'Footer';
 
 export default Footer;

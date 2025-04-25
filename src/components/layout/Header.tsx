@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+
+import React, { useEffect, useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
-import { Zap, Palette, GraduationCap } from 'lucide-react';
+import { Zap, Palette, GraduationCap, Waves } from 'lucide-react';
 
-const Header = () => {
+const Header = memo(() => {
   const { mode, setMode } = useTheme();
   const location = useLocation();
 
-  const handleInternalLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+  const handleInternalLinkClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     const currentPath = location.pathname;
     
     if (currentPath === '/' && document.getElementById(targetId)) {
@@ -40,7 +41,7 @@ const Header = () => {
         });
       }
     }
-  };
+  }, [location.pathname]);
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
@@ -49,6 +50,10 @@ const Header = () => {
       document.documentElement.style.scrollBehavior = '';
     };
   }, []);
+
+  const handleModeChange = useCallback((newMode: 'automation' | 'creative' | 'academy' | 'blue') => {
+    setMode(newMode);
+  }, [setMode]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
@@ -64,7 +69,7 @@ const Header = () => {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <motion.button
-                onClick={() => setMode('automation')}
+                onClick={() => handleModeChange('automation')}
                 className={`p-2 rounded-lg transition-all duration-300 ${
                   mode === 'automation' 
                     ? 'bg-primary/10 text-primary' 
@@ -77,7 +82,7 @@ const Header = () => {
               </motion.button>
               
               <motion.button
-                onClick={() => setMode('creative')}
+                onClick={() => handleModeChange('creative')}
                 className={`p-2 rounded-lg transition-all duration-300 ${
                   mode === 'creative' 
                     ? 'bg-primary/10 text-primary dark:text-[#00FF66]' 
@@ -90,7 +95,7 @@ const Header = () => {
               </motion.button>
               
               <motion.button
-                onClick={() => setMode('academy')}
+                onClick={() => handleModeChange('academy')}
                 className={`p-2 rounded-lg transition-all duration-300 ${
                   mode === 'academy' 
                     ? 'bg-primary/10 text-primary' 
@@ -101,23 +106,39 @@ const Header = () => {
               >
                 <GraduationCap className="w-5 h-5" />
               </motion.button>
+
+              <motion.button
+                onClick={() => handleModeChange('blue')}
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  mode === 'blue' 
+                    ? 'bg-primary/10 text-primary' 
+                    : 'hover:bg-primary/5'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Waves className="w-5 h-5" />
+              </motion.button>
             </div>
             
             <a 
               href="#contact" 
+              onClick={(e) => handleInternalLinkClick(e, 'contact')}
               className={`hidden md:block ${
-                mode === 'creative' 
+                mode === 'creative' || mode === 'blue'
                   ? 'bg-primary text-white neon-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]' 
                   : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
               } px-5 py-2 rounded-full font-medium transition-all`}
             >
-              {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
+              {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : mode === 'blue' ? 'Beratung buchen' : 'Termin buchen'}
             </a>
           </div>
         </div>
       </div>
     </header>
   );
-};
+});
+
+Header.displayName = 'Header';
 
 export default Header;

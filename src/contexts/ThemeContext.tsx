@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 
 type ThemeMode = 'automation' | 'creative' | 'academy' | 'blue';
 
@@ -12,7 +12,16 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [mode, setMode] = useState<ThemeMode>('automation');
+  // Try to get stored preference from localStorage or default to automation
+  const [mode, setMode] = useState<ThemeMode>(() => {
+    const savedMode = localStorage.getItem('themeMode');
+    return (savedMode as ThemeMode) || 'automation';
+  });
+
+  // Save mode preference to localStorage
+  useEffect(() => {
+    localStorage.setItem('themeMode', mode);
+  }, [mode]);
 
   // This effect handles the document classes
   useEffect(() => {
@@ -24,12 +33,14 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     document.documentElement.classList.add(`mode-${mode}`);
     
     // Handle special modes
-    if (mode === 'creative') {
+    if (mode === 'creative' || mode === 'blue') {
       document.documentElement.classList.add('dark');
-      document.body.classList.add('creative-mode');
-    } else if (mode === 'blue') {
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('blue-mode');
+      
+      if (mode === 'creative') {
+        document.body.classList.add('creative-mode');
+      } else if (mode === 'blue') {
+        document.body.classList.add('blue-mode');
+      }
     } else {
       document.documentElement.classList.remove('dark');
     }
@@ -37,9 +48,16 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   // Provide isCreativeMode for backward compatibility
   const isCreativeMode = mode === 'creative';
+  
+  // Create a memoized context value to prevent unnecessary rerenders
+  const contextValue = useMemo(() => ({
+    mode,
+    setMode,
+    isCreativeMode
+  }), [mode, isCreativeMode]);
 
   return (
-    <ThemeContext.Provider value={{ mode, setMode, isCreativeMode }}>
+    <ThemeContext.Provider value={contextValue}>
       {children}
     </ThemeContext.Provider>
   );
@@ -52,4 +70,3 @@ export const useTheme = () => {
   }
   return context;
 };
-
