@@ -18,12 +18,6 @@ const formats = [
 const Academy = () => {
   const { mode } = useTheme();
 
-  const customTitle = (
-    <span className="academy-gradient-text">
-      Lerne, wie du AI zu deinem Vorteil nutzt.
-    </span>
-  );
-
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
@@ -31,7 +25,7 @@ const Academy = () => {
       <main className="flex-grow pt-24">
         <SectionHero
           badgeText="AI Academy"
-          title={customTitle}
+          title="Lerne, wie du AI zu deinem Vorteil nutzt."
           description="Unsere Academy bietet Workshops, Kurse und 1:1 Coachings – speziell für den praktischen Einsatz in Alltag & Business."
           buttonText="Jetzt Kursübersicht anfordern"
         />
