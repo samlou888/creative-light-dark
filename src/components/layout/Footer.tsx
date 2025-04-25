@@ -19,7 +19,7 @@ const Footer = memo(() => {
     });
   };
 
-  const handleLegalClick = (section: string) => {
+  const handleLegalClick = (section: "impressum" | "datenschutz" | "agb") => {
     setSelectedTab(section);
     setDialogOpen(true);
   };
