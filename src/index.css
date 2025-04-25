@@ -127,6 +127,24 @@
   .text-gradient-to-r {
     @apply bg-gradient-to-r bg-clip-text text-transparent;
   }
+
+  .hover-glow {
+    @apply transition-all duration-150 ease-out;
+  }
+
+  .hover-glow:hover {
+    transform: scale(1.01);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  }
+
+  .offer-card {
+    @apply bg-card rounded-xl p-6 transition-all duration-150 ease-out shadow-sm;
+  }
+
+  .offer-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  }
 }
 
 /* Animation for automation title */

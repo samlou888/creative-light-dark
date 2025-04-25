@@ -75,12 +75,8 @@ const ServicesSection = () => {
     <section id="services" className="py-36 px-6 md:px-10 mt-24">
       <div className="container mx-auto">
         <div className="text-center mb-12 max-w-3xl mx-auto">
-          <h2 className="section-heading mb-4" id="services-heading">
-            {mode === 'academy' ? (
-              "Unsere Angebote"
-            ) : (
-              "Unsere Leistungen"
-            )}
+          <h2 className="section-heading mb-4 hover-glow" id="services-heading">
+            Unsere Angebote
           </h2>
           <p className="text-lg text-muted-foreground">
             {mode === 'academy' 
@@ -96,25 +92,11 @@ const ServicesSection = () => {
           {services.map((service) => (
             <motion.div 
               key={service.id}
-              className={`rounded-xl p-6 transition-all duration-300 ${
-                mode === 'academy'
-                  ? 'bg-white shadow-lg hover:shadow-[0_10px_25px_-5px_rgba(0,207,255,0.2),0_8px_10px_-6px_rgba(0,207,255,0.1)]'
-                  : mode === 'creative'
-                  ? 'dark-card hover:border-primary/60' 
-                  : 'light-card'
-              } pt-10 h-full`}
-              whileHover={{ 
-                y: -5,
-                backgroundColor: mode === 'academy' 
-                  ? "rgba(255, 255, 255, 1)"
-                  : mode === 'creative'
-                  ? "rgba(0, 0, 0, 0.5)"
-                  : "rgba(255, 255, 255, 1)",
-              }}
-              transition={{ 
-                duration: 0.25, 
-                ease: "easeOut" 
-              }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="offer-card"
             >
               <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 ${
                 mode === 'academy'
