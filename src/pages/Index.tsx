@@ -1,46 +1,12 @@
 
-import React, { Suspense } from 'react';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import { Skeleton } from '@/components/ui/skeleton';
-import { useTheme } from '@/contexts/ThemeContext';
-
-// Lazy load components
-const HeroSection = React.lazy(() => import('@/components/home/HeroSection'));
-const ServicesSection = React.lazy(() => import('@/components/home/ServicesSection'));
-const ShowcaseSection = React.lazy(() => import('@/components/home/ShowcaseSection'));
-const ContactSection = React.lazy(() => import('@/components/home/ContactSection'));
-
-// Loading fallback component
-const SectionLoader = () => (
-  <div className="w-full h-[400px] flex items-center justify-center">
-    <Skeleton className="w-full h-full" />
-  </div>
-);
+import React, { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Index = () => {
-  const { mode } = useTheme();
+  const { language } = useLanguage();
   
-  return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow">
-        <Suspense fallback={<SectionLoader />}>
-          <HeroSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <ServicesSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <ShowcaseSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <ContactSection />
-        </Suspense>
-      </main>
-      <Footer />
-    </div>
-  );
+  return <Navigate to={`/${language}`} replace />;
 };
 
 export default Index;
