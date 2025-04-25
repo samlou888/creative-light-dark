@@ -13,18 +13,8 @@ const CreativeStudioLayout = ({ children }: CreativeStudioLayoutProps) => {
   const { setMode } = useTheme();
 
   useEffect(() => {
-    // Force dark mode and creative mode
-    document.documentElement.classList.add('dark');
-    document.body.classList.add('creative-mode');
-    
     // Set creative mode when component mounts
     setMode('creative');
-
-    return () => {
-      // Clean up when component unmounts
-      document.documentElement.classList.remove('dark');
-      document.body.classList.remove('creative-mode');
-    };
   }, [setMode]);
 
   return (

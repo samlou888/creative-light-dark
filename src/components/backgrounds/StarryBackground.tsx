@@ -32,7 +32,7 @@ const StarryBackground = () => {
 
     // Create initial particles
     const createParticles = () => {
-      const particleCount = 50;
+      const particleCount = 100; // Increased from 50 for more stars
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
@@ -40,7 +40,7 @@ const StarryBackground = () => {
           size: Math.random() * 3 + 1,
           speedX: (Math.random() - 0.5) * 0.5,
           speedY: (Math.random() - 0.5) * 0.5,
-          opacity: Math.random() * 0.5 + 0.2
+          opacity: Math.random() * 0.7 + 0.3  // Higher opacity for better visibility
         });
       }
     };
@@ -81,22 +81,23 @@ const StarryBackground = () => {
 
   return (
     <div className="fixed inset-0 w-full h-full -z-10 overflow-hidden">
-      {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-radial from-[#1A1F2C] via-[#0D1117] to-black"></div>
+      {/* Gradient background - darker for better visibility */}
+      <div className="absolute inset-0 bg-gradient-radial from-[#101118] via-[#0a0c14] to-black"></div>
       
-      {/* Animated gradient overlay */}
-      <div className="absolute inset-0 creative-gradient opacity-30"></div>
+      {/* Enhanced gradient overlay */}
+      <div className="absolute inset-0 creative-gradient opacity-40"></div>
       
       {/* Canvas for particles */}
       <canvas 
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
-        style={{ opacity: 0.4 }}
+        style={{ opacity: 0.7 }} // Increased opacity for better visibility
       />
       
-      {/* Gradient flares */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#9b87f5] rounded-full filter blur-[128px] opacity-20 animate-pulse-slow"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#D946EF] rounded-full filter blur-[128px] opacity-10 animate-pulse-slower"></div>
+      {/* Enhanced gradient flares */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#9b87f5] rounded-full filter blur-[128px] opacity-30 animate-pulse-slow"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#D946EF] rounded-full filter blur-[128px] opacity-20 animate-pulse-slower"></div>
+      <div className="absolute top-1/2 right-1/3 w-80 h-80 bg-[#8B5CF6] rounded-full filter blur-[120px] opacity-15 animate-pulse-slow"></div>
     </div>
   );
 };

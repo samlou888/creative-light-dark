@@ -1,6 +1,7 @@
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTheme } from './ThemeContext';
 
 type ThemeMode = 'automation' | 'creative' | 'academy';
 
@@ -18,6 +19,17 @@ export const PageThemeProvider = ({ children }: { children: React.ReactNode }) =
     if (location.pathname.includes('academy')) return 'academy';
     return 'automation';
   });
+  
+  // Update pageTheme when route changes
+  useEffect(() => {
+    if (location.pathname.includes('creative-studio')) {
+      setPageTheme('creative');
+    } else if (location.pathname.includes('academy')) {
+      setPageTheme('academy');
+    } else {
+      setPageTheme('automation');
+    }
+  }, [location.pathname]);
 
   return (
     <PageThemeContext.Provider value={{ pageTheme, setPageTheme }}>

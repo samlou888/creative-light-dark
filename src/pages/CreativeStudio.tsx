@@ -1,24 +1,10 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import CreativeStudioLayout from '@/layouts/CreativeStudioLayout';
 import SectionHero from '@/components/ui/section-hero';
 import { WireframeHead } from '@/components/graphics/WireframeHead';
 
 const CreativeStudio = () => {
-  // Force dark mode at component level as well
-  useEffect(() => {
-    document.documentElement.classList.add('dark');
-    document.body.classList.add('creative-mode');
-    
-    return () => {
-      // Only remove classes if we're navigating away from creative studio
-      if (!window.location.pathname.includes('creative-studio')) {
-        document.documentElement.classList.remove('dark');
-        document.body.classList.remove('creative-mode');
-      }
-    };
-  }, []);
-
   return (
     <CreativeStudioLayout>
       <SectionHero

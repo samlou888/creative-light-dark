@@ -22,16 +22,17 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   }, [mode]);
 
   useEffect(() => {
-    document.documentElement.classList.remove('mode-automation', 'mode-creative', 'mode-academy');
+    // Clean up all class names first
+    document.documentElement.classList.remove('mode-automation', 'mode-creative', 'mode-academy', 'dark');
     document.body.classList.remove('creative-mode');
     
+    // Add mode-specific class
     document.documentElement.classList.add(`mode-${mode}`);
     
+    // Handle dark mode specifically for creative mode
     if (mode === 'creative') {
       document.documentElement.classList.add('dark');
       document.body.classList.add('creative-mode');
-    } else {
-      document.documentElement.classList.remove('dark');
     }
   }, [mode]);
 
