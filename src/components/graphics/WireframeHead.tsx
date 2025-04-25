@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef, memo } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -20,16 +21,30 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
   const controls = useAnimation();
   
   const getHeadImage = () => {
+    // Verbesserte Debugging-Informationen
     console.log("Current pathname:", location.pathname);
+    console.log("Is pathname equal to '/academy':", location.pathname === '/academy');
     
+    // Expliziter Vergleich und Logging
     if (location.pathname === '/academy') {
-      console.log("Using academy image");
-      return '/lovable-uploads/eb52459a-567a-4a86-9c38-cd28caabc328.png';
+      const academyImage = '/lovable-uploads/eb52459a-567a-4a86-9c38-cd28caabc328.png';
+      console.log("Using academy image:", academyImage);
+      return academyImage;
     } else {
-      console.log("Using default image");
-      return '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+      const defaultImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+      console.log("Using default image:", defaultImage);
+      return defaultImage;
     }
   };
+
+  // Stellen wir sicher, dass das Bild bei Routenänderungen aktualisiert wird
+  const [currentImage, setCurrentImage] = useState<string>('');
+  
+  useEffect(() => {
+    const imageToUse = getHeadImage();
+    setCurrentImage(imageToUse);
+    console.log("Updated image path to:", imageToUse);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (isInView) {
@@ -72,8 +87,8 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
   const x = useTransform(mouseX, [-5, 5], [5, -5]);
   const y = useTransform(mouseY, [-5, 5], [5, -5]);
 
-  const imageSrc = getHeadImage();
-  console.log("Selected image:", imageSrc);
+  // Immer das aktuell gesetzte Bild verwenden statt getHeadImage() direkt aufzurufen
+  console.log("Rendering with image:", currentImage || getHeadImage());
 
   return (
     <div className={`relative ${className}`} ref={containerRef}>
@@ -96,7 +111,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
           variants={breathingAnimation}
         >
           <img 
-            src={imageSrc}
+            src={currentImage || getHeadImage()}
             alt="AI Wireframe Head" 
             className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
               ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}

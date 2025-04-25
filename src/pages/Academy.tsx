@@ -8,6 +8,7 @@ import CoursesSection from '@/components/academy/CoursesSection';
 import SectionGrid from '@/components/ui/section-grid';
 import BenefitsSection from '@/components/academy/BenefitsSection';
 import SectionCTA from '@/components/ui/section-cta';
+import WireframeHead from '@/components/graphics/WireframeHead';
 
 const formats = [
   { title: "Live", description: "Vor-Ort Workshops mit praktischen Übungen" },
@@ -17,6 +18,9 @@ const formats = [
 
 const Academy = () => {
   const { mode } = useTheme();
+
+  // Log zur Bestätigung, dass wir auf der Academy-Seite sind
+  console.log("Rendering Academy page, pathname:", window.location.pathname);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
