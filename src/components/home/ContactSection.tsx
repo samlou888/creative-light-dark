@@ -4,6 +4,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Check, Calendar, Video } from 'lucide-react';
+import CalendlyEmbed from '@/components/calendly/CalendlyEmbed';
 import {
   Dialog,
   DialogContent,
@@ -14,16 +15,30 @@ const ContactSection = () => {
   const { mode } = useTheme();
   const { toast } = useToast();
 
-  const CalendlyEmbed = () => (
-    <iframe
-      src="https://calendly.com/samlou888/30min"
-      width="100%"
-      height="400px"
-      frameBorder="0"
-      title="Calendly Terminbuchung"
-      className="rounded-lg shadow-lg bg-background"
-      style={{ minHeight: '400px', maxHeight: '500px' }}
-    />
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast({
+      title: "Anfrage erhalten",
+      description: "Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.",
+      duration: 5000,
+    });
+  };
+
+  const BookingButton = ({ className = "" }) => (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button 
+          size="lg"
+          className={`gap-2 ${className}`}
+        >
+          <Calendar className="w-5 h-5" />
+          Termin buchen
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[600px]">
+        <CalendlyEmbed />
+      </DialogContent>
+    </Dialog>
   );
 
   if (mode === 'automation') {
@@ -226,32 +241,6 @@ const ContactSection = () => {
       </section>
     );
   }
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    toast({
-      title: "Anfrage erhalten",
-      description: "Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.",
-      duration: 5000,
-    });
-  };
-
-  const BookingButton = ({ className = "" }) => (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button 
-          size="lg"
-          className={`gap-2 ${className}`}
-        >
-          <Calendar className="w-5 h-5" />
-          Termin buchen
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px]">
-        <CalendlyEmbed />
-      </DialogContent>
-    </Dialog>
-  );
 
   return (
     <section id="contact" className="py-10 px-6 md:px-10">
