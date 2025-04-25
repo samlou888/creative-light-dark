@@ -119,10 +119,10 @@ const Header = memo(() => {
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
               className={`hidden md:block bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)] px-5 py-2 rounded-full font-medium ${
                 mode === 'academy' 
-                  ? 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)] px-5 py-2 rounded-full' 
+                  ? 'px-6 py-2' 
                   : mode === 'creative'
-                  ? 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]' 
-                  : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
+                  ? 'px-5 py-2' 
+                  : 'px-5 py-2'
               }`}
             >
               {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
