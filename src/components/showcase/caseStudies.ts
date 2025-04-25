@@ -1,7 +1,7 @@
 
 import { Layout, FileText, Workflow, PenTool, Video, Smartphone } from 'lucide-react';
-import React from 'react';
 
+// Export the icon names as strings instead of JSX elements
 export const automationCases = [
   {
     id: 1,
@@ -12,9 +12,9 @@ export const automationCases = [
     solution: 'Implementierung einer vollautomatischen DevOps-Pipeline',
     result: '85% Zeitersparnis bei der Server-Administration',
     icons: [
-      { icon: <Layout className="w-5 h-5" />, label: 'Automation' },
-      { icon: <Workflow className="w-5 h-5" />, label: 'Workflow' },
-      { icon: <FileText className="w-5 h-5" />, label: 'Dokumentation' }
+      { icon: 'Layout', label: 'Automation' },
+      { icon: 'Workflow', label: 'Workflow' },
+      { icon: 'FileText', label: 'Dokumentation' }
     ]
   },
   {
@@ -26,9 +26,9 @@ export const automationCases = [
     solution: 'Aufbau einer automatisierten Order-Processing-Pipeline',
     result: 'Bestellabwicklung 3x schneller, 0 Fehler seit Launch',
     icons: [
-      { icon: <Layout className="w-5 h-5" />, label: 'Automation' },
-      { icon: <Smartphone className="w-5 h-5" />, label: 'App' },
-      { icon: <PenTool className="w-5 h-5" />, label: 'Design' }
+      { icon: 'Layout', label: 'Automation' },
+      { icon: 'Smartphone', label: 'App' },
+      { icon: 'PenTool', label: 'Design' }
     ]
   },
   {
@@ -40,9 +40,9 @@ export const automationCases = [
     solution: 'KI-gestützte Automatisierung der Vertragserstellung',
     result: 'Erstellungszeit pro Dokument von 2h auf 10min reduziert',
     icons: [
-      { icon: <Layout className="w-5 h-5" />, label: 'Automation' },
-      { icon: <FileText className="w-5 h-5" />, label: 'Dokumente' },
-      { icon: <Video className="w-5 h-5" />, label: 'Tutorials' }
+      { icon: 'Layout', label: 'Automation' },
+      { icon: 'FileText', label: 'Dokumente' },
+      { icon: 'Video', label: 'Tutorials' }
     ]
   }
 ];

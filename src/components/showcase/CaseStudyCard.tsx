@@ -1,9 +1,10 @@
 
 import React from 'react';
 import { Card } from "@/components/ui/card";
+import * as LucideIcons from 'lucide-react';
 
 interface TechnologyIcon {
-  icon: React.ReactNode;
+  icon: string;
   label: string;
 }
 
@@ -26,6 +27,12 @@ const CaseStudyCard = ({
   result,
   icons
 }: CaseStudyCardProps) => {
+  // Function to render the correct Lucide icon based on string name
+  const renderIcon = (iconName: string) => {
+    const IconComponent = (LucideIcons as any)[iconName];
+    return IconComponent ? <IconComponent className="w-5 h-5" /> : null;
+  };
+  
   return (
     <Card className="overflow-hidden bg-card hover:shadow-lg transition-shadow">
       <div className="aspect-video relative overflow-hidden">
@@ -54,7 +61,7 @@ const CaseStudyCard = ({
         <div className="mt-6 flex gap-4">
           {icons.map((tech, index) => (
             <div key={index} className="flex items-center gap-1" title={tech.label}>
-              {tech.icon}
+              {renderIcon(tech.icon)}
             </div>
           ))}
         </div>
