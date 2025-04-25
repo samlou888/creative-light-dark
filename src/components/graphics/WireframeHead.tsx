@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, memo } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
 
@@ -7,7 +7,7 @@ interface WireframeHeadProps {
   className?: string;
 }
 
-const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
+const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) => {
   const { isCreativeMode } = useTheme();
   const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -91,12 +91,16 @@ const WireframeHead: React.FC<WireframeHeadProps> = ({ className = '' }) => {
             className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
               ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
               ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+            loading="lazy"
+            decoding="async"
             onLoad={() => setIsLoaded(true)}
           />
         </motion.div>
       </motion.div>
     </div>
   );
-};
+});
+
+WireframeHead.displayName = 'WireframeHead';
 
 export default WireframeHead;
