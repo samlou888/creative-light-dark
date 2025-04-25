@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef, memo } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -25,7 +26,7 @@ export const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '
       case '/automation-services':
         return '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
       case '/academy':
-        return '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+        return '/lovable-uploads/d1690d24-e61b-43f0-8ef2-f7bcf2ff3748.png';
       default:
         return '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
     }
@@ -96,7 +97,7 @@ export const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '
             src={getHeadImage()}
             alt="AI Wireframe Head" 
             className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
-              ${location.pathname === '/creative-studio' ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
+              ${location.pathname === '/academy' ? 'filter brightness-110 contrast-125 text-blue-500' : 'filter brightness-100'}
               ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
             loading="lazy"
             decoding="async"
