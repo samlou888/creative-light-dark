@@ -1,11 +1,20 @@
-
 import React, { memo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const Footer = memo(() => {
-  const { mode } = useTheme();
+  const { mode, setMode } = useTheme();
+  const navigate = useNavigate();
   const isCreative = mode === 'creative';
+
+  const handleModeChange = (newMode: 'automation' | 'creative' | 'academy') => {
+    setMode(newMode);
+    navigate('/', { replace: true });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <footer className={`py-10 ${isCreative ? 'dark-card mt-16' : 'border-t mt-20'}`}>
@@ -23,9 +32,30 @@ const Footer = memo(() => {
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
-              <li><Link to="/creative-studio" className="text-muted-foreground hover:text-primary transition-colors">Studio</Link></li>
-              <li><Link to="/automation-services" className="text-muted-foreground hover:text-primary transition-colors">Automation</Link></li>
-              <li><Link to="/academy" className="text-muted-foreground hover:text-primary transition-colors">Academy</Link></li>
+              <li>
+                <button 
+                  onClick={() => handleModeChange('creative')} 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Studio
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleModeChange('automation')} 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Automation
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleModeChange('academy')} 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Academy
+                </button>
+              </li>
             </ul>
           </div>
           
