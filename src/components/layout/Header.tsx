@@ -1,9 +1,8 @@
-
-import React, { useEffect, useCallback, memo } from 'react';
+import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
-import { Zap, Palette, GraduationCap, Waves } from 'lucide-react';
+import { Zap, Palette, GraduationCap } from 'lucide-react';
 
 const Header = memo(() => {
   const { mode, setMode } = useTheme();
@@ -43,15 +42,7 @@ const Header = memo(() => {
     }
   }, [location.pathname]);
 
-  useEffect(() => {
-    document.documentElement.style.scrollBehavior = 'smooth';
-
-    return () => {
-      document.documentElement.style.scrollBehavior = '';
-    };
-  }, []);
-
-  const handleModeChange = useCallback((newMode: 'automation' | 'creative' | 'academy' | 'blue') => {
+  const handleModeChange = useCallback((newMode: 'automation' | 'creative' | 'academy') => {
     setMode(newMode);
   }, [setMode]);
 
@@ -62,9 +53,6 @@ const Header = memo(() => {
           <Link to="/" className="text-2xl font-bold">
             <span className="text-primary">AI</span>ventures
           </Link>
-          
-          <nav className="hidden md:flex items-center gap-10">
-          </nav>
           
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
@@ -106,31 +94,18 @@ const Header = memo(() => {
               >
                 <GraduationCap className="w-5 h-5" />
               </motion.button>
-
-              <motion.button
-                onClick={() => handleModeChange('blue')}
-                className={`p-2 rounded-lg transition-all duration-300 ${
-                  mode === 'blue' 
-                    ? 'bg-primary/10 text-primary' 
-                    : 'hover:bg-primary/5'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Waves className="w-5 h-5" />
-              </motion.button>
             </div>
             
             <a 
               href="#contact" 
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
               className={`hidden md:block ${
-                mode === 'creative' || mode === 'blue'
+                mode === 'creative'
                   ? 'bg-primary text-white neon-glow transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]' 
                   : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
               } px-5 py-2 rounded-full font-medium transition-all`}
             >
-              {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : mode === 'blue' ? 'Beratung buchen' : 'Termin buchen'}
+              {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
           </div>
         </div>

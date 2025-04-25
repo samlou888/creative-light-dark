@@ -12,27 +12,21 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  // Try to get stored preference from localStorage or default to automation
   const [mode, setMode] = useState<ThemeMode>(() => {
     const savedMode = localStorage.getItem('themeMode');
     return (savedMode as ThemeMode) || 'automation';
   });
 
-  // Save mode preference to localStorage
   useEffect(() => {
     localStorage.setItem('themeMode', mode);
   }, [mode]);
 
-  // This effect handles the document classes
   useEffect(() => {
-    // Remove all mode classes first
-    document.documentElement.classList.remove('mode-automation', 'mode-creative', 'mode-academy', 'mode-blue');
-    document.body.classList.remove('creative-mode', 'blue-mode');
+    document.documentElement.classList.remove('mode-automation', 'mode-creative', 'mode-academy');
+    document.body.classList.remove('creative-mode');
     
-    // Add new mode class
     document.documentElement.classList.add(`mode-${mode}`);
     
-    // Handle special modes
     if (mode === 'creative') {
       document.documentElement.classList.add('dark');
       document.body.classList.add('creative-mode');
@@ -41,10 +35,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [mode]);
 
-  // Provide isCreativeMode for backward compatibility
   const isCreativeMode = mode === 'creative';
   
-  // Create a memoized context value to prevent unnecessary rerenders
   const contextValue = useMemo(() => ({
     mode,
     setMode,
