@@ -18,25 +18,32 @@ const CalendlyEmbed: React.FC<CalendlyEmbedProps> = ({ className = '' }) => {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 100);
+    }, 1000); // Increased timeout to ensure widget loads properly
 
     return () => {
       clearTimeout(timer);
-      document.body.removeChild(script);
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
     };
   }, []);
 
   return (
-    <div className={`w-full h-full ${className}`}>
+    <div className={`w-full ${className}`}>
       {isLoading && (
-        <div className="w-full h-[600px] flex items-center justify-center">
+        <div className="w-full h-[700px] flex items-center justify-center">
           <Skeleton className="w-full h-full rounded-lg" />
         </div>
       )}
       <div 
         className="calendly-inline-widget w-full rounded-lg shadow-lg bg-background"
         data-url="https://calendly.com/samlou888/30min"
-        style={{ minHeight: '650px' }}
+        style={{ height: '750px' }}
+        data-processing="true"
+        data-hide-event-type-details="false"
+        data-hide-gdpr="false"
+        data-text-color="#333333"
+        data-background-color="#ffffff"
       />
     </div>
   );

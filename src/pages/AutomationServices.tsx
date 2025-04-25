@@ -208,7 +208,7 @@ const AutomationServices = () => {
             variants={fadeIn}
           >
             <h2 className="section-heading mb-4">Buche deinen Prozess-Check</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
               Wähle einen passenden Termin für ein 30-minütiges Gespräch, in dem wir deine aktuellen Prozesse analysieren.
             </p>
           </motion.div>
@@ -220,7 +220,7 @@ const AutomationServices = () => {
             viewport={{ once: true }}
             variants={fadeIn}
           >
-            <CalendlyEmbed className="rounded-xl overflow-hidden" />
+            <CalendlyEmbed className="rounded-xl overflow-visible" />
           </motion.div>
         </div>
       </section>
