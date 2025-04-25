@@ -1,3 +1,4 @@
+
 import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -141,19 +142,19 @@ const Header = memo(() => {
               </DropdownMenuTrigger>
               <DropdownMenuContent 
                 align="end" 
-                className="w-24 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg"
+                className="w-32 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg"
               >
                 <DropdownMenuGroup>
                   <DropdownMenuItem className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
                     <Link to="/en" className="flex items-center gap-2">
-                      <span className="text-2xl" role="img" aria-label="Flag: United Kingdom">🇬🇧</span>
-                      <span>EN</span>
+                      <span role="img" aria-label="English">🇬🇧</span>
+                      <span>English</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
                     <Link to="/fr" className="flex items-center gap-2">
-                      <span className="text-2xl" role="img" aria-label="Flag: France">🇫🇷</span>
-                      <span>FR</span>
+                      <span role="img" aria-label="Français">🇫🇷</span>
+                      <span>Français</span>
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
