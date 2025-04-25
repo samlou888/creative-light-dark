@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useToast } from '@/hooks/use-toast';
@@ -51,8 +50,8 @@ const ContactSection = () => {
               <div className="grid md:grid-cols-2 gap-8 p-6 md:p-8 items-start">
                 <div>
                   <div className="mb-6">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-                      Lass uns deinen Workflow automatisieren
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#00FF99] to-[#00CC99] bg-clip-text text-transparent">
+                      Lass uns deine Prozesse mit AI automatisieren
                     </h2>
                     <p className="text-lg text-muted-foreground">
                       Ob kleines Team oder skalierendes Unternehmen – wir finden gemeinsam heraus, 
