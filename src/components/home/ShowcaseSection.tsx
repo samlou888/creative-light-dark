@@ -125,7 +125,10 @@ const ShowcaseSection = () => {
     }
   ];
 
-  const projects = mode === 'academy' ? academyCaseStudies : mode === 'creative' ? creativeProjects : automationCases;
+  const projects = 
+    mode === 'academy' ? academyCaseStudies : 
+    mode === 'creative' ? creativeProjects : 
+    automationCases;
 
   return (
     <section id="showcase" className="py-10 px-6 md:px-10">

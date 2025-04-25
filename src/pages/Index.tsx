@@ -31,11 +31,9 @@ const Index = () => {
         <Suspense fallback={<SectionLoader />}>
           <ServicesSection />
         </Suspense>
-        {mode !== 'automation' && (
-          <Suspense fallback={<SectionLoader />}>
-            <ShowcaseSection />
-          </Suspense>
-        )}
+        <Suspense fallback={<SectionLoader />}>
+          <ShowcaseSection />
+        </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <ContactSection />
         </Suspense>
