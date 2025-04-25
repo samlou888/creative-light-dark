@@ -242,21 +242,19 @@ const ShowcaseSection = () => {
           </div>
         )}
 
-        {mode !== 'automation' && (
-          <div className="text-center mt-12">
-            <a 
-              href="#contact" 
-              className={`inline-block primary-btn ${mode === 'creative' ? 'neon-glow' : ''}`}
-            >
-              {mode === 'academy' 
-                ? "Jetzt Beratung vereinbaren" 
-                : mode === 'creative' 
-                ? "Dein Projekt starten" 
-                : "Ähnliches Projekt starten"
-              }
-            </a>
-          </div>
-        )}
+        <div className="text-center mt-12">
+          <a 
+            href="#contact" 
+            className={`inline-block primary-btn ${mode === 'creative' ? 'neon-glow' : ''}`}
+          >
+            {mode === 'academy' 
+              ? "Jetzt Beratung vereinbaren" 
+              : mode === 'creative' 
+              ? "Dein Projekt starten" 
+              : "Ähnliches Projekt starten"
+            }
+          </a>
+        </div>
       </div>
     </section>
   );
