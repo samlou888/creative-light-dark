@@ -1,4 +1,3 @@
-
 import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -53,11 +52,23 @@ const Header = memo(() => {
     });
   }, [setMode]);
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold">
+          <Link 
+            to={location.pathname} 
+            onClick={handleLogoClick} 
+            className="text-2xl font-bold"
+          >
             <span className="text-primary">AI</span>ventures
           </Link>
           
