@@ -1,3 +1,4 @@
+
 import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -117,11 +118,13 @@ const Header = memo(() => {
             <a 
               href="#contact" 
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
-              className={`hidden md:block ${
-                mode === 'creative'
+              className={`hidden md:block bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)] px-5 py-2 rounded-full font-medium ${
+                mode === 'academy' 
+                  ? 'primary-btn' 
+                  : mode === 'creative'
                   ? 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]' 
                   : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
-              } px-5 py-2 rounded-full font-medium transition-all`}
+              }`}
             >
               {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
