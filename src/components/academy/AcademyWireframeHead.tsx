@@ -1,4 +1,3 @@
-
 import React, { useRef, memo } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -17,6 +16,7 @@ const AcademyWireframeHead: React.FC<AcademyWireframeHeadProps> = memo(({ classN
   const controls = useAnimation();
 
   const academyImagePath = '/lovable-uploads/eb52459a-567a-4a86-9c38-cd28caabc328.png';
+  console.log('Academy image path:', academyImagePath);
 
   React.useEffect(() => {
     if (isInView) {

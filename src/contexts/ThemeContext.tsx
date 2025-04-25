@@ -1,5 +1,6 @@
 
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 
 type ThemeMode = 'automation' | 'creative' | 'academy';
 
@@ -12,14 +13,22 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [mode, setMode] = useState<ThemeMode>(() => {
-    const savedMode = localStorage.getItem('themeMode');
-    return (savedMode as ThemeMode) || 'automation';
-  });
+  const [mode, setMode] = useState<ThemeMode>('automation');
+  const location = useLocation();
 
+  // Update mode based on current route
   useEffect(() => {
-    localStorage.setItem('themeMode', mode);
-  }, [mode]);
+    const path = location.pathname;
+    console.log('Current path:', path);
+    
+    if (path === '/creative-studio') {
+      setMode('creative');
+    } else if (path === '/academy') {
+      setMode('academy');
+    } else {
+      setMode('automation');
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     document.documentElement.classList.remove('mode-automation', 'mode-creative', 'mode-academy');

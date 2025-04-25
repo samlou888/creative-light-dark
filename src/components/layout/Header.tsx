@@ -44,14 +44,9 @@ const Header = memo(() => {
   }, [location.pathname]);
 
   const handleModeChange = useCallback((newMode: 'automation' | 'creative' | 'academy', path: string) => {
-    setMode(newMode);
+    console.log('Navigating to:', path);
     navigate(path);
-    
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  }, [setMode, navigate]);
+  }, [navigate]);
 
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -78,7 +73,7 @@ const Header = memo(() => {
               <motion.button
                 onClick={() => handleModeChange('automation', '/')}
                 className={`p-2 rounded-lg transition-all duration-300 ${
-                  mode === 'automation' 
+                  location.pathname === '/' 
                     ? 'bg-primary/10 text-primary' 
                     : 'hover:bg-primary/5'
                 }`}
@@ -91,7 +86,7 @@ const Header = memo(() => {
               <motion.button
                 onClick={() => handleModeChange('creative', '/creative-studio')}
                 className={`p-2 rounded-lg transition-all duration-300 ${
-                  mode === 'creative' 
+                  location.pathname === '/creative-studio'
                     ? 'bg-primary/10 text-primary dark:text-[#00FF66]' 
                     : 'hover:bg-primary/5'
                 }`}
@@ -104,7 +99,7 @@ const Header = memo(() => {
               <motion.button
                 onClick={() => handleModeChange('academy', '/academy')}
                 className={`p-2 rounded-lg transition-all duration-300 ${
-                  mode === 'academy' 
+                  location.pathname === '/academy'
                     ? 'bg-primary/10 text-primary' 
                     : 'hover:bg-primary/5'
                 }`}
@@ -124,7 +119,7 @@ const Header = memo(() => {
                   : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
               } px-5 py-2 rounded-full font-medium transition-all`}
             >
-              {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
+              {location.pathname === '/creative-studio' ? 'Projekt starten' : location.pathname === '/academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
           </div>
         </div>
