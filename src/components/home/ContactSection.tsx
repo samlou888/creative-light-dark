@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useToast } from '@/hooks/use-toast';
@@ -188,60 +189,6 @@ const ContactSection = () => {
     );
   }
 
-  if (mode === 'blue') {
-    return (
-      <section id="contact" className="py-12 px-6 md:px-10">
-        <div className="container mx-auto">
-          <div className="max-w-5xl mx-auto">
-            <Card className="overflow-hidden rounded-2xl border-[#00CFFF]/20 bg-gradient-to-br from-[#102030] to-[#1F3A5F]">
-              <div className="grid md:grid-cols-2 gap-8 p-6 md:p-8 items-start">
-                <div>
-                  <div className="mb-6">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#00CFFF] to-[#80E0FF] bg-clip-text text-transparent">
-                      Blue Mode Consultation
-                    </h2>
-                    <p className="text-lg text-gray-300">
-                      Experience our services in blue mode. Book a call to discuss how we can transform your business with AI solutions.
-                    </p>
-                  </div>
-
-                  <div className="space-y-4">
-                    <ul className="space-y-3">
-                      {[
-                        'Advanced AI integration for your workflow',
-                        'Custom solutions designed for your needs',
-                        'Expert guidance and ongoing support'
-                      ].map((item, index) => (
-                        <li key={index} className="flex items-start gap-3">
-                          <div className="mt-1">
-                            <Check className="h-5 w-5 text-[#00CFFF]" />
-                          </div>
-                          <span className="text-gray-200">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Button 
-                      size="lg"
-                      className="w-full md:w-auto bg-[#00CFFF] hover:bg-[#00CFFF]/90 text-black font-medium gap-2 mt-4"
-                    >
-                      <Video className="w-5 h-5" />
-                      Book Video Call
-                    </Button>
-                  </div>
-                </div>
-
-                <div className="h-[400px]">
-                  <CalendlyEmbed />
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section id="contact" className="py-10 px-6 md:px-10">
       <div className="container mx-auto">
@@ -249,26 +196,20 @@ const ContactSection = () => {
           <div className={`rounded-2xl overflow-hidden ${
             mode === 'creative' 
               ? 'dark-card neon-glow' 
-              : mode === 'blue'
-                ? 'dark-card accent-glow'
-                : 'light-card'
+              : 'light-card'
           }`}>
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="p-5 md:p-6">
                 <h2 className="text-xl md:text-2xl font-bold mb-2">
                   {mode === 'creative' 
                     ? "Starten Sie Ihr kreatives Projekt"
-                    : mode === 'blue'
-                      ? "Starten Sie Ihr Blue-Mode Projekt"
-                      : "Kontaktieren Sie uns"
+                    : "Kontaktieren Sie uns"
                   }
                 </h2>
                 <p className="text-muted-foreground text-sm mb-4">
                   {mode === 'creative' 
                     ? "Bereit, Ihre Vision mit KI-Technologie zum Leben zu erwecken? Wir freuen uns darauf, von Ihnen zu hören."
-                    : mode === 'blue'
-                      ? "Erleben Sie die Power des Blue Mode. Wir helfen Ihnen, Ihre Ideen in die Realität umzusetzen."
-                      : "Haben Sie Fragen oder möchten Sie eine Beratung buchen? Füllen Sie das Formular aus und wir melden uns bei Ihnen."
+                    : "Haben Sie Fragen oder möchten Sie eine Beratung buchen? Füllen Sie das Formular aus und wir melden uns bei Ihnen."
                   }
                 </p>
                 
@@ -304,9 +245,9 @@ const ContactSection = () => {
                   
                   <button 
                     type="submit" 
-                    className={`w-full primary-btn ${mode === 'creative' ? 'neon-glow' : mode === 'blue' ? 'accent-glow' : ''}`}
+                    className={`w-full primary-btn ${mode === 'creative' ? 'neon-glow' : ''}`}
                   >
-                    {mode === 'creative' ? "Projekt starten" : mode === 'blue' ? "Blue Mode starten" : "Nachricht senden"}
+                    {mode === 'creative' ? "Projekt starten" : "Nachricht senden"}
                   </button>
                 </form>
               </div>
@@ -314,16 +255,12 @@ const ContactSection = () => {
               <div className={`${
                 mode === 'creative' 
                   ? 'bg-primary/20 backdrop-blur-md' 
-                  : mode === 'blue'
-                    ? 'bg-[#00CFFF]/20 backdrop-blur-md'
-                    : 'bg-primary/5'
+                  : 'bg-primary/5'
               } p-5 md:p-6 flex flex-col justify-center`}>
                 <h3 className="text-base font-bold mb-3">
                   {mode === 'creative' 
                     ? "Warum mit unserem Creative Studio arbeiten?"
-                    : mode === 'blue'
-                      ? "Warum den Blue Mode wählen?"
-                      : "Ihre Vorteile im Überblick"
+                    : "Ihre Vorteile im Überblick"
                   }
                 </h3>
                 
@@ -335,27 +272,18 @@ const ContactSection = () => {
                         "Schnellere Iteration und Entwicklung",
                         "Zukunftsorientierte digitale Erlebnisse"
                       ] 
-                    : mode === 'blue'
-                      ? [
-                          "Fortschrittliche Blue-Mode Technologie",
-                          "Innovative Benutzeroberflächen",
-                          "Moderne Design-Ansätze",
-                          "Erhöhte Benutzerinteraktion"
-                        ]
-                      : [
-                          "Maßgeschneiderte AI-Lösungen",
-                          "Höhere Effizienz und Einsparungen",
-                          "Benutzerfreundliche Implementierung",
-                          "Langfristige Betreuung und Support"
-                        ]
+                    : [
+                        "Maßgeschneiderte AI-Lösungen",
+                        "Höhere Effizienz und Einsparungen",
+                        "Benutzerfreundliche Implementierung",
+                        "Langfristige Betreuung und Support"
+                      ]
                   ).map((item, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <div className={`w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5 ${
                         mode === 'creative' 
                           ? 'bg-primary text-white' 
-                          : mode === 'blue'
-                            ? 'bg-[#00CFFF]/20 text-[#00CFFF]'
-                            : 'bg-primary/20 text-primary'
+                          : 'bg-primary/20 text-primary'
                       }`}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                           <polyline points="20 6 9 17 4 12"></polyline>

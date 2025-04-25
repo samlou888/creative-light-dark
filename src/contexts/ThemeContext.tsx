@@ -1,12 +1,12 @@
 
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 
-type ThemeMode = 'automation' | 'creative' | 'academy' | 'blue';
+type ThemeMode = 'automation' | 'creative' | 'academy';
 
 type ThemeContextType = {
   mode: ThemeMode;
   setMode: (mode: ThemeMode) => void;
-  isCreativeMode: boolean; // Keep for backwards compatibility during transition
+  isCreativeMode: boolean;
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -33,14 +33,9 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     document.documentElement.classList.add(`mode-${mode}`);
     
     // Handle special modes
-    if (mode === 'creative' || mode === 'blue') {
+    if (mode === 'creative') {
       document.documentElement.classList.add('dark');
-      
-      if (mode === 'creative') {
-        document.body.classList.add('creative-mode');
-      } else if (mode === 'blue') {
-        document.body.classList.add('blue-mode');
-      }
+      document.body.classList.add('creative-mode');
     } else {
       document.documentElement.classList.remove('dark');
     }
