@@ -22,7 +22,7 @@ const Index = () => {
   const { mode } = useTheme();
   
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className={`min-h-screen flex flex-col ${mode === 'creative' ? 'bg-black text-white' : 'bg-white text-black'}`}>
       <Header />
       <main className="flex-grow">
         <Suspense fallback={<SectionLoader />}>
