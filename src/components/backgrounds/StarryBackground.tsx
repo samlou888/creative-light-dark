@@ -6,7 +6,7 @@ const StarryBackground = () => {
   const location = useLocation();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Only show the background on the creative-studio page
+  // Nur die Animation anzeigen, wenn wir auf der Creative-Studio-Seite sind
   if (location.pathname !== '/creative-studio') {
     return null;
   }

@@ -7,7 +7,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { Skeleton } from "@/components/ui/skeleton";
-import StarryBackground from "./components/backgrounds/StarryBackground";
 
 // Lazy load all pages for better code splitting
 const Index = lazy(() => import("./pages/Index"));
@@ -48,7 +47,6 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <StarryBackground />
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<Index />} />
