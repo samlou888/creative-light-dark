@@ -50,7 +50,7 @@ const ContactSection = () => {
               <div className="grid md:grid-cols-2 gap-8 p-6 md:p-8 items-start">
                 <div>
                   <div className="mb-6">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#3CD676]">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#3CD676] to-[#2AAB5B] bg-clip-text text-transparent">
                       Lass uns deine Prozesse mit AI automatisieren
                     </h2>
                     <p className="text-lg text-muted-foreground">
