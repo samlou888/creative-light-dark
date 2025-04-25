@@ -17,7 +17,7 @@ const CreativeStudioLayout = ({ children }: CreativeStudioLayoutProps) => {
   }, [setMode]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-black text-white">
       <StarryBackground />
       <Header />
       <main className="flex-grow relative z-10">

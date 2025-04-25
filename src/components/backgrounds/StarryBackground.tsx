@@ -32,7 +32,7 @@ const StarryBackground = () => {
 
     // Create initial particles
     const createParticles = () => {
-      const particleCount = 100; // Increased from 50 for more stars
+      const particleCount = 150; // Increased for more stars
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * canvas.width,
@@ -40,7 +40,7 @@ const StarryBackground = () => {
           size: Math.random() * 3 + 1,
           speedX: (Math.random() - 0.5) * 0.5,
           speedY: (Math.random() - 0.5) * 0.5,
-          opacity: Math.random() * 0.7 + 0.3  // Higher opacity for better visibility
+          opacity: Math.random() * 0.7 + 0.3
         });
       }
     };
@@ -81,8 +81,8 @@ const StarryBackground = () => {
 
   return (
     <div className="fixed inset-0 w-full h-full -z-10 overflow-hidden">
-      {/* Gradient background - darker for better visibility */}
-      <div className="absolute inset-0 bg-gradient-radial from-[#101118] via-[#0a0c14] to-black"></div>
+      {/* True black background */}
+      <div className="absolute inset-0 bg-black"></div>
       
       {/* Enhanced gradient overlay */}
       <div className="absolute inset-0 creative-gradient opacity-40"></div>
@@ -90,8 +90,7 @@ const StarryBackground = () => {
       {/* Canvas for particles */}
       <canvas 
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-        style={{ opacity: 0.7 }} // Increased opacity for better visibility
+        className="absolute inset-0 w-full h-full opacity-80"
       />
       
       {/* Enhanced gradient flares */}
