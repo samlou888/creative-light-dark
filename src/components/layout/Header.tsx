@@ -1,5 +1,5 @@
 import React, { useCallback, memo } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
 import { Zap, Palette, GraduationCap } from 'lucide-react';
@@ -7,6 +7,7 @@ import { Zap, Palette, GraduationCap } from 'lucide-react';
 const Header = memo(() => {
   const { mode, setMode } = useTheme();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleInternalLinkClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     const currentPath = location.pathname;
@@ -42,15 +43,15 @@ const Header = memo(() => {
     }
   }, [location.pathname]);
 
-  const handleModeChange = useCallback((newMode: 'automation' | 'creative' | 'academy') => {
+  const handleModeChange = useCallback((newMode: 'automation' | 'creative' | 'academy', path: string) => {
     setMode(newMode);
+    navigate(path);
     
-    // Smooth scroll to top
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  }, [setMode]);
+  }, [setMode, navigate]);
 
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -65,7 +66,7 @@ const Header = memo(() => {
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           <Link 
-            to={location.pathname} 
+            to="/" 
             onClick={handleLogoClick} 
             className="text-2xl font-bold"
           >
@@ -75,7 +76,7 @@ const Header = memo(() => {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <motion.button
-                onClick={() => handleModeChange('automation')}
+                onClick={() => handleModeChange('automation', '/')}
                 className={`p-2 rounded-lg transition-all duration-300 ${
                   mode === 'automation' 
                     ? 'bg-primary/10 text-primary' 
@@ -88,7 +89,7 @@ const Header = memo(() => {
               </motion.button>
               
               <motion.button
-                onClick={() => handleModeChange('creative')}
+                onClick={() => handleModeChange('creative', '/creative-studio')}
                 className={`p-2 rounded-lg transition-all duration-300 ${
                   mode === 'creative' 
                     ? 'bg-primary/10 text-primary dark:text-[#00FF66]' 
@@ -101,7 +102,7 @@ const Header = memo(() => {
               </motion.button>
               
               <motion.button
-                onClick={() => handleModeChange('academy')}
+                onClick={() => handleModeChange('academy', '/academy')}
                 className={`p-2 rounded-lg transition-all duration-300 ${
                   mode === 'academy' 
                     ? 'bg-primary/10 text-primary' 

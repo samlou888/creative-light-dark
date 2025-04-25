@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import WireframeHead from '@/components/graphics/WireframeHead';
+import AcademyWireframeHead from '@/components/academy/AcademyWireframeHead';
 import CoursesSection from '@/components/academy/CoursesSection';
 import SectionGrid from '@/components/ui/section-grid';
 import BenefitsSection from '@/components/academy/BenefitsSection';
@@ -28,8 +28,6 @@ const Academy = () => {
       <Header />
       
       <main className="flex-grow">
-        <p className="hidden">{location.pathname}</p>
-        
         <section className="pt-24 pb-16">
           <div className="container px-4 md:px-6">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -48,7 +46,7 @@ const Academy = () => {
                 </button>
               </div>
               <div className="relative">
-                <WireframeHead className="w-full" />
+                <AcademyWireframeHead className="w-full" />
               </div>
             </div>
           </div>
