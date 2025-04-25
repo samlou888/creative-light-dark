@@ -142,7 +142,7 @@ const ContactSection = () => {
               <div className="grid md:grid-cols-2 gap-8 p-6 md:p-8 items-start">
                 <div>
                   <div className="mb-6">
-                    <h2 className="hero-heading text-3xl md:text-4xl font-bold mb-4 text-[#00FF66]">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-[linear-gradient(90deg,#00CFFF_0%,#9DFFDB_100%)] bg-clip-text text-transparent">
                       Meeting? Online, locker, konkret.
                     </h2>
                     <p className="text-lg text-gray-300">
