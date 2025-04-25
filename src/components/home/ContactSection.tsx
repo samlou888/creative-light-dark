@@ -54,8 +54,7 @@ const ContactSection = () => {
                       Lass uns deine Prozesse mit AI automatisieren
                     </h2>
                     <p className="text-lg text-muted-foreground">
-                      Ob kleines Team oder skalierendes Unternehmen – wir finden gemeinsam heraus, 
-                      wo Automatisierung für dich den größten Hebel bringt.
+                      Ob kleines Team oder skalierendes Unternehmen – wir finden gemeinsam in einem Kennenlerngespräch heraus, wo Automatisierung für dich den größten Mehrwert schafft.
                     </p>
                   </div>
 
@@ -98,7 +97,7 @@ const ContactSection = () => {
                 <div>
                   <div className="mb-6">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#00CFFF] to-[#D2A8FF] bg-clip-text text-transparent">
-                      Let's talk AI & Wachstum
+                      Schulungen & Workshops für zukunftsorientierte Unternehmen.
                     </h2>
                     <p className="text-lg text-gray-600">
                       Buche dir ein kostenloses Online-Gespräch. Wir zeigen dir, wie du mit künstlicher Intelligenz dein Business effizienter und profitabler machst.
