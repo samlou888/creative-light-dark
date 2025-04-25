@@ -143,8 +143,8 @@ const ContactSection = () => {
               <div className="grid md:grid-cols-2 gap-8 p-6 md:p-8 items-start">
                 <div>
                   <div className="mb-6">
-                    <h2 className="hero-heading text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-white/90 to-white/70">
-                      Meeting? - Online locker, konkret.
+                    <h2 className="hero-heading text-3xl md:text-4xl font-bold mb-4 text-[#00FF66]">
+                      Meeting? Online, locker, konkret.
                     </h2>
                     <p className="text-lg text-gray-300">
                       Buche dir direkt einen kostenlosen Videocall. Wir hören zu, stellen Fragen und zeigen dir, was möglich ist.
@@ -166,14 +166,6 @@ const ContactSection = () => {
                         </li>
                       ))}
                     </ul>
-
-                    <Button 
-                      size="lg"
-                      className="w-full md:w-auto bg-[#00FF66] hover:bg-[#00FF66]/90 text-black font-medium gap-2 mt-4"
-                    >
-                      <Video className="w-5 h-5" />
-                      Videocall buchen
-                    </Button>
                   </div>
                 </div>
 

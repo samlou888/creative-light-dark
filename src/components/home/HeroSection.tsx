@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import WireframeHead from '../graphics/WireframeHead';
@@ -48,10 +47,7 @@ const HeroSection = () => {
                   </a>
                 </>
               ) : mode === 'creative' ? (
-                <>
-                  <a href="#contact" className="primary-btn">Projekt starten</a>
-                  <a href="#showcase" className="secondary-btn">Projekte entdecken</a>
-                </>
+                <a href="#contact" className="primary-btn">Projekt starten</a>
               ) : (
                 <a href="#contact" className="primary-btn">Jetzt Termin buchen</a>
               )}
