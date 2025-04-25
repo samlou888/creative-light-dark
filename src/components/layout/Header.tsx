@@ -1,4 +1,3 @@
-
 import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -140,15 +139,15 @@ const Header = memo(() => {
                   <Globe className="w-5 h-5" />
                 </motion.button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-24">
+              <DropdownMenuContent align="end" className="w-16">
                 <DropdownMenuGroup>
                   <DropdownMenuItem asChild>
-                    <Link to="/en" className="flex items-center justify-center text-2xl cursor-pointer">
+                    <Link to="/en" className="flex items-center justify-center text-3xl p-0 cursor-pointer">
                       🇺🇸
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link to="/fr" className="flex items-center justify-center text-2xl cursor-pointer">
+                    <Link to="/fr" className="flex items-center justify-center text-3xl p-0 cursor-pointer">
                       🇫🇷
                     </Link>
                   </DropdownMenuItem>
@@ -165,4 +164,3 @@ const Header = memo(() => {
 Header.displayName = 'Header';
 
 export default Header;
-
