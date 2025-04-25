@@ -22,13 +22,16 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
   // Animation controls for breathing effect
   const controls = useAnimation();
   
-  // Determine which image to use based on current route
+  // Determine which image to use based on current route with console logging for debugging
   const getHeadImage = () => {
-    switch (location.pathname) {
-      case '/academy':
-        return '/lovable-uploads/12424c5f-eca8-4d92-8ce2-d74a9589dd7c.png';
-      default:
-        return '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+    console.log("Current pathname:", location.pathname);
+    
+    if (location.pathname === '/academy') {
+      console.log("Using academy image");
+      return '/lovable-uploads/12424c5f-eca8-4d92-8ce2-d74a9589dd7c.png';
+    } else {
+      console.log("Using default image");
+      return '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
     }
   };
 
@@ -77,6 +80,9 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
   const x = useTransform(mouseX, [-5, 5], [5, -5]);
   const y = useTransform(mouseY, [-5, 5], [5, -5]);
 
+  const imageSrc = getHeadImage();
+  console.log("Selected image:", imageSrc);
+
   return (
     <div className={`relative ${className}`} ref={containerRef}>
       <motion.div
@@ -98,7 +104,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
           variants={breathingAnimation}
         >
           <img 
-            src={getHeadImage()}
+            src={imageSrc}
             alt="AI Wireframe Head" 
             className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
               ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
