@@ -18,7 +18,7 @@ const CalendlyEmbed: React.FC<CalendlyEmbedProps> = ({ className = '' }) => {
   }, []);
 
   return (
-    <div className={`relative min-h-[400px] ${className}`}>
+    <div className={`relative min-h-[680px] ${className}`}>
       {isLoading && (
         <div className="absolute inset-0 z-10">
           <Skeleton className="w-full h-full" />
@@ -27,11 +27,12 @@ const CalendlyEmbed: React.FC<CalendlyEmbedProps> = ({ className = '' }) => {
       <iframe
         src="https://calendly.com/samlou888/30min"
         width="100%"
-        height="400px"
+        height="100%"
         frameBorder="0"
         title="Calendly Terminbuchung"
-        className="rounded-lg shadow-lg bg-background"
-        style={{ minHeight: '400px', maxHeight: '500px' }}
+        className="rounded-lg shadow-lg bg-background absolute inset-0"
+        data-auto-load="true"
+        data-resize="true"
         onLoad={() => setIsLoading(false)}
       />
     </div>
@@ -39,3 +40,4 @@ const CalendlyEmbed: React.FC<CalendlyEmbedProps> = ({ className = '' }) => {
 };
 
 export default CalendlyEmbed;
+
