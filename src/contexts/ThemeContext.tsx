@@ -36,6 +36,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     
     document.documentElement.classList.add(`mode-${mode}`);
     
+    // Apply dark mode only for creative mode
     if (mode === 'creative') {
       document.documentElement.classList.add('dark');
       document.body.classList.add('creative-mode');

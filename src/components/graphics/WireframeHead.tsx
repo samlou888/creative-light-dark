@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef, memo } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -17,10 +18,13 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
   const mouseY = useMotionValue(0);
   const controls = useAnimation();
 
-  // Explicitly set which image to use based on the current route
-  const imagePath = location.pathname === '/academy' 
-    ? '/lovable-uploads/eb52459a-567a-4a86-9c38-cd28caabc328.png'
-    : '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+  // Default image path for automation/home page
+  const defaultImagePath = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+  // Academy image path
+  const academyImagePath = '/lovable-uploads/eb52459a-567a-4a86-9c38-cd28caabc328.png';
+  
+  // Use the correct image based on the current route
+  const imagePath = location.pathname === '/academy' ? academyImagePath : defaultImagePath;
 
   console.log('WireframeHead - Current location:', location.pathname);
   console.log('WireframeHead - Using image:', imagePath);
