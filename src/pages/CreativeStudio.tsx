@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import Header from '@/components/layout/Header';
@@ -225,42 +224,6 @@ const CreativeStudio = () => {
                 </Card>
               </motion.div>
             </motion.div>
-          </div>
-        </section>
-        
-        {/* Showcase Section */}
-        <section className="py-20 relative">
-          <div className="container mx-auto">
-            <motion.div 
-              className="mb-16 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <h2 className="section-heading mb-4 text-white">Showcases</h2>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                Beispiele unserer AI-unterstützten Kreationen
-              </p>
-            </motion.div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Showcase Items */}
-              {[1, 2, 3, 4, 5, 6].map((item) => (
-                <motion.div 
-                  key={item}
-                  className="aspect-square bg-gradient-to-br from-purple-900/40 to-blue-900/40 rounded-lg overflow-hidden backdrop-blur-sm border border-white/10"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: item * 0.1 }}
-                >
-                  <div className="w-full h-full flex items-center justify-center">
-                    <p className="text-white/50">Projekt Mockup {item}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </section>
         
