@@ -126,9 +126,7 @@ const ShowcaseSection = () => {
   ];
 
   const projects = 
-    mode === 'academy' ? academyCaseStudies : 
-    mode === 'creative' ? creativeProjects : 
-    automationCases;
+    mode === 'academy' ? academyCaseStudies : automationCases;
 
   return (
     <section id="showcase" className="py-10 px-6 md:px-10">
@@ -213,7 +211,7 @@ const ShowcaseSection = () => {
         <div className="text-center mt-12">
           <a 
             href="#contact" 
-            className={`inline-block primary-btn ${mode === 'creative' ? 'neon-glow' : ''}`}
+            className="inline-block primary-btn"
           >
             {mode === 'academy' 
               ? "Jetzt Beratung vereinbaren" 
