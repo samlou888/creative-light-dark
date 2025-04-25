@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import Header from '@/components/layout/Header';
@@ -20,9 +19,8 @@ const Academy = () => {
   const { mode } = useTheme();
   const location = useLocation();
   
-  // Log the current path to verify we're on the Academy page
   useEffect(() => {
-    console.log("Academy component mounted, current path:", location.pathname);
+    console.log("Academy page - Current path:", location.pathname);
   }, [location.pathname]);
 
   return (
@@ -30,6 +28,8 @@ const Academy = () => {
       <Header />
       
       <main className="flex-grow">
+        <p className="hidden">{location.pathname}</p>
+        
         <section className="pt-24 pb-16">
           <div className="container px-4 md:px-6">
             <div className="grid lg:grid-cols-2 gap-12 items-center">

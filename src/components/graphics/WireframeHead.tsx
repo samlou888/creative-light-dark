@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef, memo } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -10,42 +9,21 @@ interface WireframeHeadProps {
 
 const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) => {
   const { isCreativeMode } = useTheme();
-  const [isLoaded, setIsLoaded] = useState(false);
+  const location = useLocation();
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
-  const location = useLocation();
   
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  
   const controls = useAnimation();
-  
-  const getHeadImage = () => {
-    // Verbesserte Debugging-Informationen
-    console.log("Current pathname:", location.pathname);
-    console.log("Is pathname equal to '/academy':", location.pathname === '/academy');
-    
-    // Expliziter Vergleich und Logging
-    if (location.pathname === '/academy') {
-      // Using the blue head image for Academy page
-      const academyImage = '/lovable-uploads/eb52459a-567a-4a86-9c38-cd28caabc328.png';
-      console.log("Using academy image:", academyImage);
-      return academyImage;
-    } else {
-      const defaultImage = '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
-      console.log("Using default image:", defaultImage);
-      return defaultImage;
-    }
-  };
 
-  // Stellen wir sicher, dass das Bild bei Routenänderungen aktualisiert wird
-  const [currentImage, setCurrentImage] = useState<string>('');
-  
-  useEffect(() => {
-    const imageToUse = getHeadImage();
-    setCurrentImage(imageToUse);
-    console.log("Updated image path to:", imageToUse);
-  }, [location.pathname]);
+  // Explicitly set which image to use based on the current route
+  const imagePath = location.pathname === '/academy' 
+    ? '/lovable-uploads/eb52459a-567a-4a86-9c38-cd28caabc328.png'
+    : '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+
+  console.log('WireframeHead - Current location:', location.pathname);
+  console.log('WireframeHead - Using image:', imagePath);
 
   useEffect(() => {
     if (isInView) {
@@ -54,7 +32,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
       controls.stop();
     }
   }, [isInView, controls]);
-  
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
@@ -88,9 +66,6 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
   const x = useTransform(mouseX, [-5, 5], [5, -5]);
   const y = useTransform(mouseY, [-5, 5], [5, -5]);
 
-  // Immer das aktuell gesetzte Bild verwenden statt getHeadImage() direkt aufzurufen
-  console.log("Rendering with image:", currentImage || getHeadImage());
-
   return (
     <div className={`relative ${className}`} ref={containerRef}>
       <motion.div
@@ -112,14 +87,11 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
           variants={breathingAnimation}
         >
           <img 
-            src={currentImage || getHeadImage()}
+            src={imagePath}
             alt="AI Wireframe Head" 
             className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
               ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
-              ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-            loading="lazy"
-            decoding="async"
-            onLoad={() => setIsLoaded(true)}
+              opacity-100`}
           />
         </motion.div>
       </motion.div>
