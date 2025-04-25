@@ -19,20 +19,17 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     localStorage.setItem('themeMode', mode);
-  }, [mode]);
 
-  useEffect(() => {
-    // Clean up all class names first
-    document.documentElement.classList.remove('mode-automation', 'mode-creative', 'mode-academy', 'dark');
-    document.body.classList.remove('creative-mode');
+    // Remove all theme classes first
+    document.documentElement.classList.remove('mode-automation', 'mode-creative', 'mode-academy');
+    document.documentElement.classList.remove('dark');
     
-    // Add mode-specific class
+    // Add new theme classes
     document.documentElement.classList.add(`mode-${mode}`);
     
-    // Handle dark mode specifically for creative mode
+    // Add dark class for creative mode
     if (mode === 'creative') {
       document.documentElement.classList.add('dark');
-      document.body.classList.add('creative-mode');
     }
   }, [mode]);
 

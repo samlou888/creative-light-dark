@@ -1,4 +1,3 @@
-
 import React, { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -35,18 +34,18 @@ const PageLoader = () => (
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
-      gcTime: 1000 * 60 * 30, // 30 minutes
+      staleTime: 1000 * 60 * 5,
+      gcTime: 1000 * 60 * 30,
     },
   },
 });
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <BrowserRouter>
-        <PageThemeProvider>
-          <ThemeProvider>
+  <BrowserRouter>
+    <ThemeProvider>
+      <PageThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
             <Toaster />
             <Sonner />
             <Suspense fallback={<PageLoader />}>
@@ -61,11 +60,11 @@ const App = () => (
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
-          </ThemeProvider>
-        </PageThemeProvider>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+          </TooltipProvider>
+        </QueryClientProvider>
+      </PageThemeProvider>
+    </ThemeProvider>
+  </BrowserRouter>
 );
 
 export default App;

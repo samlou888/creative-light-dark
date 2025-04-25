@@ -13,12 +13,11 @@ const CreativeStudioLayout = ({ children }: CreativeStudioLayoutProps) => {
   const { setMode } = useTheme();
 
   useEffect(() => {
-    // Set creative mode when component mounts
     setMode('creative');
   }, [setMode]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white relative overflow-hidden">
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
       <StarryBackground />
       <Header />
       <main className="flex-grow relative z-10">
