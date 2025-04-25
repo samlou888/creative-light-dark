@@ -5,16 +5,10 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import AcademyWireframeHead from '@/components/academy/AcademyWireframeHead';
 import CoursesSection from '@/components/academy/CoursesSection';
-import SectionGrid from '@/components/ui/section-grid';
+import FormatsSection from '@/components/academy/FormatsSection';
 import BenefitsSection from '@/components/academy/BenefitsSection';
-import SectionCTA from '@/components/ui/section-cta';
+import CTASection from '@/components/academy/CTASection';
 import { useLocation } from 'react-router-dom';
-
-const formats = [
-  { title: "Live", description: "Vor-Ort Workshops mit praktischen Übungen" },
-  { title: "Digital", description: "Online-Kurse im eigenen Tempo" },
-  { title: "Hybrid", description: "Flexible Kombination aus Live und Digital" }
-];
 
 const Academy = () => {
   const { mode } = useTheme();
@@ -54,17 +48,9 @@ const Academy = () => {
         </section>
 
         <CoursesSection />
-        <SectionGrid
-          title="Flexible Formate"
-          subtitle="Wähle das Format, das am besten zu dir und deinen Lernpräferenzen passt."
-          items={formats}
-        />
+        <FormatsSection />
         <BenefitsSection />
-        <SectionCTA
-          title="Starte deine KI-Reise noch heute"
-          description="Von Anfänger bis Fortgeschrittene - wir begleiten dich auf jedem Schritt deines Weges."
-          buttonText="Jetzt Kursübersicht anfordern"
-        />
+        <CTASection />
       </main>
       
       <Footer />

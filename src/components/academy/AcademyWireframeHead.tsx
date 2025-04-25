@@ -16,9 +16,8 @@ const AcademyWireframeHead: React.FC<AcademyWireframeHeadProps> = memo(({ classN
   const mouseY = useMotionValue(0);
   const controls = useAnimation();
 
-  // Force using the blue head image for Academy
-  const academyImagePath = '/lovable-uploads/eb52459a-567a-4a86-9c38-cd28caabc328.png';
-  console.log('Academy image path:', academyImagePath);
+  // Das blaue Kopfbild für die Academy-Seite
+  const blueHeadImage = '/lovable-uploads/eb52459a-567a-4a86-9c38-cd28caabc328.png';
 
   React.useEffect(() => {
     if (isInView) {
@@ -82,11 +81,9 @@ const AcademyWireframeHead: React.FC<AcademyWireframeHeadProps> = memo(({ classN
           variants={breathingAnimation}
         >
           <img 
-            src={academyImagePath}
+            src={blueHeadImage}
             alt="AI Wireframe Head" 
-            className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
-              ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
-              opacity-100`}
+            className="w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain"
           />
         </motion.div>
       </motion.div>
