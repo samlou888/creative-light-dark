@@ -139,15 +139,18 @@ const Header = memo(() => {
                   <Globe className="w-5 h-5" />
                 </motion.button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-16">
+              <DropdownMenuContent 
+                align="end" 
+                className="w-16 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg"
+              >
                 <DropdownMenuGroup>
-                  <DropdownMenuItem asChild>
-                    <Link to="/en" className="flex items-center justify-center text-3xl p-0 cursor-pointer">
+                  <DropdownMenuItem className="px-0 py-1 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
+                    <Link to="/en" className="flex items-center justify-center text-3xl">
                       🇺🇸
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link to="/fr" className="flex items-center justify-center text-3xl p-0 cursor-pointer">
+                  <DropdownMenuItem className="px-0 py-1 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
+                    <Link to="/fr" className="flex items-center justify-center text-3xl">
                       🇫🇷
                     </Link>
                   </DropdownMenuItem>
