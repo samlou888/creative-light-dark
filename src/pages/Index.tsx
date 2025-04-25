@@ -1,3 +1,4 @@
+
 import React, { Suspense } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -9,7 +10,6 @@ const HeroSection = React.lazy(() => import('@/components/home/HeroSection'));
 const ServicesSection = React.lazy(() => import('@/components/home/ServicesSection'));
 const ShowcaseSection = React.lazy(() => import('@/components/home/ShowcaseSection'));
 const ContactSection = React.lazy(() => import('@/components/home/ContactSection'));
-const LegalSections = React.lazy(() => import('@/components/home/LegalSections'));
 
 // Loading fallback component
 const SectionLoader = () => (
@@ -36,9 +36,6 @@ const Index = () => {
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <ContactSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <LegalSections />
         </Suspense>
       </main>
       <Footer />
