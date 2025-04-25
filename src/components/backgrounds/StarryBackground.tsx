@@ -1,8 +1,14 @@
-
 import React, { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const StarryBackground = () => {
+  const location = useLocation();
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  // Only show the creative background on the creative-studio page
+  if (location.pathname !== '/creative-studio') {
+    return null;
+  }
 
   useEffect(() => {
     const canvas = canvasRef.current;
