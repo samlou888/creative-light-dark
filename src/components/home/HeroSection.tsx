@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import WireframeHead from '../graphics/WireframeHead';
@@ -27,7 +28,7 @@ const HeroSection = () => {
             
             <p className="text-xl text-muted-foreground max-w-lg opacity-0 animate-slide-up-fade" style={{ animationDelay: "0.3s" }}>
               {mode === 'academy' 
-                ? "Online-Workshops, Schulungen & Coachings – für Unternehmen, die ihre Mitarbeitenden weiterentwickeln wollen, um mit KI effizienter, schneller und smarter zu arbeiten."
+                ? "Online-Workshops, Schulungen & Coachings – für Unternehmen, die ihre Mitarbeiter weiterentwickeln wollen, um mit KI effizienter, schneller und smarter zu arbeiten."
                 : mode === 'creative'
                 ? "Kreativität mit künstlicher Intelligenz – für Marken, die auffallen, performen und wachsen wollen."
                 : "Transformieren Sie Ihr Unternehmen mit maßgeschneiderten AI-Lösungen. Wir helfen Ihnen, effizienter zu arbeiten, Prozesse zu optimieren und zu skalieren."
@@ -56,3 +57,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
