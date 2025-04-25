@@ -1,5 +1,6 @@
 
 import { Layout, FileText, Workflow, PenTool, Video, Smartphone } from 'lucide-react';
+import React from 'react';
 
 export const automationCases = [
   {

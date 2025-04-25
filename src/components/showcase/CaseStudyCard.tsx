@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Card } from "@/components/ui/card";
-import { LucideIcon } from 'lucide-react';
 
 interface TechnologyIcon {
   icon: React.ReactNode;

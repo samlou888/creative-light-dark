@@ -8,6 +8,7 @@ import { automationCases } from '../showcase/caseStudies';
 const ShowcaseSection = () => {
   const { mode } = useTheme();
   
+  // Don't render the section for certain modes
   if (mode === 'automation' || mode === 'creative' || mode === 'academy') {
     return null;
   }
