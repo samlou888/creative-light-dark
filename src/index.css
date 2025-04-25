@@ -167,6 +167,18 @@
   .mode-academy .offer-card:hover {
     box-shadow: 0 0 15px rgba(0, 187, 255, 0.2);
   }
+
+  .title-automation {
+    @apply text-[#22C35D];
+  }
+
+  .title-creative {
+    @apply text-[#00FB5C];
+  }
+
+  .title-academy {
+    @apply text-[#00BBFF];
+  }
 }
 
 @layer utilities {

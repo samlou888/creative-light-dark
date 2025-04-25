@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { GraduationCap, MessageSquareText, BookText, Palette, Globe, Video, Workflow, Mail, Brain } from 'lucide-react';
@@ -76,7 +75,11 @@ const ServicesSection = () => {
     <section id="services" className="py-36 px-6 md:px-10 mt-24">
       <div className="container mx-auto">
         <div className="text-center mb-12 max-w-3xl mx-auto">
-          <h2 className="section-heading mb-4 hover-glow" id="services-heading">
+          <h2 className={`section-heading mb-4 hover-glow ${
+            mode === 'automation' ? 'title-automation' :
+            mode === 'creative' ? 'title-creative' :
+            mode === 'academy' ? 'title-academy' : ''
+          }`} id="services-heading">
             Unsere Angebote
           </h2>
           <p className="text-lg text-muted-foreground">
