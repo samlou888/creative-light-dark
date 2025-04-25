@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -224,5 +223,41 @@
     background-size: 300% 300%;
     animation: academyGradient 4s ease infinite;
   }
+
+  .animated-title {
+    @apply text-3xl md:text-4xl font-bold text-center my-8 whitespace-nowrap;
+    background-size: 600% 600%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    transition: transform 0.15s ease, text-shadow 0.15s ease;
+  }
+
+  .animated-title:hover {
+    transform: scale(1.01);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  }
 }
 
+/* Animation keyframes */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.automation-title {
+  background-image: linear-gradient(90deg, #0aff9d, #22c35d, #00ffcc, #22c35d, #0aff9d);
+  animation: gradientFlow 6s linear infinite;
+}
+
+.creative-title {
+  background-image: linear-gradient(90deg, #00fb5c, #00ff99, #22c35d, #00ffaa, #00fb5c);
+  animation: gradientFlow 6s linear infinite;
+}
+
+.academy-title {
+  background-image: linear-gradient(90deg, #3a00ff, #00bbff, #3a00ff);
+  animation: gradientFlow 6s linear infinite;
+}
