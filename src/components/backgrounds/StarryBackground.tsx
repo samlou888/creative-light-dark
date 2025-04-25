@@ -8,7 +8,8 @@ const StarryBackground = () => {
         <div className="stars-layer-1" />
         <div className="stars-layer-2" />
         <div className="stars-layer-3" />
-        <div className="stars-twinkle" />
+        <div className="stars-pulse-1" />
+        <div className="stars-pulse-2" />
       </div>
     </div>
   );

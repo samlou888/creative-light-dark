@@ -190,7 +190,8 @@
   .stars-layer-1,
   .stars-layer-2,
   .stars-layer-3,
-  .stars-twinkle {
+  .stars-pulse-1,
+  .stars-pulse-2 {
     @apply fixed inset-0 w-full h-full pointer-events-none;
   }
 
@@ -223,49 +224,57 @@
     opacity: 0.2;
   }
 
-  .stars-twinkle {
-    background: radial-gradient(1px 1px at 10% 10%, white 100%, transparent),
-                radial-gradient(1px 1px at 90% 90%, white 100%, transparent),
-                radial-gradient(1px 1px at 30% 70%, white 100%, transparent),
-                radial-gradient(1px 1px at 70% 30%, white 100%, transparent);
+  .stars-pulse-1 {
+    background: radial-gradient(1px 1px at 20% 20%, white 100%, transparent),
+                radial-gradient(1px 1px at 80% 80%, white 100%, transparent),
+                radial-gradient(1px 1px at 40% 60%, white 100%, transparent);
+    background-size: 400px 400px;
+    animation: stars-pulse-slow 6s ease-in-out infinite;
+    opacity: 0;
+  }
+
+  .stars-pulse-2 {
+    background: radial-gradient(1px 1px at 30% 70%, white 100%, transparent),
+                radial-gradient(1px 1px at 70% 30%, white 100%, transparent),
+                radial-gradient(1px 1px at 50% 90%, white 100%, transparent);
     background-size: 450px 450px;
-    animation: stars-twinkle 4s ease-in-out infinite;
+    animation: stars-pulse-slow 4s ease-in-out infinite 2s;
     opacity: 0;
   }
 
   @keyframes stars-move-1 {
     from {
-      transform: translateY(0);
+      transform: translate(0, 0);
     }
     to {
-      transform: translateY(-550px);
+      transform: translate(-100px, -550px);
     }
   }
 
   @keyframes stars-move-2 {
     from {
-      transform: translateY(0);
+      transform: translate(0, 0);
     }
     to {
-      transform: translateY(-350px);
+      transform: translate(50px, -350px);
     }
   }
 
   @keyframes stars-move-3 {
     from {
-      transform: translateY(0);
+      transform: translate(0, 0);
     }
     to {
-      transform: translateY(-250px);
+      transform: translate(-50px, -250px);
     }
   }
 
-  @keyframes stars-twinkle {
+  @keyframes stars-pulse-slow {
     0%, 100% {
       opacity: 0;
     }
     50% {
-      opacity: 0.25;
+      opacity: 0.2;
     }
   }
 }
