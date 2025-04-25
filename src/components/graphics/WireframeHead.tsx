@@ -1,26 +1,36 @@
-
 import React, { useEffect, useState, useRef, memo } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 
 interface WireframeHeadProps {
   className?: string;
 }
 
-const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) => {
+export const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) => {
+  const location = useLocation();
   const { isCreativeMode } = useTheme();
   const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
   
-  // Motion values for parallax effect
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  
-  // Animation controls for breathing effect
   const controls = useAnimation();
-  
-  // Start breathing animation when component is in view
+
+  const getHeadImage = () => {
+    switch (location.pathname) {
+      case '/creative-studio':
+        return '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+      case '/automation-services':
+        return '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+      case '/academy':
+        return '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+      default:
+        return '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+    }
+  };
+
   useEffect(() => {
     if (isInView) {
       controls.start("animate");
@@ -28,8 +38,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
       controls.stop();
     }
   }, [isInView, controls]);
-  
-  // Handle mouse move for parallax effect
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
@@ -47,7 +56,6 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
     };
   }, [mouseX, mouseY]);
 
-  // Breathing animation variant
   const breathingAnimation = {
     initial: { scale: 1 },
     animate: {
@@ -61,7 +69,6 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
     }
   };
 
-  // Parallax effect values
   const x = useTransform(mouseX, [-5, 5], [5, -5]);
   const y = useTransform(mouseY, [-5, 5], [5, -5]);
 
@@ -86,10 +93,10 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
           variants={breathingAnimation}
         >
           <img 
-            src="/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png"
+            src={getHeadImage()}
             alt="AI Wireframe Head" 
             className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
-              ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
+              ${location.pathname === '/creative-studio' ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
               ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
             loading="lazy"
             decoding="async"
