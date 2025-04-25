@@ -25,7 +25,7 @@ const ShowcaseSection = () => {
   const { mode } = useTheme();
   const isMobile = useIsMobile();
   
-  if (mode === 'automation') {
+  if (mode === 'automation' || mode === 'creative') {
     return null;
   }
 
@@ -137,48 +137,16 @@ const ShowcaseSection = () => {
           <h2 className="section-heading mb-3">
             {mode === 'academy' 
               ? "Was unsere Kunden erreicht haben"
-              : mode === 'creative' 
-              ? "Unsere Projekte" 
               : "Erfolgreiche Automatisierungen"
             }
           </h2>
           <p className="text-lg text-muted-foreground">
             {mode === 'academy'
               ? "Erfahren Sie, wie andere Unternehmen von unseren AI-Trainings profitiert haben."
-              : mode === 'creative'
-              ? "Entdecken Sie einige unserer innovativsten und kreativsten Arbeiten aus unserem Creative Studio."
               : "Erfahren Sie, wie wir Prozesse erfolgreich automatisiert und optimiert haben."
             }
           </p>
         </div>
-
-        {mode === 'creative' && (
-          <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {projects.map((project) => (
-              <div 
-                key={project.id} 
-                className={`group overflow-hidden transition-all ${
-                  mode === 'creative' 
-                  ? 'rounded-xl dark-card hover:neon-glow' 
-                  : 'rounded-xl light-card'
-                }`}
-              >
-                <div className="aspect-[16/9] overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                
-                <div className="p-5">
-                  <span className="text-sm font-medium text-primary">{project.category}</span>
-                  <h3 className="text-lg font-bold mt-2">{project.title}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
 
         {mode === 'academy' && (
           <div className="relative max-w-4xl mx-auto">
@@ -249,8 +217,6 @@ const ShowcaseSection = () => {
           >
             {mode === 'academy' 
               ? "Jetzt Beratung vereinbaren" 
-              : mode === 'creative' 
-              ? "Dein Projekt starten" 
               : "Ähnliches Projekt starten"
             }
           </a>
