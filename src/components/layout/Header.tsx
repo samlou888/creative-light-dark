@@ -2,7 +2,7 @@ import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
-import { Zap, Palette, GraduationCap, Globe, Flag } from 'lucide-react';
+import { Zap, Palette, GraduationCap, Globe } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -146,13 +146,13 @@ const Header = memo(() => {
                 <DropdownMenuGroup>
                   <DropdownMenuItem className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
                     <Link to="/en" className="flex items-center gap-2">
-                      <Flag className="w-5 h-5" style={{ color: '#C8102E' }} />
+                      <span className="text-lg">🇬🇧</span>
                       <span>EN</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
                     <Link to="/fr" className="flex items-center gap-2">
-                      <Flag className="w-5 h-5" style={{ color: '#002654' }} />
+                      <span className="text-lg">🇫🇷</span>
                       <span>FR</span>
                     </Link>
                   </DropdownMenuItem>
