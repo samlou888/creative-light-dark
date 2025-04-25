@@ -1,8 +1,8 @@
-
 import React, { useEffect } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import StarryBackground from '@/components/backgrounds/StarryBackground';
 import { Button } from '@/components/ui/button';
 import { 
   Palette, 
@@ -50,8 +50,9 @@ const CreativeStudio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
-      <div className="bg-gradient-to-b from-black to-[#0c0225] min-h-screen">
+    <div className="min-h-screen overflow-hidden">
+      <StarryBackground />
+      <div className="relative z-10">
         <Header />
         
         {/* Hero Section */}

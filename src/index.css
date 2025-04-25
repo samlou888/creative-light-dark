@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -133,5 +132,54 @@
 @layer utilities {
   .mode-transition {
     @apply transition-all duration-300;
+  }
+
+  .stars-1,
+  .stars-2,
+  .stars-3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .stars-1 {
+    background: radial-gradient(1px 1px at 50% 50%, white 100%, transparent),
+                radial-gradient(1px 1px at 40% 40%, white 100%, transparent),
+                radial-gradient(1.5px 1.5px at 30% 30%, white 100%, transparent),
+                radial-gradient(1.5px 1.5px at 70% 70%, white 100%, transparent);
+    background-size: 550px 550px;
+    animation: stars-animation 200s linear infinite;
+    opacity: 0.3;
+  }
+
+  .stars-2 {
+    background: radial-gradient(1px 1px at 50% 50%, white 100%, transparent),
+                radial-gradient(1px 1px at 15% 15%, white 100%, transparent),
+                radial-gradient(1.5px 1.5px at 85% 85%, white 100%, transparent),
+                radial-gradient(1px 1px at 60% 60%, white 100%, transparent);
+    background-size: 350px 350px;
+    animation: stars-animation 150s linear infinite;
+    opacity: 0.25;
+  }
+
+  .stars-3 {
+    background: radial-gradient(1px 1px at 50% 50%, white 100%, transparent),
+                radial-gradient(1px 1px at 25% 25%, white 100%, transparent),
+                radial-gradient(1px 1px at 75% 75%, white 100%, transparent);
+    background-size: 250px 250px;
+    animation: stars-animation 100s linear infinite;
+    opacity: 0.2;
+  }
+
+  @keyframes stars-animation {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-100%);
+    }
   }
 }
