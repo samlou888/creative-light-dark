@@ -5,16 +5,16 @@ const StarryBackground = () => {
   return (
     <div className="fixed inset-0 w-full h-full -z-10 overflow-hidden bg-black">
       <div className="galaxy-background">
-        {/* Statische Sternenschichten */}
+        {/* Static star layers */}
         <div className="stars-layer-1" />
         <div className="stars-layer-2" />
         <div className="stars-layer-3" />
         
-        {/* Pulsierende Sterne */}
+        {/* Pulsing stars */}
         <div className="stars-pulse-1" />
         <div className="stars-pulse-2" />
         
-        {/* Einzelne animierte Sterne für zusätzlichen Effekt */}
+        {/* Add more individual animated stars with specific positions */}
         <div className="star" style={{ top: '10%', left: '20%' }}></div>
         <div className="star" style={{ top: '30%', left: '70%' }}></div>
         <div className="star" style={{ top: '60%', left: '40%' }}></div>
@@ -23,6 +23,10 @@ const StarryBackground = () => {
         <div className="star" style={{ top: '15%', left: '85%' }}></div>
         <div className="star" style={{ top: '45%', left: '15%' }}></div>
         <div className="star" style={{ top: '75%', left: '65%' }}></div>
+        <div className="star" style={{ top: '5%', left: '60%' }}></div>
+        <div className="star" style={{ top: '55%', left: '5%' }}></div>
+        <div className="star" style={{ top: '90%', left: '30%' }}></div>
+        <div className="star" style={{ top: '40%', left: '95%' }}></div>
       </div>
     </div>
   );
