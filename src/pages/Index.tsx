@@ -3,9 +3,9 @@ import React, { Suspense } from 'react';
 import BaseLayout from '@/layouts/BaseLayout';
 import { Skeleton } from '@/components/ui/skeleton';
 import { usePageTheme } from '@/contexts/PageThemeContext';
+import HeroSection from '@/components/home/HeroSection';
 
-// Lazy load components
-const HeroSection = React.lazy(() => import('@/components/home/HeroSection'));
+// Lazy load non-critical components
 const ServicesSection = React.lazy(() => import('@/components/home/ServicesSection'));
 const ShowcaseSection = React.lazy(() => import('@/components/home/ShowcaseSection'));
 const ContactSection = React.lazy(() => import('@/components/home/ContactSection'));
@@ -22,9 +22,9 @@ const Index = () => {
   
   return (
     <BaseLayout className={pageTheme === 'creative' ? 'bg-black text-white' : 'bg-white text-black'}>
-      <Suspense fallback={<SectionLoader />}>
-        <HeroSection />
-      </Suspense>
+      {/* Load HeroSection directly without Suspense */}
+      <HeroSection />
+      
       <Suspense fallback={<SectionLoader />}>
         <ServicesSection />
       </Suspense>
