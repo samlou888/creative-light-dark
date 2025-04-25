@@ -10,6 +10,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 // Lazy load pages
 const Index = lazy(() => import("./pages/Index"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const En = lazy(() => import("./pages/En"));
+const Fr = lazy(() => import("./pages/Fr"));
 
 // PageLoader component for Suspense fallback
 const PageLoader = () => (
@@ -43,6 +45,8 @@ const App = () => (
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/en" element={<En />} />
+              <Route path="/fr" element={<Fr />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
