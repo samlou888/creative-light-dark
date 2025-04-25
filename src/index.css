@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -129,18 +130,75 @@
   }
 }
 
+/* Animation for automation title */
 @keyframes flowingGradient {
   0% {
     background-position: 0% 50%;
     background-image: linear-gradient(90deg, #22C35E 0%, #7DFFB6 100%);
   }
+  25% {
+    background-position: 50% 50%;
+    background-image: linear-gradient(90deg, #34D56F 0%, #90FFC4 100%);
+  }
   50% {
     background-position: 100% 50%;
-    background-image: linear-gradient(90deg, #34D56F 0%, #90FFC4 100%);
+    background-image: linear-gradient(90deg, #22C35E 0%, #7DFFB6 100%);
+  }
+  75% {
+    background-position: 50% 50%;
+    background-image: linear-gradient(90deg, #00B36A 0%, #7DFFB6 100%);
   }
   100% {
     background-position: 0% 50%;
     background-image: linear-gradient(90deg, #22C35E 0%, #7DFFB6 100%);
+  }
+}
+
+/* Animation for creative title */
+@keyframes creativeGradient {
+  0% {
+    background-position: 0% 50%;
+    background-image: linear-gradient(90deg, #FF5F6D 0%, #FFC371 100%);
+  }
+  25% {
+    background-position: 50% 0%;
+    background-image: linear-gradient(90deg, #8B5CF6 0%, #EC4899 100%);
+  }
+  50% {
+    background-position: 100% 50%;
+    background-image: linear-gradient(90deg, #0EA5E9 0%, #22D3EE 100%);
+  }
+  75% {
+    background-position: 50% 100%;
+    background-image: linear-gradient(90deg, #6366F1 0%, #A855F7 100%);
+  }
+  100% {
+    background-position: 0% 50%;
+    background-image: linear-gradient(90deg, #FF5F6D 0%, #FFC371 100%);
+  }
+}
+
+/* Animation for academy title */
+@keyframes academyGradient {
+  0% {
+    background-position: 0% 50%;
+    background-image: linear-gradient(45deg, #00CFFF 0%, #D2A8FF 100%);
+  }
+  25% {
+    background-position: 50% 0%;
+    background-image: linear-gradient(45deg, #8B5CF6 0%, #FF4DB0 100%);
+  }
+  50% {
+    background-position: 100% 50%;
+    background-image: linear-gradient(45deg, #FF0080 0%, #FF8C00 100%);
+  }
+  75% {
+    background-position: 50% 100%;
+    background-image: linear-gradient(45deg, #00CFFF 0%, #7C3AED 100%);
+  }
+  100% {
+    background-position: 0% 50%;
+    background-image: linear-gradient(45deg, #00CFFF 0%, #D2A8FF 100%);
   }
 }
 
@@ -154,4 +212,17 @@
     background-size: 200% 200%;
     animation: flowingGradient 8s ease infinite;
   }
+  
+  .creative-animated-text {
+    @apply bg-clip-text text-transparent;
+    background-size: 300% 300%;
+    animation: creativeGradient 6s ease infinite;
+  }
+  
+  .academy-animated-text {
+    @apply bg-clip-text text-transparent;
+    background-size: 300% 300%;
+    animation: academyGradient 4s ease infinite;
+  }
 }
+

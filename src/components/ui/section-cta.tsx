@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 
 interface SectionCTAProps {
-  title: string;
+  title: string | React.ReactNode;
   description: string;
   buttonText: string;
   onButtonClick?: () => void;

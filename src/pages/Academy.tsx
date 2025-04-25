@@ -25,7 +25,7 @@ const Academy = () => {
       <main className="flex-grow pt-24">
         <SectionHero
           badgeText="AI Academy"
-          title="Lerne, wie du AI zu deinem Vorteil nutzt."
+          title={<span className="academy-animated-text">Lerne, wie du AI zu deinem Vorteil nutzt.</span>}
           description="Unsere Academy bietet Workshops, Kurse und 1:1 Coachings – speziell für den praktischen Einsatz in Alltag & Business."
           buttonText="Jetzt Kursübersicht anfordern"
         />

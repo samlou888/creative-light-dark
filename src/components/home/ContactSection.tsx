@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useToast } from '@/hooks/use-toast';
@@ -96,7 +97,7 @@ const ContactSection = () => {
               <div className="grid md:grid-cols-2 gap-8 p-6 md:p-8 items-start">
                 <div>
                   <div className="mb-6">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#00CFFF] to-[#D2A8FF] bg-clip-text text-transparent">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 academy-animated-text">
                       Schulungen & Workshops für Unternehmen.
                     </h2>
                     <p className="text-lg text-gray-600">
@@ -142,7 +143,7 @@ const ContactSection = () => {
               <div className="grid md:grid-cols-2 gap-8 p-6 md:p-8 items-start">
                 <div>
                   <div className="mb-6">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 animated-gradient-text">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 creative-animated-text">
                       Meeting? Online, locker, konkret.
                     </h2>
                     <p className="text-lg text-gray-300">
