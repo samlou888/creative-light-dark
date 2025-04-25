@@ -97,13 +97,13 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="offer-card"
+              className="offer-card hover-glow"
             >
-              <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 ${
+              <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 transition-all duration-150 ${
                 mode === 'academy'
                   ? 'bg-[#00CFFF]/10'
                   : mode === 'creative'
-                  ? 'bg-primary/10 neon-glow'
+                  ? 'bg-[#00FB5C]/10 shadow-[0_0_15px_rgba(0,251,92,0.3)]'
                   : 'bg-primary/10'
               }`}>
                 {service.icon}
