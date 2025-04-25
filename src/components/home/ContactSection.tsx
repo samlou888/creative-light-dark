@@ -97,7 +97,7 @@ const ContactSection = () => {
                 <div>
                   <div className="mb-6">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#00CFFF] to-[#D2A8FF] bg-clip-text text-transparent">
-                      Schulungen & Workshops für zukunftsorientierte Unternehmen.
+                      Schulungen & Workshops für Unternehmen.
                     </h2>
                     <p className="text-lg text-gray-600">
                       Buche dir ein kostenloses Online-Gespräch. Wir zeigen dir, wie du mit künstlicher Intelligenz dein Business effizienter und profitabler machst.
