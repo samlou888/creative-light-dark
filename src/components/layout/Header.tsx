@@ -147,13 +147,13 @@ const Header = memo(() => {
                 <DropdownMenuGroup>
                   <DropdownMenuItem className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
                     <Link to="/en" className="flex items-center gap-2">
-                      <div className="text-xl" role="img" aria-label="Flag: United Kingdom">&#x1F1EC;&#x1F1E7;</div>
+                      <span className="text-2xl" role="img" aria-label="Flag: United Kingdom">🇬🇧</span>
                       <span>EN</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
                     <Link to="/fr" className="flex items-center gap-2">
-                      <div className="text-xl" role="img" aria-label="Flag: France">&#x1F1EB;&#x1F1F7;</div>
+                      <span className="text-2xl" role="img" aria-label="Flag: France">🇫🇷</span>
                       <span>FR</span>
                     </Link>
                   </DropdownMenuItem>
