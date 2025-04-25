@@ -25,6 +25,10 @@ const ShowcaseSection = () => {
   const { mode } = useTheme();
   const isMobile = useIsMobile();
   
+  if (mode === 'automation') {
+    return null;
+  }
+
   const automationCases = [
     {
       id: 1,
@@ -145,68 +149,6 @@ const ShowcaseSection = () => {
           </p>
         </div>
 
-        {mode === 'automation' && (
-          <div className="relative max-w-4xl mx-auto">
-            <Carousel
-              opts={{
-                align: "center",
-                loop: true,
-              }}
-              className="w-full"
-            >
-              <CarouselContent>
-                {projects.map((project) => (
-                  <CarouselItem key={project.id}>
-                    <div className="p-6 md:p-8 bg-white dark:bg-black/40 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center">
-                      <div className="mb-6 relative w-full h-48 rounded-lg overflow-hidden">
-                        <img 
-                          src={project.image} 
-                          alt={project.company} 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <h4 className="text-lg font-medium text-primary mb-2">{project.company}</h4>
-                      <h3 className="text-2xl font-bold mb-6">{project.title}</h3>
-                      <div className="space-y-4 mb-6 text-left max-w-2xl mx-auto">
-                        <div>
-                          <p className="font-medium text-primary">Problem</p>
-                          <p className="text-muted-foreground">{project.problem}</p>
-                        </div>
-                        <div>
-                          <p className="font-medium text-primary">Lösung</p>
-                          <p className="text-muted-foreground">{project.solution}</p>
-                        </div>
-                        <div>
-                          <p className="font-medium text-primary">Ergebnis</p>
-                          <p className="text-muted-foreground">{project.result}</p>
-                        </div>
-                      </div>
-                      <div className="flex justify-center gap-8 mb-6">
-                        {project.icons.map((icon, index) => (
-                          <div key={index} className="flex flex-col items-center gap-2">
-                            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                              {icon.icon}
-                            </div>
-                            <span className="text-sm text-muted-foreground">{icon.label}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <Button variant="outline" className="w-full hover:bg-primary hover:text-white">
-                        Projekt ansehen
-                      </Button>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              
-              <div className="hidden md:block">
-                <CarouselPrevious className="hover:bg-primary hover:text-white" />
-                <CarouselNext className="hover:bg-primary hover:text-white" />
-              </div>
-            </Carousel>
-          </div>
-        )}
-
         {mode === 'creative' && (
           <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {projects.map((project) => (
@@ -297,19 +239,21 @@ const ShowcaseSection = () => {
           </div>
         )}
 
-        <div className="text-center mt-12">
-          <a 
-            href="#contact" 
-            className={`inline-block primary-btn ${mode === 'creative' ? 'neon-glow' : ''}`}
-          >
-            {mode === 'academy' 
-              ? "Jetzt Beratung vereinbaren" 
-              : mode === 'creative' 
-              ? "Dein Projekt starten" 
-              : "Ähnliches Projekt starten"
-            }
-          </a>
-        </div>
+        {mode !== 'automation' && (
+          <div className="text-center mt-12">
+            <a 
+              href="#contact" 
+              className={`inline-block primary-btn ${mode === 'creative' ? 'neon-glow' : ''}`}
+            >
+              {mode === 'academy' 
+                ? "Jetzt Beratung vereinbaren" 
+                : mode === 'creative' 
+                ? "Dein Projekt starten" 
+                : "Ähnliches Projekt starten"
+              }
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );

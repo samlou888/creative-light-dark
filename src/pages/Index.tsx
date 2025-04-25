@@ -3,6 +3,7 @@ import React, { Suspense } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useTheme } from '@/contexts/ThemeContext';
 
 // Lazy load components
 const HeroSection = React.lazy(() => import('@/components/home/HeroSection'));
@@ -18,6 +19,8 @@ const SectionLoader = () => (
 );
 
 const Index = () => {
+  const { mode } = useTheme();
+  
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -28,9 +31,11 @@ const Index = () => {
         <Suspense fallback={<SectionLoader />}>
           <ServicesSection />
         </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <ShowcaseSection />
-        </Suspense>
+        {mode !== 'automation' && (
+          <Suspense fallback={<SectionLoader />}>
+            <ShowcaseSection />
+          </Suspense>
+        )}
         <Suspense fallback={<SectionLoader />}>
           <ContactSection />
         </Suspense>
