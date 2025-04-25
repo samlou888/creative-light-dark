@@ -1,11 +1,12 @@
 
 import React, { Suspense } from 'react';
-import BaseLayout from '@/layouts/BaseLayout';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import { Skeleton } from '@/components/ui/skeleton';
-import { usePageTheme } from '@/contexts/PageThemeContext';
-import HeroSection from '@/components/home/HeroSection';
+import { useTheme } from '@/contexts/ThemeContext';
 
-// Lazy load non-critical components
+// Lazy load components
+const HeroSection = React.lazy(() => import('@/components/home/HeroSection'));
 const ServicesSection = React.lazy(() => import('@/components/home/ServicesSection'));
 const ShowcaseSection = React.lazy(() => import('@/components/home/ShowcaseSection'));
 const ContactSection = React.lazy(() => import('@/components/home/ContactSection'));
@@ -18,23 +19,27 @@ const SectionLoader = () => (
 );
 
 const Index = () => {
-  const { pageTheme } = usePageTheme();
+  const { mode } = useTheme();
   
   return (
-    <BaseLayout className={pageTheme === 'creative' ? 'bg-black text-white' : 'bg-white text-black'}>
-      {/* Load HeroSection directly without Suspense */}
-      <HeroSection />
-      
-      <Suspense fallback={<SectionLoader />}>
-        <ServicesSection />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <ShowcaseSection />
-      </Suspense>
-      <Suspense fallback={<SectionLoader />}>
-        <ContactSection />
-      </Suspense>
-    </BaseLayout>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-grow">
+        <Suspense fallback={<SectionLoader />}>
+          <HeroSection />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <ServicesSection />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <ShowcaseSection />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <ContactSection />
+        </Suspense>
+      </main>
+      <Footer />
+    </div>
   );
 };
 

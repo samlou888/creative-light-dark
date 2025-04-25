@@ -1,12 +1,18 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Mail, Calendar, Workflow, FileText } from 'lucide-react';
+import { ArrowRight, CheckCircle, BarChart, Workflow, Zap, Mail, Calendar, FileText, Users } from 'lucide-react';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
-import BaseLayout from '@/layouts/BaseLayout';
-import AutomationHero from '@/components/automation/AutomationHero';
-import AutomationCard from '@/components/automation/AutomationCard';
-import ProcessStep from '@/components/automation/ProcessStep';
+import { Card, CardContent } from '@/components/ui/card';
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
+
+// Animation variants
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -20,20 +26,56 @@ const staggerContainer = {
 
 const AutomationServices = () => {
   return (
-    <BaseLayout className="bg-gradient-to-b from-green-50/50 to-white dark:from-green-950/20 dark:to-black/50">
-      <AutomationHero />
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-6 md:px-10">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.h1 
+              className="section-heading mb-6"
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+            >
+              Automatisiere. Optimiere. Skaliere.
+            </motion.h1>
+            
+            <motion.p 
+              className="text-lg md:text-xl text-muted-foreground mb-10"
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+            >
+              Reduziere manuelle Arbeit, spare Zeit und fokussiere dich aufs Wesentliche – mit intelligenten Automationen, 
+              die sich perfekt in deine Prozesse integrieren.
+            </motion.p>
+            
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+            >
+              <Button size="lg" className="primary-btn">
+                Jetzt Prozess-Check buchen <ArrowRight className="ml-2" />
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
       
       {/* What We Automate Section */}
-      <section className="py-20 bg-green-50/50 dark:bg-green-950/20 px-6 md:px-10">
+      <section className="py-20 bg-slate-50 dark:bg-slate-900/30 px-6 md:px-10">
         <div className="container mx-auto">
           <motion.div 
             className="text-center mb-16"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={staggerContainer}
+            variants={fadeIn}
           >
-            <h2 className="text-3xl font-bold mb-4">Was wir automatisieren</h2>
+            <h2 className="section-heading mb-4">Was wir automatisieren</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Unsere Automationslösungen decken verschiedene Geschäftsbereiche ab, um Zeit zu sparen und Fehler zu reduzieren.
             </p>
@@ -51,26 +93,31 @@ const AutomationServices = () => {
               title="CRM-Flows"
               description="Automatisiere Kundenbeziehungsmanagement für personalisierte Interaktionen ohne manuellen Aufwand."
             />
+            
             <AutomationCard 
               icon={<Mail />}
               title="E-Mail-Marketing"
               description="Setze automatisierte E-Mail-Kampagnen auf, die auf Nutzerverhalten und -präferenzen reagieren."
             />
+            
             <AutomationCard 
               icon={<Calendar />}
               title="Kalenderbuchungen"
               description="Vereinfache Terminvereinbarungen mit automatischen Bestätigungen und Erinnerungen."
             />
+            
             <AutomationCard 
               icon={<Workflow />}
               title="Interne Workflows"
               description="Optimiere interne Prozesse durch automatisierte Aufgabenverwaltung und Benachrichtigungen."
             />
+            
             <AutomationCard 
               icon={<FileText />}
               title="Rechnungen"
               description="Automatisiere die Erstellung, Versendung und Verfolgung von Rechnungen."
             />
+            
             <AutomationCard 
               icon={<Users />}
               title="Kunden-Onboarding"
@@ -80,7 +127,7 @@ const AutomationServices = () => {
         </div>
       </section>
       
-      {/* Process Section */}
+      {/* Technologies Section */}
       <section className="py-20 px-6 md:px-10">
         <div className="container mx-auto">
           <motion.div 
@@ -88,8 +135,35 @@ const AutomationServices = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
+            variants={fadeIn}
           >
-            <h2 className="text-3xl font-bold mb-4">Unser Vorgehen</h2>
+            <h2 className="section-heading mb-4">Unsere Technologien</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Wir nutzen branchenführende Tools und Plattformen, um die effektivsten Automationslösungen zu schaffen.
+            </p>
+          </motion.div>
+          
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            <TechBadge name="Make" />
+            <TechBadge name="Zapier" />
+            <TechBadge name="Notion" />
+            <TechBadge name="Airtable" />
+            <TechBadge name="GPT" />
+          </div>
+        </div>
+      </section>
+      
+      {/* Process Section */}
+      <section className="py-20 bg-slate-50 dark:bg-slate-900/30 px-6 md:px-10">
+        <div className="container mx-auto">
+          <motion.div 
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <h2 className="section-heading mb-4">Unser Vorgehen</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Von der ersten Analyse bis zur finalen Übergabe – ein transparenter und effektiver Prozess.
             </p>
@@ -101,16 +175,19 @@ const AutomationServices = () => {
               title="Analyse deiner Prozesse"
               description="Wir analysieren deine aktuellen Workflows, identifizieren Engpässe und finden Automatisierungspotentiale."
             />
+            
             <ProcessStep 
               number="02"
               title="Vorschlag der Automationen"
               description="Basierend auf unserer Analyse entwickeln wir maßgeschneiderte Automatisierungslösungen für deine Anforderungen."
             />
+            
             <ProcessStep 
               number="03"
               title="Umsetzung & Integration"
               description="Wir implementieren die Automationen und integrieren sie nahtlos in deine bestehenden Systeme."
             />
+            
             <ProcessStep 
               number="04"
               title="Übergabe & Schulung"
@@ -121,14 +198,15 @@ const AutomationServices = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-20 px-6 md:px-10 bg-green-50/80 dark:bg-green-950/20">
+      <section className="py-20 px-6 md:px-10 bg-primary/10">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2 
-              className="text-3xl font-bold mb-6"
+              className="section-heading mb-6"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
+              variants={fadeIn}
             >
               Bereit für den nächsten Schritt?
             </motion.h2>
@@ -138,6 +216,7 @@ const AutomationServices = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
+              variants={fadeIn}
             >
               Buche einen kostenlosen Prozess-Check und entdecke, wie Automatisierung dein Unternehmen transformieren kann.
             </motion.p>
@@ -146,16 +225,63 @@ const AutomationServices = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
+              variants={fadeIn}
             >
               <Button size="lg" className="primary-btn">
-                Jetzt Prozess-Check buchen
+                Jetzt Prozess-Check buchen <ArrowRight className="ml-2" />
               </Button>
             </motion.div>
           </div>
         </div>
       </section>
-    </BaseLayout>
+      
+      <Footer />
+    </div>
   );
 };
+
+// Helper components
+const AutomationCard = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
+  <motion.div 
+    className="light-card dark-card h-full"
+    variants={fadeIn}
+  >
+    <div className="text-primary mb-4">{icon}</div>
+    <h3 className="text-xl font-semibold mb-2">{title}</h3>
+    <p className="text-muted-foreground">{description}</p>
+  </motion.div>
+);
+
+const TechBadge = ({ name }: { name: string }) => (
+  <motion.div 
+    className="px-6 py-3 bg-white dark:bg-black/40 rounded-full shadow-sm dark:shadow-none dark:border dark:border-primary/20"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={fadeIn}
+  >
+    <span className="font-medium">{name}</span>
+  </motion.div>
+);
+
+const ProcessStep = ({ number, title, description }: { number: string, title: string, description: string }) => (
+  <motion.div 
+    className="flex gap-6 mb-12"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={fadeIn}
+  >
+    <div className="flex-shrink-0">
+      <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary text-white font-bold">
+        {number}
+      </div>
+    </div>
+    <div>
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <p className="text-muted-foreground">{description}</p>
+    </div>
+  </motion.div>
+);
 
 export default AutomationServices;
