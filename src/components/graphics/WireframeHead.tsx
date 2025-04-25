@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef, memo } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -15,27 +14,23 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
   const location = useLocation();
   
-  // Motion values for parallax effect
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   
-  // Animation controls for breathing effect
   const controls = useAnimation();
   
-  // Determine which image to use based on current route with console logging for debugging
   const getHeadImage = () => {
     console.log("Current pathname:", location.pathname);
     
     if (location.pathname === '/academy') {
       console.log("Using academy image");
-      return '/lovable-uploads/12424c5f-eca8-4d92-8ce2-d74a9589dd7c.png';
+      return '/lovable-uploads/eb52459a-567a-4a86-9c38-cd28caabc328.png';
     } else {
       console.log("Using default image");
       return '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
     }
   };
 
-  // Start breathing animation when component is in view
   useEffect(() => {
     if (isInView) {
       controls.start("animate");
@@ -44,7 +39,6 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
     }
   }, [isInView, controls]);
   
-  // Handle mouse move for parallax effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
@@ -62,7 +56,6 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
     };
   }, [mouseX, mouseY]);
 
-  // Breathing animation variant
   const breathingAnimation = {
     initial: { scale: 1 },
     animate: {
@@ -76,7 +69,6 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
     }
   };
 
-  // Parallax effect values
   const x = useTransform(mouseX, [-5, 5], [5, -5]);
   const y = useTransform(mouseY, [-5, 5], [5, -5]);
 
