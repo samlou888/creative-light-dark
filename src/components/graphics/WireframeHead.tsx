@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useRef, memo } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, useInView, useAnimation, useMotionValue, useTransform } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 
 interface WireframeHeadProps {
   className?: string;
@@ -12,6 +13,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
   const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
+  const location = useLocation();
   
   // Motion values for parallax effect
   const mouseX = useMotionValue(0);
@@ -20,6 +22,16 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
   // Animation controls for breathing effect
   const controls = useAnimation();
   
+  // Determine which image to use based on current route
+  const getHeadImage = () => {
+    switch (location.pathname) {
+      case '/academy':
+        return '/lovable-uploads/12424c5f-eca8-4d92-8ce2-d74a9589dd7c.png';
+      default:
+        return '/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png';
+    }
+  };
+
   // Start breathing animation when component is in view
   useEffect(() => {
     if (isInView) {
@@ -86,7 +98,7 @@ const WireframeHead: React.FC<WireframeHeadProps> = memo(({ className = '' }) =>
           variants={breathingAnimation}
         >
           <img 
-            src="/lovable-uploads/379e5afe-ba21-4c63-b2f7-5361bd17e940.png"
+            src={getHeadImage()}
             alt="AI Wireframe Head" 
             className={`w-full h-auto max-w-lg mx-auto transition-all duration-500 object-contain
               ${isCreativeMode ? 'filter brightness-110 saturate-150' : 'filter brightness-100'}
