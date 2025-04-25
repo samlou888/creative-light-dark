@@ -1,9 +1,8 @@
 
 import React, { Suspense } from 'react';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import BaseLayout from '@/layouts/BaseLayout';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useTheme } from '@/contexts/ThemeContext';
+import { usePageTheme } from '@/contexts/PageThemeContext';
 
 // Lazy load components
 const HeroSection = React.lazy(() => import('@/components/home/HeroSection'));
@@ -19,27 +18,23 @@ const SectionLoader = () => (
 );
 
 const Index = () => {
-  const { mode } = useTheme();
+  const { pageTheme } = usePageTheme();
   
   return (
-    <div className={`min-h-screen flex flex-col ${mode === 'creative' ? 'bg-black text-white' : 'bg-white text-black'}`}>
-      <Header />
-      <main className="flex-grow">
-        <Suspense fallback={<SectionLoader />}>
-          <HeroSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <ServicesSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <ShowcaseSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <ContactSection />
-        </Suspense>
-      </main>
-      <Footer />
-    </div>
+    <BaseLayout className={pageTheme === 'creative' ? 'bg-black text-white' : 'bg-white text-black'}>
+      <Suspense fallback={<SectionLoader />}>
+        <HeroSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ServicesSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ShowcaseSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ContactSection />
+      </Suspense>
+    </BaseLayout>
   );
 };
 
