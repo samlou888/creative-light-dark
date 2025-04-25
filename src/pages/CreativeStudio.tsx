@@ -1,3 +1,4 @@
+
 import React from 'react';
 import CreativeStudioLayout from '@/layouts/CreativeStudioLayout';
 import SectionHero from '@/components/ui/section-hero';
@@ -15,7 +16,6 @@ const CreativeStudio = () => {
       <div className="relative w-full max-w-5xl mx-auto">
         <WireframeHead className="w-full h-auto" />
       </div>
-      
     </CreativeStudioLayout>
   );
 };

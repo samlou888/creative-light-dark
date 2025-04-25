@@ -15,31 +15,21 @@ const CreativeStudioLayout = ({ children }: CreativeStudioLayoutProps) => {
   useEffect(() => {
     // Set creative mode when component mounts
     setMode('creative');
+
     // Add dark class to html element
     document.documentElement.classList.add('dark');
+    // Add creative-mode class to body
+    document.body.classList.add('creative-mode');
 
     return () => {
+      // Clean up when component unmounts
       document.documentElement.classList.remove('dark');
+      document.body.classList.remove('creative-mode');
     };
   }, [setMode]);
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white relative overflow-hidden">
-      <div className="fixed inset-0 w-full h-full -z-10">
-        {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-radial from-[#1A1F2C] via-[#0D1117] to-black" />
-        
-        {/* Animated gradient overlay */}
-        <div className="absolute inset-0 creative-gradient opacity-30" />
-        
-        {/* Stars background */}
-        <div className="stars-layer-1" />
-        <div className="stars-layer-2" />
-        <div className="stars-layer-3" />
-        <div className="stars-pulse-1" />
-        <div className="stars-pulse-2" />
-      </div>
-
       <StarryBackground />
       <Header />
       <main className="flex-grow relative z-10">
