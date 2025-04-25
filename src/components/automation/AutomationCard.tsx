@@ -15,7 +15,7 @@ interface AutomationCardProps {
 
 const AutomationCard = ({ icon, title, description }: AutomationCardProps) => (
   <motion.div 
-    className="light-card dark-card h-full"
+    className="bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/80 dark:hover:bg-white/10 transition-all duration-300 shadow-sm hover:shadow-md border border-green-100/20"
     variants={fadeIn}
   >
     <div className="text-primary mb-4">{icon}</div>

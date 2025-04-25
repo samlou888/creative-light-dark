@@ -22,7 +22,7 @@ const ProcessStep = ({ number, title, description }: ProcessStepProps) => (
     variants={fadeIn}
   >
     <div className="flex-shrink-0">
-      <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary text-white font-bold">
+      <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary font-bold border border-primary/20">
         {number}
       </div>
     </div>

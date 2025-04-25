@@ -15,7 +15,7 @@ const AutomationHero = () => {
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h1 
-            className="section-heading mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
             initial="hidden"
             animate="visible"
             variants={fadeIn}
