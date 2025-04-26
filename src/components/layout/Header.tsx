@@ -141,24 +141,24 @@ const Header = memo(() => {
               </DropdownMenuTrigger>
               <DropdownMenuContent 
                 align="end" 
-                className="w-24 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg"
+                className="w-16 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg"
               >
                 <DropdownMenuGroup>
-                  <DropdownMenuItem className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
+                  <DropdownMenuItem className="px-2 py-1.5 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
                     <Link to="/en" className="flex items-center justify-center">
                       <img 
                         src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
                         alt="English"
-                        className="w-8 h-8 rounded"
+                        className="w-5 h-5 rounded"
                       />
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
+                  <DropdownMenuItem className="px-2 py-1.5 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
                     <Link to="/fr" className="flex items-center justify-center">
                       <img 
                         src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
                         alt="Français"
-                        className="w-8 h-8 rounded"
+                        className="w-5 h-5 rounded"
                       />
                     </Link>
                   </DropdownMenuItem>
