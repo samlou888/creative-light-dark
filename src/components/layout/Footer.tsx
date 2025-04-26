@@ -23,9 +23,15 @@ const Footer = memo(() => {
   };
 
   const handleLegalClick = (section: "impressum" | "datenschutz" | "agb") => {
-    if (isEnglish && section === "impressum") {
-      navigate('/en/imprint');
-      return;
+    if (isEnglish) {
+      if (section === "impressum") {
+        navigate('/en/imprint');
+        return;
+      }
+      if (section === "datenschutz") {
+        navigate('/en/privacy-policy');
+        return;
+      }
     }
     setSelectedTab(section);
     setDialogOpen(true);

@@ -15,6 +15,7 @@ const AutomationServicesEn = lazy(() => import("./pages/en/AutomationServices"))
 const CreativeStudioEn = lazy(() => import("./pages/en/CreativeStudio"));
 const AcademyEn = lazy(() => import("./pages/en/Academy"));
 const ImprintEn = lazy(() => import("./pages/en/Imprint"));
+const PrivacyPolicyEn = lazy(() => import("./pages/en/PrivacyPolicy"));
 
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -55,6 +56,7 @@ const App = () => {
                       <Route path="/en/creative-studio" element={<CreativeStudioEn />} />
                       <Route path="/en/academy" element={<AcademyEn />} />
                       <Route path="/en/imprint" element={<ImprintEn />} />
+                      <Route path="/en/privacy-policy" element={<PrivacyPolicyEn />} />
                       <Route path="/fr" element={<Fr />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
