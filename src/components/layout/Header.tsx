@@ -116,7 +116,7 @@ const Header = memo(() => {
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
               className="hidden md:inline-flex items-center justify-center w-40 h-10 bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)] rounded-full font-medium"
             >
-              {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
+              {mode === 'creative' ? 'Start Project' : mode === 'academy' ? 'Book Course' : 'Book Call'}
             </a>
 
             <div className="flex items-center">
@@ -148,7 +148,8 @@ const Header = memo(() => {
                   <div className="flex flex-col w-full">
                     <Link 
                       to={location.pathname.includes('automation') ? "/en/automation" : 
-                          location.pathname.includes('creative-studio') ? "/en/creative-studio" : "/en"}
+                          location.pathname.includes('creative-studio') ? "/en/creative-studio" :
+                          location.pathname.includes('academy') ? "/en/academy" : "/en"}
                       className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       <img 
