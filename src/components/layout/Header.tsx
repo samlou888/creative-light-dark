@@ -120,7 +120,7 @@ const Header = memo(() => {
               {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
 
-            {/* Language Switcher - Completely redesigned with Popover */}
+            {/* Improved Language Switcher with fixed positioning */}
             <div className="flex items-center">
               <Popover>
                 <PopoverTrigger asChild>
@@ -130,16 +130,24 @@ const Header = memo(() => {
                         ? 'bg-primary/10 text-primary' 
                         : 'hover:bg-primary/5'
                     }`}
+                    aria-label="Change language"
                   >
                     <Globe className="w-5 h-5" />
                   </button>
                 </PopoverTrigger>
                 <PopoverContent 
-                  className="w-auto p-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" 
+                  className="w-[120px] p-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md" 
                   align="end" 
                   sideOffset={8}
+                  style={{ 
+                    position: 'absolute',
+                    zIndex: 100,
+                    right: 0,
+                    transformOrigin: 'top right'
+                  }}
+                  avoidCollisions={false}
                 >
-                  <div className="flex flex-col">
+                  <div className="flex flex-col w-full">
                     <Link 
                       to="/en" 
                       className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -148,6 +156,7 @@ const Header = memo(() => {
                         src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
                         alt="English"
                         className="w-4 h-4 rounded"
+                        loading="lazy"
                       />
                       <span className="text-sm">English</span>
                     </Link>
@@ -159,6 +168,7 @@ const Header = memo(() => {
                         src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
                         alt="Français"
                         className="w-4 h-4 rounded"
+                        loading="lazy"
                       />
                       <span className="text-sm">Français</span>
                     </Link>
