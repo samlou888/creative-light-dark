@@ -121,45 +121,53 @@ const Header = memo(() => {
               {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  className={`w-9 h-9 flex items-center justify-center rounded-lg transition-colors duration-300 focus:outline-none ${
-                    location.pathname.includes('/en') || location.pathname.includes('/fr')
-                      ? 'bg-primary/10 text-primary' 
-                      : 'hover:bg-primary/5'
-                  }`}
+            <div className="relative">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild className="isolate">
+                  <button
+                    className={`w-9 h-9 flex items-center justify-center rounded-lg transition-colors duration-300 focus:outline-none ${
+                      location.pathname.includes('/en') || location.pathname.includes('/fr')
+                        ? 'bg-primary/10 text-primary' 
+                        : 'hover:bg-primary/5'
+                    }`}
+                    style={{ isolation: 'isolate' }}
+                  >
+                    <Globe className="w-5 h-5" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent 
+                  align="end"
+                  className="w-[32px] !min-w-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0 [transform-origin:_top_right] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+                  style={{ 
+                    transformOrigin: 'top right',
+                    isolation: 'isolate',
+                    willChange: 'transform, opacity'
+                  }}
+                  sideOffset={8}
                 >
-                  <Globe className="w-5 h-5" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent 
-                align="end"
-                className="w-[32px] !min-w-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0"
-                sideOffset={8}
-              >
-                <DropdownMenuGroup>
-                  <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
-                    <Link to="/en" className="flex items-center justify-center">
-                      <img 
-                        src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
-                        alt="English"
-                        className="w-4 h-4 rounded"
-                      />
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
-                    <Link to="/fr" className="flex items-center justify-center">
-                      <img 
-                        src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
-                        alt="Français"
-                        className="w-4 h-4 rounded"
-                      />
-                    </Link>
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
+                      <Link to="/en" className="flex items-center justify-center">
+                        <img 
+                          src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
+                          alt="English"
+                          className="w-4 h-4 rounded"
+                        />
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
+                      <Link to="/fr" className="flex items-center justify-center">
+                        <img 
+                          src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
+                          alt="Français"
+                          className="w-4 h-4 rounded"
+                        />
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
         </div>
       </div>
