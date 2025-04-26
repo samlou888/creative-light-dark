@@ -143,7 +143,7 @@ const Header = memo(() => {
                 <PopoverTrigger asChild>
                   <button
                     className={`w-9 h-9 flex items-center justify-center rounded-lg ${
-                      language === 'en' || location.pathname.includes('/fr')
+                      language === 'en' || isOnFrenchRoute
                         ? 'bg-primary/10 text-primary' 
                         : 'hover:bg-primary/5'
                     }`}
@@ -195,7 +195,7 @@ const Header = memo(() => {
                     )}
                     {!isOnFrenchRoute && (
                       <Link 
-                        to="/fr" 
+                        to="/fr/automation" 
                         className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
                         <img 

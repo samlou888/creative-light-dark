@@ -1,4 +1,3 @@
-
 import React, { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -12,6 +11,7 @@ import Index from "./pages/Index";
 
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Fr = lazy(() => import("./pages/Fr"));
+const AutomationServicesFr = lazy(() => import("./pages/fr/AutomationServices"));
 
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -45,12 +45,12 @@ const App = () => {
               <BrowserRouter>
                 <Routes>
                   <Route path="/" element={<Index />} />
-                  {/* Redirect /en to home with language context */}
                   <Route path="/en" element={<Navigate to="/" replace />} />
                   <Route path="*" element={
                     <Suspense fallback={<PageLoader />}>
                       <Routes>
                         <Route path="/fr" element={<Fr />} />
+                        <Route path="/fr/automation" element={<AutomationServicesFr />} />
                         <Route path="*" element={<NotFound />} />
                       </Routes>
                     </Suspense>
