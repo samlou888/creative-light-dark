@@ -1,4 +1,3 @@
-
 import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -120,7 +119,6 @@ const Header = memo(() => {
               {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
 
-            {/* Improved Language Switcher with fixed positioning */}
             <div className="flex items-center">
               <Popover>
                 <PopoverTrigger asChild>
@@ -149,7 +147,7 @@ const Header = memo(() => {
                 >
                   <div className="flex flex-col w-full">
                     <Link 
-                      to="/en" 
+                      to={location.pathname.includes('automation') ? "/en/automation" : "/en"}
                       className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       <img 
