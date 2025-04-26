@@ -121,9 +121,9 @@ const Header = memo(() => {
               {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
 
-            <div className="relative">
+            <div className="relative" style={{ isolation: 'isolate' }}>
               <DropdownMenu>
-                <DropdownMenuTrigger asChild className="isolate">
+                <DropdownMenuTrigger asChild>
                   <button
                     className={`w-9 h-9 flex items-center justify-center rounded-lg transition-colors duration-300 focus:outline-none ${
                       location.pathname.includes('/en') || location.pathname.includes('/fr')
