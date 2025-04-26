@@ -36,29 +36,35 @@ const queryClient = new QueryClient({
   },
 });
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <ThemeProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="*" element={
-              <Suspense fallback={<PageLoader />}>
-                <Routes>
-                  <Route path="/en" element={<En />} />
-                  <Route path="/fr" element={<Fr />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </Suspense>
-            } />
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  // Wrap the entire app in React's React.StrictMode to ensure proper hook context
+  return (
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider>
+          {/* Move TooltipProvider inside ThemeProvider to ensure proper React context */}
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="*" element={
+                  <Suspense fallback={<PageLoader />}>
+                    <Routes>
+                      <Route path="/en" element={<En />} />
+                      <Route path="/fr" element={<Fr />} />
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </Suspense>
+                } />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </React.StrictMode>
+  );
+};
 
 export default App;
