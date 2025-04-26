@@ -22,6 +22,12 @@ const Fr = () => {
         >
           Studio Créatif
         </Link>
+        <Link 
+          to="/fr/academy" 
+          className="text-primary hover:underline"
+        >
+          Academy
+        </Link>
       </div>
     </div>
   );
