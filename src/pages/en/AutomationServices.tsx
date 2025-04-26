@@ -66,7 +66,7 @@ const AutomationServicesEn = () => {
         {/* Services Section */}
         <section className="py-20">
           <div className="container mx-auto">
-            <Card className="overflow-hidden rounded-2xl border-primary/20">
+            <Card className="border-2 border-primary/30 rounded-2xl shadow-md bg-card">
               <div className="p-8">
                 <motion.div 
                   className="text-center mb-16"
