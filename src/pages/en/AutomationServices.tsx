@@ -64,64 +64,68 @@ const AutomationServicesEn = () => {
         </section>
         
         {/* Services Section */}
-        <section className="py-20 bg-slate-50 dark:bg-slate-900/30">
+        <section className="py-20">
           <div className="container mx-auto">
-            <motion.div 
-              className="text-center mb-16"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-            >
-              <h2 className="section-heading mb-4">What We Automate</h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Our automation solutions cover various business areas to save time and reduce errors.
-              </p>
-            </motion.div>
-            
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <AutomationCard 
-                icon={<Users />}
-                title="CRM Flows"
-                description="Automate customer relationship management for personalized interactions without manual effort."
-              />
-              
-              <AutomationCard 
-                icon={<Mail />}
-                title="Email Marketing"
-                description="Set up automated email campaigns that respond to user behavior and preferences."
-              />
-              
-              <AutomationCard 
-                icon={<Calendar />}
-                title="Calendar Bookings"
-                description="Simplify appointment scheduling with automatic confirmations and reminders."
-              />
-              
-              <AutomationCard 
-                icon={<Workflow />}
-                title="Internal Workflows"
-                description="Optimize internal processes through automated task management and notifications."
-              />
-              
-              <AutomationCard 
-                icon={<FileText />}
-                title="Invoicing"
-                description="Automate the creation, sending, and tracking of invoices."
-              />
-              
-              <AutomationCard 
-                icon={<Users />}
-                title="Customer Onboarding"
-                description="Provide new customers with a seamless onboarding experience through automated processes."
-              />
-            </motion.div>
+            <Card className="overflow-hidden rounded-2xl border-primary/20">
+              <div className="p-8">
+                <motion.div 
+                  className="text-center mb-16"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeIn}
+                >
+                  <h2 className="section-heading mb-4">What We Automate</h2>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    Our automation solutions cover various business areas to save time and reduce errors.
+                  </p>
+                </motion.div>
+                
+                <motion.div 
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                >
+                  <AutomationCard 
+                    icon={<Users />}
+                    title="CRM Flows"
+                    description="Automate customer relationship management for personalized interactions without manual effort."
+                  />
+                  
+                  <AutomationCard 
+                    icon={<Mail />}
+                    title="Email Marketing"
+                    description="Set up automated email campaigns that respond to user behavior and preferences."
+                  />
+                  
+                  <AutomationCard 
+                    icon={<Calendar />}
+                    title="Calendar Bookings"
+                    description="Simplify appointment scheduling with automatic confirmations and reminders."
+                  />
+                  
+                  <AutomationCard 
+                    icon={<Workflow />}
+                    title="Internal Workflows"
+                    description="Optimize internal processes through automated task management and notifications."
+                  />
+                  
+                  <AutomationCard 
+                    icon={<FileText />}
+                    title="Invoicing"
+                    description="Automate the creation, sending, and tracking of invoices."
+                  />
+                  
+                  <AutomationCard 
+                    icon={<Users />}
+                    title="Customer Onboarding"
+                    description="Provide new customers with a seamless onboarding experience through automated processes."
+                  />
+                </motion.div>
+              </div>
+            </Card>
           </div>
         </section>
         
