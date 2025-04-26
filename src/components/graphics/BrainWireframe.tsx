@@ -2,10 +2,11 @@
 import React from 'react';
 
 interface BrainWireframeProps {
-  isCreativeMode: boolean;
+  isCreativeMode?: boolean;
+  className?: string;
 }
 
-const BrainWireframe: React.FC<BrainWireframeProps> = ({ isCreativeMode }) => {
+const BrainWireframe: React.FC<BrainWireframeProps> = ({ isCreativeMode = false, className }) => {
   return (
     <svg
       width="100%"
@@ -13,7 +14,7 @@ const BrainWireframe: React.FC<BrainWireframeProps> = ({ isCreativeMode }) => {
       viewBox="0 0 400 400"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="max-w-lg mx-auto transition-all duration-500"
+      className={`max-w-lg mx-auto transition-all duration-500 ${className || ''}`}
     >
       {/* Brain outline */}
       <path
