@@ -7,12 +7,16 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { Skeleton } from "@/components/ui/skeleton";
-import Index from "./pages/Index"; // Direct import for the Index page
 
-// Lazy load other pages
+// Lazy load all pages for better code splitting
+const Index = lazy(() => import("./pages/Index"));
+const AutomationServices = lazy(() => import("./pages/AutomationServices"));
+const CreativeStudio = lazy(() => import("./pages/CreativeStudio"));
+const Academy = lazy(() => import("./pages/Academy"));
+const Impressum = lazy(() => import("./pages/Impressum"));
+const Datenschutz = lazy(() => import("./pages/Datenschutz"));
+const AGB = lazy(() => import("./pages/AGB"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const En = lazy(() => import("./pages/En"));
-const Fr = lazy(() => import("./pages/Fr"));
 
 // PageLoader component for Suspense fallback
 const PageLoader = () => (
@@ -43,18 +47,19 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="*" element={
-              <Suspense fallback={<PageLoader />}>
-                <Routes>
-                  <Route path="/en" element={<En />} />
-                  <Route path="/fr" element={<Fr />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </Suspense>
-            } />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/automation-services" element={<AutomationServices />} />
+              <Route path="/creative-studio" element={<CreativeStudio />} />
+              <Route path="/academy" element={<Academy />} />
+              <Route path="/impressum" element={<Impressum />} />
+              <Route path="/datenschutz" element={<Datenschutz />} />
+              <Route path="/agb" element={<AGB />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </BrowserRouter>
       </ThemeProvider>
     </TooltipProvider>

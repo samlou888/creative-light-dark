@@ -2,14 +2,7 @@ import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion } from 'framer-motion';
-import { Zap, Palette, GraduationCap, Globe } from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { Zap, Palette, GraduationCap } from 'lucide-react';
 
 const Header = memo(() => {
   const { mode, setMode } = useTheme();
@@ -124,47 +117,16 @@ const Header = memo(() => {
             <a 
               href="#contact" 
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
-              className="hidden md:inline-flex items-center justify-center w-40 h-10 bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)] rounded-full font-medium"
+              className={`hidden md:block bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)] px-5 py-2 rounded-full font-medium ${
+                mode === 'academy' 
+                  ? 'primary-btn' 
+                  : mode === 'creative'
+                  ? 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]' 
+                  : 'bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)]'
+              }`}
             >
               {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
-
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <motion.button
-                  className="p-2 rounded-lg transition-all duration-300 hover:bg-primary/5"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Globe className="w-5 h-5" />
-                </motion.button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent 
-                align="end" 
-                className="w-[2rem] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0"
-              >
-                <DropdownMenuGroup>
-                  <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
-                    <Link to="/en" className="flex items-center justify-center">
-                      <img 
-                        src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
-                        alt="English"
-                        className="w-5 h-5 rounded"
-                      />
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
-                    <Link to="/fr" className="flex items-center justify-center">
-                      <img 
-                        src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
-                        alt="Français"
-                        className="w-5 h-5 rounded"
-                      />
-                    </Link>
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
           </div>
         </div>
       </div>
