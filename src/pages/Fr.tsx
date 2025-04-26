@@ -16,6 +16,12 @@ const Fr = () => {
         >
           Services d'Automatisation
         </Link>
+        <Link 
+          to="/fr/creative-studio" 
+          className="text-primary hover:underline"
+        >
+          Studio Créatif
+        </Link>
       </div>
     </div>
   );
