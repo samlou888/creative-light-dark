@@ -76,49 +76,54 @@ const CoursesSection = () => {
   const t = content[language];
 
   return (
-    <section className="py-16 bg-muted/30">
-      <div className="container px-4 md:px-6">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 hover-glow">{t.title}</h2>
-          <p className="text-muted-foreground">
-            {t.description}
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {t.courses.map((course, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <motion.div className="offer-card h-full">
-                <CardHeader>
-                  <div className="mb-2">
-                    <Book className="h-6 w-6 text-primary" />
-                  </div>
-                  <CardTitle>{course.title}</CardTitle>
-                  <CardDescription>{course.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {course.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center">
-                        <span className="text-primary mr-2">•</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
+    <Card className="overflow-hidden rounded-2xl border-primary/20">
+      <div className="p-8">
+        <section className="py-16 bg-muted/30">
+          <div className="container px-4 md:px-6">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4 hover-glow">{t.title}</h2>
+              <p className="text-muted-foreground">
+                {t.description}
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {t.courses.map((course, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Card className="h-full offer-card">
+                    <CardHeader>
+                      <div className="mb-2">
+                        <Book className="h-6 w-6 text-primary" />
+                      </div>
+                      <CardTitle>{course.title}</CardTitle>
+                      <CardDescription>{course.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {course.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center">
+                            <span className="text-primary mr-2">•</span>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
+    </Card>
   );
 };
 
 export default CoursesSection;
+
