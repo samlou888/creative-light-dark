@@ -1,14 +1,13 @@
+
 import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Zap, Palette, GraduationCap, Globe } from 'lucide-react';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 const Header = memo(() => {
   const { mode, setMode } = useTheme();
@@ -121,62 +120,51 @@ const Header = memo(() => {
               {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
 
-            <div 
-              className="relative w-9 h-9" 
-              style={{ 
-                contain: 'layout',
-                isolation: 'isolate',
-              }}
-            >
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
+            {/* Language Switcher - Completely redesigned with Popover */}
+            <div className="flex items-center">
+              <Popover>
+                <PopoverTrigger asChild>
                   <button
                     className={`w-9 h-9 flex items-center justify-center rounded-lg ${
                       location.pathname.includes('/en') || location.pathname.includes('/fr')
                         ? 'bg-primary/10 text-primary' 
                         : 'hover:bg-primary/5'
                     }`}
-                    style={{ 
-                      transform: 'translateZ(0)',
-                      backfaceVisibility: 'hidden',
-                      contain: 'layout'
-                    }}
                   >
                     <Globe className="w-5 h-5" />
                   </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent 
-                  align="end"
-                  className="w-[32px] !min-w-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0"
-                  style={{ 
-                    position: 'fixed',
-                    contain: 'layout',
-                    zIndex: 50,
-                  }}
+                </PopoverTrigger>
+                <PopoverContent 
+                  className="w-auto p-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" 
+                  align="end" 
                   sideOffset={8}
                 >
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
-                      <Link to="/en" className="flex items-center justify-center">
-                        <img 
-                          src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
-                          alt="English"
-                          className="w-4 h-4 rounded"
-                        />
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
-                      <Link to="/fr" className="flex items-center justify-center">
-                        <img 
-                          src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
-                          alt="Français"
-                          className="w-4 h-4 rounded"
-                        />
-                      </Link>
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                  <div className="flex flex-col">
+                    <Link 
+                      to="/en" 
+                      className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <img 
+                        src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
+                        alt="English"
+                        className="w-4 h-4 rounded"
+                      />
+                      <span className="text-sm">English</span>
+                    </Link>
+                    <Link 
+                      to="/fr" 
+                      className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <img 
+                        src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
+                        alt="Français"
+                        className="w-4 h-4 rounded"
+                      />
+                      <span className="text-sm">Français</span>
+                    </Link>
+                  </div>
+                </PopoverContent>
+              </Popover>
             </div>
           </div>
         </div>
