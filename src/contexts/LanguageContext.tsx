@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type Language = 'de' | 'en' | 'fr';
 
@@ -11,7 +11,19 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('de');
+  const [language, setLanguage] = useState<Language>(() => {
+    // Check if we have a stored language preference
+    const storedLanguage = localStorage.getItem('preferred-language');
+    if (storedLanguage === 'en' || storedLanguage === 'fr' || storedLanguage === 'de') {
+      return storedLanguage;
+    }
+    return 'de'; // Default language
+  });
+
+  // Save language preference when it changes
+  useEffect(() => {
+    localStorage.setItem('preferred-language', language);
+  }, [language]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>

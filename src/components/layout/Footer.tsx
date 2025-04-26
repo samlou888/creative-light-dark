@@ -62,14 +62,16 @@ const Footer = memo(() => {
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Services</h4>
+              <h4 className="font-semibold mb-4">
+                {isFrench ? 'Services' : isEnglish ? 'Services' : 'Services'}
+              </h4>
               <ul className="space-y-2">
                 <li>
                   <button 
                     onClick={() => handleModeChange('automation')} 
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    Automation
+                    {isFrench ? 'Automatisation' : isEnglish ? 'Automation' : 'Automation'}
                   </button>
                 </li>
                 <li>
@@ -77,7 +79,7 @@ const Footer = memo(() => {
                     onClick={() => handleModeChange('creative')} 
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    Studio
+                    {isFrench ? 'Studio' : isEnglish ? 'Studio' : 'Studio'}
                   </button>
                 </li>
                 <li>
@@ -85,7 +87,7 @@ const Footer = memo(() => {
                     onClick={() => handleModeChange('academy')} 
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    Academy
+                    {isFrench ? 'Académie' : isEnglish ? 'Academy' : 'Academy'}
                   </button>
                 </li>
               </ul>

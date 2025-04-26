@@ -71,6 +71,7 @@ const Header = memo(() => {
     });
   };
 
+  const isEnglish = language === 'en';
   const isFrench = language === 'fr';
 
   return (
@@ -128,7 +129,7 @@ const Header = memo(() => {
             >
               {isFrench
                 ? (mode === 'creative' ? 'Démarrer un projet' : mode === 'academy' ? 'Réserver un cours' : 'Prendre rendez-vous')
-                : (language === 'en'
+                : (isEnglish
                   ? (mode === 'creative' ? 'Start Project' : mode === 'academy' ? 'Book Course' : 'Book Call')
                   : (mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen')
                 )

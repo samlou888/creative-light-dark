@@ -45,6 +45,8 @@ const App = () => {
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/en" element={<Navigate to="/" replace />} />
+                  <Route path="/fr" element={<Navigate to="/" replace />} />
+                  <Route path="/en/*" element={<Navigate to="/" replace />} />
                   <Route path="/fr/*" element={<Navigate to="/" replace />} />
                   <Route path="*" element={
                     <Suspense fallback={<PageLoader />}>
