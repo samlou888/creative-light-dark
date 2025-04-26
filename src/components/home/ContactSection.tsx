@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -125,8 +126,8 @@ const texts = {
       description: "Réservez directement un appel vidéo gratuit. Nous écoutons, posons des questions et vous montrons ce qui est possible.",
       benefits: [
         'Tout en un : Design, Web & Contenu',
-        'Plus rapide & moins cher grâce à l'IA',
-        'Personnel, direct & sans jargon d'agence'
+        'Plus rapide & moins cher grâce à l\'IA',
+        'Personnel, direct & sans jargon d\'agence'
       ],
       button: "Démarrer un Projet"
     },
@@ -136,7 +137,7 @@ const texts = {
       benefits: [
         'Formation pratique & coaching pour votre équipe',
         'Connaissances évolutives, immédiatement applicables',
-        'À distance, flexible & 100% basé sur l'IA'
+        'À distance, flexible & 100% basé sur l\'IA'
       ],
       button: "Réserver une Formation"
     },
