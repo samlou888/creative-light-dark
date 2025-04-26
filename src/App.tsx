@@ -1,3 +1,4 @@
+
 import React, { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -6,9 +7,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { Skeleton } from "@/components/ui/skeleton";
+import Index from "./pages/Index"; // Direct import for the Index page
 
-// Lazy load pages
-const Index = lazy(() => import("./pages/Index"));
+// Lazy load other pages
 const NotFound = lazy(() => import("./pages/NotFound"));
 const En = lazy(() => import("./pages/En"));
 const Fr = lazy(() => import("./pages/Fr"));
@@ -42,14 +43,18 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/en" element={<En />} />
-              <Route path="/fr" element={<Fr />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="*" element={
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="/en" element={<En />} />
+                  <Route path="/fr" element={<Fr />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+            } />
+          </Routes>
         </BrowserRouter>
       </ThemeProvider>
     </TooltipProvider>
