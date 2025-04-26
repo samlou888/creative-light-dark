@@ -67,6 +67,19 @@ const Header = memo(() => {
 
   const toggleLanguage = (newLanguage: 'de' | 'en' | 'fr') => {
     if (newLanguage === 'fr') {
+      let frPath = '/fr/automation';
+      if (location.pathname.includes('creative-studio')) {
+        frPath = '/fr/creative-studio';
+      } else if (location.pathname.includes('academy')) {
+        frPath = '/fr/academy';
+      } else if (location.pathname.includes('mentions-legales') || location.pathname.includes('imprint')) {
+        frPath = '/fr/mentions-legales';
+      } else if (location.pathname.includes('politique-de-confidentialite') || location.pathname.includes('privacy')) {
+        frPath = '/fr/politique-de-confidentialite';
+      } else if (location.pathname.includes('conditions-generales') || location.pathname.includes('terms')) {
+        frPath = '/fr/conditions-generales';
+      }
+      window.location.href = frPath;
       return;
     }
     
@@ -84,7 +97,7 @@ const Header = memo(() => {
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           <Link 
-            to="/" 
+            to={isOnFrenchRoute ? "/fr" : "/"} 
             onClick={handleLogoClick} 
             className="text-2xl font-bold"
           >
@@ -132,9 +145,12 @@ const Header = memo(() => {
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
               className="hidden md:inline-flex items-center justify-center w-40 h-10 bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)] rounded-full font-medium"
             >
-              {language === 'en'
-                ? (mode === 'creative' ? 'Start Project' : mode === 'academy' ? 'Book Course' : 'Book Call')
-                : (mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen')
+              {isOnFrenchRoute
+                ? (mode === 'creative' ? 'Démarrer un projet' : mode === 'academy' ? 'Réserver un cours' : 'Prendre rendez-vous')
+                : (language === 'en'
+                  ? (mode === 'creative' ? 'Start Project' : mode === 'academy' ? 'Book Course' : 'Book Call')
+                  : (mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen')
+                )
               }
             </a>
 
