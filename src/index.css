@@ -191,6 +191,35 @@
   .offers-cards {
     @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
   }
+
+  .offers-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .offers-title {
+    @apply text-3xl md:text-4xl font-bold;
+    margin-bottom: 3rem;
+  }
+
+  .offers-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .offer-card {
+    @apply bg-card rounded-xl p-6 transition-all duration-150 ease-out shadow-sm;
+    flex: 1 1 300px;
+    max-width: 350px;
+  }
+
+  .offer-card:hover {
+    transform: scale(1.01);
+  }
 }
 
 @layer utilities {
