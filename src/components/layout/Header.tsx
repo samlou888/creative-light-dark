@@ -77,6 +77,8 @@ const Header = memo(() => {
     });
   };
 
+  const isOnFrenchRoute = location.pathname.includes('/fr');
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
       <div className="container mx-auto">
@@ -163,42 +165,48 @@ const Header = memo(() => {
                   avoidCollisions={false}
                 >
                   <div className="flex flex-col w-full">
-                    <button 
-                      onClick={() => toggleLanguage('de')}
-                      className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left"
-                    >
-                      <img 
-                        src="/lovable-uploads/bec88d6e-64d4-4eae-a164-c5f224bc9b7d.png" 
-                        alt="Deutsch"
-                        className="w-4 h-4 rounded"
-                        loading="lazy"
-                      />
-                      <span className="text-sm">Deutsch</span>
-                    </button>
-                    <button 
-                      onClick={() => toggleLanguage('en')}
-                      className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left"
-                    >
-                      <img 
-                        src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
-                        alt="English"
-                        className="w-4 h-4 rounded"
-                        loading="lazy"
-                      />
-                      <span className="text-sm">English</span>
-                    </button>
-                    <Link 
-                      to="/fr" 
-                      className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      <img 
-                        src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
-                        alt="Français"
-                        className="w-4 h-4 rounded"
-                        loading="lazy"
-                      />
-                      <span className="text-sm">Français</span>
-                    </Link>
+                    {language !== 'de' && !isOnFrenchRoute && (
+                      <button 
+                        onClick={() => toggleLanguage('de')}
+                        className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left"
+                      >
+                        <img 
+                          src="/lovable-uploads/bec88d6e-64d4-4eae-a164-c5f224bc9b7d.png" 
+                          alt="Deutsch"
+                          className="w-4 h-4 rounded"
+                          loading="lazy"
+                        />
+                        <span className="text-sm">Deutsch</span>
+                      </button>
+                    )}
+                    {language !== 'en' && !isOnFrenchRoute && (
+                      <button 
+                        onClick={() => toggleLanguage('en')}
+                        className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left"
+                      >
+                        <img 
+                          src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
+                          alt="English"
+                          className="w-4 h-4 rounded"
+                          loading="lazy"
+                        />
+                        <span className="text-sm">English</span>
+                      </button>
+                    )}
+                    {!isOnFrenchRoute && (
+                      <Link 
+                        to="/fr" 
+                        className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        <img 
+                          src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
+                          alt="Français"
+                          className="w-4 h-4 rounded"
+                          loading="lazy"
+                        />
+                        <span className="text-sm">Français</span>
+                      </Link>
+                    )}
                   </div>
                 </PopoverContent>
               </Popover>
