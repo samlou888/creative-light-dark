@@ -1,3 +1,4 @@
+
 import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -140,8 +141,8 @@ const Header = memo(() => {
                 </motion.button>
               </DropdownMenuTrigger>
               <DropdownMenuContent 
-                align="end" 
-                className="w-[2rem] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0"
+                align="end"
+                className="w-[32px] !min-w-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0"
               >
                 <DropdownMenuGroup>
                   <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
@@ -149,7 +150,7 @@ const Header = memo(() => {
                       <img 
                         src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
                         alt="English"
-                        className="w-5 h-5 rounded"
+                        className="w-4 h-4 rounded"
                       />
                     </Link>
                   </DropdownMenuItem>
@@ -158,7 +159,7 @@ const Header = memo(() => {
                       <img 
                         src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
                         alt="Français"
-                        className="w-5 h-5 rounded"
+                        className="w-4 h-4 rounded"
                       />
                     </Link>
                   </DropdownMenuItem>
