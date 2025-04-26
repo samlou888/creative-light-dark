@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { BrainWireframe } from "@/components/graphics/BrainWireframe";
+import BrainWireframe from "@/components/graphics/BrainWireframe";
 import HeroSection from "@/components/academy/HeroSection";
 import FormatsSection from "@/components/academy/FormatsSection";
 import CoursesSection from "@/components/academy/CoursesSection";
