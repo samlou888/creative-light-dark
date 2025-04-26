@@ -2,16 +2,26 @@ import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const LegalSections = () => {
+  const { language } = useLanguage();
+  
   return (
     <section id="legal" className="py-16 bg-muted/5">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12">Rechtliches</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">
+          {language === 'fr' ? 'Légal' : 'Rechtliches'}
+        </h2>
         
         <Tabs defaultValue="impressum" className="max-w-4xl mx-auto">
           <TabsList className="w-full justify-center mb-8">
-            <TabsTrigger value="impressum">Impressum</TabsTrigger>
-            <TabsTrigger value="datenschutz">Datenschutz</TabsTrigger>
-            <TabsTrigger value="agb">AGB</TabsTrigger>
+            <TabsTrigger value="impressum">
+              {language === 'fr' ? 'Mentions légales' : 'Impressum'}
+            </TabsTrigger>
+            <TabsTrigger value="datenschutz">
+              {language === 'fr' ? 'Politique de confidentialité' : 'Datenschutz'}
+            </TabsTrigger>
+            <TabsTrigger value="agb">
+              {language === 'fr' ? 'Conditions générales' : 'AGB'}
+            </TabsTrigger>
           </TabsList>
           
           <TabsContent value="impressum" className="prose prose-lg dark:prose-invert max-w-none">
