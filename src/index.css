@@ -179,6 +179,18 @@
   .title-academy {
     @apply text-[#00BBFF];
   }
+
+  .offers-container {
+    @apply p-16 mx-auto max-w-7xl;
+  }
+
+  .offers-title {
+    @apply text-center mb-16;
+  }
+
+  .offers-cards {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
 }
 
 @layer utilities {
