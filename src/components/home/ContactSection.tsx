@@ -108,6 +108,54 @@ const texts = {
       ],
       quickContact: "Schneller Kontakt:"
     }
+  },
+  fr: {
+    automation: {
+      title: "Automatisons vos processus avec l'IA",
+      description: "Que vous soyez une petite équipe ou une entreprise en pleine croissance - ensemble, lors d'un appel de découverte, nous déterminerons où l'automatisation crée le plus de valeur pour vous.",
+      benefits: [
+        'Conseil & mise en œuvre par un seul fournisseur',
+        'Automatisations personnalisées pour votre entreprise',
+        'Processus transparents & résultats rapides'
+      ],
+      button: "Réserver un Appel"
+    },
+    creative: {
+      title: "Réunion ? En ligne, décontractée, concrète.",
+      description: "Réservez directement un appel vidéo gratuit. Nous écoutons, posons des questions et vous montrons ce qui est possible.",
+      benefits: [
+        'Tout en un : Design, Web & Contenu',
+        'Plus rapide & moins cher grâce à l'IA',
+        'Personnel, direct & sans jargon d'agence'
+      ],
+      button: "Démarrer un Projet"
+    },
+    academy: {
+      title: "Formation & Ateliers pour Entreprises.",
+      description: "Réservez une réunion en ligne gratuite. Nous vous montrerons comment rendre votre entreprise plus efficace et rentable avec l'intelligence artificielle.",
+      benefits: [
+        'Formation pratique & coaching pour votre équipe',
+        'Connaissances évolutives, immédiatement applicables',
+        'À distance, flexible & 100% basé sur l'IA'
+      ],
+      button: "Réserver une Formation"
+    },
+    form: {
+      title: "Contactez-nous",
+      subtitle: "Vous avez des questions ou souhaitez réserver une consultation ? Remplissez le formulaire et nous vous recontacterons.",
+      name: "Nom",
+      email: "Email",
+      message: "Message",
+      submit: "Envoyer le Message",
+      contactTitle: "Vos Avantages en un Coup d'Œil",
+      benefits: [
+        "Solutions IA Personnalisées",
+        "Plus Grande Efficacité et Économies",
+        "Mise en Œuvre Conviviale",
+        "Support à Long Terme"
+      ],
+      quickContact: "Contact Rapide :"
+    }
   }
 };
 
@@ -115,14 +163,18 @@ const ContactSection = () => {
   const { mode } = useTheme();
   const { language } = useLanguage();
   const { toast } = useToast();
-  const t = language === 'en' ? texts.en : texts.de;
+  const t = texts[language];
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     toast({
-      title: language === 'en' ? "Request received" : "Anfrage erhalten",
+      title: language === 'en' ? "Request received" 
+        : language === 'fr' ? "Demande reçue"
+        : "Anfrage erhalten",
       description: language === 'en' 
-        ? "Thank you for your message. We will get back to you shortly." 
+        ? "Thank you for your message. We will get back to you shortly."
+        : language === 'fr'
+        ? "Merci pour votre message. Nous vous répondrons dans les plus brefs délais."
         : "Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.",
       duration: 5000,
     });
@@ -136,7 +188,9 @@ const ContactSection = () => {
           className={`gap-2 ${className}`}
         >
           <Calendar className="w-5 h-5" />
-          {language === 'en' ? "Book Appointment" : "Termin buchen"}
+          {language === 'en' ? "Book Appointment" 
+            : language === 'fr' ? "Prendre Rendez-vous"
+            : "Termin buchen"}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px]">
