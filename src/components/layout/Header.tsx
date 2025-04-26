@@ -132,10 +132,12 @@ const Header = memo(() => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <motion.button
-                  className="w-9 h-9 p-2 rounded-lg transition-all duration-300 hover:bg-primary/5 flex items-center justify-center"
+                  className="w-9 h-9 p-2 rounded-lg transition-all duration-300 hover:bg-primary/5 flex items-center justify-center flex-shrink-0"
                   whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  style={{ transformOrigin: 'center' }}
                 >
-                  <Globe className="w-5 h-5" />
+                  <Globe className="w-4 h-4 flex-shrink-0" />
                 </motion.button>
               </DropdownMenuTrigger>
               <DropdownMenuContent 
