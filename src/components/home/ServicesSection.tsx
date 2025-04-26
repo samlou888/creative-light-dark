@@ -240,21 +240,31 @@ const ServicesSection = () => {
   
   return (
     <section id="services" className="py-36 px-6 md:px-10 mt-24">
-      <div className="container mx-auto">
+      <div className="offers-section">
+        <motion.h2 
+          className="offers-title"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          id="services-heading"
+        >
+          {modeContent.heading}
+        </motion.h2>
+        
         <div className="text-center mb-12 max-w-3xl mx-auto">
-          <h2 className={`section-heading mb-4 hover-glow ${
-            mode === 'automation' ? 'title-automation' :
-            mode === 'creative' ? 'title-creative' :
-            mode === 'academy' ? 'title-academy' : ''
-          }`} id="services-heading">
-            {modeContent.heading}
-          </h2>
           <p className="text-lg text-muted-foreground">
             {modeContent.description}
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <motion.div 
+          className="offers-wrapper"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {modeContent.services.map((service) => (
             <motion.div 
               key={service.id}
@@ -278,7 +288,7 @@ const ServicesSection = () => {
               <p className="text-muted-foreground">{service.description}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
