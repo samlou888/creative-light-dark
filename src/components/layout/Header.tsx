@@ -121,27 +121,39 @@ const Header = memo(() => {
               {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
 
-            <div className="relative" style={{ isolation: 'isolate' }}>
+            <div 
+              className="relative w-9" 
+              style={{ 
+                isolation: 'isolate',
+                contain: 'layout',
+                willChange: 'transform'
+              }}
+            >
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <button
-                    className={`w-9 h-9 flex items-center justify-center rounded-lg transition-colors duration-300 focus:outline-none ${
+                    className={`w-9 h-9 flex items-center justify-center rounded-lg ${
                       location.pathname.includes('/en') || location.pathname.includes('/fr')
                         ? 'bg-primary/10 text-primary' 
                         : 'hover:bg-primary/5'
                     }`}
-                    style={{ isolation: 'isolate' }}
+                    style={{ 
+                      isolation: 'isolate',
+                      transform: 'translateZ(0)',
+                      backfaceVisibility: 'hidden'
+                    }}
                   >
                     <Globe className="w-5 h-5" />
                   </button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent 
                   align="end"
-                  className="w-[32px] !min-w-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0 [transform-origin:_top_right] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+                  className="w-[32px] !min-w-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
                   style={{ 
                     transformOrigin: 'top right',
                     isolation: 'isolate',
-                    willChange: 'transform, opacity'
+                    willChange: 'transform, opacity',
+                    position: 'relative'
                   }}
                   sideOffset={8}
                 >
