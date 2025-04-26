@@ -16,6 +16,7 @@ const CreativeStudioFr = lazy(() => import("./pages/fr/CreativeStudio"));
 const AcademyFr = lazy(() => import("./pages/fr/Academy"));
 const ImprintFr = lazy(() => import("./pages/fr/Imprint"));
 const PrivacyPolicyFr = lazy(() => import("./pages/fr/PrivacyPolicy"));
+const TermsAndConditionsFr = lazy(() => import("./pages/fr/TermsAndConditions"));
 
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -59,6 +60,7 @@ const App = () => {
                         <Route path="/fr/academy" element={<AcademyFr />} />
                         <Route path="/fr/mentions-legales" element={<ImprintFr />} />
                         <Route path="/fr/politique-de-confidentialite" element={<PrivacyPolicyFr />} />
+                        <Route path="/fr/conditions-generales" element={<TermsAndConditionsFr />} />
                         <Route path="*" element={<NotFound />} />
                       </Routes>
                     </Suspense>
