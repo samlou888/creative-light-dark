@@ -1,3 +1,4 @@
+
 import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -63,12 +64,30 @@ const Header = memo(() => {
     });
   };
 
+  // Helper to get the corresponding English path
+  const getEnglishPath = () => {
+    if (location.pathname === '/') return '/en';
+    if (mode === 'automation') return '/en/automation';
+    if (mode === 'creative') return '/en/creative-studio';
+    if (mode === 'academy') return '/en/academy';
+    return '/en';
+  };
+
+  // Helper to get the current section path
+  const getCurrentPath = () => {
+    const isEnglish = location.pathname.startsWith('/en');
+    if (mode === 'automation') return isEnglish ? '/en/automation' : '/';
+    if (mode === 'creative') return isEnglish ? '/en/creative-studio' : '/';
+    if (mode === 'academy') return isEnglish ? '/en/academy' : '/';
+    return isEnglish ? '/en' : '/';
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-3 transition-all duration-300 backdrop-blur-md bg-white/80 dark:bg-black/50 shadow-sm">
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           <Link 
-            to={location.pathname} 
+            to={getCurrentPath()} 
             onClick={handleLogoClick} 
             className="text-2xl font-bold"
           >
@@ -116,7 +135,10 @@ const Header = memo(() => {
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
               className="hidden md:inline-flex items-center justify-center w-40 h-10 bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)] rounded-full font-medium"
             >
-              {mode === 'creative' ? 'Start Project' : mode === 'academy' ? 'Book Course' : 'Book Call'}
+              {location.pathname.includes('/en') 
+                ? (mode === 'creative' ? 'Start Project' : mode === 'academy' ? 'Book Course' : 'Book Call')
+                : (mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen')
+              }
             </a>
 
             <div className="flex items-center">
@@ -147,9 +169,7 @@ const Header = memo(() => {
                 >
                   <div className="flex flex-col w-full">
                     <Link 
-                      to={location.pathname.includes('automation') ? "/en/automation" : 
-                          location.pathname.includes('creative-studio') ? "/en/creative-studio" :
-                          location.pathname.includes('academy') ? "/en/academy" : "/en"}
+                      to={getEnglishPath()}
                       className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       <img 
