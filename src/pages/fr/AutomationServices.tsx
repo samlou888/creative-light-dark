@@ -1,10 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle, BarChart, Workflow, Zap, Mail, Calendar, FileText, Users } from 'lucide-react';
+import { ArrowRight, Users, Mail, Calendar, Workflow, FileText } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -63,70 +62,61 @@ const AutomationServicesFr = () => {
       </section>
       
       {/* Services Section */}
-      <section className="py-20">
-        <div className="container mx-auto">
-          <Card className="border-2 border-primary/30 rounded-2xl shadow-md bg-card">
-            <div className="offers-container">
-              <motion.div 
-                className="offers-title"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeIn}
-              >
-                <h2 className="section-heading mb-4">Nos services d'automatisation</h2>
-                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                  Nos solutions d'automatisation couvrent divers domaines d'activité pour gagner du temps et réduire les erreurs.
-                </p>
-              </motion.div>
-              
-              <motion.div 
-                className="offers-cards"
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                <AutomationCard 
-                  icon={<Users />}
-                  title="Flux CRM"
-                  description="Automatisez la gestion de la relation client pour des interactions personnalisées sans effort manuel."
-                />
-                
-                <AutomationCard 
-                  icon={<Mail />}
-                  title="E-mail Marketing"
-                  description="Configurez des campagnes e-mail automatisées qui répondent au comportement et aux préférences des utilisateurs."
-                />
-                
-                <AutomationCard 
-                  icon={<Calendar />}
-                  title="Réservation de calendrier"
-                  description="Simplifiez la planification des rendez-vous avec des confirmations et des rappels automatiques."
-                />
-                
-                <AutomationCard 
-                  icon={<Workflow />}
-                  title="Flux de travail internes"
-                  description="Optimisez les processus internes grâce à la gestion automatisée des tâches et aux notifications."
-                />
-                
-                <AutomationCard 
-                  icon={<FileText />}
-                  title="Facturation"
-                  description="Automatisez la création, l'envoi et le suivi des factures."
-                />
-                
-                <AutomationCard 
-                  icon={<Users />}
-                  title="Intégration des clients"
-                  description="Offrez aux nouveaux clients une expérience d'intégration fluide grâce à des processus automatisés."
-                />
-              </motion.div>
-            </div>
-          </Card>
-        </div>
-      </section>
+      <div className="offers-section">
+        <motion.h2 
+          className="offers-title"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+        >
+          Ce que nous automatisons
+        </motion.h2>
+        
+        <motion.div 
+          className="offers-wrapper"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <AutomationCard 
+            icon={<Users />}
+            title="Flux CRM"
+            description="Automatisez la gestion de la relation client pour des interactions personnalisées sans effort manuel."
+          />
+          
+          <AutomationCard 
+            icon={<Mail />}
+            title="E-mail Marketing"
+            description="Configurez des campagnes e-mail automatisées qui répondent au comportement et aux préférences des utilisateurs."
+          />
+          
+          <AutomationCard 
+            icon={<Calendar />}
+            title="Réservation de calendrier"
+            description="Simplifiez la planification des rendez-vous avec des confirmations et des rappels automatiques."
+          />
+          
+          <AutomationCard 
+            icon={<Workflow />}
+            title="Flux de travail internes"
+            description="Optimisez les processus internes grâce à la gestion automatisée des tâches et aux notifications."
+          />
+          
+          <AutomationCard 
+            icon={<FileText />}
+            title="Facturation"
+            description="Automatisez la création, l'envoi et le suivi des factures."
+          />
+          
+          <AutomationCard 
+            icon={<Users />}
+            title="Intégration des clients"
+            description="Offrez aux nouveaux clients une expérience d'intégration fluide grâce à des processus automatisés."
+          />
+        </motion.div>
+      </div>
       
       {/* Technologies Section */}
       <section className="py-20">
@@ -235,6 +225,8 @@ const AutomationServicesFr = () => {
           </div>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 };
