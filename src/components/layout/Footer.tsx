@@ -1,15 +1,17 @@
-
 import React, { memo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
 import LegalDialog from '@/components/legal/LegalDialog';
 
 const Footer = memo(() => {
   const { mode, setMode } = useTheme();
   const navigate = useNavigate();
+  const location = useLocation();
   const isCreative = mode === 'creative';
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedTab, setSelectedTab] = useState<"impressum" | "datenschutz" | "agb">("impressum");
+  
+  const isEnglish = location.pathname.startsWith('/en');
 
   const handleModeChange = (newMode: 'automation' | 'creative' | 'academy') => {
     setMode(newMode);
@@ -21,6 +23,10 @@ const Footer = memo(() => {
   };
 
   const handleLegalClick = (section: "impressum" | "datenschutz" | "agb") => {
+    if (isEnglish && section === "impressum") {
+      navigate('/en/imprint');
+      return;
+    }
     setSelectedTab(section);
     setDialogOpen(true);
   };
@@ -80,14 +86,14 @@ const Footer = memo(() => {
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Rechtliches</h4>
+              <h4 className="font-semibold mb-4">{isEnglish ? 'Legal' : 'Rechtliches'}</h4>
               <ul className="space-y-2">
                 <li>
                   <button 
                     onClick={() => handleLegalClick('impressum')} 
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    Impressum
+                    {isEnglish ? 'Imprint' : 'Impressum'}
                   </button>
                 </li>
                 <li>
@@ -95,7 +101,7 @@ const Footer = memo(() => {
                     onClick={() => handleLegalClick('datenschutz')} 
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    Datenschutz
+                    {isEnglish ? 'Privacy Policy' : 'Datenschutz'}
                   </button>
                 </li>
                 <li>
@@ -103,7 +109,7 @@ const Footer = memo(() => {
                     onClick={() => handleLegalClick('agb')} 
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    AGB
+                    {isEnglish ? 'Terms and Conditions' : 'AGB'}
                   </button>
                 </li>
               </ul>
