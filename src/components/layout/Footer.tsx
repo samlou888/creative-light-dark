@@ -32,6 +32,10 @@ const Footer = memo(() => {
         navigate('/en/privacy-policy');
         return;
       }
+      if (section === "agb") {
+        navigate('/en/terms-and-conditions');
+        return;
+      }
     }
     setSelectedTab(section);
     setDialogOpen(true);
