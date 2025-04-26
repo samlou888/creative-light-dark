@@ -83,39 +83,39 @@ const Header = memo(() => {
             <div className="flex items-center gap-2">
               <motion.button
                 onClick={() => handleModeChange('automation')}
-                className={`p-2 rounded-lg transition-all duration-300 ${
+                className={`p-2 rounded-lg ${
                   mode === 'automation' 
                     ? 'bg-primary/10 text-primary' 
                     : 'hover:bg-primary/5'
                 }`}
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <Zap className="w-5 h-5" />
               </motion.button>
               
               <motion.button
                 onClick={() => handleModeChange('creative')}
-                className={`p-2 rounded-lg transition-all duration-300 ${
+                className={`p-2 rounded-lg ${
                   mode === 'creative' 
                     ? 'bg-primary/10 text-primary dark:text-[#00FF66]' 
                     : 'hover:bg-primary/5'
                 }`}
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <Palette className="w-5 h-5" />
               </motion.button>
               
               <motion.button
                 onClick={() => handleModeChange('academy')}
-                className={`p-2 rounded-lg transition-all duration-300 ${
+                className={`p-2 rounded-lg ${
                   mode === 'academy' 
                     ? 'bg-primary/10 text-primary' 
                     : 'hover:bg-primary/5'
                 }`}
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <GraduationCap className="w-5 h-5" />
               </motion.button>
@@ -129,43 +129,46 @@ const Header = memo(() => {
               {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <motion.button
-                  className="w-9 h-9 p-2 rounded-lg transition-all duration-300 hover:bg-primary/5 flex items-center justify-center flex-shrink-0"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                  style={{ transformOrigin: 'center' }}
+            <div className="relative">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <motion.button
+                    className="relative w-9 h-9 p-2 rounded-lg hover:bg-primary/5 flex items-center justify-center"
+                    initial={false}
+                    whileTap={{ scale: 0.98 }}
+                    style={{ transformOrigin: 'center' }}
+                  >
+                    <Globe className="w-4 h-4" />
+                  </motion.button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent 
+                  align="end"
+                  className="w-[32px] !min-w-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0"
+                  sideOffset={8}
                 >
-                  <Globe className="w-4 h-4 flex-shrink-0" />
-                </motion.button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent 
-                align="end"
-                className="w-[32px] !min-w-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0"
-              >
-                <DropdownMenuGroup>
-                  <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
-                    <Link to="/en" className="flex items-center justify-center">
-                      <img 
-                        src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
-                        alt="English"
-                        className="w-4 h-4 rounded"
-                      />
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
-                    <Link to="/fr" className="flex items-center justify-center">
-                      <img 
-                        src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
-                        alt="Français"
-                        className="w-4 h-4 rounded"
-                      />
-                    </Link>
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
+                      <Link to="/en" className="flex items-center justify-center">
+                        <img 
+                          src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
+                          alt="English"
+                          className="w-4 h-4 rounded"
+                        />
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
+                      <Link to="/fr" className="flex items-center justify-center">
+                        <img 
+                          src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
+                          alt="Français"
+                          className="w-4 h-4 rounded"
+                        />
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
         </div>
       </div>
