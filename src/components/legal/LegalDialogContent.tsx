@@ -219,13 +219,148 @@ const englishContent = {
   )
 };
 
+// French content
+const frenchContent = {
+  impressum: (
+    <>
+      <h2 className="text-xl font-semibold mb-4">Informations conformément au droit suisse</h2>
+      <p className="mb-4">
+        Ce site web est exploité par:
+      </p>
+      <address className="not-italic mb-6">
+        <strong>AIventures</strong><br />
+        Sam Lou<br />
+        Bahnhofstrasse 10<br />
+        2502 Biel/Bienne<br />
+        Suisse<br /><br />
+        E-mail: <a href="mailto:info@aiventures.ch" className="text-primary hover:underline">info@aiventures.ch</a><br />
+        Site web: <a href="https://aiventures.ch" className="text-primary hover:underline">www.aiventures.ch</a>
+      </address>
+    
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold mb-4">Représentant autorisé</h2>
+        <p>
+          Sam Lou, CEO
+        </p>
+      </section>
+    
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold mb-4">Inscription au registre du commerce</h2>
+        <p>
+          Inscrit au registre du commerce du canton de Berne<br />
+          Numéro d'entreprise: CHE-123.456.789
+        </p>
+      </section>
+    
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold mb-4">Numéro TVA</h2>
+        <p>
+          CHE-123.456.789 TVA
+        </p>
+      </section>
+    
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold mb-4">Clause de non-responsabilité</h2>
+        <p className="mb-4">
+          L'auteur n'assume aucune responsabilité quant à l'exactitude, la précision, l'actualité, la fiabilité et l'exhaustivité des informations.
+        </p>
+        <p>
+          Les prétentions en responsabilité contre l'auteur pour des dommages matériels ou immatériels résultant de l'accès ou de l'utilisation ou de la non-utilisation des informations publiées sont exclues.
+        </p>
+      </section>
+    
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold mb-4">Droits d'auteur</h2>
+        <p>
+          Les droits d'auteur et tous les autres droits sur le contenu, les images, les photos ou d'autres fichiers sur ce site web appartiennent exclusivement à AIventures ou aux détenteurs de droits spécifiquement nommés. Pour la reproduction de tout élément, le consentement écrit des détenteurs des droits d'auteur doit être obtenu au préalable.
+        </p>
+      </section>
+    </>
+  ),
+
+  datenschutz: (
+    <>
+      <h2 className="text-xl font-semibold mb-4">1. Introduction</h2>
+      <p className="mb-4">
+        La protection de votre vie privée est importante pour nous. Avec cette politique de confidentialité, nous vous informons sur le traitement des données personnelles en lien avec notre site web et nos services.
+      </p>
+      <p>
+        Cette politique de confidentialité est alignée sur la loi suisse sur la protection des données (LPD) et prend en compte les principes du Règlement général sur la protection des données (RGPD) européen.
+      </p>
+      
+      {/* Additional sections would go here */}
+    </>
+  ),
+
+  agb: (
+    <>
+      <h2 className="text-xl font-semibold mb-4">1. Champ d'application</h2>
+      <p className="mb-4">
+        Les présentes Conditions générales (ci-après « CG ») s'appliquent à tous les contrats conclus entre AIventures GmbH (ci-après « Fournisseur ») et le client concernant l'utilisation des services et produits proposés.
+      </p>
+      
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold mb-4">2. Objet du contrat</h2>
+        <p>
+          L'objet du contrat est l'utilisation des solutions et services d'IA proposés par le Fournisseur, conformément aux descriptions des produits respectifs.
+        </p>
+      </section>
+      
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold mb-4">3. Conclusion du contrat</h2>
+        <p>
+          Le contrat est conclu lorsque le Fournisseur accepte l'offre du client.<br />
+          L'acceptation a lieu par une confirmation de commande par e-mail ou par l'activation de l'accès aux services.
+        </p>
+      </section>
+      
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold mb-4">4. Prix et conditions de paiement</h2>
+        <p>
+          Les prix sont basés sur la liste de prix en vigueur au moment de la conclusion du contrat ou selon un accord individuel.<br />
+          Le paiement s'effectue conformément aux conditions de paiement convenues.
+        </p>
+      </section>
+      
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold mb-4">5. Durée et résiliation</h2>
+        <p>
+          La durée du contrat et les délais de résiliation dépendent du tarif choisi ou d'un accord individuel.<br />
+          La résiliation doit être faite par écrit (e-mail ou lettre).
+        </p>
+      </section>
+      
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold mb-4">6. Protection des données</h2>
+        <p>
+          Le Fournisseur traite les données personnelles du client conformément à la Politique de confidentialité disponible sur le site web.
+        </p>
+      </section>
+      
+      <section className="mt-8">
+        <h2 className="text-xl font-semibold mb-4">7. Dispositions finales</h2>
+        <p>
+          Le droit suisse s'applique.<br />
+          Le for exclusif pour tous les litiges découlant de ou liés au présent contrat est Biel/Bienne, Suisse.
+        </p>
+      </section>
+    </>
+  )
+};
+
 interface LegalDialogContentProps {
   tab: "impressum" | "datenschutz" | "agb";
 }
 
 const LegalDialogContent: React.FC<LegalDialogContentProps> = ({ tab }) => {
   const { language } = useLanguage();
-  const content = language === 'en' ? englishContent : germanContent;
+  
+  let content = germanContent;
+  if (language === 'en') {
+    content = englishContent;
+  } else if (language === 'fr') {
+    content = frenchContent;
+  }
 
   return (
     <div className="prose prose-lg dark:prose-invert max-w-none">

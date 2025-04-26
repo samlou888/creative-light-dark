@@ -23,20 +23,35 @@ const LegalDialog: React.FC<LegalDialogProps> = ({
 }) => {
   const { language } = useLanguage();
   const isEnglish = language === 'en';
+  const isFrench = language === 'fr';
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[800px] max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
-            {isEnglish ? 'Legal Information' : 'Rechtliche Informationen'}
+            {isFrench ? 'Informations légales' : 
+             isEnglish ? 'Legal Information' : 
+             'Rechtliche Informationen'}
           </DialogTitle>
         </DialogHeader>
         <Tabs defaultValue={defaultTab} className="w-full">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="impressum">{isEnglish ? 'Imprint' : 'Impressum'}</TabsTrigger>
-            <TabsTrigger value="datenschutz">{isEnglish ? 'Privacy Policy' : 'Datenschutz'}</TabsTrigger>
-            <TabsTrigger value="agb">{isEnglish ? 'Terms & Conditions' : 'AGB'}</TabsTrigger>
+            <TabsTrigger value="impressum">
+              {isFrench ? 'Mentions légales' : 
+               isEnglish ? 'Imprint' : 
+               'Impressum'}
+            </TabsTrigger>
+            <TabsTrigger value="datenschutz">
+              {isFrench ? 'Politique de confidentialité' : 
+               isEnglish ? 'Privacy Policy' : 
+               'Datenschutz'}
+            </TabsTrigger>
+            <TabsTrigger value="agb">
+              {isFrench ? 'Conditions générales' : 
+               isEnglish ? 'Terms & Conditions' : 
+               'AGB'}
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="impressum" className="mt-6">
             <LegalDialogContent tab="impressum" />

@@ -1,3 +1,4 @@
+
 import React, { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -10,13 +11,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Index from "./pages/Index";
 
 const NotFound = lazy(() => import("./pages/NotFound"));
-const Fr = lazy(() => import("./pages/Fr"));
-const AutomationServicesFr = lazy(() => import("./pages/fr/AutomationServices"));
-const CreativeStudioFr = lazy(() => import("./pages/fr/CreativeStudio"));
-const AcademyFr = lazy(() => import("./pages/fr/Academy"));
-const ImprintFr = lazy(() => import("./pages/fr/Imprint"));
-const PrivacyPolicyFr = lazy(() => import("./pages/fr/PrivacyPolicy"));
-const TermsAndConditionsFr = lazy(() => import("./pages/fr/TermsAndConditions"));
 
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -51,18 +45,10 @@ const App = () => {
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/en" element={<Navigate to="/" replace />} />
+                  <Route path="/fr/*" element={<Navigate to="/" replace />} />
                   <Route path="*" element={
                     <Suspense fallback={<PageLoader />}>
-                      <Routes>
-                        <Route path="/fr" element={<Fr />} />
-                        <Route path="/fr/automation" element={<AutomationServicesFr />} />
-                        <Route path="/fr/creative-studio" element={<CreativeStudioFr />} />
-                        <Route path="/fr/academy" element={<AcademyFr />} />
-                        <Route path="/fr/mentions-legales" element={<ImprintFr />} />
-                        <Route path="/fr/politique-de-confidentialite" element={<PrivacyPolicyFr />} />
-                        <Route path="/fr/conditions-generales" element={<TermsAndConditionsFr />} />
-                        <Route path="*" element={<NotFound />} />
-                      </Routes>
+                      <NotFound />
                     </Suspense>
                   } />
                 </Routes>
