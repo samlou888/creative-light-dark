@@ -122,11 +122,10 @@ const Header = memo(() => {
             </a>
 
             <div 
-              className="relative w-9" 
+              className="relative w-9 h-9" 
               style={{ 
-                isolation: 'isolate',
                 contain: 'layout',
-                willChange: 'transform'
+                isolation: 'isolate',
               }}
             >
               <DropdownMenu>
@@ -138,9 +137,9 @@ const Header = memo(() => {
                         : 'hover:bg-primary/5'
                     }`}
                     style={{ 
-                      isolation: 'isolate',
                       transform: 'translateZ(0)',
-                      backfaceVisibility: 'hidden'
+                      backfaceVisibility: 'hidden',
+                      contain: 'layout'
                     }}
                   >
                     <Globe className="w-5 h-5" />
@@ -148,12 +147,11 @@ const Header = memo(() => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent 
                   align="end"
-                  className="w-[32px] !min-w-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+                  className="w-[32px] !min-w-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0"
                   style={{ 
-                    transformOrigin: 'top right',
-                    isolation: 'isolate',
-                    willChange: 'transform, opacity',
-                    position: 'relative'
+                    position: 'fixed',
+                    contain: 'layout',
+                    zIndex: 50,
                   }}
                   sideOffset={8}
                 >
