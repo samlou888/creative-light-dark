@@ -1,11 +1,9 @@
-
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { GraduationCap, MessageSquareText, BookText, Palette, Globe, Video, Workflow, Mail, Brain } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Book, MessageSquareText, GraduationCap, Palette, Globe, Video, Workflow, Mail, Brain } from 'lucide-react';
 
-// Content for both languages
 const content = {
   en: {
     academy: {
@@ -20,7 +18,7 @@ const content = {
         },
         {
           id: 'academy-2',
-          icon: <BookText className="w-6 h-6 text-[#00CFFF]" />,
+          icon: <Book className="w-6 h-6 text-[#00CFFF]" />,
           title: 'Learning Materials',
           description: 'Comprehensive documentation and practical learning materials for effective self-study.'
         },
@@ -94,7 +92,7 @@ const content = {
         },
         {
           id: 'academy-2',
-          icon: <BookText className="w-6 h-6 text-[#00CFFF]" />,
+          icon: <Book className="w-6 h-6 text-[#00CFFF]" />,
           title: 'Lernmaterialien',
           description: 'Umfassende Dokumentationen und praxisnahe Lernmaterialien für effektives Selbststudium.'
         },
@@ -154,6 +152,80 @@ const content = {
         }
       ]
     }
+  },
+  fr: {
+    academy: {
+      heading: "Nos Offres",
+      description: "Nous proposons des solutions sur mesure pour votre entreprise - de la formation au conseil individuel.",
+      services: [
+        {
+          id: 'academy-1',
+          icon: <GraduationCap className="w-6 h-6 text-[#00CFFF]" />,
+          title: 'Formation en IA',
+          description: 'Ateliers et formations personnalisés pour qualifier votre équipe aux applications d\'IA.'
+        },
+        {
+          id: 'academy-2',
+          icon: <Book className="w-6 h-6 text-[#00CFFF]" />,
+          title: 'Matériel pédagogique',
+          description: 'Documentation complète et supports d\'apprentissage pratiques pour l\'auto-formation.'
+        },
+        {
+          id: 'academy-3',
+          icon: <MessageSquareText className="w-6 h-6 text-[#00CFFF]" />,
+          title: 'Conseil',
+          description: 'Conseil individuel sur l\'intégration de l\'IA dans les processus et stratégies existants.'
+        }
+      ]
+    },
+    creative: {
+      heading: "Nos Offres",
+      description: "Nous combinons expertise créative et technologie avancée pour créer des solutions uniques et innovantes.",
+      services: [
+        {
+          id: 'creative-1',
+          icon: <Palette className="w-6 h-6 text-primary" />,
+          title: 'Design & Conception',
+          description: 'Concepts créatifs et designs pour votre présence digitale avec des outils assistés par l\'IA.'
+        },
+        {
+          id: 'creative-2',
+          icon: <Globe className="w-6 h-6 text-primary" />,
+          title: 'Développement Web & App',
+          description: 'Sites web et applications modernes avec intégration de fonctionnalités IA avancées.'
+        },
+        {
+          id: 'creative-3',
+          icon: <Video className="w-6 h-6 text-primary" />,
+          title: 'Création de Contenu',
+          description: 'Création assistée par IA de textes, vidéos et autres contenus pour votre présence en ligne.'
+        }
+      ]
+    },
+    automation: {
+      heading: "Nos Offres",
+      description: "Nous proposons des solutions IA complètes pour les entreprises qui souhaitent optimiser leurs processus.",
+      services: [
+        {
+          id: 'automation-1',
+          icon: <Workflow className="w-6 h-6 text-primary" />,
+          title: 'Automatisation des Processus',
+          description: 'Optimisation et automatisation de vos processus métier grâce à des solutions IA personnalisées.'
+        },
+        {
+          id: 'automation-2',
+          icon: <Brain className="w-6 h-6 text-primary" />,
+          title: 'Développement IA',
+          description: 'Développement d\'applications IA spécialisées pour vos besoins professionnels.'
+        },
+        {
+          id: 'automation-3',
+          icon: <Mail className="w-6 h-6 text-primary" />,
+          title: 'Analyse de Données',
+          description: 'Analyse complète de vos données d\'entreprise pour obtenir des insights précieux.'
+        }
+      ]
+    }
   }
 };
 
@@ -161,7 +233,7 @@ const ServicesSection = () => {
   const { mode } = useTheme();
   const { language } = useLanguage();
   
-  const currentContent = language === 'en' ? content.en : content.de;
+  const currentContent = content[language];
   const modeContent = mode === 'academy' ? currentContent.academy : 
                      mode === 'creative' ? currentContent.creative : 
                      currentContent.automation;

@@ -1,14 +1,34 @@
 
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from "@/components/ui/button";
 import CaseStudyCard from '../showcase/CaseStudyCard';
 import { automationCases } from '../showcase/caseStudies';
 
+const content = {
+  en: {
+    title: "Successful Automations",
+    description: "Learn how we have successfully automated and optimized processes.",
+    button: "Start Similar Project"
+  },
+  de: {
+    title: "Erfolgreiche Automatisierungen",
+    description: "Erfahren Sie, wie wir Prozesse erfolgreich automatisiert und optimiert haben.",
+    button: "Ähnliches Projekt starten"
+  },
+  fr: {
+    title: "Automatisations Réussies",
+    description: "Découvrez comment nous avons automatisé et optimisé les processus avec succès.",
+    button: "Démarrer un Projet Similaire"
+  }
+};
+
 const ShowcaseSection = () => {
   const { mode } = useTheme();
+  const { language } = useLanguage();
+  const t = content[language];
   
-  // Don't render the section for certain modes
   if (mode === 'automation' || mode === 'creative' || mode === 'academy') {
     return null;
   }
@@ -18,10 +38,10 @@ const ShowcaseSection = () => {
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-12">
           <h2 className="section-heading mb-3">
-            Erfolgreiche Automatisierungen
+            {t.title}
           </h2>
           <p className="text-lg text-muted-foreground">
-            Erfahren Sie, wie wir Prozesse erfolgreich automatisiert und optimiert haben.
+            {t.description}
           </p>
         </div>
 
@@ -36,7 +56,7 @@ const ShowcaseSection = () => {
             href="#contact" 
             className="inline-block primary-btn"
           >
-            Ähnliches Projekt starten
+            {t.button}
           </a>
         </div>
       </div>
