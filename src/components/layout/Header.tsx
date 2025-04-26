@@ -141,7 +141,7 @@ const Header = memo(() => {
               </DropdownMenuTrigger>
               <DropdownMenuContent 
                 align="end" 
-                className="w-16 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg"
+                className="w-5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg"
               >
                 <DropdownMenuGroup>
                   <DropdownMenuItem className="px-2 py-1.5 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
