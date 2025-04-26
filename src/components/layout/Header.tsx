@@ -164,6 +164,18 @@ const Header = memo(() => {
                 >
                   <div className="flex flex-col w-full">
                     <button 
+                      onClick={() => toggleLanguage('de')}
+                      className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left"
+                    >
+                      <img 
+                        src="/lovable-uploads/d403c458-c12d-461a-9dc9-05e0eff7711f.png" 
+                        alt="Deutsch"
+                        className="w-4 h-4 rounded"
+                        loading="lazy"
+                      />
+                      <span className="text-sm">Deutsch</span>
+                    </button>
+                    <button 
                       onClick={() => toggleLanguage('en')}
                       className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left"
                     >
