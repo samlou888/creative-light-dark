@@ -146,12 +146,20 @@ const Header = memo(() => {
                 <DropdownMenuGroup>
                   <DropdownMenuItem className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
                     <Link to="/en" className="flex items-center justify-center">
-                      <span role="img" aria-label="English">🇬🇧</span>
+                      <img 
+                        src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
+                        alt="English"
+                        className="w-8 h-8 rounded"
+                      />
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700" asChild>
                     <Link to="/fr" className="flex items-center justify-center">
-                      <span role="img" aria-label="Français">🇫🇷</span>
+                      <img 
+                        src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
+                        alt="Français"
+                        className="w-8 h-8 rounded"
+                      />
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
