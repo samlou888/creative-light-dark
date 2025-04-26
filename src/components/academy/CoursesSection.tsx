@@ -1,42 +1,92 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Book } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
-const courses = [
-  {
-    title: "Prompt Engineering",
-    description: "Lerne die Kunst des effektiven Prompting für bessere AI-Ergebnisse.",
-    icon: <Book className="h-6 w-6 text-primary" />,
-    features: ["Live-Demos", "Templates", "Best Practices"]
+const content = {
+  en: {
+    title: "Our Courses",
+    description: "Practical courses for your personal and professional success with AI.",
+    courses: [
+      {
+        title: "Prompt Engineering",
+        description: "Learn the art of effective prompting for better AI results.",
+        features: ["Live Demos", "Templates", "Best Practices"]
+      },
+      {
+        title: "AI in Business",
+        description: "Discover practical applications for your daily business.",
+        features: ["Automation", "Content Creation", "Tool Selection"]
+      },
+      {
+        title: "AI for Beginners",
+        description: "The perfect start into the world of artificial intelligence.",
+        features: ["Basics", "Getting Started", "Setup"]
+      }
+    ]
   },
-  {
-    title: "KI im Business",
-    description: "Entdecke praktische Anwendungen für deinen Geschäftsalltag.",
-    icon: <Book className="h-6 w-6 text-primary" />,
-    features: ["Automatisierung", "Content Erstellung", "Tool-Auswahl"]
+  de: {
+    title: "Unsere Angebote",
+    description: "Praxisnahe Kurse für deinen persönlichen und beruflichen Erfolg mit KI.",
+    courses: [
+      {
+        title: "Prompt Engineering",
+        description: "Lerne die Kunst des effektiven Prompting für bessere AI-Ergebnisse.",
+        features: ["Live-Demos", "Templates", "Best Practices"]
+      },
+      {
+        title: "KI im Business",
+        description: "Entdecke praktische Anwendungen für deinen Geschäftsalltag.",
+        features: ["Automatisierung", "Content Erstellung", "Tool-Auswahl"]
+      },
+      {
+        title: "KI für Einsteiger:innen",
+        description: "Der perfekte Start in die Welt der künstlichen Intelligenz.",
+        features: ["Grundlagen", "Einstieg", "Setup"]
+      }
+    ]
   },
-  {
-    title: "KI für Einsteiger:innen",
-    description: "Der perfekte Start in die Welt der künstlichen Intelligenz.",
-    icon: <Book className="h-6 w-6 text-primary" />,
-    features: ["Grundlagen", "Einstieg", "Setup"]
+  fr: {
+    title: "Nos Cours",
+    description: "Des cours pratiques pour votre succès personnel et professionnel avec l'IA.",
+    courses: [
+      {
+        title: "Prompt Engineering",
+        description: "Apprenez l'art du prompt efficace pour de meilleurs résultats avec l'IA.",
+        features: ["Démos en direct", "Modèles", "Meilleures pratiques"]
+      },
+      {
+        title: "IA en entreprise",
+        description: "Découvrez des applications pratiques pour votre quotidien professionnel.",
+        features: ["Automatisation", "Création de contenu", "Sélection d'outils"]
+      },
+      {
+        title: "IA pour débutants",
+        description: "Le départ parfait dans le monde de l'intelligence artificielle.",
+        features: ["Fondamentaux", "Premiers pas", "Configuration"]
+      }
+    ]
   }
-];
+};
 
 const CoursesSection = () => {
+  const { language } = useLanguage();
+  const t = content[language];
+
   return (
     <section className="py-16 bg-muted/30">
       <div className="container px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 hover-glow">Unsere Angebote</h2>
+          <h2 className="text-3xl font-bold mb-4 hover-glow">{t.title}</h2>
           <p className="text-muted-foreground">
-            Praxisnahe Kurse für deinen persönlichen und beruflichen Erfolg mit KI.
+            {t.description}
           </p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {courses.map((course, index) => (
+          {t.courses.map((course, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -46,7 +96,9 @@ const CoursesSection = () => {
             >
               <motion.div className="offer-card h-full">
                 <CardHeader>
-                  <div className="mb-2">{course.icon}</div>
+                  <div className="mb-2">
+                    <Book className="h-6 w-6 text-primary" />
+                  </div>
                   <CardTitle>{course.title}</CardTitle>
                   <CardDescription>{course.description}</CardDescription>
                 </CardHeader>
