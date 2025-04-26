@@ -1,7 +1,6 @@
 import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
-import { motion } from 'framer-motion';
 import { Zap, Palette, GraduationCap, Globe } from 'lucide-react';
 import {
   DropdownMenu,
@@ -52,7 +51,6 @@ const Header = memo(() => {
   const handleModeChange = useCallback((newMode: 'automation' | 'creative' | 'academy') => {
     setMode(newMode);
     
-    // Smooth scroll to top
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
@@ -81,44 +79,38 @@ const Header = memo(() => {
           
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <motion.button
+              <button
                 onClick={() => handleModeChange('automation')}
-                className={`p-2 rounded-lg ${
+                className={`p-2 rounded-lg transition-colors duration-300 ${
                   mode === 'automation' 
                     ? 'bg-primary/10 text-primary' 
                     : 'hover:bg-primary/5'
                 }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
               >
                 <Zap className="w-5 h-5" />
-              </motion.button>
+              </button>
               
-              <motion.button
+              <button
                 onClick={() => handleModeChange('creative')}
-                className={`p-2 rounded-lg ${
+                className={`p-2 rounded-lg transition-colors duration-300 ${
                   mode === 'creative' 
                     ? 'bg-primary/10 text-primary dark:text-[#00FF66]' 
                     : 'hover:bg-primary/5'
                 }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
               >
                 <Palette className="w-5 h-5" />
-              </motion.button>
+              </button>
               
-              <motion.button
+              <button
                 onClick={() => handleModeChange('academy')}
-                className={`p-2 rounded-lg ${
+                className={`p-2 rounded-lg transition-colors duration-300 ${
                   mode === 'academy' 
                     ? 'bg-primary/10 text-primary' 
                     : 'hover:bg-primary/5'
                 }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
               >
                 <GraduationCap className="w-5 h-5" />
-              </motion.button>
+              </button>
             </div>
             
             <a 
@@ -129,46 +121,45 @@ const Header = memo(() => {
               {mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen'}
             </a>
 
-            <div className="relative">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <motion.button
-                    className="relative w-9 h-9 p-2 rounded-lg hover:bg-primary/5 flex items-center justify-center"
-                    initial={false}
-                    whileTap={{ scale: 0.98 }}
-                    style={{ transformOrigin: 'center' }}
-                  >
-                    <Globe className="w-4 h-4" />
-                  </motion.button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent 
-                  align="end"
-                  className="w-[32px] !min-w-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0"
-                  sideOffset={8}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className={`p-2 rounded-lg transition-colors duration-300 ${
+                    location.pathname.includes('/en') || location.pathname.includes('/fr')
+                      ? 'bg-primary/10 text-primary'
+                      : 'hover:bg-primary/5'
+                  }`}
                 >
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
-                      <Link to="/en" className="flex items-center justify-center">
-                        <img 
-                          src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
-                          alt="English"
-                          className="w-4 h-4 rounded"
-                        />
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
-                      <Link to="/fr" className="flex items-center justify-center">
-                        <img 
-                          src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
-                          alt="Français"
-                          className="w-4 h-4 rounded"
-                        />
-                      </Link>
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+                  <Globe className="w-5 h-5" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent 
+                align="end"
+                className="w-[32px] !min-w-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-0"
+                sideOffset={8}
+              >
+                <DropdownMenuGroup>
+                  <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
+                    <Link to="/en" className="flex items-center justify-center">
+                      <img 
+                        src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
+                        alt="English"
+                        className="w-4 h-4 rounded"
+                      />
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="px-1 py-1 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center" asChild>
+                    <Link to="/fr" className="flex items-center justify-center">
+                      <img 
+                        src="/lovable-uploads/d3886c5c-7be7-4725-93b3-88ef4fcc4e62.png" 
+                        alt="Français"
+                        className="w-4 h-4 rounded"
+                      />
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </div>
