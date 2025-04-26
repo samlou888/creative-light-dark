@@ -124,9 +124,9 @@ const Header = memo(() => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button
-                  className={`p-2 rounded-lg transition-colors duration-300 ${
+                  className={`w-9 h-9 flex items-center justify-center rounded-lg transition-colors duration-300 focus:outline-none ${
                     location.pathname.includes('/en') || location.pathname.includes('/fr')
-                      ? 'bg-primary/10 text-primary'
+                      ? 'bg-primary/10 text-primary' 
                       : 'hover:bg-primary/5'
                   }`}
                 >
