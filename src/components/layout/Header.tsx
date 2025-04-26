@@ -147,7 +147,8 @@ const Header = memo(() => {
                 >
                   <div className="flex flex-col w-full">
                     <Link 
-                      to={location.pathname.includes('automation') ? "/en/automation" : "/en"}
+                      to={location.pathname.includes('automation') ? "/en/automation" : 
+                          location.pathname.includes('creative-studio') ? "/en/creative-studio" : "/en"}
                       className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       <img 
