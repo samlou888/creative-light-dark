@@ -168,7 +168,7 @@ const Header = memo(() => {
                       className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left"
                     >
                       <img 
-                        src="/lovable-uploads/d403c458-c12d-461a-9dc9-05e0eff7711f.png" 
+                        src="/lovable-uploads/bec88d6e-64d4-4eae-a164-c5f224bc9b7d.png" 
                         alt="Deutsch"
                         className="w-4 h-4 rounded"
                         loading="lazy"

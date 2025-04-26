@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import Header from '@/components/layout/Header';
@@ -28,6 +27,7 @@ const Academy = () => {
           title={<span className="academy-animated-text">Lerne, wie du AI zu deinem Vorteil nutzt.</span>}
           description="Unsere Academy bietet Workshops, Kurse und 1:1 Coachings – speziell für den praktischen Einsatz in Alltag & Business."
           buttonText="Jetzt Kursübersicht anfordern"
+          image="/lovable-uploads/d403c458-c12d-461a-9dc9-05e0eff7711f.png"
         />
         <CoursesSection />
         <SectionGrid
