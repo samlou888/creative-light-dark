@@ -1,25 +1,8 @@
-
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
 import { Book, MessageSquareText, GraduationCap, Palette, Globe, Video, Workflow, Mail, Brain } from 'lucide-react';
-
-// Adding animation variants definitions
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
 
 const content = {
   en: {
@@ -257,31 +240,21 @@ const ServicesSection = () => {
   
   return (
     <section id="services" className="py-36 px-6 md:px-10 mt-24">
-      <div className="offers-section">
-        <motion.h2 
-          className="offers-title"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeIn}
-          id="services-heading"
-        >
-          {modeContent.heading}
-        </motion.h2>
-        
+      <div className="container mx-auto">
         <div className="text-center mb-12 max-w-3xl mx-auto">
+          <h2 className={`section-heading mb-4 hover-glow ${
+            mode === 'automation' ? 'title-automation' :
+            mode === 'creative' ? 'title-creative' :
+            mode === 'academy' ? 'title-academy' : ''
+          }`} id="services-heading">
+            {modeContent.heading}
+          </h2>
           <p className="text-lg text-muted-foreground">
             {modeContent.description}
           </p>
         </div>
         
-        <motion.div 
-          className="offers-wrapper"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {modeContent.services.map((service) => (
             <motion.div 
               key={service.id}
@@ -305,7 +278,7 @@ const ServicesSection = () => {
               <p className="text-muted-foreground">{service.description}</p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
