@@ -1,17 +1,20 @@
+
 import React, { memo, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import LegalDialog from '@/components/legal/LegalDialog';
 
 const Footer = memo(() => {
   const { mode, setMode } = useTheme();
+  const { language } = useLanguage();
   const navigate = useNavigate();
   const location = useLocation();
   const isCreative = mode === 'creative';
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedTab, setSelectedTab] = useState<"impressum" | "datenschutz" | "agb">("impressum");
   
-  const isEnglish = location.pathname.startsWith('/en');
+  const isEnglish = language === 'en';
 
   const handleModeChange = (newMode: 'automation' | 'creative' | 'academy') => {
     setMode(newMode);
@@ -23,20 +26,6 @@ const Footer = memo(() => {
   };
 
   const handleLegalClick = (section: "impressum" | "datenschutz" | "agb") => {
-    if (isEnglish) {
-      if (section === "impressum") {
-        navigate('/en/imprint');
-        return;
-      }
-      if (section === "datenschutz") {
-        navigate('/en/privacy-policy');
-        return;
-      }
-      if (section === "agb") {
-        navigate('/en/terms-and-conditions');
-        return;
-      }
-    }
     setSelectedTab(section);
     setDialogOpen(true);
   };
@@ -51,9 +40,19 @@ const Footer = memo(() => {
                 <span className="text-primary">AI</span>ventures
               </h3>
               <p className="text-muted-foreground">
-                Wir revolutionieren<br />
-                Unternehmen durch<br />
-                AI-Lösungen, die wirklich funktionieren.
+                {isEnglish ? (
+                  <>
+                    We revolutionize<br />
+                    businesses through<br />
+                    AI solutions that actually work.
+                  </>
+                ) : (
+                  <>
+                    Wir revolutionieren<br />
+                    Unternehmen durch<br />
+                    AI-Lösungen, die wirklich funktionieren.
+                  </>
+                )}
               </p>
             </div>
             
@@ -88,10 +87,10 @@ const Footer = memo(() => {
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Kontakt</h4>
+              <h4 className="font-semibold mb-4">{isEnglish ? 'Contact' : 'Kontakt'}</h4>
               <ul className="space-y-2">
                 <li className="text-muted-foreground">info@aiventures.ch</li>
-                <li className="text-muted-foreground">Biel/Bienne, Schweiz</li>
+                <li className="text-muted-foreground">Biel/Bienne, {isEnglish ? 'Switzerland' : 'Schweiz'}</li>
               </ul>
             </div>
             
@@ -128,7 +127,7 @@ const Footer = memo(() => {
           
           <div className="mt-10 pt-6 border-t border-gray-200 dark:border-gray-800">
             <p className="text-center text-muted-foreground text-sm">
-              © {new Date().getFullYear()} AIventures. Alle Rechte vorbehalten.
+              © {new Date().getFullYear()} AIventures. {isEnglish ? 'All rights reserved.' : 'Alle Rechte vorbehalten.'}
             </p>
           </div>
         </div>

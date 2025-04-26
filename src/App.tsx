@@ -1,3 +1,4 @@
+
 import React, { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -5,18 +6,12 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Skeleton } from "@/components/ui/skeleton";
 import Index from "./pages/Index";
 
 const NotFound = lazy(() => import("./pages/NotFound"));
-const En = lazy(() => import("./pages/En"));
 const Fr = lazy(() => import("./pages/Fr"));
-const AutomationServicesEn = lazy(() => import("./pages/en/AutomationServices"));
-const CreativeStudioEn = lazy(() => import("./pages/en/CreativeStudio"));
-const AcademyEn = lazy(() => import("./pages/en/Academy"));
-const ImprintEn = lazy(() => import("./pages/en/Imprint"));
-const PrivacyPolicyEn = lazy(() => import("./pages/en/PrivacyPolicy"));
-const TermsAndConditionsEn = lazy(() => import("./pages/en/TermsAndConditions"));
 
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -43,30 +38,25 @@ const App = () => {
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="*" element={
-                  <Suspense fallback={<PageLoader />}>
-                    <Routes>
-                      <Route path="/en" element={<En />} />
-                      <Route path="/en/automation" element={<AutomationServicesEn />} />
-                      <Route path="/en/creative-studio" element={<CreativeStudioEn />} />
-                      <Route path="/en/academy" element={<AcademyEn />} />
-                      <Route path="/en/imprint" element={<ImprintEn />} />
-                      <Route path="/en/privacy-policy" element={<PrivacyPolicyEn />} />
-                      <Route path="/en/terms-and-conditions" element={<TermsAndConditionsEn />} />
-                      <Route path="/fr" element={<Fr />} />
-                      <Route path="*" element={<NotFound />} />
-                    </Routes>
-                  </Suspense>
-                } />
-              </Routes>
-            </BrowserRouter>
-          </TooltipProvider>
+          <LanguageProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Sonner />
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="*" element={
+                    <Suspense fallback={<PageLoader />}>
+                      <Routes>
+                        <Route path="/fr" element={<Fr />} />
+                        <Route path="*" element={<NotFound />} />
+                      </Routes>
+                    </Suspense>
+                  } />
+                </Routes>
+              </BrowserRouter>
+            </TooltipProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </QueryClientProvider>
     </React.StrictMode>

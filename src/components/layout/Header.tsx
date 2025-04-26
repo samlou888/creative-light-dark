@@ -1,7 +1,7 @@
-
 import React, { useCallback, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Zap, Palette, GraduationCap, Globe } from 'lucide-react';
 import {
   Popover,
@@ -11,6 +11,7 @@ import {
 
 const Header = memo(() => {
   const { mode, setMode } = useTheme();
+  const { language, setLanguage } = useLanguage();
   const location = useLocation();
 
   const handleInternalLinkClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -64,22 +65,16 @@ const Header = memo(() => {
     });
   };
 
-  // Helper to get the corresponding English path
-  const getEnglishPath = () => {
-    if (location.pathname === '/') return '/en';
-    if (mode === 'automation') return '/en/automation';
-    if (mode === 'creative') return '/en/creative-studio';
-    if (mode === 'academy') return '/en/academy';
-    return '/en';
-  };
-
-  // Helper to get the current section path
-  const getCurrentPath = () => {
-    const isEnglish = location.pathname.startsWith('/en');
-    if (mode === 'automation') return isEnglish ? '/en/automation' : '/';
-    if (mode === 'creative') return isEnglish ? '/en/creative-studio' : '/';
-    if (mode === 'academy') return isEnglish ? '/en/academy' : '/';
-    return isEnglish ? '/en' : '/';
+  const toggleLanguage = (newLanguage: 'de' | 'en' | 'fr') => {
+    if (newLanguage === 'fr') {
+      return;
+    }
+    
+    setLanguage(newLanguage as 'de' | 'en');
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   return (
@@ -87,7 +82,7 @@ const Header = memo(() => {
       <div className="container mx-auto">
         <div className="flex items-center justify-between">
           <Link 
-            to={getCurrentPath()} 
+            to="/" 
             onClick={handleLogoClick} 
             className="text-2xl font-bold"
           >
@@ -135,7 +130,7 @@ const Header = memo(() => {
               onClick={(e) => handleInternalLinkClick(e, 'contact')}
               className="hidden md:inline-flex items-center justify-center w-40 h-10 bg-primary text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(60,214,120,0.6)] rounded-full font-medium"
             >
-              {location.pathname.includes('/en') 
+              {language === 'en'
                 ? (mode === 'creative' ? 'Start Project' : mode === 'academy' ? 'Book Course' : 'Book Call')
                 : (mode === 'creative' ? 'Projekt starten' : mode === 'academy' ? 'Kurs buchen' : 'Termin buchen')
               }
@@ -146,7 +141,7 @@ const Header = memo(() => {
                 <PopoverTrigger asChild>
                   <button
                     className={`w-9 h-9 flex items-center justify-center rounded-lg ${
-                      location.pathname.includes('/en') || location.pathname.includes('/fr')
+                      language === 'en' || location.pathname.includes('/fr')
                         ? 'bg-primary/10 text-primary' 
                         : 'hover:bg-primary/5'
                     }`}
@@ -168,9 +163,9 @@ const Header = memo(() => {
                   avoidCollisions={false}
                 >
                   <div className="flex flex-col w-full">
-                    <Link 
-                      to={getEnglishPath()}
-                      className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    <button 
+                      onClick={() => toggleLanguage('en')}
+                      className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 w-full text-left"
                     >
                       <img 
                         src="/lovable-uploads/8c881562-6cd8-417b-a191-57ec5a81a40f.png" 
@@ -179,7 +174,7 @@ const Header = memo(() => {
                         loading="lazy"
                       />
                       <span className="text-sm">English</span>
-                    </Link>
+                    </button>
                     <Link 
                       to="/fr" 
                       className="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
