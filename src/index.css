@@ -84,6 +84,21 @@
     --muted: 276 100% 95%;
   }
 
+  .mode-neutral {
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 0%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+  }
+
   * {
     @apply border-border;
   }
@@ -352,4 +367,17 @@
 .academy-title {
   background-image: linear-gradient(90deg, #3a00ff, #00bbff, #3a00ff);
   animation: gradientFlow 6s linear infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s infinite;
 }
